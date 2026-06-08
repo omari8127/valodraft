@@ -14,6 +14,7 @@ interface Props {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   isAiRec?: boolean;
+  isDisabled?: boolean;
 }
 
 export function PlayerCard({
@@ -25,6 +26,7 @@ export function PlayerCard({
   onMouseEnter,
   onMouseLeave,
   isAiRec,
+  isDisabled,
 }: Props) {
   const rarity = rarityFor(entity.rating);
   const meta = RARITY_META[rarity];
@@ -43,16 +45,18 @@ export function PlayerCard({
     return (
       <motion.button
         type="button"
-        onClick={onClick}
+        onClick={isDisabled ? undefined : onClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        whileHover={onClick ? { y: -2, scale: 1.03 } : {}}
-        whileTap={onClick ? { scale: 0.97 } : {}}
+        whileHover={!isDisabled && onClick ? { y: -2, scale: 1.03 } : {}}
+        whileTap={!isDisabled && onClick ? { scale: 0.97 } : {}}
         className={`group clip-corner relative w-full overflow-hidden bg-surface border ${
           isAiRec
             ? "border-gold/80 shadow-[0_0_12px_rgba(212,175,55,0.45)]"
             : "border-border"
-        } ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
+        } ${!isDisabled && onClick ? "cursor-pointer" : "cursor-default"} text-left ${
+          isDisabled ? "opacity-40 grayscale is-disabled" : ""
+        } player-card`}
       >
         <div className="absolute inset-0 -translate-x-full opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
           <div className="shimmer h-full w-full opacity-20" />
@@ -85,16 +89,18 @@ export function PlayerCard({
   return (
     <motion.button
       type="button"
-      onClick={onClick}
+      onClick={isDisabled ? undefined : onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      whileHover={onClick ? { y: -4, scale: 1.02 } : {}}
-      whileTap={onClick ? { scale: 0.98 } : {}}
+      whileHover={!isDisabled && onClick ? { y: -4, scale: 1.02 } : {}}
+      whileTap={!isDisabled && onClick ? { scale: 0.98 } : {}}
       className={`group clip-corner relative w-full overflow-hidden bg-surface border ${
         isAiRec
           ? "border-gold shadow-[0_0_15px_rgba(212,175,55,0.5)]"
           : "border-border"
-      } ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
+      } ${!isDisabled && onClick ? "cursor-pointer" : "cursor-default"} text-left ${
+        isDisabled ? "opacity-40 grayscale is-disabled" : ""
+      } player-card`}
     >
       {/* shimmer overlay */}
       <div className="absolute inset-0 -translate-x-full opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">

@@ -24,9 +24,12 @@ interface DraftState {
   isRolling: boolean;
   rollSelectedTeam: TeamEntry | null;
   rollResultTeam: TeamEntry | null;
+  rerollsLeft: number; // 3 max in STRICT mode
+  baseRollRating: number | null; // Tracks the OVR of the first roll in a slot for balance checks
 
   startDraft: (modeId: GameModeId, draftMode: DraftMode) => void;
   startRoll: () => void;
+  rerollCurrentTeam: () => void;
   finishRoll: () => void;
   pickPlayer: (player: PlayerEntry, team: TeamEntry) => void;
   pickCoach: (coach: CoachEntry, team: TeamEntry) => void;
@@ -48,7 +51,7 @@ export function getSlotsForMode(): RosterSlot[] {
 
 /**
  * Strict validation function for drafting players.
- * MUST use unique ID, never name matching.
+ * Enforces missing Initiator locks on STRICT mode FLEX slots.
  */
 export function canPickPlayer(
   player: PlayerEntry,
@@ -56,14 +59,21 @@ export function canPickPlayer(
   slot: SlotRole,
   mode: DraftMode
 ): boolean {
-  // Check if player is already drafted
-  if (team.slots.some((s) => s.playerId === player.id)) {
+  // Normalize player name for global uniqueness check (e.g. "Derke" from FNATIC 2021 vs FNATIC 2022)
+  const normalizedName = player.name.toLowerCase().trim();
+  const isDuplicatePlayer = team.slots.some((s) => {
+    if (!s.playerId) return false;
+    const draftedPlayer = PLAYER_BY_ID[s.playerId];
+    return draftedPlayer && draftedPlayer.name.toLowerCase().trim() === normalizedName;
+  });
+
+  if (isDuplicatePlayer) {
     return false;
   }
 
-  if (mode === "OPEN") {
+  if (mode !== "STRICT") {
     if (slot === "COACH") return false;
-    return true; // No restrictions in OPEN mode
+    return true; // No restrictions in FLEXIBLE and CHAOS modes
   }
 
   // In STRICT mode:
@@ -72,11 +82,28 @@ export function canPickPlayer(
   }
 
   if (slot === "FLEX") {
-    // FLEX can be any role
-    return true;
+    // Retrieve currently drafted players
+    const draftedPlayers = team.slots
+      .filter((s) => s.playerId)
+      .map((s) => PLAYER_BY_ID[s.playerId!])
+      .filter(Boolean);
+
+    const hasInitiator = draftedPlayers.some((p) => p.primaryRole === "INITIATOR");
+
+    // 1. Missing Initiator Safeguard: If team lacks Initiator, FLEX slot can ONLY select Initiators.
+    if (!hasInitiator) {
+      return player.primaryRole === "INITIATOR";
+    }
+
+    // 2. Dual Duelist Check: FLEX slot allows Duelist only if exactly one Duelist already exists.
+    const duelistCount = draftedPlayers.filter((p) => p.primaryRole === "DUELIST").length;
+    return (
+      player.primaryRole === "INITIATOR" ||
+      (player.primaryRole === "DUELIST" && duelistCount === 1)
+    );
   }
 
-  // Block duplicate roles (except FLEX slot logic)
+  // Non-FLEX slots require their matching roles
   return player.primaryRole === slot;
 }
 
@@ -88,14 +115,12 @@ export function calculateAIPickWeight(
   draftMode: DraftMode
 ): number {
   if (difficulty === "EASY") {
-    // Bad draft logic: ignores synergy, completely random
     return Math.random() * 100;
   }
 
   const currentSlot = roster.slots.find((s) => !s.playerId && !s.coachId);
   if (!currentSlot) return 0;
 
-  // Create a prospective roster with this player added
   const targetIdx = roster.slots.findIndex((s) => s.role === currentSlot.role && !s.playerId);
   if (targetIdx === -1) return 0;
 
@@ -111,12 +136,11 @@ export function calculateAIPickWeight(
   const coach = coachSlot?.coachId ? COACH_BY_ID[coachSlot.coachId] : null;
 
   if (difficulty === "HARD") {
-    // Optimal drafting: Maximizes chemistry + roles (Team OVR)
-    const prospectiveOVR = computeTeamOVR(tempRosterPlayers, coach);
+    const prospectiveOVR = computeTeamOVR(tempRosterPlayers, coach, draftMode);
     return prospectiveOVR;
   }
 
-  // MEDIUM: Balanced picks
+  // MEDIUM
   const baseOvr = p.rating + (p.form ?? 0);
   let roleFit = 0;
   const draftedPlayers = roster.slots
@@ -184,21 +208,26 @@ export const useDraft = create<DraftState>((set, get) => ({
   isRolling: false,
   rollSelectedTeam: null,
   rollResultTeam: null,
+  rerollsLeft: 3,
+  baseRollRating: null,
 
   startDraft: (modeId, draftMode) => {
-    const level = useProgression.getState().level;
-    const unlockedYears = getUnlockedYears(level);
+    const isRanked = useProgression.getState().rankedActive;
+    // Classic mode -> all years unlocked; Ranked mode -> unlocked based on level
+    const years = isRanked ? getUnlockedYears(useProgression.getState().level) : [2021, 2022, 2023, 2024, 2025];
     const slots = getSlotsForMode();
     set({
       modeId,
       draftMode,
-      pool: poolForMode(modeId, unlockedYears),
+      pool: poolForMode(modeId, years),
       lockedTeamEntryIds: new Set(),
       roster: emptyRoster(slots),
       currentSlotIdx: 0,
       isRolling: false,
       rollSelectedTeam: null,
       rollResultTeam: null,
+      rerollsLeft: 3,
+      baseRollRating: null,
     });
   },
 
@@ -207,7 +236,9 @@ export const useDraft = create<DraftState>((set, get) => ({
     const currentRole = roster.slots[currentSlotIdx]?.role;
     if (!currentRole) return;
 
-    // Filter teams that have at least one pickable player or coach
+    // Reset base roll rating for a new slot roll
+    set({ baseRollRating: null });
+
     const available = pool.filter((t) => {
       if (lockedTeamEntryIds.has(t.id)) return false;
       if (currentRole === "COACH") {
@@ -220,7 +251,7 @@ export const useDraft = create<DraftState>((set, get) => ({
 
     const difficulty = useProgression.getState().difficulty;
 
-    // Calculate AI weights for each available team
+    // Calculate AI weights
     const teamWeights = available.map((team) => {
       if (currentRole === "COACH") return 1.0;
       const pickablePlayers = team.players.filter((p) =>
@@ -246,7 +277,6 @@ export const useDraft = create<DraftState>((set, get) => ({
     }
 
     const winner = available[selectedIdx];
-    // Assign random form modifier (-2 to +2) dynamically to all players in this team per draft
     const playersWithForm = winner.players.map((p) => ({
       ...p,
       form: Math.floor(Math.random() * 5) - 2, // -2 to +2 range
@@ -256,8 +286,85 @@ export const useDraft = create<DraftState>((set, get) => ({
       players: playersWithForm,
     };
 
-    console.log("[Roll] Selected team:", winnerWithForm.displayName, "| ID:", winnerWithForm.id);
-    set({ isRolling: true, rollSelectedTeam: winnerWithForm, rollResultTeam: null });
+    console.log("[Roll] Selected team:", winnerWithForm.displayName, "| OVR:", winnerWithForm.avgRating);
+    set({
+      isRolling: true,
+      rollSelectedTeam: winnerWithForm,
+      rollResultTeam: null,
+      baseRollRating: winnerWithForm.avgRating, // Store initial roll rating for balanced reroll filter
+    });
+  },
+
+  rerollCurrentTeam: () => {
+    const { pool, lockedTeamEntryIds, roster, currentSlotIdx, draftMode, rerollsLeft, baseRollRating } = get();
+    if (rerollsLeft <= 0 || draftMode !== "STRICT") return;
+
+    const currentRole = roster.slots[currentSlotIdx]?.role;
+    if (!currentRole) return;
+
+    const available = pool.filter((t) => {
+      if (lockedTeamEntryIds.has(t.id)) return false;
+      if (currentRole === "COACH") {
+        return !roster.slots.some((s) => s.role === "COACH" && s.coachId);
+      }
+      return t.players.some((p) => canPickPlayer(p, roster, currentRole, draftMode));
+    });
+
+    if (available.length === 0) return;
+
+    // Reroll System Balance Safeguard: Filter teams to be within +/- 4 OVR of the first rolled team
+    let filteredAvailable = available;
+    if (baseRollRating !== null) {
+      filteredAvailable = available.filter(
+        (t) => Math.abs(t.avgRating - baseRollRating) <= 4
+      );
+      if (filteredAvailable.length === 0) {
+        filteredAvailable = available; // Fallback to prevent soft-locks
+      }
+    }
+
+    const difficulty = useProgression.getState().difficulty;
+
+    // Calculate weights for filtered pool
+    const teamWeights = filteredAvailable.map((team) => {
+      if (currentRole === "COACH") return 1.0;
+      const pickablePlayers = team.players.filter((p) =>
+        canPickPlayer(p, roster, currentRole, draftMode)
+      );
+      if (pickablePlayers.length === 0) return 0.1;
+      return Math.max(
+        ...pickablePlayers.map((p) => calculateAIPickWeight(p, team, roster, difficulty, draftMode))
+      );
+    });
+
+    const totalWeight = teamWeights.reduce((s, w) => s + w, 0);
+    let rng = Math.random() * totalWeight;
+    let selectedIdx = 0;
+    for (let i = 0; i < filteredAvailable.length; i++) {
+      rng -= teamWeights[i];
+      if (rng <= 0) {
+        selectedIdx = i;
+        break;
+      }
+    }
+
+    const winner = filteredAvailable[selectedIdx];
+    const playersWithForm = winner.players.map((p) => ({
+      ...p,
+      form: Math.floor(Math.random() * 5) - 2,
+    }));
+    const winnerWithForm = {
+      ...winner,
+      players: playersWithForm,
+    };
+
+    console.log("[Reroll] New selected team:", winnerWithForm.displayName, "| OVR:", winnerWithForm.avgRating);
+    set({
+      isRolling: true, // Trigger spin animation delay
+      rollSelectedTeam: winnerWithForm,
+      rollResultTeam: null,
+      rerollsLeft: rerollsLeft - 1,
+    });
   },
 
   finishRoll: () => {
@@ -285,6 +392,7 @@ export const useDraft = create<DraftState>((set, get) => ({
       lockedTeamEntryIds: newLocked,
       currentSlotIdx: nextSlotIdx === -1 ? roster.slots.length : nextSlotIdx,
       rollResultTeam: null,
+      baseRollRating: null, // Clear for next roll
     });
   },
 
@@ -308,6 +416,7 @@ export const useDraft = create<DraftState>((set, get) => ({
       lockedTeamEntryIds: newLocked,
       currentSlotIdx: nextSlotIdx === -1 ? roster.slots.length : nextSlotIdx,
       rollResultTeam: null,
+      baseRollRating: null, // Clear for next roll
     });
   },
 
@@ -322,5 +431,7 @@ export const useDraft = create<DraftState>((set, get) => ({
       isRolling: false,
       rollSelectedTeam: null,
       rollResultTeam: null,
+      rerollsLeft: 3,
+      baseRollRating: null,
     }),
 }));

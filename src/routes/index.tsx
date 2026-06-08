@@ -16,8 +16,16 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+import { useEffect } from "react";
+
 function Index() {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    document.body.removeAttribute("data-theme");
+    document.body.classList.remove("bg-champions-particles", "bg-masters-particles");
+    localStorage.removeItem("ui-theme");
+  }, []);
 
   const MENU = [
     { to: "/collection", label: t("collection"), desc: "Your drafted rosters & stats" },

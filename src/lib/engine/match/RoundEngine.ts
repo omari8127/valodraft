@@ -2,6 +2,7 @@ import type { MatchTeam } from "./MatchEngine";
 import { calculateTSS, calculateWinProbability } from "./ProbabilityEngine";
 import type { MomentumSystem } from "./MomentumSystem";
 import type { GameMap } from "@/data/maps";
+import type { DraftMode } from "@/types/game";
 
 export interface RoundResult {
   winner: "A" | "B";
@@ -15,7 +16,8 @@ export class RoundEngine {
     teamB: MatchTeam,
     map: GameMap,
     momentum: MomentumSystem,
-    round: number
+    round: number,
+    mode: DraftMode = "STRICT"
   ): RoundResult {
     // 1. Determine attack/defense roles based on round number
     let isTeamADefense = false;
@@ -36,8 +38,8 @@ export class RoundEngine {
       }
     }
 
-    const tssA = calculateTSS(teamA, map, isTeamADefense);
-    const tssB = calculateTSS(teamB, map, isTeamBDefense);
+    const tssA = calculateTSS(teamA, map, isTeamADefense, mode);
+    const tssB = calculateTSS(teamB, map, isTeamBDefense, mode);
 
     // Apply Momentum
     const bonus = momentum.getBonus();
@@ -56,7 +58,6 @@ export class RoundEngine {
     const winner = roll <= finalProbA ? "A" : "B";
 
     // Clutch detection:
-    // Clutches are rare. High improbability of winning or 3% chance.
     let isClutch = false;
     const winnerProb = winner === "A" ? finalProbA : 1 - finalProbA;
     if (winnerProb < 0.35 || Math.random() < 0.03) {

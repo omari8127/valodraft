@@ -40,7 +40,7 @@ export interface Tournament {
   location?: string;
 }
 
-export type DraftMode = "STRICT" | "OPEN";
+export type DraftMode = "STRICT" | "FLEXIBLE" | "CHAOS";
 
 export interface PlayerEntry {
   id: string;
@@ -141,4 +141,5 @@ export interface SavedDynasty {
   wins: number;
   losses: number;
   playerForms?: Record<string, number>;
+  draftMode?: DraftMode;
 }

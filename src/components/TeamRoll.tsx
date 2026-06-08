@@ -36,7 +36,7 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
       if (role === "COACH") return true;
       return t.players.some((p) => {
         const draftMode = useDraft.getState().draftMode;
-        if (draftMode === "OPEN" || role === "FLEX") return true;
+        if (draftMode !== "STRICT" || role === "FLEX") return true;
         return p.primaryRole === role;
       });
     });

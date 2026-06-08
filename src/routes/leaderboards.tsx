@@ -4,6 +4,7 @@ import { useProgression, getRankTier, getRankBadge } from "@/lib/store/progressi
 import { GAME_MODE_BY_ID } from "@/data/tournaments";
 import { Trophy, Globe, User } from "lucide-react";
 import { useMemo } from "react";
+import { useLanguage } from "@/lib/i18n";
 
 export const Route = createFileRoute("/leaderboards")({
   head: () => ({
@@ -24,6 +25,7 @@ interface LeaderboardEntry {
 function LeaderboardsPage() {
   const saves = useDynasty((s) => s.saves);
   const userMmr = useProgression((s) => s.mmr);
+  const { t } = useLanguage();
 
   const byOVR = [...saves].sort((a, b) => b.teamOVR - a.teamOVR).slice(0, 10);
   const byWins = [...saves].sort((a, b) => b.wins - a.wins).slice(0, 10);
@@ -54,15 +56,15 @@ function LeaderboardsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
       <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
-        // Standings
+        // {t("standingsTitle")}
       </div>
-      <h1 className="mt-1 font-display text-4xl sm:text-5xl">Leaderboards</h1>
+      <h1 className="mt-1 font-display text-4xl sm:text-5xl">{t("leaderboards")}</h1>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-3">
         {/* Column 1: Simulated Global Ranked VCT Ladder */}
         <div className="lg:col-span-1 clip-corner border border-border bg-surface/70 p-5 backdrop-blur flex flex-col">
           <div className="text-[10px] font-bold uppercase tracking-widest text-gold flex items-center gap-1.5 mb-3 border-b border-border/40 pb-2">
-            <Globe className="w-4 h-4 text-gold" /> Global Ranked Ladder (Season 1)
+            <Globe className="w-4 h-4 text-gold" /> {t("globalLadderTitle")}
           </div>
           <ol className="divide-y divide-border/30 overflow-y-auto max-h-[600px] pr-1 space-y-1">
             {globalLeaderboard.map((entry, i) => {
@@ -104,12 +106,12 @@ function LeaderboardsPage() {
 
         {/* Column 2: Local Dynasty By Team OVR */}
         <div className="lg:col-span-1">
-          <Board title="Top Dynasties (By Team OVR)" rows={byOVR} field="teamOVR" suffix="" />
+          <Board title={t("topDynastiesOVR")} rows={byOVR} field="teamOVR" suffix="" />
         </div>
 
         {/* Column 3: Local Dynasty By Wins */}
         <div className="lg:col-span-1">
-          <Board title="Top Dynasties (By Wins)" rows={byWins} field="wins" suffix=" W" />
+          <Board title={t("topDynastiesWins")} rows={byWins} field="wins" suffix=" W" />
         </div>
       </div>
     </div>
@@ -127,6 +129,7 @@ function Board({
   field: "teamOVR" | "wins";
   suffix: string;
   }) {
+  const { t } = useLanguage();
   return (
     <div className="clip-corner border border-border bg-surface/70 p-5 backdrop-blur h-full flex flex-col">
       <div className="text-[10px] font-bold uppercase tracking-widest text-gold flex items-center gap-1.5 mb-3 border-b border-border/40 pb-2">
@@ -134,7 +137,7 @@ function Board({
       </div>
       {rows.length === 0 ? (
         <div className="my-auto text-center text-sm text-muted-foreground py-12">
-          No dynasty data available. Draft a roster to compete and claim your spot!
+          {t("noDynastyData")}
         </div>
       ) : (
         <ol className="divide-y divide-border/30 space-y-1 overflow-y-auto max-h-[600px] pr-1">

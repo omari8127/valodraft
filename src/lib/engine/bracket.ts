@@ -60,13 +60,13 @@ export function generateBracket(userTeam: MatchTeam, pool: TeamEntry[]): Bracket
   return rounds;
 }
 
-export function simulateRound(rounds: BracketMatch[][], roundIdx: number): BracketMatch[][] {
+export function simulateRound(rounds: BracketMatch[][], roundIdx: number, mode: import("@/types/game").DraftMode = "STRICT"): BracketMatch[][] {
   const next = rounds.map((r) => r.map((m) => ({ ...m })));
   const round = next[roundIdx];
   for (const m of round) {
     if (!m.teamA || !m.teamB) continue;
     if (m.result) continue;
-    const result = simulateMatch(m.teamA, m.teamB);
+    const result = simulateMatch(m.teamA, m.teamB, mode);
     m.result = result;
     m.winner = result.winner === "A" ? m.teamA : m.teamB;
   }

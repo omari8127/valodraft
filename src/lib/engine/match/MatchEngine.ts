@@ -1,4 +1,4 @@
-import type { CoachEntry, PlayerEntry } from "@/types/game";
+import type { CoachEntry, PlayerEntry, DraftMode } from "@/types/game";
 import { MAPS } from "@/data/maps";
 import { MomentumSystem } from "./MomentumSystem";
 import { OvertimeSystem } from "./OvertimeSystem";
@@ -36,7 +36,7 @@ export interface MatchResult {
 }
 
 export class MatchEngine {
-  public simulate(teamA: MatchTeam, teamB: MatchTeam): MatchResult {
+  public simulate(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT"): MatchResult {
     const map = MAPS[Math.floor(Math.random() * MAPS.length)];
 
     const momentum = new MomentumSystem();
@@ -60,7 +60,7 @@ export class MatchEngine {
     while (!matchWinner) {
       round++;
 
-      const roundResult = roundEngine.simulateRound(teamA, teamB, map, momentum, round);
+      const roundResult = roundEngine.simulateRound(teamA, teamB, map, momentum, round, mode);
 
       if (roundResult.winner === "A") scoreA++;
       else scoreB++;
@@ -127,7 +127,7 @@ export class MatchEngine {
   }
 }
 
-export function simulateMatch(teamA: MatchTeam, teamB: MatchTeam): MatchResult {
+export function simulateMatch(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT"): MatchResult {
   const engine = new MatchEngine();
-  return engine.simulate(teamA, teamB);
+  return engine.simulate(teamA, teamB, mode);
 }
