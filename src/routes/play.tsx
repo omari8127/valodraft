@@ -135,37 +135,41 @@ function PlayPage() {
       <div className="space-y-8">
         {/* Step 1: Mode Selection (LEFT: CLASSIC, RIGHT: RANKED) */}
         <section className="space-y-4">
+          <h2 className="text-xs text-white/60 tracking-widest uppercase">
+            // MODE SELECTION
+          </h2>
+          <div className="h-px bg-white/10 my-3" />
           <div className="grid gap-4 md:grid-cols-2">
             {/* LEFT CARD: CLASSIC */}
             <button
               onClick={() => setRankedActive(false)}
-              className={`clip-corner p-6 text-left border transition cursor-pointer relative overflow-hidden group ${
+              className={`clip-corner p-6 text-left transition-all duration-200 cursor-pointer relative overflow-hidden group focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
                 !rankedActive
-                  ? "border-primary bg-primary/10"
-                  : "border-border bg-surface/40 hover:border-primary/50"
+                  ? "border border-white/70 shadow-[0_0_12px_rgba(255,255,255,0.25)] bg-white/[0.03] text-white"
+                  : "border border-white/20 hover:border-white/40 hover:bg-white/[0.02]"
               }`}
             >
-              <div className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-1">
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 mb-1">
                 // MODE 01
               </div>
-              <div className="font-display text-2xl tracking-wider text-foreground">{t("classicMode")}</div>
-              <p className="text-xs mt-2 text-muted-foreground leading-relaxed">{t("classicDesc")}</p>
+              <div className="font-display text-2xl tracking-wide text-white/80">{t("classicMode")}</div>
+              <p className="text-xs mt-2 text-white/70 leading-relaxed">{t("classicDesc")}</p>
             </button>
 
             {/* RIGHT CARD: RANKED */}
             <button
               onClick={() => setRankedActive(true)}
-              className={`clip-corner p-6 text-left border transition cursor-pointer relative overflow-hidden group ${
+              className={`clip-corner p-6 text-left transition-all duration-200 cursor-pointer relative overflow-hidden group focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
                 rankedActive
-                  ? "border-primary bg-primary/10"
-                  : "border-border bg-surface/40 hover:border-primary/50"
+                  ? "border border-white/70 shadow-[0_0_12px_rgba(255,255,255,0.25)] bg-white/[0.03] text-white"
+                  : "border border-white/20 hover:border-white/40 hover:bg-white/[0.02]"
               }`}
             >
-              <div className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-1">
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 mb-1">
                 // MODE 02
               </div>
-              <div className="font-display text-2xl tracking-wider text-foreground">{t("rankedMode")}</div>
-              <p className="text-xs mt-2 text-muted-foreground leading-relaxed">{t("rankedDesc")}</p>
+              <div className="font-display text-2xl tracking-wide text-white/80">{t("rankedMode")}</div>
+              <p className="text-xs mt-2 text-white/70 leading-relaxed">{t("rankedDesc")}</p>
             </button>
           </div>
         </section>
@@ -173,26 +177,27 @@ function PlayPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {/* Step 2: Difficulty Selection */}
           <section className="space-y-4 clip-corner border border-border bg-surface/40 p-5 backdrop-blur">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1.5">
+            <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5">
               <Award className="w-4 h-4" /> 1. {t("aiDifficulty")}
             </h2>
+            <div className="h-px bg-white/10 my-3" />
 
             <div className="grid grid-cols-3 gap-2">
               {(["EASY", "MEDIUM", "HARD"] as GameDifficulty[]).map((diff) => (
                 <button
                   key={diff}
                   onClick={() => setDifficulty(diff)}
-                  className={`py-2.5 text-xs font-bold uppercase tracking-wide border transition clip-corner cursor-pointer ${
+                  className={`py-2.5 text-xs font-bold uppercase tracking-wide transition-all duration-200 clip-corner cursor-pointer focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
                     difficulty === diff
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border/60 bg-background/20 text-muted-foreground hover:border-primary/50"
+                      ? "border border-white/60 bg-white/10 text-white shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                      : "border border-white/10 text-white/50 hover:text-white/80 hover:border-white/30 hover:bg-white/[0.02]"
                   }`}
                 >
                   {diff}
                 </button>
               ))}
             </div>
-            <div className="text-[10px] text-muted-foreground leading-normal mt-1 min-h-[40px]">
+            <div className="text-[10px] text-white/60 leading-normal mt-1 min-h-[40px]">
               {difficulty === "EASY" && t("difficultyEasy")}
               {difficulty === "MEDIUM" && t("difficultyMedium")}
               {difficulty === "HARD" && t("difficultyHard")}
@@ -202,26 +207,27 @@ function PlayPage() {
           {/* Step 3: Patch Meta System */}
           <section className="space-y-4 clip-corner border border-border bg-surface/40 p-5 backdrop-blur flex flex-col justify-between">
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1.5 mb-3">
-                <Flame className="w-4 h-4 text-primary fill-primary" /> {t("activePatchMeta")}
+              <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5 mb-3">
+                <Flame className="w-4 h-4 text-white/60" /> {t("activePatchMeta")}
               </h2>
+              <div className="h-px bg-white/10 my-3" />
               
-              <div className="bg-background/80 border border-gold/45 p-4 rounded clip-corner relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-gold/15 text-gold text-[8px] font-bold uppercase px-2 py-0.5 rounded-bl clip-corner">
+              <div className="bg-background/80 border border-white/20 p-4 rounded clip-corner relative overflow-hidden transition-all duration-200 hover:border-white/40 hover:bg-white/[0.02]">
+                <div className="absolute top-0 right-0 bg-white/10 text-white/60 text-[8px] font-bold uppercase px-2 py-0.5 rounded-bl clip-corner">
                   LIVE PATCH
                 </div>
-                <div className="font-display text-xl text-gold uppercase tracking-wider">{activeMeta}</div>
-                <p className="mt-1 text-xs text-foreground/90 leading-relaxed">
+                <div className="font-display text-xl text-white/80 tracking-wide uppercase">{activeMeta}</div>
+                <p className="mt-1 text-xs text-white/70 leading-relaxed">
                   {getMetaDesc(activeMeta)}
                 </p>
               </div>
             </div>
 
             <div className="pt-4 border-t border-border/30 flex items-center justify-between">
-              <span className="text-[10px] text-muted-foreground">Change the meta for the next draft:</span>
+              <span className="text-[10px] text-white/60">Change the meta for the next draft:</span>
               <button
                 onClick={cycleMeta}
-                className="clip-corner flex items-center gap-1.5 border border-primary bg-primary/5 hover:bg-primary/15 text-primary px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition cursor-pointer"
+                className="clip-corner flex items-center gap-1.5 border border-white/20 hover:border-white/40 hover:bg-white/[0.02] text-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)]"
               >
                 <RefreshCw className="w-3.5 h-3.5" /> {t("cycleMetaBtn")}
               </button>
@@ -231,43 +237,52 @@ function PlayPage() {
 
         {/* Step 4: Select Player Pool (with Hover Glow system) */}
         <section className="space-y-4">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-            <Star className="w-4 h-4 text-muted-foreground" /> 2. {t("selectPlayerPool")}
+          <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5">
+            <Star className="w-4 h-4 text-white/60" /> 2. {t("selectPlayerPool")}
           </h2>
+          <div className="h-px bg-white/10 my-3" />
           <div className="grid gap-3 md:grid-cols-3">
             {GAME_MODES.map((mode, i) => {
-              const isChampions = mode.id === "champions";
-              const isHovered = hoveredPool === mode.id;
-              
-              // Custom original visual style for each tournament card:
-              // Champions card hover -> soft gold glow hint
-              // Masters card hover -> strong purple/blue neon glow hint
-              const glowStyle = isHovered
-                ? isChampions
-                  ? "border-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.25)] bg-[#D4AF37]/5"
-                  : mode.id === "masters"
-                    ? "border-[#9B5CFF] shadow-[0_0_20px_rgba(155,92,255,0.3)] bg-[#9B5CFF]/5"
-                    : "border-primary shadow-[0_0_15px_rgba(255,70,85,0.2)] bg-primary/5"
-                : selectedPool === mode.id
-                  ? "border-primary bg-primary/10 text-foreground"
-                  : "border-border bg-surface/50 text-muted-foreground hover:border-primary/50 hover:bg-surface/75";
+              const isSelected = selectedPool === mode.id;
+              const baseStyle = isSelected
+                ? "border-white/70 shadow-[0_0_12px_rgba(255,255,255,0.25)] bg-white/[0.03] text-white"
+                : "border-white/10 bg-transparent hover:border-white/30 hover:bg-white/[0.02]";
 
               return (
                 <button
                   key={mode.id}
                   onClick={() => setSelectedPool(mode.id)}
-                  onMouseEnter={() => setHoveredPool(mode.id)}
-                  onMouseLeave={() => setHoveredPool(null)}
-                  className={`clip-corner relative overflow-hidden border p-5 text-left transition cursor-pointer ${glowStyle}`}
+                  className={`clip-corner relative overflow-hidden border p-5 text-left transition-all duration-300 cursor-pointer group focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${baseStyle}`}
                 >
-                  <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary">
+                  <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/60">
                     Pool {String(i + 1).padStart(2, "0")}
                   </div>
-                  <div className="mt-1 font-display text-xl text-foreground">{mode.name}</div>
-                  <div className="text-xs mt-1 text-muted-foreground">{mode.subtitle}</div>
+                  <h3 className="mt-1 font-display text-xl tracking-wide text-white">
+                    VALORANT{" "}
+                    <span
+                      className={`
+                        transition-all duration-300
+                        ${
+                          mode.id === "champions"
+                            ? "group-hover:text-[#D4AF37] group-hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)]"
+                            : mode.id === "masters"
+                            ? "group-hover:text-[#8A2BE2] group-hover:drop-shadow-[0_0_8px_rgba(138,43,226,0.6)]"
+                            : ""
+                        }
+                        ${isSelected ? (mode.id === "champions" ? "text-[#D4AF37]" : mode.id === "masters" ? "text-[#8A2BE2]" : "") : "text-white"}
+                      `}
+                    >
+                      {mode.id === "champions"
+                        ? "CHAMPIONS"
+                        : mode.id === "masters"
+                        ? "MASTERS"
+                        : "ERA"}
+                    </span>
+                  </h3>
+                  <div className="text-xs mt-1 text-white/70">{mode.subtitle}</div>
                   
                   {/* Years Unlocked Indicator */}
-                  <div className="mt-3 text-[9px] font-mono text-gold flex items-center gap-1">
+                  <div className="mt-3 text-[9px] font-mono text-white/60 flex items-center gap-1">
                     🔓 {t("yearsUnlocked")}: {unlockedYears.join(", ")}
                   </div>
                 </button>
@@ -275,7 +290,7 @@ function PlayPage() {
             })}
           </div>
           {rankedActive && (
-            <div className="text-[10px] text-muted-foreground leading-normal">
+            <div className="text-[10px] text-white/60 leading-normal">
               ℹ {t("levelUnlockInfo")}
             </div>
           )}
@@ -283,9 +298,10 @@ function PlayPage() {
 
         {/* Step 5: Choose Team Composition Style */}
         <section className="space-y-4">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-            <ShieldAlert className="w-4 h-4" /> 3. {t("chooseDraftMode")}
+          <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5">
+            <ShieldAlert className="w-4 h-4 text-white/60" /> 3. {t("chooseDraftMode")}
           </h2>
+          <div className="h-px bg-white/10 my-3" />
           <div className="grid gap-4 md:grid-cols-3">
             {[
               {
@@ -303,20 +319,23 @@ function PlayPage() {
                 title: t("chaosModeTitle"),
                 desc: t("chaosModeDesc"),
               },
-            ].map((m) => (
-              <button
-                key={m.id}
-                onClick={() => setDraftMode(m.id)}
-                className={`clip-corner p-5 text-left border transition cursor-pointer flex flex-col justify-between min-h-[140px] ${
-                  draftMode === m.id
-                    ? "border-primary bg-primary/10"
-                    : "border-border bg-surface/50 hover:border-primary/50"
-                }`}
-              >
-                <div className="font-display text-lg tracking-wider text-foreground">{m.title}</div>
-                <div className="text-xs mt-2 text-muted-foreground leading-relaxed flex-1">{m.desc}</div>
-              </button>
-            ))}
+            ].map((m) => {
+              const isSelected = draftMode === m.id;
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => setDraftMode(m.id)}
+                  className={`clip-corner p-5 text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[140px] focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
+                    isSelected
+                      ? "border-white/70 shadow-[0_0_12px_rgba(255,255,255,0.25)] bg-white/[0.03] text-white"
+                      : "border-white/20 hover:border-white/40 hover:bg-white/[0.02]"
+                  }`}
+                >
+                  <div className="font-display text-lg text-white/80 tracking-wide">{m.title}</div>
+                  <div className="text-xs mt-2 text-white/70 leading-relaxed flex-1">{m.desc}</div>
+                </button>
+              );
+            })}
           </div>
         </section>
 

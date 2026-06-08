@@ -46,40 +46,42 @@
 :root {
   --radius: 0.25rem;
 
-  /* Valorant palette */
-  --background: oklch(0.16 0.02 245); /* #0F1923 */
+  /* Base palette */
   --foreground: oklch(0.97 0.005 250);
-  --surface: oklch(0.21 0.025 240); /* #1A2733 */
-  --surface-2: oklch(0.25 0.028 240);
-  --card: oklch(0.21 0.025 240);
+  --surface: #10141f;
+  --surface-2: #161c2b;
+  --card: #10141f;
   --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.21 0.025 240);
+  --popover: #10141f;
   --popover-foreground: oklch(0.97 0.005 250);
 
-  --primary: oklch(0.65 0.225 22); /* #FF4655 Valorant red */
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: #2a3441; /* Neutral dark button */
+  --primary-foreground: #ffffff;
 
-  --secondary: oklch(0.25 0.028 240);
-  --secondary-foreground: oklch(0.97 0.005 250);
+  --secondary: #161c2b;
+  --secondary-foreground: #ffffff;
 
-  --muted: oklch(0.25 0.025 240);
-  --muted-foreground: oklch(0.68 0.02 245);
+  --muted: #161c2b;
+  --muted-foreground: #8a96a8;
 
-  --accent: oklch(0.78 0.13 80); /* gold accent */
-  --accent-foreground: oklch(0.15 0.02 245);
+  --accent: #2a3441;
+  --accent-foreground: #ffffff;
 
-  --gold: oklch(0.78 0.13 80); /* #D6B36A */
+  --gold: #D4AF37;
 
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.99 0 0);
+  --destructive: #8b0000;
+  --destructive-foreground: #ffffff;
 
-  --border: oklch(0.3 0.025 240);
-  --input: oklch(0.3 0.025 240);
-  --ring: oklch(0.65 0.225 22);
+  --border: #1e2638;
+  --input: #1e2638;
+  --ring: #2a3441;
+  
+  /* FX Variables */
+  --glow-color: rgba(60, 80, 180, 0.08); /* faint blue/purple tone */
+  --particle-color: rgba(100, 120, 255, 0.15); /* slow moving particles, low opacity */
 }
 
 .dark {
-  --background: oklch(0.16 0.02 245);
   --foreground: oklch(0.97 0.005 250);
 }
 
@@ -93,7 +95,8 @@
     height: 100%;
   }
   body {
-    background-color: var(--color-background);
+    background: linear-gradient(#05070d, #0b0f1a);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     overflow-x: hidden;
@@ -132,24 +135,16 @@
 /* Background FX */
 .bg-grid {
   background-image:
-    linear-gradient(
-      to right,
-      color-mix(in oklab, var(--color-foreground) 4%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      color-mix(in oklab, var(--color-foreground) 4%, transparent) 1px,
-      transparent 1px
-    );
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 .bg-radial-primary {
   background: radial-gradient(
     ellipse at center,
-    color-mix(in oklab, var(--color-primary) 22%, transparent) 0%,
-    transparent 60%
+    var(--glow-color) 0%,
+    transparent 70%
   );
 }
 
@@ -179,17 +174,17 @@
   }
 }
 
-@keyframes pulse-red {
+@keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-primary) 60%, transparent);
+    box-shadow: 0 0 0 0 var(--glow-color);
   }
   50% {
-    box-shadow: 0 0 0 12px color-mix(in oklab, var(--color-primary) 0%, transparent);
+    box-shadow: 0 0 0 12px var(--glow-color);
   }
 }
 .animate-pulse-red {
-  animation: pulse-red 1.6s ease-out infinite;
+  animation: pulse-glow 1.6s ease-out infinite;
 }
 
 @keyframes shimmer {
@@ -280,73 +275,66 @@
  * ──────────────────────────────────────────────────────────────────────── */
 
 [data-theme="champions"] {
-  --background: #000000;
   --surface: #0a0a0a;
   --surface-2: #121212;
   --border: #1f1a0e;
-  --primary: #D4AF37; /* Prestige Gold */
+  --primary: #D4AF37;
   --primary-foreground: #000000;
-  --ring: #D4AF37;
+  --ring: #FFD700;
   --gold: #D4AF37;
-  --accent: #D4AF37;
+  --accent: #FFD700;
+  
+  --glow-color: rgba(212, 175, 55, 0.12);
+  --particle-color: rgba(212, 175, 55, 0.25);
 }
 
 [data-theme="masters"] {
-  --background: #06030c;
   --surface: #0f0a1d;
   --surface-2: #191230;
   --border: #2b1f4c;
-  --primary: #9B5CFF; /* Neon Purple */
+  --primary: #6C5CFF;
   --primary-foreground: #ffffff;
-  --ring: #00E0FF; /* Electric Blue ring */
-  --gold: #00E0FF; /* Electric Blue accent */
+  --secondary: #8A2BE2;
+  --ring: #00E0FF;
+  --gold: #00E0FF;
   --accent: #00E0FF;
+  
+  --glow-color: rgba(0, 224, 255, 0.15);
+  --particle-color: rgba(0, 224, 255, 0.35);
 }
 
 /* Theme-based card hover effects */
 [data-theme="masters"] .player-card:hover:not(.is-disabled) {
   border-color: #00E0FF !important;
-  box-shadow: 0 0 8px #00E0FF;
+  box-shadow: 0 0 12px rgba(0, 224, 255, 0.4);
 }
 
 [data-theme="champions"] .player-card:hover:not(.is-disabled) {
   border-color: #D4AF37 !important;
-  box-shadow: 0 0 8px #D4AF37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
 }
 
-/* Original abstract tournament-inspired backgrounds */
-.bg-champions-particles {
-  background: radial-gradient(circle at 50% 50%, #0c0803 0%, #000000 100%);
-  position: relative;
-}
-.bg-champions-particles::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, #D4AF37 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.04;
-  pointer-events: none;
+/* Dynamic Buttons */
+.bg-primary {
+  transition: all 0.3s ease;
 }
 
-.bg-masters-particles {
-  background: radial-gradient(circle at 50% 50%, #0a061a 0%, #030208 100%);
-  position: relative;
-  overflow: hidden;
+[data-theme="champions"] .bg-primary {
+  background: linear-gradient(135deg, #D4AF37 0%, #b38b1d 100%) !important;
+  color: #000 !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
-.bg-masters-particles::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(125deg, rgba(155, 92, 255, 0.05) 0%, rgba(0, 224, 255, 0.05) 100%);
-  filter: blur(80px);
-  pointer-events: none;
-  animation: masters-energy 8s ease infinite alternate;
+[data-theme="champions"] .bg-primary:hover {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
-@keyframes masters-energy {
-  0% { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.15) translate(4%, 4%); }
+[data-theme="masters"] .bg-primary {
+  background: linear-gradient(135deg, #6C5CFF 0%, #8A2BE2 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.2);
+}
+[data-theme="masters"] .bg-primary:hover {
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.5);
 }
 
 /* Reroll spin & shake animations */

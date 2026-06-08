@@ -11,7 +11,8 @@ export function AgentRow({ agent }: Props) {
         src={`/agents/${agent.toLowerCase()}.png`}
         alt={agent}
         title={agent}
-        className="inline-block h-6 w-6 rounded-full ring-2 ring-background bg-surface border border-border object-cover"
+        className="inline-block w-9 h-9 md:w-10 md:h-10 bg-transparent object-contain"
+        style={{ mixBlendMode: "lighten" }}
         onError={(e) => {
           (e.target as HTMLImageElement).src = `/agents/default-agent.png`;
         }}

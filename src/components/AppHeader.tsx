@@ -28,11 +28,8 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg tracking-widest">
-          <span className="inline-block h-5 w-1.5 bg-primary" />
-          <span>
-            VALORANT <span className="text-primary">CHAMPIONS</span> DRAFT
-          </span>
+        <Link to="/" className="flex items-center gap-2">
+          <img src="/logo.png" alt="VALORANT CHAMPIONS DRAFT" className="h-8 w-auto object-contain" />
         </Link>
         
         <nav className="ml-auto hidden items-center gap-1 md:flex">

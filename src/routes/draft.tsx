@@ -97,8 +97,8 @@ function DraftPage() {
   const state = useDraft();
   const { t } = useLanguage();
   const [rollSession, setRollSession] = useState(0);
-  const [activeTab, setActiveTab] = useState<"spin" | "roster">("spin");
   const [hoveredRole, setHoveredRole] = useState<string | null>(null);
+  const [showRules, setShowRules] = useState(false);
 
   const currentSlot = state.roster.slots[state.currentSlotIdx];
   const isDone = state.currentSlotIdx >= state.roster.slots.length;
@@ -111,14 +111,14 @@ function DraftPage() {
     const themeName = isChampions ? "champions" : isMasters ? "masters" : "default";
 
     document.body.setAttribute("data-theme", themeName);
-    
+
     // Abstract energy background class
     const bgClass = isChampions ? "bg-champions-particles" : isMasters ? "bg-masters-particles" : "";
     document.body.classList.remove("bg-champions-particles", "bg-masters-particles");
     if (bgClass) {
       document.body.classList.add(bgClass);
     }
-    
+
     localStorage.setItem("ui-theme", themeName);
   }, [state.modeId]);
 
@@ -212,155 +212,180 @@ function DraftPage() {
               VCT CHAMPIONS DRAFT ({state.draftMode} MODE)
             </div>
           </div>
-          <div className="clip-corner bg-surface border border-border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider">
-            Roster:{" "}
-            <span className="font-display text-base text-gold">
-              {draftedPlayers.length + (drafted_coach ? 1 : 0)}/{state.roster.slots.length}
-            </span>
-          </div>
-        </div>
-
-        {/* Mobile view (< lg) */}
-        <div className="block lg:hidden space-y-6">
-          {/* OVR and Chemistry Card */}
-          <div className="clip-corner border border-border bg-surface/70 p-4 flex justify-between items-center backdrop-blur">
-            <div>
-              <div className="font-display text-5xl text-gold flex items-baseline gap-1">
-                {ovr}
-                <span className="font-sans text-xs font-semibold text-muted-foreground uppercase tracking-widest">
-                  / 99 OVR
-                </span>
-              </div>
-              <div className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-foreground/90">
-                <Flame className="w-4 h-4 text-primary fill-primary" />
-                Chemistry: +{chemistry.total} pts
-              </div>
-            </div>
-            <div className="clip-corner bg-background/80 border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-              SQUAD
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setShowRules(prev => !prev)}
+              className="hidden sm:flex items-center gap-2 text-xs tracking-wide border border-white/10 px-3 py-1.5 rounded-md transition-all duration-200 hover:border-white/30 hover:bg-white/5 cursor-pointer text-white"
+            >
+              {showRules ? "OCULTAR GUÍA" : "VER REGLAS DE QUÍMICA"}
+            </button>
+            <div className="clip-corner bg-surface border border-border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider">
+              Roster:{" "}
+              <span className="font-display text-base text-gold">
+                {draftedPlayers.length + (drafted_coach ? 1 : 0)}/{state.roster.slots.length}
+              </span>
             </div>
           </div>
-
-          {/* Composition Ratios */}
-          <RosterCompositionStats players={draftedPlayers} draftMode={state.draftMode} />
-
-          {/* TABS */}
-          <div className="grid grid-cols-2 border border-border bg-surface/40 p-1 clip-corner">
-            <button
-              onClick={() => setActiveTab("spin")}
-              className={`clip-corner py-3 text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer ${
-                activeTab === "spin"
-                  ? "bg-gold text-background shadow-md animate-none"
-                  : "text-foreground hover:bg-surface-2"
-              }`}
-            >
-              🎰 SPIN DE CAMPEONES
-            </button>
-            <button
-              onClick={() => setActiveTab("roster")}
-              className={`clip-corner py-3 text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer ${
-                activeTab === "roster"
-                  ? "bg-gold text-background shadow-md"
-                  : "text-foreground hover:bg-surface-2"
-              }`}
-            >
-              Roster ({draftedPlayers.length + (drafted_coach ? 1 : 0)}/{state.roster.slots.length}) 🛡️
-            </button>
-          </div>
-
-          {/* Tab contents */}
-          <div className="space-y-6">
-            {activeTab === "spin" ? (
-              <>
-                {!isDone && !state.rollResultTeam && !state.isRolling && (
-                  <div className="clip-corner border border-border bg-surface/70 p-6 text-center backdrop-blur">
-                    <div className="font-display text-xl font-bold">{t("readyNextRoll")}</div>
-                    <p className="mt-1.5 text-xs text-muted-foreground font-sans">
-                      {t("rollInfoText")}{" "}
-                      <span className="font-bold text-primary">{currentSlot.role}</span>.
-                    </p>
-                    <button
-                      onClick={state.startRoll}
-                      className="clip-corner mt-4 inline-flex items-center gap-3 bg-primary px-6 py-3 font-display text-base tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer font-bold"
-                    >
-                      {t("rollBtn")} {currentSlot.role}
-                    </button>
-                  </div>
-                )}
-
-                {state.isRolling && state.rollSelectedTeam && !state.rollResultTeam && (
-                  <div className="w-full overflow-hidden">
-                    <TeamRoll
-                      key={rollSession}
-                      pool={state.pool}
-                      locked={state.lockedTeamEntryIds}
-                      lockedRoles={[]}
-                      role={currentSlot.role}
-                      selectedTeam={state.rollSelectedTeam}
-                      onComplete={onRollComplete}
-                    />
-                  </div>
-                )}
-
-                {state.rollResultTeam && (
-                  <TeamExpansion
-                    team={state.rollResultTeam}
-                    role={currentSlot.role}
-                    draftedPlayers={draftedPlayers}
-                    coach={drafted_coach}
-                    currentOVR={ovr}
-                    onPickPlayer={(p) => {
-                      pickPlayerFromTeam(p, state.rollResultTeam!);
-                      setActiveTab("spin");
-                    }}
-                    onPickCoach={(c) => {
-                      pickCoachFromTeam(c, state.rollResultTeam!);
-                      setActiveTab("spin");
-                    }}
-                    onHoverRole={setHoveredRole}
-                  />
-                )}
-
-                {isDone && (
-                  <div className="clip-corner border border-primary/60 bg-surface/70 p-6 text-center backdrop-blur">
-                    <div className="font-display text-2xl text-primary font-bold">{t("rosterLocked")}</div>
-                    <p className="mt-1.5 text-xs text-muted-foreground font-sans">
-                      {t("rosterReadyText")}
-                    </p>
-                    <div className="mt-5 flex flex-col gap-2.5">
-                      <button
-                        onClick={finishAndGoMatch}
-                        className="clip-corner bg-primary w-full py-4 font-display text-lg tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer font-bold"
-                      >
-                        {t("playMatch")}
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </>
-            ) : (
-              <RosterPanel roster={state.roster} currentIdx={state.currentSlotIdx} hoveredRole={hoveredRole} />
-            )}
-          </div>
+        </div>
+        
+        {/* Mobile Toggle Alternative */}
+        <div className="flex sm:hidden justify-end mb-4">
+          <button
+            onClick={() => setShowRules(prev => !prev)}
+            className="flex items-center gap-2 text-xs tracking-wide border border-white/10 px-3 py-1.5 rounded-md transition-all duration-200 hover:border-white/30 hover:bg-white/5 cursor-pointer text-white w-full justify-center"
+          >
+            {showRules ? "OCULTAR GUÍA" : "VER REGLAS DE QUÍMICA"}
+          </button>
         </div>
 
-        {/* Desktop view (>= lg) */}
-        <div className="hidden lg:block">
-          {/* Roster row */}
-          <RosterPanel roster={state.roster} currentIdx={state.currentSlotIdx} hoveredRole={hoveredRole} />
+        {/* RULES PANEL (ANIMATED DROPDOWN) */}
+        <AnimatePresence>
+          {showRules && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="mt-4 border border-white/10 rounded-xl p-6 bg-[#0B1320]/80 backdrop-blur-sm mb-6 overflow-hidden"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-sm font-semibold tracking-wide text-white/90">
+                  LIBRO DE REGLAS DE QUÍMICA Y SINERGIAS
+                </h3>
+                <button
+                  onClick={() => setShowRules(false)}
+                  className="text-xs text-white/40 hover:text-white/70 cursor-pointer"
+                >
+                  × CERRAR
+                </button>
+              </div>
 
-          <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_320px]">
-            <div className="space-y-6 min-w-0">
+              <div className="grid md:grid-cols-3 gap-6 text-xs text-white/70 leading-relaxed">
+                {/* SINERGIA DE REGIÓN */}
+                <div>
+                  <p className="font-medium text-blue-400 mb-1">🌍 SINERGIA DE REGIÓN</p>
+                  <p>
+                    Premia tener jugadores de la misma liga competitiva principal (LEC, LCK, LPL, LCS, Wildcards).
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    <li>• 3+ jugadores: +2.5 puntos OVR.</li>
+                    <li>• 5+ jugadores: +6.5 puntos OVR.</li>
+                  </ul>
+                </div>
+
+                {/* SINERGIA DE FRANQUICIA */}
+                <div>
+                  <p className="font-medium text-cyan-400 mb-1">🛡️ SINERGIA DE FRANQUICIA</p>
+                  <p>
+                    Premia la afinidad por haber defendido el mismo escudo en una etapa de su carrera.
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    <li>• 2 jugadores: +2.5 puntos OVR.</li>
+                    <li>• 3 jugadores: +5.0 puntos OVR.</li>
+                    <li>• 4+ jugadores: +8.0 puntos OVR.</li>
+                  </ul>
+                </div>
+
+                {/* QUÍMICA PERFECTA */}
+                <div>
+                  <p className="font-medium text-purple-400 mb-1">⏳ QUÍMICA PERFECTA</p>
+                  <p>
+                    Se activa si tienes jugadores que compartieron exactamente el mismo año y equipo de competición histórica (e.g. Fnatic 2018).
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    <li>• 2 jugadores: +2.5 puntos OVR.</li>
+                    <li>• 3 jugadores: +5.0 puntos OVR.</li>
+                    <li>• 4 jugadores: +8.0 puntos OVR.</li>
+                    <li>• 5 jugadores: +10.0 puntos OVR.</li>
+                  </ul>
+                </div>
+
+                {/* SINERGIAS DE CAMPEÓN */}
+                <div>
+                  <p className="font-medium text-orange-400 mb-1">🔥 SINERGIAS DE CAMPEÓN</p>
+                  <p>
+                    Bono especial por campeones insignia, sin contar equipo real, región competitiva ni año.
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    <li>• Parejas de lore: Xayah/Rakan, Lucian/Senna, Yasuo/Yone, Garen/Lux, Kayle/Morgana.</li>
+                    <li>• Facciones de lore: Ionia, Freljord, Vacío, Piltover/Zaun, Noxus, Shurima, Darkin, Yordles y Shadow Isles.</li>
+                    <li>• Estilo de combate: Engage, Dive, Poke, Pick, Wombo Combo, CC Chain, Protect the Carry, Scaling, Frontline + Backline y daño equilibrado.</li>
+                    <li>• El bonus de campeones tiene límite para no sustituir la química de roster.</li>
+                  </ul>
+                </div>
+
+                {/* COACH */}
+                <div>
+                  <p className="font-medium text-pink-400 mb-1">🧠 ESTILO DE ENTRENADOR (COACH)</p>
+                  <p>
+                    El entrenador aporta bonos según su filosofía y tus elecciones:
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    <li>• Tácticos (Draft/Notebook): +2.5 base, +1.5 extra si completas el equipo.</li>
+                    <li>• Agresivos: Potencian con +1.5 por cada campeón creador de jugadas agresivas (Lee Sin, Elise, LeBlanc, Zed, etc.).</li>
+                    <li>• Disciplinados (Macro): Multiplican la sinergia de equipo existente por un 40% (máx +3).</li>
+                  </ul>
+                </div>
+
+                {/* CÁLCULO OVR */}
+                <div>
+                  <p className="font-medium text-yellow-400 mb-1">📊 CÁLCULO DE VALORACIÓN GENERAL (OVR)</p>
+                  <p>
+                    Media real de tus 6 miembros (5 jugadores + 1 coach) suplementada por tus bonus de sinergias totales (peso de 0.45x para que tus decisiones estrategas importen).
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* MAIN RESPONSIVE LAYOUT */}
+        <div className="flex flex-col md:grid md:grid-cols-[2fr_1fr] gap-6 max-w-[1200px] mx-auto">
+          {/* LEFT COLUMN */}
+          <div className="contents md:flex md:flex-col md:gap-6">
+            {/* TOP ROW: OVR & CHEMISTRY */}
+            <div className="order-1 md:order-none grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6">
+              {/* OVR CARD */}
+              <div className="clip-corner border border-border bg-surface/70 p-5 flex flex-col justify-between backdrop-blur">
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">
+                    Team OVR
+                  </div>
+                  <div className="font-display text-5xl text-primary flex items-baseline gap-1">
+                    {ovr}
+                    <span className="font-sans text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+                      / 100 OVR
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-foreground/90">
+                    <Flame className="w-4 h-4 text-primary fill-primary" />
+                    Chemistry Total: +{chemistry.total} pts
+                  </div>
+                </div>
+                <div className="mt-4 flex justify-end">
+                  <span className="clip-corner bg-background/80 border border-border px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    SQUAD
+                  </span>
+                </div>
+              </div>
+
+              {/* CHEMISTRY CARD */}
+              <div className="order-2 md:order-none h-full">
+                <ChemistryPanel chemistry={chemistry} ovr={ovr} />
+              </div>
+            </div>
+
+            {/* SPIN / ROLL SECTION */}
+            <div className="order-3 md:order-none w-full">
               {!isDone && !state.rollResultTeam && !state.isRolling && (
-                <div className="clip-corner border border-border bg-surface/70 p-8 text-center backdrop-blur">
-                  <div className="font-display text-2xl font-bold">{t("readyNextRoll")}</div>
-                  <p className="mt-2 text-sm text-muted-foreground font-sans">
+                <div className="clip-corner border border-border bg-surface/70 p-6 md:p-8 text-center backdrop-blur">
+                  <div className="font-display text-xl md:text-2xl font-bold">{t("readyNextRoll")}</div>
+                  <p className="mt-1.5 md:mt-2 text-xs md:text-sm text-muted-foreground font-sans">
                     {t("rollInfoText")}{" "}
                     <span className="font-bold text-primary">{currentSlot.role}</span>.
                   </p>
                   <button
                     onClick={state.startRoll}
-                    className="clip-corner mt-6 inline-flex items-center gap-3 bg-primary px-8 py-4 font-display text-lg tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer font-bold"
+                    className="clip-corner mt-4 md:mt-6 inline-flex items-center gap-3 bg-primary px-6 md:px-8 py-3 md:py-4 font-display text-base md:text-lg tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer font-bold w-full justify-center md:w-auto"
                   >
                     {t("rollBtn")} {currentSlot.role}
                   </button>
@@ -368,39 +393,29 @@ function DraftPage() {
               )}
 
               {state.isRolling && state.rollSelectedTeam && !state.rollResultTeam && (
-                <TeamRoll
-                  pool={state.pool}
-                  locked={state.lockedTeamEntryIds}
-                  lockedRoles={[]}
-                  role={currentSlot.role}
-                  selectedTeam={state.rollSelectedTeam}
-                  onComplete={onRollComplete}
-                />
-              )}
-
-              {state.rollResultTeam && (
-                <TeamExpansion
-                  team={state.rollResultTeam}
-                  role={currentSlot.role}
-                  draftedPlayers={draftedPlayers}
-                  coach={drafted_coach}
-                  currentOVR={ovr}
-                  onPickPlayer={(p) => pickPlayerFromTeam(p, state.rollResultTeam!)}
-                  onPickCoach={(c) => pickCoachFromTeam(c, state.rollResultTeam!)}
-                  onHoverRole={setHoveredRole}
-                />
+                <div className="w-full overflow-hidden">
+                  <TeamRoll
+                    key={rollSession}
+                    pool={state.pool}
+                    locked={state.lockedTeamEntryIds}
+                    lockedRoles={[]}
+                    role={currentSlot.role}
+                    selectedTeam={state.rollSelectedTeam}
+                    onComplete={onRollComplete}
+                  />
+                </div>
               )}
 
               {isDone && (
-                <div className="clip-corner border border-primary/60 bg-surface/70 p-8 text-center backdrop-blur">
-                  <div className="font-display text-3xl text-primary font-bold">{t("rosterLocked")}</div>
-                  <p className="mt-2 text-sm text-muted-foreground font-sans">
+                <div className="clip-corner border border-primary/60 bg-surface/70 p-6 md:p-8 text-center backdrop-blur">
+                  <div className="font-display text-2xl md:text-3xl text-primary font-bold">{t("rosterLocked")}</div>
+                  <p className="mt-1.5 md:mt-2 text-xs md:text-sm text-muted-foreground font-sans">
                     {t("rosterReadyText")}
                   </p>
-                  <div className="mt-6 flex flex-wrap justify-center gap-3">
+                  <div className="mt-5 md:mt-6 flex flex-wrap justify-center gap-2.5 md:gap-3">
                     <button
                       onClick={finishAndGoMatch}
-                      className="clip-corner bg-primary px-10 py-5 font-display text-xl tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer w-full max-w-sm font-bold"
+                      className="clip-corner bg-primary w-full md:w-auto md:min-w-[200px] py-4 md:py-5 font-display text-lg md:text-xl tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer font-bold"
                     >
                       {t("playMatch")}
                     </button>
@@ -409,8 +424,40 @@ function DraftPage() {
               )}
             </div>
 
-            <aside className="space-y-4">
-              <ChemistryPanel chemistry={chemistry} ovr={ovr} />
+            {/* PLAYER GRID (CONDITIONAL) */}
+            {state.rollResultTeam && (
+              <div className="order-5 md:order-none w-full">
+                <TeamExpansion
+                  team={state.rollResultTeam}
+                  role={currentSlot.role}
+                  draftedPlayers={draftedPlayers}
+                  coach={drafted_coach}
+                  currentOVR={ovr}
+                  onPickPlayer={(p) => {
+                    pickPlayerFromTeam(p, state.rollResultTeam!);
+                  }}
+                  onPickCoach={(c) => {
+                    pickCoachFromTeam(c, state.rollResultTeam!);
+                  }}
+                  onHoverRole={setHoveredRole}
+                />
+              </div>
+            )}
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className="contents md:flex md:flex-col md:gap-6">
+            <div className="order-4 md:order-none w-full clip-corner border border-border bg-surface/70 p-5 backdrop-blur">
+              <div className="mb-4">
+                <div className="font-display text-xl font-bold uppercase tracking-wider">Current Roster</div>
+                <div className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  Your definitive roster of 5 competitive positions and your Coach. Slots lock as they are completed.
+                </div>
+              </div>
+              <RosterPanel roster={state.roster} currentIdx={state.currentSlotIdx} hoveredRole={hoveredRole} />
+            </div>
+
+            <div className="order-6 md:order-none space-y-4 w-full">
               <RosterCompositionStats players={draftedPlayers} draftMode={state.draftMode} />
 
               <div className="clip-corner border border-border bg-surface/60 p-4">
@@ -421,13 +468,12 @@ function DraftPage() {
                   {state.roster.slots.map((s, i) => (
                     <li
                       key={i}
-                      className={`flex items-center justify-between text-xs ${
-                        i === state.currentSlotIdx
+                      className={`flex items-center justify-between text-xs ${i === state.currentSlotIdx
                           ? "text-primary font-bold"
                           : i < state.currentSlotIdx
                             ? "text-muted-foreground line-through opacity-60"
                             : "text-foreground/80"
-                      }`}
+                        }`}
                     >
                       <span>
                         {String(i + 1).padStart(2, "0")} · {s.role}
@@ -437,7 +483,7 @@ function DraftPage() {
                   ))}
                 </ol>
               </div>
-            </aside>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -512,7 +558,7 @@ function TeamExpansion({
     const sameOrg = draftedPlayers.filter((dp) => dp.orgId === p.orgId);
     const sameReg = draftedPlayers.filter((dp) => dp.region === p.region);
     const sameNat = draftedPlayers.filter((dp) => dp.nationality === p.nationality);
-    
+
     const lines: string[] = [];
     if (sameOrg.length > 0) {
       lines.push(`+${sameOrg.length * 4} Same Org (${sameOrg.map((x) => x.name).join(", ")})`);
@@ -554,9 +600,8 @@ function TeamExpansion({
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`clip-corner border border-primary/60 bg-surface/70 p-4 sm:p-6 backdrop-blur transition-all ${
-        rerollShake ? "animate-card-shake" : ""
-      }`}
+      className={`clip-corner border border-primary/60 bg-surface/70 p-4 sm:p-6 backdrop-blur transition-all ${rerollShake ? "animate-card-shake" : ""
+        }`}
     >
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div>
@@ -567,7 +612,7 @@ function TeamExpansion({
             {org?.region} · {team.year} · <span className="text-gold">OVR {team.avgRating}</span>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-2">
           {/* AI Auto-Pick */}
           {aiRec && !state.isRolling && (
@@ -582,7 +627,7 @@ function TeamExpansion({
       </div>
 
       {/* Grid of Selectable Players / Coach */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {role !== "COACH" && visiblePlayers.map((p) => {
           const isAiRec = aiRec?.id === p.id;
           const synergy = getSynergyPreview(p);
@@ -625,13 +670,12 @@ function TeamExpansion({
                   <div className="flex items-center justify-between text-[10px] border-t border-b border-slate-700/30 py-1 font-mono">
                     <span>Dynamic Form:</span>
                     <span
-                      className={`font-bold px-1 py-0.2 rounded ${
-                        (p.form ?? 0) > 0
+                      className={`font-bold px-1 py-0.2 rounded ${(p.form ?? 0) > 0
                           ? "text-green-400 bg-green-400/10"
                           : (p.form ?? 0) < 0
                             ? "text-red-400 bg-red-400/10"
                             : "text-slate-400 bg-slate-400/10"
-                      }`}
+                        }`}
                     >
                       {(p.form ?? 0) >= 0 ? `+${p.form ?? 0}` : p.form}
                     </span>
@@ -711,11 +755,10 @@ function TeamExpansion({
           <button
             onClick={handleReroll}
             disabled={state.rerollsLeft <= 0 || state.isRolling}
-            className={`clip-corner flex items-center gap-2 border px-6 py-3 text-sm font-bold uppercase tracking-wider transition ${
-              state.rerollsLeft <= 0 || state.isRolling
+            className={`clip-corner flex items-center gap-2 border px-6 py-3 text-sm font-bold uppercase tracking-wider transition ${state.rerollsLeft <= 0 || state.isRolling
                 ? "border-muted-foreground/30 bg-muted/5 text-muted-foreground cursor-not-allowed"
                 : "border-primary bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground cursor-pointer"
-            }`}
+              }`}
           >
             <RefreshCw className={`w-4 h-4 ${state.isRolling ? "animate-spin" : ""}`} />
             {t("rerollBtn")} ({t("rerollsCounter")}: {state.rerollsLeft}/3)

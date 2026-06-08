@@ -33,31 +33,46 @@ function Index() {
   ] as const;
 
   return (
-    <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4 py-12 sm:px-6 lg:py-20">
+    <div className="relative mx-auto flex max-w-[1400px] flex-col gap-16 px-4 py-12 sm:px-6 lg:py-20">
       {/* Hero */}
-      <section className="relative">
+      <section className="relative flex flex-col gap-6 text-center lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:text-left">
+        {/* Left Side */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl"
+          className="flex w-full flex-col items-center gap-6 lg:items-start"
         >
-          <div className="mb-4 inline-flex items-center gap-2 border-l-2 border-primary pl-3 text-xs font-bold uppercase tracking-[0.3em] text-primary">
+          <img
+            src="/logo.png"
+            alt="Valorant Champions Draft Logo"
+            className="h-auto w-full max-w-[240px] object-contain drop-shadow-[0_0_30px_rgba(255,70,85,0.15)] sm:max-w-[320px] lg:max-w-[400px]"
+          />
+          <div className="inline-flex items-center gap-2 border-l-2 border-primary pl-3 text-xs font-bold uppercase tracking-[0.3em] text-primary">
             <span className="h-1 w-1 animate-pulse rounded-full bg-primary" />
             Live draft engine · v1.0
           </div>
-          <h1 className="font-display text-5xl leading-[0.95] sm:text-7xl lg:text-8xl uppercase">
+        </motion.div>
+
+        {/* Right Side */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex w-full flex-col"
+        >
+          <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.95] uppercase">
             Build the
             <br />
             <span className="text-primary">undefeated</span>
             <br />
             roster.
           </h1>
-          <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground sm:text-lg lg:mx-0">
             Roll teams from every Valorant Champions and Masters era. Lock in stars, chase
             chemistry, and simulate your way to the trophy.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex justify-center lg:justify-start">
             <Link
               to="/play"
               className="clip-corner group relative inline-flex items-center gap-3 bg-primary px-8 py-4 font-display text-lg tracking-widest text-primary-foreground transition hover:brightness-110"
@@ -70,7 +85,7 @@ function Index() {
       </section>
 
       {/* Menu grid */}
-      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-3xl">
+      <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {MENU.map((m, i) => (
           <motion.div
             key={m.to}

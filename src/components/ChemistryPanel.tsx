@@ -16,14 +16,8 @@ export function ChemistryPanel({ chemistry, ovr }: Props) {
     ["Role Diversity", chemistry.roleBalance],
   ];
   return (
-    <div className="clip-corner border border-border bg-surface/70 p-4 backdrop-blur">
-      <div className="flex items-baseline justify-between">
-        <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Team OVR
-        </div>
-        <div className="font-display text-5xl text-primary">{ovr || "—"}</div>
-      </div>
-      <div className="mt-4 border-t border-border/50 pt-3">
+    <div className="clip-corner border border-border bg-surface/70 p-5 backdrop-blur h-full">
+      <div>
         <div className="text-[10px] font-bold uppercase tracking-widest text-gold">
           Chemistry · {chemistry.total}
         </div>

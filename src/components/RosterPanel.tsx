@@ -12,7 +12,7 @@ interface Props {
 
 export function RosterPanel({ roster, currentIdx, hoveredRole }: Props) {
   return (
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6">
+    <div className="flex flex-col gap-2">
       {roster.slots.map((slot, i) => {
         const player = slot.playerId ? PLAYER_BY_ID[slot.playerId] : null;
         const coach = slot.coachId ? COACH_BY_ID[slot.coachId] : null;

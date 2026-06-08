@@ -102,6 +102,21 @@ function MatchPage() {
   const [displayedRoundCount, setDisplayedRoundCount] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const isHomeAttack = useMemo(() => Math.random() > 0.5, [currentRoundIdx]);
+  const homeSide = isHomeAttack ? "ATTACK" : "DEFENSE";
+  const awaySide = isHomeAttack ? "DEFENSE" : "ATTACK";
+
+  const maps = [
+    { name: "Ascent", image: "/maps/ascent.png" },
+    { name: "Bind", image: "/maps/bind.png" },
+    { name: "Haven", image: "/maps/haven.png" },
+    { name: "Split", image: "/maps/split.png" },
+    { name: "Lotus", image: "/maps/lotus.png" }
+  ];
+  const map = useMemo(() => {
+    return maps[Math.floor(Math.random() * maps.length)];
+  }, [currentRoundIdx]);
+
   if (!save || !playerTeam || !bracket) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-20 text-center">
@@ -329,8 +344,8 @@ function MatchPage() {
         {/* Left Column: Scoreboard, Prob bar, & Overview */}
         <div className="lg:col-span-2 space-y-6">
           {/* Scoreboard */}
-          <div className="clip-corner border border-border bg-surface/80 p-6 backdrop-blur flex items-center justify-between">
-            <TeamCard label={playerTeam.name} subtitle="Your team" side="left" />
+          <div className="clip-corner border border-border bg-surface/80 p-6 backdrop-blur flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <TeamCard label={playerTeam.name} subtitle="Your team" side="left" sideLabel={homeSide} />
             <div className="text-center px-8">
               <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground mb-2">
                 {isMatchFinished ? t("scoreboardFinalScore") : "MR13"}
@@ -340,11 +355,22 @@ function MatchPage() {
                 <span className="text-muted-foreground/40 text-4xl">:</span>
                 <span className={scoreOpponent > scoreUser ? "text-green-500" : (scoreOpponent < scoreUser ? "text-red-500" : "")}>{scoreOpponent}</span>
               </div>
+              <div className="flex items-center justify-center gap-2 mt-2">
+                <img
+                  src={map.image}
+                  alt={map.name}
+                  className="w-10 h-6 md:w-12 md:h-8 object-cover rounded-md opacity-80"
+                />
+                <p className="text-xs text-white/60 uppercase tracking-wide">
+                  {map.name}
+                </p>
+              </div>
             </div>
             <TeamCard
               label={opponentTeam.name}
-              subtitle="AWAY OPPONENT"
+              subtitle={`${(opponentTeam as any).rosterName || opponentTeam.name} • ${(opponentTeam as any).year || new Date().getFullYear()} • ${(opponentTeam as any).tournamentId || "VCT Champions"}`}
               side="right"
+              sideLabel={awaySide}
             />
           </div>
 
@@ -628,18 +654,22 @@ function TeamCard({
   label,
   subtitle,
   side,
+  sideLabel,
 }: {
   label: string;
   subtitle: string;
   side: "left" | "right";
+  sideLabel: string;
 }) {
   return (
     <div className={`flex flex-col ${side === "right" ? "items-end text-right" : "items-start"}`}>
-      <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
-        {side === "left" ? "// HOME" : "// AWAY"}
+      <p className={`text-xs tracking-widest text-white/40 ${side === "right" ? "text-right" : ""}`}>
+        // {sideLabel}
+      </p>
+      <div className="mt-1 font-display text-2xl md:text-3xl w-auto min-w-0 flex-1 whitespace-nowrap overflow-hidden text-ellipsis md:overflow-visible md:text-clip" title={label}>
+        {label}
       </div>
-      <div className="mt-1 font-display text-3xl max-w-[200px] truncate" title={label}>{label}</div>
-      <div className="text-xs uppercase tracking-widest text-muted-foreground">{subtitle}</div>
+      <p className="text-xs text-white/60 mt-1 uppercase tracking-widest">{subtitle}</p>
     </div>
   );
 }
