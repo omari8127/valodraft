@@ -1,0 +1,772 @@
+[
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "acend",
+    "coachName": "Karel \"Karelvh\" van Hoof"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "envy",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "x10",
+    "coachName": "Sheen"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "keyd",
+    "coachName": "Alexandre \"Nado\" Fernandes"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "sentinels",
+    "coachName": "Jay \"sinatraa\" Won"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "kru",
+    "coachName": "Joaquin \"Gosen\" Mach"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "tl",
+    "coachName": "Stefan \"Kassad\" Tcherepanov"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "furia",
+    "coachName": "Matheus \"meyern\" Gomes"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "gambit",
+    "coachName": "Dmitry \"jett\" Lushkin"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "vikings",
+    "coachName": "Alexandre \"xand\" Zizi"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "secret",
+    "coachName": "Juno \"Bevils\" Escobedo"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "crazy",
+    "coachName": "Yusuke \"YukaF\" Fujita"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "vs",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "fullsense",
+    "coachName": "Coach \"Patiphan\" P"
+  },
+  {
+    "tournamentId": "champions-2021",
+    "teamId": "c9",
+    "coachName": "Anthony \"leaf\" IGL"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "loud",
+    "coachName": "Matheus \"bzkA\" Tarasconi"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "optic",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "fpx",
+    "coachName": "Jakob \"Remmey\" Hansen"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "xset",
+    "coachName": "Jeffrey \"frosty\" Colon"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "leviatan",
+    "coachName": "Ignacio \"tEoS\" Aravena"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "tl",
+    "coachName": "Stefan \"Kassad\" Tcherepanov"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "zeta",
+    "coachName": "Manabu \"Manabu\" Iwata"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "100t",
+    "coachName": "Sean \"sgares\" Gares"
+  },
+  {
+    "tournamentId": "champions-2022",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "eg",
+    "coachName": "Damien \"miniice\" Rustom"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "loud",
+    "coachName": "Matheus \"bzkA\" Tarasconi"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "nrg",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "navi",
+    "coachName": "Svyatoslav \"Bagz\" Bagautdinov"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "tl",
+    "coachName": "Stefan \"Kassad\" Tcherepanov"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  },
+  {
+    "tournamentId": "champions-2023",
+    "teamId": "kru",
+    "coachName": "Joaquin \"Gosen\" Mach"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "heretics",
+    "coachName": "Nuno \"your\" Neto"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "leviatan",
+    "coachName": "Ignacio \"tEoS\" Aravena"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "sentinels",
+    "coachName": "Adam \"Kaplan\" Kaplan"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "geng",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "g2",
+    "coachName": "Erik \"d00mbr0s\" Sandgren"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "kru",
+    "coachName": "Joaquin \"Gosen\" Mach"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "vitality",
+    "coachName": "Napoleon \"Naps\" Dachev"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "talon",
+    "coachName": "Patiphan \"Coach P\" Subsiriroj"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "fut",
+    "coachName": "Mert \"Turko\" Tankut"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "blg",
+    "coachName": "Chen \"PORK\" Xinpeng"
+  },
+  {
+    "tournamentId": "champions-2024",
+    "teamId": "trace",
+    "coachName": "Liu \"Trainer\" Wei"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "nrg",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "heretics",
+    "coachName": "Nuno \"your\" Neto"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "mibr",
+    "coachName": "Matheus \"bzkA\" Tarasconi"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "giantx",
+    "coachName": "David \"Dreamas\" Batard"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "g2",
+    "coachName": "Erik \"d00mbr0s\" Sandgren"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "tl",
+    "coachName": "Stefan \"Kassad\" Tcherepanov"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "t1",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "rrq",
+    "coachName": "Siddhart \"Guts\" Gopalkrishnan"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "blg",
+    "coachName": "Chen \"PORK\" Xinpeng"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "xlg",
+    "coachName": "Sun \"Trainer\" Hao"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "drg",
+    "coachName": "Li \"Coach\" Xiaoming"
+  },
+  {
+    "tournamentId": "champions-2025",
+    "teamId": "sentinels",
+    "coachName": "Adam \"Kaplan\" Kaplan"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "sentinels",
+    "coachName": "Jay \"sinatraa\" Won"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "tl",
+    "coachName": "Stefan \"Kassad\" Tcherepanov"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "version1",
+    "coachName": "Adam \"Kaplan\" Kaplan"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "nuturn",
+    "coachName": "Kim \"Coach K\" Sang-kyu"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "kru",
+    "coachName": "Joaquin \"Gosen\" Mach"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "sharks",
+    "coachName": "Thiago \"Tnzs\" Nunes"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "vikings",
+    "coachName": "Alexandre \"xand\" Zizi"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "x10",
+    "coachName": "Sheen"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2021",
+    "teamId": "crazy",
+    "coachName": "Yusuke \"YukaF\" Fujita"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "gambit",
+    "coachName": "Dmitry \"jett\" Lushkin"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "envy",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "g2",
+    "coachName": "Erik \"d00mbr0s\" Sandgren"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "vs",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "acend",
+    "coachName": "Karel \"Karelvh\" van Hoof"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "sentinels",
+    "coachName": "Jay \"sinatraa\" Won"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "kru",
+    "coachName": "Joaquin \"Gosen\" Mach"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "smb",
+    "coachName": "Mert \"Tankut\" Tankut"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "100t",
+    "coachName": "Sean \"sgares\" Gares"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "f4q",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "liberty",
+    "coachName": "Alexandre \"bzkA\" Tarasconi"
+  },
+  {
+    "tournamentId": "masters-berlin-2021",
+    "teamId": "keyd",
+    "coachName": "Alexandre \"Nado\" Fernandes"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "optic",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "loud",
+    "coachName": "Matheus \"bzkA\" Tarasconi"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "zeta",
+    "coachName": "Manabu \"Manabu\" Iwata"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "tl",
+    "coachName": "Stefan \"Kassad\" Tcherepanov"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "kru",
+    "coachName": "Joaquin \"Gosen\" Mach"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "xerxia",
+    "coachName": "Sheen"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "nip",
+    "coachName": "Sami \"zid\" Laasanen"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "guard",
+    "coachName": "Erik \"d00mbr0s\" Sandgren"
+  },
+  {
+    "tournamentId": "masters-reykjavik-2022",
+    "teamId": "guild",
+    "coachName": "David \"Dreamas\" Batard"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "fpx",
+    "coachName": "Jakob \"Remmey\" Hansen"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "optic",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "guild",
+    "coachName": "David \"Dreamas\" Batard"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "xset",
+    "coachName": "Jeffrey \"frosty\" Colon"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "kru",
+    "coachName": "Joaquin \"Gosen\" Mach"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "leviatan",
+    "coachName": "Ignacio \"tEoS\" Aravena"
+  },
+  {
+    "tournamentId": "masters-copenhagen-2022",
+    "teamId": "northeption",
+    "coachName": "Manabu \"Manabu\" Iwata"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "eg",
+    "coachName": "Damien \"miniice\" Rustom"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "nrg",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "tl",
+    "coachName": "Stefan \"Kassad\" Tcherepanov"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "t1",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "fut",
+    "coachName": "Mert \"Turko\" Tankut"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "navi",
+    "coachName": "Svyatoslav \"Bagz\" Bagautdinov"
+  },
+  {
+    "tournamentId": "masters-tokyo-2023",
+    "teamId": "ase",
+    "coachName": "Lee \"Coach\" Sung-jin"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "sentinels",
+    "coachName": "Adam \"Kaplan\" Kaplan"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "geng",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "karmine",
+    "coachName": "Maxime \"Max\" Gonzalez"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "loud",
+    "coachName": "Matheus \"bzkA\" Tarasconi"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "heretics",
+    "coachName": "Nuno \"your\" Neto"
+  },
+  {
+    "tournamentId": "masters-madrid-2024",
+    "teamId": "fpx",
+    "coachName": "Jakob \"Remmey\" Hansen"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "geng",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "heretics",
+    "coachName": "Nuno \"your\" Neto"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "g2",
+    "coachName": "Erik \"d00mbr0s\" Sandgren"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "100t",
+    "coachName": "Sean \"sgares\" Gares"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "fut",
+    "coachName": "Mert \"Turko\" Tankut"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "drx",
+    "coachName": "Kim \"termi\" Kyung-min"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "leviatan",
+    "coachName": "Ignacio \"tEoS\" Aravena"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "masters-shanghai-2024",
+    "teamId": "t1",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "fnatic",
+    "coachName": "Jacob \"miniature\" Harris"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "g2",
+    "coachName": "Erik \"d00mbr0s\" Sandgren"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "geng",
+    "coachName": "Park \"Autumn\" Gyeong-jun"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "prx",
+    "coachName": "Alexandre \"alecks\" Sallby"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "wolves",
+    "coachName": "David \"Dreamas\" Batard"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "sentinels",
+    "coachName": "Adam \"Kaplan\" Kaplan"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "rrq",
+    "coachName": "Siddhart \"Guts\" Gopalkrishnan"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "xlg",
+    "coachName": "Sun \"Trainer\" Hao"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "heretics",
+    "coachName": "Nuno \"your\" Neto"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "nrg",
+    "coachName": "Chet \"Chet\" Singh"
+  },
+  {
+    "tournamentId": "masters-toronto-2025",
+    "teamId": "edg",
+    "coachName": "Guo \"seven\" Qi"
+  }
+]

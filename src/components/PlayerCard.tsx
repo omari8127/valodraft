@@ -1,0 +1,124 @@
+import { motion } from "framer-motion";
+import type { CoachEntry, PlayerEntry } from "@/types/game";
+import { rarityFor, RARITY_META } from "@/lib/engine/rarity";
+import { ORG_BY_ID } from "@/data/regions";
+import { TOURNAMENT_BY_ID } from "@/data/tournaments";
+
+interface Props {
+  entity: PlayerEntry | CoachEntry;
+  isCoach?: boolean;
+  onClick?: () => void;
+  compact?: boolean;
+  /** Ultra-compact mode for showing all 6 team members at once */
+  mini?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+export function PlayerCard({ entity, isCoach, onClick, compact, mini, onMouseEnter, onMouseLeave }: Props) {
+  const rarity = rarityFor(entity.rating);
+  const meta = RARITY_META[rarity];
+  const org = ORG_BY_ID[entity.orgId];
+  const tournament = TOURNAMENT_BY_ID[entity.tournamentId];
+
+  const getRatingColor = (r: number) => {
+    if (r >= 96) return "text-gold";
+    if (r >= 90) return "text-red-500";
+    if (r >= 85) return "text-purple-500";
+    return "text-blue-400";
+  };
+  const ratingColor = getRatingColor(entity.rating);
+
+  if (mini) {
+    return (
+      <motion.button
+        type="button"
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        whileHover={{ y: -2, scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className={`group clip-corner relative w-full overflow-hidden bg-surface border border-border ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
+      >
+        <div className="absolute inset-0 -translate-x-full opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
+          <div className="shimmer h-full w-full opacity-20" />
+        </div>
+        <div className="relative p-2">
+          <div className="flex items-start justify-between gap-1">
+            <div className="font-display text-sm leading-tight truncate text-foreground flex-1 min-w-0">
+              {entity.name}
+            </div>
+            <div className={`font-display text-xl leading-none shrink-0 ${ratingColor}`}>
+              {entity.rating}
+            </div>
+          </div>
+          <div className="mt-1 flex flex-wrap gap-0.5">
+            <span
+              className={`clip-tag px-1 py-px text-[8px] font-bold uppercase tracking-wide bg-background/80 ${ratingColor}`}
+            >
+              {isCoach ? "COACH" : (entity as PlayerEntry).role}
+            </span>
+            <span className="rounded bg-background/60 px-1 py-px text-[8px] font-semibold uppercase tracking-wide text-muted-foreground">
+              {org?.shortName}
+            </span>
+          </div>
+        </div>
+      </motion.button>
+    );
+  }
+
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      whileHover={{ y: -4, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className={`group clip-corner relative w-full overflow-hidden bg-surface border border-border ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
+    >
+      {/* shimmer overlay */}
+      <div className="absolute inset-0 -translate-x-full opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
+        <div className="shimmer h-full w-full" />
+      </div>
+
+      <div
+        className={`relative flex ${compact ? "gap-2 p-3" : "gap-2 p-3 sm:gap-3 sm:p-4"} items-start`}
+      >
+        <div className="flex-1 min-w-0">
+          <div className="flex items-baseline justify-between gap-2">
+            <div
+              className={`font-display ${compact ? "text-lg" : "text-lg sm:text-2xl"} truncate text-foreground`}
+            >
+              {entity.name}
+            </div>
+            <div
+              className={`font-display ${compact ? "text-2xl" : "text-2xl sm:text-4xl"} leading-none ${ratingColor}`}
+            >
+              {entity.rating}
+            </div>
+          </div>
+          <div className="mt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="rounded bg-background/60 px-1 sm:px-1.5 py-0.5">
+              {org?.shortName ?? entity.orgId}
+            </span>
+            <span className="rounded bg-background/60 px-1 sm:px-1.5 py-0.5">
+              {tournament?.shortName ?? entity.tournamentId}
+            </span>
+            <span className="rounded bg-background/60 px-1 sm:px-1.5 py-0.5">{entity.region}</span>
+            <span className={`clip-tag px-1.5 sm:px-2 py-0.5 ${ratingColor} bg-background/80`}>
+              {isCoach ? "COACH" : (entity as PlayerEntry).role}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`relative flex items-center justify-between border-t border-border/40 bg-background/40 px-2 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest ${ratingColor}`}
+      >
+        <span>{entity.orgId}</span>
+        <span className="text-muted-foreground">{tournament?.year}</span>
+      </div>
+    </motion.button>
+  );
+}

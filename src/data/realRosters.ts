@@ -1,0 +1,6670 @@
+import type { PlayerRole } from "@/types/game";
+
+export interface RealPlayer {
+  name: string;
+  rating: number;
+  primaryRole: PlayerRole;
+  secondaryRole: PlayerRole;
+  nationality: string;
+}
+
+export interface RealCoach {
+  name: string;
+  rating: number;
+}
+
+export interface RealRoster {
+  players: RealPlayer[];
+  coach: RealCoach;
+}
+
+export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
+  "champions-2021": {
+    "acend": {
+      "players": [
+        {
+          "name": "cNed",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "zeek",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Poland"
+        },
+        {
+          "name": "BONECOLD",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Kiles",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Spain"
+        },
+        {
+          "name": "starxo",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Poland"
+        }
+      ],
+      "coach": {
+        "name": "Laurance \"Nydra\" Fitz-Gerald",
+        "rating": 85
+      }
+    },
+    "envy": {
+      "players": [
+        {
+          "name": "yay",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "crashies",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Marved",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "FNS",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "Victor",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 88
+      }
+    },
+    "x10": {
+      "players": [
+        {
+          "name": "Patiphan",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "foxz",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Crws",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Thailand"
+        },
+        {
+          "name": "sScary",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "sushiboys",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Yuttanasan \"Creative\" Elizat",
+        "rating": 79
+      }
+    },
+    "keyd": {
+      "players": [
+        {
+          "name": "heat",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "murizzz",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "v1xen",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "jhow",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "mwzera",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Pedro \"Koy\" Pulig",
+        "rating": 78
+      }
+    },
+    "sentinels": {
+      "players": [
+        {
+          "name": "TenZ",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Canada"
+        },
+        {
+          "name": "SicK",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "zombs",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "ShahZaM",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "dapr",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Shane \"Rawkus\" Flaherty",
+        "rating": 82
+      }
+    },
+    "kru": {
+      "players": [
+        {
+          "name": "keznit",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "NagZ",
+          "rating": 87,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Mazino",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Klaus",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "delz1k",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Rodrigo \"Onur\" Dalmagro",
+        "rating": 84
+      }
+    },
+    "tl": {
+      "players": [
+        {
+          "name": "ScreaM",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "Jamppi",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "DUELIST",
+          "nationality": "Finland"
+        },
+        {
+          "name": "L1NK",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "UK"
+        },
+        {
+          "name": "Nivera",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "soulcas",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        }
+      ],
+      "coach": {
+        "name": "Connor \"Sliggy\" Blomfield",
+        "rating": 86
+      }
+    },
+    "furia": {
+      "players": [
+        {
+          "name": "qck",
+          "rating": 84,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Khalil",
+          "rating": 84,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "xand",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "DUELIST",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "nzr",
+          "rating": 81,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "mazin",
+          "rating": 82,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Carlos \"Carlão\" Temprano",
+        "rating": 77
+      }
+    },
+    "gambit": {
+      "players": [
+        {
+          "name": "Sheydos",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Redgar",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "nAts",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d3ffo",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Andrey \"Engh\" Sholokhov",
+        "rating": 89
+      }
+    },
+    "vikings": {
+      "players": [
+        {
+          "name": "frz",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Sacy",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Saadhak",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "sutecas",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "gtnziN",
+          "rating": 83,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Matheus \"bzkA\" Tarasconi",
+        "rating": 81
+      }
+    },
+    "secret": {
+      "players": [
+        {
+          "name": "DubsteP",
+          "rating": 87,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Philippines"
+        },
+        {
+          "name": "JessieVash",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Philippines"
+        },
+        {
+          "name": "Dispenser",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Philippines"
+        },
+        {
+          "name": "witz",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Philippines"
+        },
+        {
+          "name": "BORKUM",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Philippines"
+        }
+      ],
+      "coach": {
+        "name": "Gilbert \"Gibo\" Santos",
+        "rating": 78
+      }
+    },
+    "crazy": {
+      "players": [
+        {
+          "name": "Munchkin",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "neth",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Bazzi",
+          "rating": 82,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "ade",
+          "rating": 80,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Fisker",
+          "rating": 79,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        }
+      ],
+      "coach": {
+        "name": "Kang \"Mun\" Geun-chul",
+        "rating": 78
+      }
+    },
+    "vs": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Rb",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "k1Ng",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Pyeon \"termich\" Seon-ho",
+        "rating": 85
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Magnum",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Czech Republic"
+        },
+        {
+          "name": "Boaster",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Mistic",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Doma",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Croatia"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"mini\" Harris",
+        "rating": 87
+      }
+    },
+    "fullsense": {
+      "players": [
+        {
+          "name": "JohnOlsen",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "PTC",
+          "rating": 84,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "LAMMYSNAX",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "SuperBusS",
+          "rating": 82,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "SantaGolf",
+          "rating": 81,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Sitthichok \"Tong\" Liamthong",
+        "rating": 76
+      }
+    },
+    "c9": {
+      "players": [
+        {
+          "name": "leaf",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Xeppaa",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "vanity",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "mitch",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "xeta",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "James \"JamezIRL\" Macaulay",
+        "rating": 81
+      }
+    }
+  },
+  "champions-2022": {
+    "loud": {
+      "players": [
+        {
+          "name": "aspas",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Less",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "pancada",
+          "rating": 92,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Sacy",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Saadhak",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        }
+      ],
+      "coach": {
+        "name": "Matheus \"bzkA\" Tarasconi",
+        "rating": 90
+      }
+    },
+    "optic": {
+      "players": [
+        {
+          "name": "yay",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "crashies",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Marved",
+          "rating": 94,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "FNS",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "Victor",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 92
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Rb",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Zest",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Pyeon \"termich\" Seon-ho",
+        "rating": 86
+      }
+    },
+    "fpx": {
+      "players": [
+        {
+          "name": "ardiis",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Latvia"
+        },
+        {
+          "name": "Shao",
+          "rating": 93,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "ANGE1",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Ukraine"
+        },
+        {
+          "name": "Zyppan",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "SUYGETSU",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Erik \"d00mbr0s\" Sandgren",
+        "rating": 88
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Enzo",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "France"
+        },
+        {
+          "name": "Boaster",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Mistic",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Alfajer",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"mini\" Harris",
+        "rating": 87
+      }
+    },
+    "xset": {
+      "players": [
+        {
+          "name": "Cryocells",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "zekken",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "dephh",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "UK"
+        },
+        {
+          "name": "BCJ",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "AYRIN",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        }
+      ],
+      "coach": {
+        "name": "Don \"SykkoNT\" Muir",
+        "rating": 84
+      }
+    },
+    "leviatan": {
+      "players": [
+        {
+          "name": "kiNgg",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Shyy",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Mazino",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "adverso",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Tacolilla",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Rodrigo \"Onur\" Dalmagro",
+        "rating": 83
+      }
+    },
+    "tl": {
+      "players": [
+        {
+          "name": "ScreaM",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "Jamppi",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "DUELIST",
+          "nationality": "Finland"
+        },
+        {
+          "name": "L1NK",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "UK"
+        },
+        {
+          "name": "Nivera",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "soulcas",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        }
+      ],
+      "coach": {
+        "name": "Connor \"Sliggy\" Blomfield",
+        "rating": 85
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "Benkai",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "d4v41",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 94,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 89
+      }
+    },
+    "zeta": {
+      "players": [
+        {
+          "name": "Dep",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        },
+        {
+          "name": "crow",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        },
+        {
+          "name": "SugarZ3ro",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "TENNN",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Laz",
+          "rating": 92,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Japan"
+        }
+      ],
+      "coach": {
+        "name": "Yuya \"JUNiOR\" Sawada",
+        "rating": 79
+      }
+    },
+    "100t": {
+      "players": [
+        {
+          "name": "Asuna",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "bang",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Derrek",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Will",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "stellar",
+          "rating": 85,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Sean \"sgares\" Gares",
+        "rating": 84
+      }
+    },
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Lo \"AfteR\" Hsien-lei",
+        "rating": 80
+      }
+    }
+  },
+  "champions-2023": {
+    "eg": {
+      "players": [
+        {
+          "name": "Demon1",
+          "rating": 98,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Ethan",
+          "rating": 94,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "C0M",
+          "rating": 92,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        },
+        {
+          "name": "Boostio",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "Jawgemo",
+          "rating": 95,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Christine \"potter\" Chi",
+        "rating": 92
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "something",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d4v41",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 96,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 90
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Leo",
+          "rating": 95,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Boaster",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Alfajer",
+          "rating": 96,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 94,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"mini\" Harris",
+        "rating": 91
+      }
+    },
+    "loud": {
+      "players": [
+        {
+          "name": "aspas",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "cauanzin",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "tuyz",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Less",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Saadhak",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        }
+      ],
+      "coach": {
+        "name": "Daniel \"frosT\" Kaplan",
+        "rating": 87
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Rb",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Zest",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Pyeon \"termich\" Seon-ho",
+        "rating": 85
+      }
+    },
+    "nrg": {
+      "players": [
+        {
+          "name": "ardiis",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Latvia"
+        },
+        {
+          "name": "crashies",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "s0m",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        },
+        {
+          "name": "FNS",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "Victor",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 88
+      }
+    },
+    "navi": {
+      "players": [
+        {
+          "name": "cNed",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Shao",
+          "rating": 94,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "ANGE1",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Ukraine"
+        },
+        {
+          "name": "Zyppan",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "SUYGETSU",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Erik \"d00mbr0s\" Sandgren",
+        "rating": 86
+      }
+    },
+    "tl": {
+      "players": [
+        {
+          "name": "Sayf",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Jamppi",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "DUELIST",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Redgar",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "nAts",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "soulcas",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        }
+      ],
+      "coach": {
+        "name": "Emil \"eMIL\" Sandgren",
+        "rating": 83
+      }
+    },
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Lo \"AfteR\" Hsien-lei",
+        "rating": 84
+      }
+    },
+    "kru": {
+      "players": [
+        {
+          "name": "keznit",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Melser",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Mazino",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Klaus",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "NagZ",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Jorge \"Atom\" Siero",
+        "rating": 80
+      }
+    }
+  },
+  "champions-2024": {
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 98,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 96,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 94,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Lo \"AfteR\" Hsien-lei",
+        "rating": 88
+      }
+    },
+    "heretics": {
+      "players": [
+        {
+          "name": "Wo0t",
+          "rating": 97,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "benjyfishy",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "UK"
+        },
+        {
+          "name": "Boo",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "RieNs",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MiniBoo",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Lithuania"
+        }
+      ],
+      "coach": {
+        "name": "Neil \"neilzinho\" Finlay",
+        "rating": 89
+      }
+    },
+    "leviatan": {
+      "players": [
+        {
+          "name": "aspas",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "tex",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        },
+        {
+          "name": "Mazino",
+          "rating": 92,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "C0M",
+          "rating": 91,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        },
+        {
+          "name": "kiNgg",
+          "rating": 95,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Alex \"Goked\" Herrero",
+        "rating": 85
+      }
+    },
+    "sentinels": {
+      "players": [
+        {
+          "name": "zekken",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Zellsis",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        },
+        {
+          "name": "Sacy",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "TenZ",
+          "rating": 94,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Canada"
+        },
+        {
+          "name": "johnqt",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Morocco"
+        }
+      ],
+      "coach": {
+        "name": "Adam \"Kaplan\" Kaplan",
+        "rating": 87
+      }
+    },
+    "geng": {
+      "players": [
+        {
+          "name": "t3xture",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Munchkin",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Karon",
+          "rating": 93,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Lakia",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Meteor",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Kang \"solo\" Keun-chul",
+        "rating": 90
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 94,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Boaster",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Leo",
+          "rating": 93,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Alfajer",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"mini\" Harris",
+        "rating": 88
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Flashback",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "BeYN",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Pyeon \"termich\" Seon-ho",
+        "rating": 84
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "something",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d4v41",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 96,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 86
+      }
+    },
+    "g2": {
+      "players": [
+        {
+          "name": "leaf",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "trent",
+          "rating": 93,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "valyn",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "icy",
+          "rating": 87,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "JonahP",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Josh \"JoshRT\" Lee",
+        "rating": 85
+      }
+    },
+    "kru": {
+      "players": [
+        {
+          "name": "keznit",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Melser",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Shyy",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        },
+        {
+          "name": "mta",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "heat",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Jorge \"Atom\" Siero",
+        "rating": 81
+      }
+    },
+    "vitality": {
+      "players": [
+        {
+          "name": "Sayf",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "trexx",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Kicks",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Finland"
+        },
+        {
+          "name": "ceNder",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "runneR",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Harry \"Gorilla\" Mepham",
+        "rating": 81
+      }
+    },
+    "talon": {
+      "players": [
+        {
+          "name": "primmie",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Thailand"
+        },
+        {
+          "name": "Crws",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Thailand"
+        },
+        {
+          "name": "Governor",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "ban",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "JitBoyS",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Thailand"
+        }
+      ],
+      "coach": {
+        "name": "Hector \"FrosT\" Rosario",
+        "rating": 80
+      }
+    },
+    "fut": {
+      "players": [
+        {
+          "name": "cNed",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "yetujey",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MrFaliN",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "xeus",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "AtaKaptan",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Eray \"Gais\" Sarıkaya",
+        "rating": 82
+      }
+    },
+    "blg": {
+      "players": [
+        {
+          "name": "whzy",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Knight",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "nephh",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Levius",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "rushia",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Wang \"jeXeN\" Xiao-xiao",
+        "rating": 79
+      }
+    },
+    "trace": {
+      "players": [
+        {
+          "name": "Kai",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "FengF",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "HeiB",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Biank",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "LuoK1ng",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Feng \"Yoona\" Nelson",
+        "rating": 80
+      }
+    }
+  },
+  "champions-2025": {
+    "nrg": {
+      "players": [
+        {
+          "name": "brawk",
+          "rating": 98,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "mada",
+          "rating": 96,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "s0m",
+          "rating": 94,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        },
+        {
+          "name": "skuba",
+          "rating": 92,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Ethan",
+          "rating": 95,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 86
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Alfajer",
+          "rating": 97,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 96,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Boaster",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "crashies",
+          "rating": 94,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "kaajak",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Czech Republic"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"mini\" Harris",
+        "rating": 88
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "HYUNMIN",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "free1ng",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "BeYN",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 96,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Flashback",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Pyeon \"termich\" Seon-ho",
+        "rating": 84
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "f0rsakeN",
+          "rating": 97,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "something",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d4v41",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "Jinggg",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 87
+      }
+    },
+    "heretics": {
+      "players": [
+        {
+          "name": "Wo0t",
+          "rating": 96,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "benjyfishy",
+          "rating": 92,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "UK"
+        },
+        {
+          "name": "Boo",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "RieNs",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MiniBoo",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Lithuania"
+        }
+      ],
+      "coach": {
+        "name": "Neil \"neilzinho\" Finlay",
+        "rating": 89
+      }
+    },
+    "mibr": {
+      "players": [
+        {
+          "name": "artzin",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "cortezia",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "xenom",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Verno",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "aspas",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Daniel \"frosT\" Kaplan",
+        "rating": 80
+      }
+    },
+    "giantx": {
+      "players": [
+        {
+          "name": "Cloud",
+          "rating": 93,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "westside",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "runneR",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "nukkye",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "Purp0",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Daniil \"Pipson\" Mesheryakov",
+        "rating": 81
+      }
+    },
+    "g2": {
+      "players": [
+        {
+          "name": "leaf",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "trent",
+          "rating": 94,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "valyn",
+          "rating": 92,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "icy",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "JonahP",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Josh \"JoshRT\" Lee",
+        "rating": 85
+      }
+    },
+    "tl": {
+      "players": [
+        {
+          "name": "Keiko",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "UK"
+        },
+        {
+          "name": "Serial",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Germany"
+        },
+        {
+          "name": "paTiTek",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Poland"
+        },
+        {
+          "name": "nAts",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "kamo",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Poland"
+        }
+      ],
+      "coach": {
+        "name": "Emil \"eMIL\" Sandgren",
+        "rating": 83
+      }
+    },
+    "t1": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Sylvan",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "carpe",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Meteor",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Yoon \"Autumn\" Eu-teum",
+        "rating": 81
+      }
+    },
+    "rrq": {
+      "players": [
+        {
+          "name": "Jemkin",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Monyet",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "xffero",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Kushy",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Estrella",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Marthinus \"Ewok\" Walt",
+        "rating": 80
+      }
+    },
+    "blg": {
+      "players": [
+        {
+          "name": "whzy",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Knight",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "nephh",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Levius",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "rushia",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Wang \"jeXeN\" Xiao-xiao",
+        "rating": 81
+      }
+    },
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 94,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 92,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Lo \"AfteR\" Hsien-lei",
+        "rating": 85
+      }
+    },
+    "xlg": {
+      "players": [
+        {
+          "name": "Rarga",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "happywei",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Viva",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Midi",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "coconut",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Sun \"Trainer\" Hao",
+        "rating": 80
+      }
+    },
+    "drg": {
+      "players": [
+        {
+          "name": "Nicc",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "SpiritZ1",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "LanLan",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Wenzzz",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CZD",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Li \"Coach\" Xiaoming",
+        "rating": 79
+      }
+    },
+    "sentinels": {
+      "players": [
+        {
+          "name": "zekken",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "N4RRATE",
+          "rating": 94,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "bang",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "johnqt",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Morocco"
+        },
+        {
+          "name": "Zellsis",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Adam \"Kaplan\" Kaplan",
+        "rating": 87
+      }
+    }
+  },
+  "masters-reykjavik-2021": {
+    "sentinels": {
+      "players": [
+        {
+          "name": "TenZ",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Canada"
+        },
+        {
+          "name": "SicK",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "zombs",
+          "rating": 82,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "ShahZaM",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "dapr",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Jay \"sinatraa\" Won",
+        "rating": 79
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Magnum",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Czech Republic"
+        },
+        {
+          "name": "Boaster",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Mistic",
+          "rating": 83,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Doma",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Croatia"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"miniature\" Harris",
+        "rating": 81
+      }
+    },
+    "tl": {
+      "players": [
+        {
+          "name": "ScreaM",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "Jamppi",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "DUELIST",
+          "nationality": "Finland"
+        },
+        {
+          "name": "L1NK",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "UK"
+        },
+        {
+          "name": "Nivera",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "soulcas",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        }
+      ],
+      "coach": {
+        "name": "Stefan \"Kassad\" Tcherepanov",
+        "rating": 85
+      }
+    },
+    "version1": {
+      "players": [
+        {
+          "name": "pennpenn",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Zellsis",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        },
+        {
+          "name": "effys",
+          "rating": 82,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        },
+        {
+          "name": "wippie",
+          "rating": 83,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Vanity",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Adam \"Kaplan\" Kaplan",
+        "rating": 78
+      }
+    },
+    "nuturn": {
+      "players": [
+        {
+          "name": "Suggest",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "solo",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Autumn",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Lakia",
+          "rating": 84,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "BuZz",
+          "rating": 86,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Kim \"Coach K\" Sang-kyu",
+        "rating": 80
+      }
+    },
+    "kru": {
+      "players": [
+        {
+          "name": "keznit",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "NagZ",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Mazino",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Klaus",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "delz1k",
+          "rating": 84,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Joaquin \"Gosen\" Mach",
+        "rating": 79
+      }
+    },
+    "sharks": {
+      "players": [
+        {
+          "name": "qck",
+          "rating": 81,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Khalil",
+          "rating": 80,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "xand",
+          "rating": 80,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "DUELIST",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "nzr",
+          "rating": 82,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "mazin",
+          "rating": 79,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Thiago \"Tnzs\" Nunes",
+        "rating": 74
+      }
+    },
+    "vikings": {
+      "players": [
+        {
+          "name": "frz",
+          "rating": 84,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Sacy",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Saadhak",
+          "rating": 85,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "sutecas",
+          "rating": 82,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "gtnziN",
+          "rating": 81,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"xand\" Zizi",
+        "rating": 75
+      }
+    },
+    "x10": {
+      "players": [
+        {
+          "name": "Patiphan",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "foxz",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Crws",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Thailand"
+        },
+        {
+          "name": "sScary",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "sushiboys",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Sheen",
+        "rating": 77
+      }
+    },
+    "crazy": {
+      "players": [
+        {
+          "name": "Munchkin",
+          "rating": 82,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "neth",
+          "rating": 81,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Bazzi",
+          "rating": 80,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "ade",
+          "rating": 78,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Fisker",
+          "rating": 77,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        }
+      ],
+      "coach": {
+        "name": "Yusuke \"YukaF\" Fujita",
+        "rating": 74
+      }
+    }
+  },
+  "masters-berlin-2021": {
+    "gambit": {
+      "players": [
+        {
+          "name": "Sheydos",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 92,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Redgar",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "nAts",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d3ffo",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Dmitry \"jett\" Lushkin",
+        "rating": 85
+      }
+    },
+    "envy": {
+      "players": [
+        {
+          "name": "yay",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "crashies",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Marved",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "FNS",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "Victor",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 87
+      }
+    },
+    "g2": {
+      "players": [
+        {
+          "name": "nukkye",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "hoody",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "pAura",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Meddo",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "ardiis",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Latvia"
+        }
+      ],
+      "coach": {
+        "name": "Erik \"d00mbr0s\" Sandgren",
+        "rating": 80
+      }
+    },
+    "vs": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Rb",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "k1Ng",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 88,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Park \"Autumn\" Gyeong-jun",
+        "rating": 83
+      }
+    },
+    "acend": {
+      "players": [
+        {
+          "name": "cNed",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "zeek",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Poland"
+        },
+        {
+          "name": "BONECOLD",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Kiles",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Spain"
+        },
+        {
+          "name": "starxo",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Poland"
+        }
+      ],
+      "coach": {
+        "name": "Karel \"Karelvh\" van Hoof",
+        "rating": 80
+      }
+    },
+    "sentinels": {
+      "players": [
+        {
+          "name": "TenZ",
+          "rating": 92,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Canada"
+        },
+        {
+          "name": "SicK",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "zombs",
+          "rating": 81,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "ShahZaM",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "dapr",
+          "rating": 83,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Jay \"sinatraa\" Won",
+        "rating": 99
+      }
+    },
+    "kru": {
+      "players": [
+        {
+          "name": "keznit",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "NagZ",
+          "rating": 84,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Mazino",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Klaus",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "delz1k",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Joaquin \"Gosen\" Mach",
+        "rating": 79
+      }
+    },
+    "smb": {
+      "players": [
+        {
+          "name": "Turko",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Izzy",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Brave",
+          "rating": 82,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Szejn",
+          "rating": 81,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MOJJ",
+          "rating": 80,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Mert \"Tankut\" Tankut",
+        "rating": 76
+      }
+    },
+    "100t": {
+      "players": [
+        {
+          "name": "Asuna",
+          "rating": 87,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Ethan",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "bang",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Hiko",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "steel",
+          "rating": 85,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Sean \"sgares\" Gares",
+        "rating": 80
+      }
+    },
+    "f4q": {
+      "players": [
+        {
+          "name": "Bunny",
+          "rating": 83,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "FiveK",
+          "rating": 80,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Zunba",
+          "rating": 84,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Esperanza",
+          "rating": 81,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Efina",
+          "rating": 80,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Yoo \"Locomotive\" Chae-hwan",
+        "rating": 78
+      }
+    },
+    "liberty": {
+      "players": [
+        {
+          "name": "liazzi",
+          "rating": 80,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "krain",
+          "rating": 81,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "pleets",
+          "rating": 82,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "shion",
+          "rating": 80,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "mysen",
+          "rating": 79,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Ricardo \"rik\" Sobral",
+        "rating": 77
+      }
+    },
+    "keyd": {
+      "players": [
+        {
+          "name": "heat",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "murizzz",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "v1xen",
+          "rating": 82,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "jhow",
+          "rating": 81,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "mwzera",
+          "rating": 86,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"Nado\" Fernandes",
+        "rating": 76
+      }
+    }
+  },
+  "masters-reykjavik-2022": {
+    "optic": {
+      "players": [
+        {
+          "name": "yay",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "crashies",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Marved",
+          "rating": 93,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "FNS",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "Victor",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 88
+      }
+    },
+    "loud": {
+      "players": [
+        {
+          "name": "aspas",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Less",
+          "rating": 92,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "pancada",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Sacy",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Saadhak",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        }
+      ],
+      "coach": {
+        "name": "Matheus \"bzkA\" Tarasconi",
+        "rating": 88
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Rb",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Zest",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Kim \"termi\" Kyung-min",
+        "rating": 86
+      }
+    },
+    "zeta": {
+      "players": [
+        {
+          "name": "Laz",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Japan"
+        },
+        {
+          "name": "crow",
+          "rating": 84,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        },
+        {
+          "name": "SugarZ3ro",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "TENNN",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Dep",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        }
+      ],
+      "coach": {
+        "name": "Manabu \"Manabu\" Iwata",
+        "rating": 79
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Enzo",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "France"
+        },
+        {
+          "name": "Boaster",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Mistic",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Alfajer",
+          "rating": 91,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"miniature\" Harris",
+        "rating": 83
+      }
+    },
+    "tl": {
+      "players": [
+        {
+          "name": "ScreaM",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "Jamppi",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "DUELIST",
+          "nationality": "Finland"
+        },
+        {
+          "name": "L1NK",
+          "rating": 84,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "UK"
+        },
+        {
+          "name": "Nivera",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Belgium"
+        },
+        {
+          "name": "soulcas",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        }
+      ],
+      "coach": {
+        "name": "Stefan \"Kassad\" Tcherepanov",
+        "rating": 86
+      }
+    },
+    "kru": {
+      "players": [
+        {
+          "name": "keznit",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "NagZ",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Mazino",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Klaus",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "delz1k",
+          "rating": 84,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Joaquin \"Gosen\" Mach",
+        "rating": 80
+      }
+    },
+    "xerxia": {
+      "players": [
+        {
+          "name": "Patiphan",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "sushiboys",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Crws",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Thailand"
+        },
+        {
+          "name": "sScary",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "foxz",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Sheen",
+        "rating": 77
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "Benkai",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "d4v41",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 91,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 84
+      }
+    },
+    "nip": {
+      "players": [
+        {
+          "name": "Joose",
+          "rating": 84,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Patitek",
+          "rating": 83,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Poland"
+        },
+        {
+          "name": "LNATION",
+          "rating": 82,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "FASHR",
+          "rating": 81,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "zeek",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Poland"
+        }
+      ],
+      "coach": {
+        "name": "Sami \"zid\" Laasanen",
+        "rating": 77
+      }
+    },
+    "guard": {
+      "players": [
+        {
+          "name": "leaf",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "trent",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "valyn",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "icy",
+          "rating": 83,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "JonahP",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Erik \"d00mbr0s\" Sandgren",
+        "rating": 79
+      }
+    },
+    "guild": {
+      "players": [
+        {
+          "name": "Sayf",
+          "rating": 87,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Dreamas",
+          "rating": 84,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Ro4r",
+          "rating": 82,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Kiles",
+          "rating": 83,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Spain"
+        },
+        {
+          "name": "Leo",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Sweden"
+        }
+      ],
+      "coach": {
+        "name": "David \"Dreamas\" Batard",
+        "rating": 78
+      }
+    }
+  },
+  "masters-copenhagen-2022": {
+    "fpx": {
+      "players": [
+        {
+          "name": "ardiis",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Latvia"
+        },
+        {
+          "name": "Shao",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "ANGE1",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Ukraine"
+        },
+        {
+          "name": "Zyppan",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "SUYGETSU",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Jakob \"Remmey\" Hansen",
+        "rating": 84
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "Benkai",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "d4v41",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 85
+      }
+    },
+    "optic": {
+      "players": [
+        {
+          "name": "yay",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "crashies",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Marved",
+          "rating": 92,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "FNS",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "Victor",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 87
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Enzo",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "France"
+        },
+        {
+          "name": "Boaster",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Mistic",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Alfajer",
+          "rating": 91,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"miniature\" Harris",
+        "rating": 83
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Rb",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Zest",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 92,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Kim \"termi\" Kyung-min",
+        "rating": 85
+      }
+    },
+    "guild": {
+      "players": [
+        {
+          "name": "Sayf",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Dreamas",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Ro4r",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Kiles",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Spain"
+        },
+        {
+          "name": "Leo",
+          "rating": 86,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Sweden"
+        }
+      ],
+      "coach": {
+        "name": "David \"Dreamas\" Batard",
+        "rating": 79
+      }
+    },
+    "xset": {
+      "players": [
+        {
+          "name": "Cryocells",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "zekken",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "dephh",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "UK"
+        },
+        {
+          "name": "BCJ",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "AYRIN",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        }
+      ],
+      "coach": {
+        "name": "Jeffrey \"frosty\" Colon",
+        "rating": 81
+      }
+    },
+    "kru": {
+      "players": [
+        {
+          "name": "keznit",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "NagZ",
+          "rating": 84,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Mazino",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Klaus",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "delz1k",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Joaquin \"Gosen\" Mach",
+        "rating": 80
+      }
+    },
+    "leviatan": {
+      "players": [
+        {
+          "name": "Tacolilla",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Shyy",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        },
+        {
+          "name": "Melser",
+          "rating": 84,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Chile"
+        },
+        {
+          "name": "adverso",
+          "rating": 83,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Chile"
+        },
+        {
+          "name": "KiNgg",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Rodrigo \"Onur\" Dalmagro",
+        "rating": 83
+      }
+    },
+    "northeption": {
+      "players": [
+        {
+          "name": "Dep",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        },
+        {
+          "name": "crow",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Japan"
+        },
+        {
+          "name": "SugarZ3ro",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "TENNN",
+          "rating": 83,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Laz",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Japan"
+        }
+      ],
+      "coach": {
+        "name": "Manabu \"Manabu\" Iwata",
+        "rating": 78
+      }
+    }
+  },
+  "masters-tokyo-2023": {
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Leo",
+          "rating": 93,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Boaster",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Alfajer",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 92,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"miniature\" Harris",
+        "rating": 85
+      }
+    },
+    "eg": {
+      "players": [
+        {
+          "name": "Demon1",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Jawgemo",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        },
+        {
+          "name": "C0M",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        },
+        {
+          "name": "Boostio",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "Ethan",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Damien \"miniice\" Rustom",
+        "rating": 86
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "something",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d4v41",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 94,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 86
+      }
+    },
+    "nrg": {
+      "players": [
+        {
+          "name": "ardiis",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Latvia"
+        },
+        {
+          "name": "crashies",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "s0m",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        },
+        {
+          "name": "FNS",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Canada"
+        },
+        {
+          "name": "Victor",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 87
+      }
+    },
+    "tl": {
+      "players": [
+        {
+          "name": "Sayf",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Jamppi",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "DUELIST",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Redgar",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "nAts",
+          "rating": 91,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "soulcas",
+          "rating": 86,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        }
+      ],
+      "coach": {
+        "name": "Stefan \"Kassad\" Tcherepanov",
+        "rating": 85
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Rb",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Zest",
+          "rating": 85,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Kim \"termi\" Kyung-min",
+        "rating": 86
+      }
+    },
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Guo \"seven\" Qi",
+        "rating": 80
+      }
+    },
+    "t1": {
+      "players": [
+        {
+          "name": "Sayaplayer",
+          "rating": 86,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Carpe",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "ban",
+          "rating": 81,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Munchkin",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "xeta",
+          "rating": 84,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Yoon \"Autumn\" Eu-teum",
+        "rating": 81
+      }
+    },
+    "fut": {
+      "players": [
+        {
+          "name": "qw1",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "qRaxs",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MrFaliN",
+          "rating": 84,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MOJJ",
+          "rating": 82,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "AtaKaptan",
+          "rating": 83,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Eray \"Gais\" Sarıkaya",
+        "rating": 82
+      }
+    },
+    "navi": {
+      "players": [
+        {
+          "name": "cNed",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Shao",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "ANGE1",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Ukraine"
+        },
+        {
+          "name": "Zyppan",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "SUYGETSU",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Svyatoslav \"Bagz\" Bagautdinov",
+        "rating": 82
+      }
+    },
+    "ase": {
+      "players": [
+        {
+          "name": "Sya1ns",
+          "rating": 82,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Keiko",
+          "rating": 81,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "UK"
+        },
+        {
+          "name": "Astell",
+          "rating": 79,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Crow",
+          "rating": 78,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Japan"
+        },
+        {
+          "name": "Minty",
+          "rating": 80,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Lee \"Coach\" Sung-jin",
+        "rating": 72
+      }
+    }
+  },
+  "masters-madrid-2024": {
+    "sentinels": {
+      "players": [
+        {
+          "name": "zekken",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Zellsis",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        },
+        {
+          "name": "Sacy",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "TenZ",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Canada"
+        },
+        {
+          "name": "johnqt",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Morocco"
+        }
+      ],
+      "coach": {
+        "name": "Adam \"Kaplan\" Kaplan",
+        "rating": 82
+      }
+    },
+    "geng": {
+      "players": [
+        {
+          "name": "t3xture",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Munchkin",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Karon",
+          "rating": 92,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Lakia",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Meteor",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Park \"Autumn\" Gyeong-jun",
+        "rating": 86
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "something",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d4v41",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 95,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 86
+      }
+    },
+    "karmine": {
+      "players": [
+        {
+          "name": "marteen",
+          "rating": 84,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Czech Republic"
+        },
+        {
+          "name": "Shin",
+          "rating": 83,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "France"
+        },
+        {
+          "name": "tomaszy",
+          "rating": 84,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "DUELIST",
+          "nationality": "Portugal"
+        },
+        {
+          "name": "magnum",
+          "rating": 83,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "vladeN",
+          "rating": 82,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "France"
+        }
+      ],
+      "coach": {
+        "name": "Arthur \"pm\" Guillermet",
+        "rating": 82
+      }
+    },
+    "loud": {
+      "players": [
+        {
+          "name": "aspas",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Less",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "tuyz",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "Saadhak",
+          "rating": 92,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Argentina"
+        },
+        {
+          "name": "cauanzin",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        }
+      ],
+      "coach": {
+        "name": "Matheus \"bzkA\" Tarasconi",
+        "rating": 87
+      }
+    },
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 89,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Guo \"seven\" Qi",
+        "rating": 81
+      }
+    },
+    "heretics": {
+      "players": [
+        {
+          "name": "Wo0t",
+          "rating": 94,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "benjyfishy",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "UK"
+        },
+        {
+          "name": "Boo",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "RieNs",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MiniBoo",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Lithuania"
+        }
+      ],
+      "coach": {
+        "name": "Nuno \"your\" Neto",
+        "rating": 82
+      }
+    },
+    "fpx": {
+      "players": [
+        {
+          "name": "ardiis",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Latvia"
+        },
+        {
+          "name": "Shao",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "ANGE1",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Ukraine"
+        },
+        {
+          "name": "Zyppan",
+          "rating": 85,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "SUYGETSU",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "Jakob \"Remmey\" Hansen",
+        "rating": 82
+      }
+    }
+  },
+  "masters-shanghai-2024": {
+    "geng": {
+      "players": [
+        {
+          "name": "t3xture",
+          "rating": 97,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Munchkin",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Karon",
+          "rating": 93,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Lakia",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Meteor",
+          "rating": 95,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Park \"Autumn\" Gyeong-jun",
+        "rating": 87
+      }
+    },
+    "heretics": {
+      "players": [
+        {
+          "name": "Wo0t",
+          "rating": 95,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "benjyfishy",
+          "rating": 91,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "UK"
+        },
+        {
+          "name": "Boo",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "RieNs",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MiniBoo",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Lithuania"
+        }
+      ],
+      "coach": {
+        "name": "Nuno \"your\" Neto",
+        "rating": 83
+      }
+    },
+    "g2": {
+      "players": [
+        {
+          "name": "leaf",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "trent",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "valyn",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "icy",
+          "rating": 86,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "JonahP",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Erik \"d00mbr0s\" Sandgren",
+        "rating": 82
+      }
+    },
+    "100t": {
+      "players": [
+        {
+          "name": "Cryo",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "bang",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Derrek",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "stellar",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Asuna",
+          "rating": 90,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Sean \"sgares\" Gares",
+        "rating": 81
+      }
+    },
+    "fut": {
+      "players": [
+        {
+          "name": "cNed",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "yetujey",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MrFaliN",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "xeus",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "AtaKaptan",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Mert \"Turko\" Tankut",
+        "rating": 79
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "Jinggg",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        },
+        {
+          "name": "something",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d4v41",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "f0rsakeN",
+          "rating": 95,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 86
+      }
+    },
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Guo \"seven\" Qi",
+        "rating": 82
+      }
+    },
+    "drx": {
+      "players": [
+        {
+          "name": "BuZz",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Flashback",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "BeYN",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "MaKo",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "stax",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Kim \"termi\" Kyung-min",
+        "rating": 85
+      }
+    },
+    "leviatan": {
+      "players": [
+        {
+          "name": "aspas",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Brazil"
+        },
+        {
+          "name": "tex",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        },
+        {
+          "name": "Mazino",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        },
+        {
+          "name": "C0M",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "USA"
+        },
+        {
+          "name": "kiNgg",
+          "rating": 93,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Chile"
+        }
+      ],
+      "coach": {
+        "name": "Ignacio \"tEoS\" Aravena",
+        "rating": 83
+      }
+    },
+    "fnatic": {
+      "players": [
+        {
+          "name": "Derke",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Finland"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 92,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Boaster",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "Leo",
+          "rating": 91,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Sweden"
+        },
+        {
+          "name": "Alfajer",
+          "rating": 93,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"miniature\" Harris",
+        "rating": 84
+      }
+    },
+    "t1": {
+      "players": [
+        {
+          "name": "Sayaplayer",
+          "rating": 85,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Carpe",
+          "rating": 83,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "k1Ng",
+          "rating": 82,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Munchkin",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "xeta",
+          "rating": 83,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Yoon \"Autumn\" Eu-teum",
+        "rating": 81
+      }
+    }
+  },
+  "masters-toronto-2025": {
+    "fnatic": {
+      "players": [
+        {
+          "name": "Alfajer",
+          "rating": 96,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "Chronicle",
+          "rating": 95,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Russia"
+        },
+        {
+          "name": "Boaster",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "UK"
+        },
+        {
+          "name": "crashies",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "kaajak",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Czech Republic"
+        }
+      ],
+      "coach": {
+        "name": "Jacob \"miniature\" Harris",
+        "rating": 85
+      }
+    },
+    "g2": {
+      "players": [
+        {
+          "name": "leaf",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "trent",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "valyn",
+          "rating": 90,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "SENTINEL",
+          "nationality": "USA"
+        },
+        {
+          "name": "icy",
+          "rating": 87,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "JonahP",
+          "rating": 88,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Erik \"d00mbr0s\" Sandgren",
+        "rating": 83
+      }
+    },
+    "geng": {
+      "players": [
+        {
+          "name": "t3xture",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Meteor",
+          "rating": 94,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "DUELIST",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Karon",
+          "rating": 92,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Lakia",
+          "rating": 88,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "South Korea"
+        },
+        {
+          "name": "Munchkin",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "INITIATOR",
+          "nationality": "South Korea"
+        }
+      ],
+      "coach": {
+        "name": "Park \"Autumn\" Gyeong-jun",
+        "rating": 87
+      }
+    },
+    "prx": {
+      "players": [
+        {
+          "name": "f0rsakeN",
+          "rating": 96,
+          "primaryRole": "FLEX",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "something",
+          "rating": 93,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "d4v41",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Malaysia"
+        },
+        {
+          "name": "mindfreak",
+          "rating": 89,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "Indonesia"
+        },
+        {
+          "name": "Jinggg",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Singapore"
+        }
+      ],
+      "coach": {
+        "name": "Alexandre \"alecks\" Sallby",
+        "rating": 86
+      }
+    },
+    "wolves": {
+      "players": [
+        {
+          "name": "Cloud",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        },
+        {
+          "name": "westside",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "runneR",
+          "rating": 85,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "nukkye",
+          "rating": 85,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "Purp0",
+          "rating": 88,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Russia"
+        }
+      ],
+      "coach": {
+        "name": "David \"Dreamas\" Batard",
+        "rating": 79
+      }
+    },
+    "sentinels": {
+      "players": [
+        {
+          "name": "zekken",
+          "rating": 94,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "N4RRATE",
+          "rating": 92,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "bang",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "johnqt",
+          "rating": 89,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Morocco"
+        },
+        {
+          "name": "Zellsis",
+          "rating": 87,
+          "primaryRole": "FLEX",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Adam \"Kaplan\" Kaplan",
+        "rating": 82
+      }
+    },
+    "rrq": {
+      "players": [
+        {
+          "name": "Jemkin",
+          "rating": 92,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Monyet",
+          "rating": 90,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "xffero",
+          "rating": 87,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Kushy",
+          "rating": 86,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Estrella",
+          "rating": 85,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Siddhart \"Guts\" Gopalkrishnan",
+        "rating": 78
+      }
+    },
+    "xlg": {
+      "players": [
+        {
+          "name": "Rarga",
+          "rating": 89,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "happywei",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Viva",
+          "rating": 86,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Midi",
+          "rating": 84,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "coconut",
+          "rating": 85,
+          "primaryRole": "FLEX",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Sun \"Trainer\" Hao",
+        "rating": 76
+      }
+    },
+    "heretics": {
+      "players": [
+        {
+          "name": "Wo0t",
+          "rating": 94,
+          "primaryRole": "FLEX",
+          "secondaryRole": "DUELIST",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "benjyfishy",
+          "rating": 90,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "UK"
+        },
+        {
+          "name": "Boo",
+          "rating": 88,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "INITIATOR",
+          "nationality": "Lithuania"
+        },
+        {
+          "name": "RieNs",
+          "rating": 87,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "Turkey"
+        },
+        {
+          "name": "MiniBoo",
+          "rating": 91,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "Lithuania"
+        }
+      ],
+      "coach": {
+        "name": "Nuno \"your\" Neto",
+        "rating": 83
+      }
+    },
+    "nrg": {
+      "players": [
+        {
+          "name": "brawk",
+          "rating": 96,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "mada",
+          "rating": 94,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "s0m",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "DUELIST",
+          "nationality": "USA"
+        },
+        {
+          "name": "skuba",
+          "rating": 89,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        },
+        {
+          "name": "Ethan",
+          "rating": 93,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "FLEX",
+          "nationality": "USA"
+        }
+      ],
+      "coach": {
+        "name": "Chet \"Chet\" Singh",
+        "rating": 88
+      }
+    },
+    "edg": {
+      "players": [
+        {
+          "name": "ZmjjKK",
+          "rating": 95,
+          "primaryRole": "DUELIST",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "CHICHOO",
+          "rating": 93,
+          "primaryRole": "INITIATOR",
+          "secondaryRole": "SENTINEL",
+          "nationality": "China"
+        },
+        {
+          "name": "Smoggy",
+          "rating": 91,
+          "primaryRole": "CONTROLLER",
+          "secondaryRole": "FLEX",
+          "nationality": "China"
+        },
+        {
+          "name": "Haodong",
+          "rating": 87,
+          "primaryRole": "SENTINEL",
+          "secondaryRole": "CONTROLLER",
+          "nationality": "China"
+        },
+        {
+          "name": "nobody",
+          "rating": 90,
+          "primaryRole": "FLEX",
+          "secondaryRole": "INITIATOR",
+          "nationality": "China"
+        }
+      ],
+      "coach": {
+        "name": "Guo \"seven\" Qi",
+        "rating": 82
+      }
+    }
+  }
+};

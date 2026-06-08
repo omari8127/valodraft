@@ -1,0 +1,1106 @@
+{
+  "champions-2021": {
+    "acend": [
+      "cNed (DUELIST)",
+      "zeek (INITIATOR)",
+      "BONECOLD (CONTROLLER)",
+      "Kiles (SENTINEL)",
+      "starxo (FLEX)"
+    ],
+    "envy": [
+      "yay (DUELIST)",
+      "crashies (INITIATOR)",
+      "Marved (CONTROLLER)",
+      "FNS (SENTINEL)",
+      "Victor (FLEX)"
+    ],
+    "x10": [
+      "Patiphan (DUELIST)",
+      "foxz (INITIATOR)",
+      "Crws (CONTROLLER)",
+      "sScary (SENTINEL)",
+      "sushiboys (FLEX)"
+    ],
+    "keyd": [
+      "heat (DUELIST)",
+      "murizzz (INITIATOR)",
+      "v1xen (CONTROLLER)",
+      "jhow (SENTINEL)",
+      "mwzera (FLEX)"
+    ],
+    "sentinels": [
+      "TenZ (DUELIST)",
+      "SicK (INITIATOR)",
+      "zombs (CONTROLLER)",
+      "ShahZaM (SENTINEL)",
+      "dapr (FLEX)"
+    ],
+    "kru": [
+      "keznit (DUELIST)",
+      "NagZ (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "Klaus (SENTINEL)",
+      "delz1k (FLEX)"
+    ],
+    "tl": [
+      "ScreaM (DUELIST)",
+      "Jamppi (INITIATOR)",
+      "L1NK (CONTROLLER)",
+      "Nivera (SENTINEL)",
+      "soulcas (FLEX)"
+    ],
+    "furia": [
+      "qck (DUELIST)",
+      "Khalil (INITIATOR)",
+      "xand (CONTROLLER)",
+      "nzr (SENTINEL)",
+      "mazin (FLEX)"
+    ],
+    "gambit": [
+      "Sheydos (DUELIST)",
+      "Chronicle (INITIATOR)",
+      "Redgar (CONTROLLER)",
+      "nAts (SENTINEL)",
+      "d3ffo (FLEX)"
+    ],
+    "vikings": [
+      "frz (DUELIST)",
+      "Sacy (INITIATOR)",
+      "Saadhak (CONTROLLER)",
+      "sutecas (SENTINEL)",
+      "gtnziN (FLEX)"
+    ],
+    "secret": [
+      "DubsteP (DUELIST)",
+      "JessieVash (INITIATOR)",
+      "Dispenser (CONTROLLER)",
+      "witz (SENTINEL)",
+      "BORKUM (FLEX)"
+    ],
+    "crazy": [
+      "Munchkin (DUELIST)",
+      "neth (INITIATOR)",
+      "Bazzi (CONTROLLER)",
+      "ade (SENTINEL)",
+      "Fisker (FLEX)"
+    ],
+    "vs": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "k1Ng (CONTROLLER)",
+      "stax (SENTINEL)",
+      "MaKo (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Magnum (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Mistic (SENTINEL)",
+      "Doma (FLEX)"
+    ],
+    "fullsense": [
+      "JohnOlsen (DUELIST)",
+      "PTC (INITIATOR)",
+      "LAMMYSNAX (CONTROLLER)",
+      "SuperBusS (SENTINEL)",
+      "SantaGolf (FLEX)"
+    ],
+    "c9": [
+      "leaf (DUELIST)",
+      "Xeppaa (INITIATOR)",
+      "vanity (CONTROLLER)",
+      "mitch (SENTINEL)",
+      "xeta (FLEX)"
+    ]
+  },
+  "champions-2022": {
+    "loud": [
+      "aspas (DUELIST)",
+      "Less (INITIATOR)",
+      "pancada (CONTROLLER)",
+      "Sacy (SENTINEL)",
+      "Saadhak (FLEX)"
+    ],
+    "optic": [
+      "yay (DUELIST)",
+      "crashies (INITIATOR)",
+      "Marved (CONTROLLER)",
+      "FNS (SENTINEL)",
+      "Victor (FLEX)"
+    ],
+    "drx": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "Zest (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "fpx": [
+      "ardiis (DUELIST)",
+      "Shao (INITIATOR)",
+      "ANGE1 (CONTROLLER)",
+      "Zyppan (SENTINEL)",
+      "SUYGETSU (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Enzo (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Mistic (SENTINEL)",
+      "Alfajer (FLEX)"
+    ],
+    "xset": [
+      "Cryocells (DUELIST)",
+      "zekken (INITIATOR)",
+      "dephh (CONTROLLER)",
+      "BCJ (SENTINEL)",
+      "AYRIN (FLEX)"
+    ],
+    "leviatan": [
+      "kiNgg (DUELIST)",
+      "Shyy (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "adverso (SENTINEL)",
+      "Tacolilla (FLEX)"
+    ],
+    "tl": [
+      "ScreaM (DUELIST)",
+      "Jamppi (INITIATOR)",
+      "L1NK (CONTROLLER)",
+      "Nivera (SENTINEL)",
+      "soulcas (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "Benkai (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "zeta": [
+      "Dep (DUELIST)",
+      "crow (INITIATOR)",
+      "SugarZ3ro (CONTROLLER)",
+      "TENNN (SENTINEL)",
+      "Laz (FLEX)"
+    ],
+    "100t": [
+      "Asuna (DUELIST)",
+      "bang (INITIATOR)",
+      "Derrek (CONTROLLER)",
+      "Will (SENTINEL)",
+      "stellar (FLEX)"
+    ],
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ]
+  },
+  "champions-2023": {
+    "eg": [
+      "Demon1 (DUELIST)",
+      "Ethan (INITIATOR)",
+      "C0M (CONTROLLER)",
+      "Boostio (SENTINEL)",
+      "Jawgemo (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "something (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Leo (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Alfajer (SENTINEL)",
+      "Chronicle (FLEX)"
+    ],
+    "loud": [
+      "aspas (DUELIST)",
+      "cauanzin (INITIATOR)",
+      "tuyz (CONTROLLER)",
+      "Less (SENTINEL)",
+      "Saadhak (FLEX)"
+    ],
+    "drx": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "Zest (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "nrg": [
+      "ardiis (DUELIST)",
+      "crashies (INITIATOR)",
+      "s0m (CONTROLLER)",
+      "FNS (SENTINEL)",
+      "Victor (FLEX)"
+    ],
+    "navi": [
+      "cNed (DUELIST)",
+      "Shao (INITIATOR)",
+      "ANGE1 (CONTROLLER)",
+      "Zyppan (SENTINEL)",
+      "SUYGETSU (FLEX)"
+    ],
+    "tl": [
+      "Sayf (DUELIST)",
+      "Jamppi (INITIATOR)",
+      "Redgar (CONTROLLER)",
+      "nAts (SENTINEL)",
+      "soulcas (FLEX)"
+    ],
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ],
+    "kru": [
+      "keznit (DUELIST)",
+      "Melser (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "Klaus (SENTINEL)",
+      "NagZ (FLEX)"
+    ]
+  },
+  "champions-2024": {
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ],
+    "heretics": [
+      "Wo0t (DUELIST)",
+      "benjyfishy (INITIATOR)",
+      "Boo (CONTROLLER)",
+      "RieNs (SENTINEL)",
+      "MiniBoo (FLEX)"
+    ],
+    "leviatan": [
+      "aspas (DUELIST)",
+      "tex (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "C0M (SENTINEL)",
+      "kiNgg (FLEX)"
+    ],
+    "sentinels": [
+      "zekken (DUELIST)",
+      "Zellsis (INITIATOR)",
+      "Sacy (CONTROLLER)",
+      "TenZ (SENTINEL)",
+      "johnqt (FLEX)"
+    ],
+    "geng": [
+      "t3xture (DUELIST)",
+      "Munchkin (INITIATOR)",
+      "Karon (CONTROLLER)",
+      "Lakia (SENTINEL)",
+      "Meteor (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Chronicle (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Leo (SENTINEL)",
+      "Alfajer (FLEX)"
+    ],
+    "drx": [
+      "BuZz (DUELIST)",
+      "Flashback (INITIATOR)",
+      "BeYN (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "something (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "g2": [
+      "leaf (DUELIST)",
+      "trent (INITIATOR)",
+      "valyn (CONTROLLER)",
+      "icy (SENTINEL)",
+      "JonahP (FLEX)"
+    ],
+    "kru": [
+      "keznit (DUELIST)",
+      "Melser (INITIATOR)",
+      "Shyy (CONTROLLER)",
+      "mta (SENTINEL)",
+      "heat (FLEX)"
+    ],
+    "vitality": [
+      "Sayf (DUELIST)",
+      "trexx (INITIATOR)",
+      "Kicks (CONTROLLER)",
+      "ceNder (SENTINEL)",
+      "runneR (FLEX)"
+    ],
+    "talon": [
+      "primmie (DUELIST)",
+      "Crws (INITIATOR)",
+      "Governor (CONTROLLER)",
+      "ban (SENTINEL)",
+      "JitBoyS (FLEX)"
+    ],
+    "fut": [
+      "cNed (DUELIST)",
+      "yetujey (INITIATOR)",
+      "MrFaliN (CONTROLLER)",
+      "xeus (SENTINEL)",
+      "AtaKaptan (FLEX)"
+    ],
+    "blg": [
+      "whzy (DUELIST)",
+      "Knight (INITIATOR)",
+      "nephh (CONTROLLER)",
+      "Levius (SENTINEL)",
+      "rushia (FLEX)"
+    ],
+    "trace": [
+      "Kai (DUELIST)",
+      "FengF (INITIATOR)",
+      "HeiB (CONTROLLER)",
+      "Biank (SENTINEL)",
+      "LuoK1ng (FLEX)"
+    ]
+  },
+  "champions-2025": {
+    "nrg": [
+      "brawk (DUELIST)",
+      "mada (INITIATOR)",
+      "s0m (CONTROLLER)",
+      "skuba (SENTINEL)",
+      "Ethan (FLEX)"
+    ],
+    "fnatic": [
+      "Alfajer (DUELIST)",
+      "Chronicle (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "crashies (SENTINEL)",
+      "kaajak (FLEX)"
+    ],
+    "drx": [
+      "HYUNMIN (DUELIST)",
+      "free1ng (INITIATOR)",
+      "BeYN (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "Flashback (FLEX)"
+    ],
+    "prx": [
+      "f0rsakeN (DUELIST)",
+      "something (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "mindfreak (SENTINEL)",
+      "Jinggg (FLEX)"
+    ],
+    "heretics": [
+      "Wo0t (DUELIST)",
+      "benjyfishy (INITIATOR)",
+      "Boo (CONTROLLER)",
+      "RieNs (SENTINEL)",
+      "MiniBoo (FLEX)"
+    ],
+    "mibr": [
+      "artzin (DUELIST)",
+      "cortezia (INITIATOR)",
+      "xenom (CONTROLLER)",
+      "Verno (SENTINEL)",
+      "aspas (FLEX)"
+    ],
+    "giantx": [
+      "Cloud (DUELIST)",
+      "westside (INITIATOR)",
+      "runneR (CONTROLLER)",
+      "nukkye (SENTINEL)",
+      "Purp0 (FLEX)"
+    ],
+    "g2": [
+      "leaf (DUELIST)",
+      "trent (INITIATOR)",
+      "valyn (CONTROLLER)",
+      "icy (SENTINEL)",
+      "JonahP (FLEX)"
+    ],
+    "tl": [
+      "Keiko (DUELIST)",
+      "Serial (INITIATOR)",
+      "paTiTek (CONTROLLER)",
+      "nAts (SENTINEL)",
+      "kamo (FLEX)"
+    ],
+    "t1": [
+      "BuZz (DUELIST)",
+      "Sylvan (INITIATOR)",
+      "carpe (CONTROLLER)",
+      "stax (SENTINEL)",
+      "Meteor (FLEX)"
+    ],
+    "rrq": [
+      "Jemkin (DUELIST)",
+      "Monyet (INITIATOR)",
+      "xffero (CONTROLLER)",
+      "Kushy (SENTINEL)",
+      "Estrella (FLEX)"
+    ],
+    "blg": [
+      "whzy (DUELIST)",
+      "Knight (INITIATOR)",
+      "nephh (CONTROLLER)",
+      "Levius (SENTINEL)",
+      "rushia (FLEX)"
+    ],
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ],
+    "xlg": [
+      "Rarga (DUELIST)",
+      "happywei (INITIATOR)",
+      "Viva (CONTROLLER)",
+      "Midi (SENTINEL)",
+      "coconut (FLEX)"
+    ],
+    "drg": [
+      "Nicc (DUELIST)",
+      "SpiritZ1 (INITIATOR)",
+      "LanLan (CONTROLLER)",
+      "Wenzzz (SENTINEL)",
+      "CZD (FLEX)"
+    ],
+    "sentinels": [
+      "zekken (DUELIST)",
+      "N4RRATE (INITIATOR)",
+      "bang (CONTROLLER)",
+      "johnqt (SENTINEL)",
+      "Zellsis (FLEX)"
+    ]
+  },
+  "masters-reykjavik-2021": {
+    "sentinels": [
+      "TenZ (DUELIST)",
+      "SicK (INITIATOR)",
+      "zombs (CONTROLLER)",
+      "ShahZaM (SENTINEL)",
+      "dapr (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Magnum (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Mistic (SENTINEL)",
+      "Doma (FLEX)"
+    ],
+    "tl": [
+      "ScreaM (DUELIST)",
+      "Jamppi (INITIATOR)",
+      "L1NK (CONTROLLER)",
+      "Nivera (SENTINEL)",
+      "soulcas (FLEX)"
+    ],
+    "version1": [
+      "pennpenn (DUELIST)",
+      "Zellsis (INITIATOR)",
+      "effys (CONTROLLER)",
+      "wippie (SENTINEL)",
+      "Vanity (FLEX)"
+    ],
+    "nuturn": [
+      "Suggest (DUELIST)",
+      "solo (INITIATOR)",
+      "Autumn (CONTROLLER)",
+      "Lakia (SENTINEL)",
+      "BuZz (FLEX)"
+    ],
+    "kru": [
+      "keznit (DUELIST)",
+      "NagZ (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "Klaus (SENTINEL)",
+      "delz1k (FLEX)"
+    ],
+    "sharks": [
+      "qck (DUELIST)",
+      "Khalil (INITIATOR)",
+      "xand (CONTROLLER)",
+      "nzr (SENTINEL)",
+      "mazin (FLEX)"
+    ],
+    "vikings": [
+      "frz (DUELIST)",
+      "Sacy (INITIATOR)",
+      "Saadhak (CONTROLLER)",
+      "sutecas (SENTINEL)",
+      "gtnziN (FLEX)"
+    ],
+    "x10": [
+      "Patiphan (DUELIST)",
+      "foxz (INITIATOR)",
+      "Crws (CONTROLLER)",
+      "sScary (SENTINEL)",
+      "sushiboys (FLEX)"
+    ],
+    "crazy": [
+      "Munchkin (DUELIST)",
+      "neth (INITIATOR)",
+      "Bazzi (CONTROLLER)",
+      "ade (SENTINEL)",
+      "Fisker (FLEX)"
+    ]
+  },
+  "masters-berlin-2021": {
+    "gambit": [
+      "Sheydos (DUELIST)",
+      "Chronicle (INITIATOR)",
+      "Redgar (CONTROLLER)",
+      "nAts (SENTINEL)",
+      "d3ffo (FLEX)"
+    ],
+    "envy": [
+      "yay (DUELIST)",
+      "crashies (INITIATOR)",
+      "Marved (CONTROLLER)",
+      "FNS (SENTINEL)",
+      "Victor (FLEX)"
+    ],
+    "g2": [
+      "nukkye (DUELIST)",
+      "hoody (INITIATOR)",
+      "pAura (CONTROLLER)",
+      "Meddo (SENTINEL)",
+      "ardiis (FLEX)"
+    ],
+    "vs": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "k1Ng (CONTROLLER)",
+      "stax (SENTINEL)",
+      "MaKo (FLEX)"
+    ],
+    "acend": [
+      "cNed (DUELIST)",
+      "zeek (INITIATOR)",
+      "BONECOLD (CONTROLLER)",
+      "Kiles (SENTINEL)",
+      "starxo (FLEX)"
+    ],
+    "sentinels": [
+      "TenZ (DUELIST)",
+      "SicK (INITIATOR)",
+      "zombs (CONTROLLER)",
+      "ShahZaM (SENTINEL)",
+      "dapr (FLEX)"
+    ],
+    "kru": [
+      "keznit (DUELIST)",
+      "NagZ (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "Klaus (SENTINEL)",
+      "delz1k (FLEX)"
+    ],
+    "smb": [
+      "Turko (DUELIST)",
+      "Izzy (INITIATOR)",
+      "Brave (CONTROLLER)",
+      "Szejn (SENTINEL)",
+      "MOJJ (FLEX)"
+    ],
+    "100t": [
+      "Asuna (DUELIST)",
+      "Ethan (INITIATOR)",
+      "bang (CONTROLLER)",
+      "Hiko (SENTINEL)",
+      "steel (FLEX)"
+    ],
+    "f4q": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "k1Ng (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "liberty": [
+      "heat (DUELIST)",
+      "Sacy (INITIATOR)",
+      "Saadhak (CONTROLLER)",
+      "mwzera (SENTINEL)",
+      "aspas (FLEX)"
+    ],
+    "keyd": [
+      "heat (DUELIST)",
+      "murizzz (INITIATOR)",
+      "v1xen (CONTROLLER)",
+      "jhow (SENTINEL)",
+      "mwzera (FLEX)"
+    ]
+  },
+  "masters-reykjavik-2022": {
+    "optic": [
+      "yay (DUELIST)",
+      "crashies (INITIATOR)",
+      "Marved (CONTROLLER)",
+      "FNS (SENTINEL)",
+      "Victor (FLEX)"
+    ],
+    "loud": [
+      "aspas (DUELIST)",
+      "Less (INITIATOR)",
+      "pancada (CONTROLLER)",
+      "Sacy (SENTINEL)",
+      "Saadhak (FLEX)"
+    ],
+    "drx": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "Zest (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "zeta": [
+      "Laz (DUELIST)",
+      "crow (INITIATOR)",
+      "SugarZ3ro (CONTROLLER)",
+      "TENNN (SENTINEL)",
+      "Dep (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Enzo (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Mistic (SENTINEL)",
+      "Alfajer (FLEX)"
+    ],
+    "tl": [
+      "ScreaM (DUELIST)",
+      "Jamppi (INITIATOR)",
+      "L1NK (CONTROLLER)",
+      "Nivera (SENTINEL)",
+      "soulcas (FLEX)"
+    ],
+    "kru": [
+      "keznit (DUELIST)",
+      "NagZ (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "Klaus (SENTINEL)",
+      "delz1k (FLEX)"
+    ],
+    "xerxia": [
+      "Patiphan (DUELIST)",
+      "sushiboys (INITIATOR)",
+      "Crws (CONTROLLER)",
+      "sScary (SENTINEL)",
+      "foxz (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "Benkai (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "nip": [
+      "Joose (DUELIST)",
+      "Patitek (INITIATOR)",
+      "LNATION (CONTROLLER)",
+      "FASHR (SENTINEL)",
+      "zeek (FLEX)"
+    ],
+    "guard": [
+      "leaf (DUELIST)",
+      "trent (INITIATOR)",
+      "valyn (CONTROLLER)",
+      "icy (SENTINEL)",
+      "JonahP (FLEX)"
+    ],
+    "guild": [
+      "Sayf (DUELIST)",
+      "Dreamas (INITIATOR)",
+      "Ro4r (CONTROLLER)",
+      "Kiles (SENTINEL)",
+      "Leo (FLEX)"
+    ]
+  },
+  "masters-copenhagen-2022": {
+    "fpx": [
+      "ardiis (DUELIST)",
+      "Shao (INITIATOR)",
+      "ANGE1 (CONTROLLER)",
+      "Zyppan (SENTINEL)",
+      "SUYGETSU (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "Benkai (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "optic": [
+      "yay (DUELIST)",
+      "crashies (INITIATOR)",
+      "Marved (CONTROLLER)",
+      "FNS (SENTINEL)",
+      "Victor (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Enzo (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Mistic (SENTINEL)",
+      "Alfajer (FLEX)"
+    ],
+    "drx": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "Zest (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "guild": [
+      "Sayf (DUELIST)",
+      "Dreamas (INITIATOR)",
+      "Ro4r (CONTROLLER)",
+      "Kiles (SENTINEL)",
+      "Leo (FLEX)"
+    ],
+    "xset": [
+      "Cryocells (DUELIST)",
+      "zekken (INITIATOR)",
+      "dephh (CONTROLLER)",
+      "BCJ (SENTINEL)",
+      "AYRIN (FLEX)"
+    ],
+    "kru": [
+      "keznit (DUELIST)",
+      "NagZ (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "Klaus (SENTINEL)",
+      "delz1k (FLEX)"
+    ],
+    "leviatan": [
+      "kiNgg (DUELIST)",
+      "Shyy (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "adverso (SENTINEL)",
+      "Tacolilla (FLEX)"
+    ],
+    "northeption": [
+      "Dep (DUELIST)",
+      "crow (INITIATOR)",
+      "SugarZ3ro (CONTROLLER)",
+      "TENNN (SENTINEL)",
+      "Laz (FLEX)"
+    ]
+  },
+  "masters-tokyo-2023": {
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Leo (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Alfajer (SENTINEL)",
+      "Chronicle (FLEX)"
+    ],
+    "eg": [
+      "Demon1 (DUELIST)",
+      "Jawgemo (INITIATOR)",
+      "C0M (CONTROLLER)",
+      "Boostio (SENTINEL)",
+      "Ethan (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "something (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "nrg": [
+      "ardiis (DUELIST)",
+      "crashies (INITIATOR)",
+      "s0m (CONTROLLER)",
+      "FNS (SENTINEL)",
+      "Victor (FLEX)"
+    ],
+    "tl": [
+      "Sayf (DUELIST)",
+      "Jamppi (INITIATOR)",
+      "Redgar (CONTROLLER)",
+      "nAts (SENTINEL)",
+      "soulcas (FLEX)"
+    ],
+    "drx": [
+      "BuZz (DUELIST)",
+      "Rb (INITIATOR)",
+      "Zest (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ],
+    "t1": [
+      "BuZz (DUELIST)",
+      "Sylvan (INITIATOR)",
+      "carpe (CONTROLLER)",
+      "stax (SENTINEL)",
+      "Meteor (FLEX)"
+    ],
+    "fut": [
+      "cNed (DUELIST)",
+      "yetujey (INITIATOR)",
+      "MrFaliN (CONTROLLER)",
+      "xeus (SENTINEL)",
+      "AtaKaptan (FLEX)"
+    ],
+    "navi": [
+      "cNed (DUELIST)",
+      "Shao (INITIATOR)",
+      "ANGE1 (CONTROLLER)",
+      "Zyppan (SENTINEL)",
+      "SUYGETSU (FLEX)"
+    ],
+    "ase": [
+      "Sya1ns (DUELIST)",
+      "Keiko (INITIATOR)",
+      "Astell (CONTROLLER)",
+      "Crow (SENTINEL)",
+      "Minty (FLEX)"
+    ]
+  },
+  "masters-madrid-2024": {
+    "sentinels": [
+      "zekken (DUELIST)",
+      "Zellsis (INITIATOR)",
+      "Sacy (CONTROLLER)",
+      "TenZ (SENTINEL)",
+      "johnqt (FLEX)"
+    ],
+    "geng": [
+      "t3xture (DUELIST)",
+      "Munchkin (INITIATOR)",
+      "Karon (CONTROLLER)",
+      "Lakia (SENTINEL)",
+      "Meteor (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "something (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "karmine": [
+      "Wo0t (DUELIST)",
+      "tomaszy (INITIATOR)",
+      "Wailers (CONTROLLER)",
+      "Newt (SENTINEL)",
+      "xms (FLEX)"
+    ],
+    "loud": [
+      "aspas (DUELIST)",
+      "Less (INITIATOR)",
+      "tuyz (CONTROLLER)",
+      "Saadhak (SENTINEL)",
+      "cauanzin (FLEX)"
+    ],
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ],
+    "heretics": [
+      "Wo0t (DUELIST)",
+      "benjyfishy (INITIATOR)",
+      "Boo (CONTROLLER)",
+      "RieNs (SENTINEL)",
+      "MiniBoo (FLEX)"
+    ],
+    "fpx": [
+      "ardiis (DUELIST)",
+      "Shao (INITIATOR)",
+      "ANGE1 (CONTROLLER)",
+      "Zyppan (SENTINEL)",
+      "SUYGETSU (FLEX)"
+    ]
+  },
+  "masters-shanghai-2024": {
+    "geng": [
+      "t3xture (DUELIST)",
+      "Munchkin (INITIATOR)",
+      "Karon (CONTROLLER)",
+      "Lakia (SENTINEL)",
+      "Meteor (FLEX)"
+    ],
+    "heretics": [
+      "Wo0t (DUELIST)",
+      "benjyfishy (INITIATOR)",
+      "Boo (CONTROLLER)",
+      "RieNs (SENTINEL)",
+      "MiniBoo (FLEX)"
+    ],
+    "g2": [
+      "leaf (DUELIST)",
+      "trent (INITIATOR)",
+      "valyn (CONTROLLER)",
+      "icy (SENTINEL)",
+      "JonahP (FLEX)"
+    ],
+    "100t": [
+      "Cryo (DUELIST)",
+      "bang (INITIATOR)",
+      "Derrek (CONTROLLER)",
+      "stellar (SENTINEL)",
+      "Asuna (FLEX)"
+    ],
+    "fut": [
+      "cNed (DUELIST)",
+      "yetujey (INITIATOR)",
+      "MrFaliN (CONTROLLER)",
+      "xeus (SENTINEL)",
+      "AtaKaptan (FLEX)"
+    ],
+    "prx": [
+      "Jinggg (DUELIST)",
+      "something (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "f0rsakeN (SENTINEL)",
+      "mindfreak (FLEX)"
+    ],
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ],
+    "drx": [
+      "BuZz (DUELIST)",
+      "Flashback (INITIATOR)",
+      "BeYN (CONTROLLER)",
+      "MaKo (SENTINEL)",
+      "stax (FLEX)"
+    ],
+    "leviatan": [
+      "aspas (DUELIST)",
+      "tex (INITIATOR)",
+      "Mazino (CONTROLLER)",
+      "C0M (SENTINEL)",
+      "kiNgg (FLEX)"
+    ],
+    "fnatic": [
+      "Derke (DUELIST)",
+      "Chronicle (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "Leo (SENTINEL)",
+      "Alfajer (FLEX)"
+    ],
+    "t1": [
+      "BuZz (DUELIST)",
+      "Sylvan (INITIATOR)",
+      "carpe (CONTROLLER)",
+      "stax (SENTINEL)",
+      "Meteor (FLEX)"
+    ]
+  },
+  "masters-toronto-2025": {
+    "fnatic": [
+      "Alfajer (DUELIST)",
+      "Chronicle (INITIATOR)",
+      "Boaster (CONTROLLER)",
+      "crashies (SENTINEL)",
+      "kaajak (FLEX)"
+    ],
+    "g2": [
+      "leaf (DUELIST)",
+      "trent (INITIATOR)",
+      "valyn (CONTROLLER)",
+      "icy (SENTINEL)",
+      "JonahP (FLEX)"
+    ],
+    "geng": [
+      "t3xture (DUELIST)",
+      "Meteor (INITIATOR)",
+      "Karon (CONTROLLER)",
+      "Lakia (SENTINEL)",
+      "Munchkin (FLEX)"
+    ],
+    "prx": [
+      "f0rsakeN (DUELIST)",
+      "something (INITIATOR)",
+      "d4v41 (CONTROLLER)",
+      "mindfreak (SENTINEL)",
+      "Jinggg (FLEX)"
+    ],
+    "wolves": [
+      "Cloud (DUELIST)",
+      "westside (INITIATOR)",
+      "runneR (CONTROLLER)",
+      "nukkye (SENTINEL)",
+      "Purp0 (FLEX)"
+    ],
+    "sentinels": [
+      "zekken (DUELIST)",
+      "N4RRATE (INITIATOR)",
+      "bang (CONTROLLER)",
+      "johnqt (SENTINEL)",
+      "Zellsis (FLEX)"
+    ],
+    "rrq": [
+      "Jemkin (DUELIST)",
+      "Monyet (INITIATOR)",
+      "xffero (CONTROLLER)",
+      "Kushy (SENTINEL)",
+      "Estrella (FLEX)"
+    ],
+    "xlg": [
+      "Rarga (DUELIST)",
+      "happywei (INITIATOR)",
+      "Viva (CONTROLLER)",
+      "Midi (SENTINEL)",
+      "coconut (FLEX)"
+    ],
+    "heretics": [
+      "Wo0t (DUELIST)",
+      "benjyfishy (INITIATOR)",
+      "Boo (CONTROLLER)",
+      "RieNs (SENTINEL)",
+      "MiniBoo (FLEX)"
+    ],
+    "nrg": [
+      "brawk (DUELIST)",
+      "mada (INITIATOR)",
+      "s0m (CONTROLLER)",
+      "skuba (SENTINEL)",
+      "Ethan (FLEX)"
+    ],
+    "edg": [
+      "ZmjjKK (DUELIST)",
+      "CHICHOO (INITIATOR)",
+      "Smoggy (CONTROLLER)",
+      "Haodong (SENTINEL)",
+      "nobody (FLEX)"
+    ]
+  }
+}

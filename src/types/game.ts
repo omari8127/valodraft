@@ -1,0 +1,126 @@
+export type Region = "AMERICAS" | "EMEA" | "PACIFIC" | "CHINA";
+
+export type PlayerRole = "DUELIST" | "INITIATOR" | "CONTROLLER" | "SENTINEL" | "FLEX";
+export type SlotRole = PlayerRole | "COACH";
+export const DRAFT_ORDER: SlotRole[] = [
+  "DUELIST",
+  "INITIATOR",
+  "CONTROLLER",
+  "SENTINEL",
+  "FLEX",
+  "COACH",
+];
+
+export type Rarity = "CHAMPIONS" | "LEGENDARY" | "EPIC" | "RARE" | "COMMON";
+
+export interface Organization {
+  id: string;
+  name: string;
+  shortName: string;
+  region: Region;
+}
+
+export type TournamentSeries = "champions" | "masters";
+
+export interface Tournament {
+  id: string;
+  name: string;
+  shortName: string;
+  series: TournamentSeries;
+  year: number;
+  location?: string;
+}
+
+export interface PlayerEntry {
+  id: string;
+  name: string;
+  orgId: string;
+  tournamentId: string;
+  role: PlayerRole; // keep for backward compatibility
+  primaryRole: PlayerRole;
+  secondaryRole: PlayerRole;
+  rating: number;
+  region: Region;
+  nationality: string;
+  mostPlayedAgents?: string[];
+  agent?: string;
+}
+
+export interface CoachEntry {
+  id: string;
+  name: string;
+  orgId: string;
+  tournamentId: string;
+  rating: number;
+  region: Region;
+}
+
+export interface TeamEntry {
+  id: string; // org + tournament
+  orgId: string;
+  tournamentId: string;
+  region: Region;
+  players: PlayerEntry[]; // 5
+  coach: CoachEntry;
+  avgRating: number;
+}
+
+export type GameModeId =
+  | "champions"
+  | "masters"
+  | "mixed"
+  | "champions-2021"
+  | "champions-2022"
+  | "champions-2023"
+  | "champions-2024"
+  | "champions-2025"
+  | "masters-reykjavik-2021"
+  | "masters-berlin-2021"
+  | "masters-reykjavik-2022"
+  | "masters-copenhagen-2022"
+  | "masters-tokyo-2023"
+  | "masters-madrid-2024"
+  | "masters-shanghai-2024"
+  | "masters-toronto-2025";
+
+export interface GameMode {
+  id: GameModeId;
+  name: string;
+  subtitle: string;
+  tournamentIds: string[];
+}
+
+export interface RosterSlot {
+  role: SlotRole;
+  playerId: string | null;
+  coachId?: string | null;
+  teamEntryId: string | null;
+}
+
+export interface Roster {
+  slots: RosterSlot[];
+}
+
+export interface ChemistryBreakdown {
+  organization: number;
+  region: number;
+  nationality: number;
+  coachOrg: number;
+  coachRegion: number;
+  fullOrg: number;
+  total: number;
+}
+
+export interface SavedDynasty {
+  id: string;
+  name: string;
+  createdAt: number;
+  modeId: GameModeId;
+  rosterPlayerIds: string[];
+  coachId: string | null;
+  teamOVR: number;
+  chemistry: number;
+  trophies: string[];
+  wins: number;
+  losses: number;
+}

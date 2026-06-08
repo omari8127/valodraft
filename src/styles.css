@@ -1,0 +1,276 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ────────────────────────────────────────────────────────────────────────
+ *  VALORANT CHAMPIONS DRAFT — design system
+ *  All color tokens use oklch(). Use semantic utilities, never raw hex.
+ * ──────────────────────────────────────────────────────────────────────── */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --font-display: "Oswald", "Bebas Neue", "Impact", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Valorant palette */
+  --background: oklch(0.16 0.02 245); /* #0F1923 */
+  --foreground: oklch(0.97 0.005 250);
+  --surface: oklch(0.21 0.025 240); /* #1A2733 */
+  --surface-2: oklch(0.25 0.028 240);
+  --card: oklch(0.21 0.025 240);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.21 0.025 240);
+  --popover-foreground: oklch(0.97 0.005 250);
+
+  --primary: oklch(0.65 0.225 22); /* #FF4655 Valorant red */
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.25 0.028 240);
+  --secondary-foreground: oklch(0.97 0.005 250);
+
+  --muted: oklch(0.25 0.025 240);
+  --muted-foreground: oklch(0.68 0.02 245);
+
+  --accent: oklch(0.78 0.13 80); /* gold accent */
+  --accent-foreground: oklch(0.15 0.02 245);
+
+  --gold: oklch(0.78 0.13 80); /* #D6B36A */
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.3 0.025 240);
+  --input: oklch(0.3 0.025 240);
+  --ring: oklch(0.65 0.225 22);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 245);
+  --foreground: oklch(0.97 0.005 250);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3,
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+}
+
+/* ── Custom utilities ── */
+@utility clip-corner {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
+@utility clip-tag {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 8px 100%);
+}
+
+@utility text-stroke-primary {
+  -webkit-text-stroke: 1px var(--color-primary);
+  color: transparent;
+}
+
+/* Background FX */
+.bg-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-foreground) 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-foreground) 4%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+}
+
+.bg-radial-primary {
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in oklab, var(--color-primary) 22%, transparent) 0%,
+    transparent 60%
+  );
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+.animate-scan {
+  animation: scan 7s linear infinite;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-red {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-primary) 60%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 12px color-mix(in oklab, var(--color-primary) 0%, transparent);
+  }
+}
+.animate-pulse-red {
+  animation: pulse-red 1.6s ease-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--color-foreground) 18%, transparent) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-flash {
+  animation: flash 0.4s ease-out;
+}
+
+@keyframes tilt-3d {
+  0% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(360deg);
+  }
+}
+
+/* Role Slot Hover System */
+.role-slot {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.role-slot.hovered {
+  border: 1px solid #ff4655;
+  box-shadow: 0 0 12px rgba(255, 70, 85, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Feed Scrollbar Styling */
+.feed::-webkit-scrollbar {
+  width: 6px;
+}
+
+.feed::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.feed::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff4655, #ff9a3b, #00ffcc);
+  border-radius: 10px;
+}
+
+/* Defeat Screen Summary */
+.run-summary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.run-summary div:first-child {
+  color: #00ffcc;
+}
+
+.run-summary div:last-child {
+  color: #ff4655;
+}
