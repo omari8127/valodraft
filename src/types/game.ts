@@ -2,6 +2,15 @@ export type Region = "AMERICAS" | "EMEA" | "PACIFIC" | "CHINA";
 
 export type PlayerRole = "DUELIST" | "INITIATOR" | "CONTROLLER" | "SENTINEL" | "FLEX";
 export type SlotRole = PlayerRole | "COACH";
+
+export type CompositionMode = "STRICT" | "PRESET" | "CUSTOM";
+export type PresetType =
+  | "STANDARD"
+  | "DOUBLE_DUELIST"
+  | "DOUBLE_CONTROLLER"
+  | "DOUBLE_INITIATOR"
+  | "NO_SENTINEL";
+
 export const DRAFT_ORDER: SlotRole[] = [
   "DUELIST",
   "INITIATOR",
@@ -108,6 +117,7 @@ export interface ChemistryBreakdown {
   coachOrg: number;
   coachRegion: number;
   fullOrg: number;
+  roleBalance: number;
   total: number;
 }
 

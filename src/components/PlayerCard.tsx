@@ -13,9 +13,19 @@ interface Props {
   mini?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  isAiRec?: boolean;
 }
 
-export function PlayerCard({ entity, isCoach, onClick, compact, mini, onMouseEnter, onMouseLeave }: Props) {
+export function PlayerCard({
+  entity,
+  isCoach,
+  onClick,
+  compact,
+  mini,
+  onMouseEnter,
+  onMouseLeave,
+  isAiRec,
+}: Props) {
   const rarity = rarityFor(entity.rating);
   const meta = RARITY_META[rarity];
   const org = ORG_BY_ID[entity.orgId];
@@ -38,15 +48,20 @@ export function PlayerCard({ entity, isCoach, onClick, compact, mini, onMouseEnt
         onMouseLeave={onMouseLeave}
         whileHover={{ y: -2, scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className={`group clip-corner relative w-full overflow-hidden bg-surface border border-border ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
+        className={`group clip-corner relative w-full overflow-hidden bg-surface border ${
+          isAiRec
+            ? "border-gold/80 shadow-[0_0_12px_rgba(212,175,55,0.45)]"
+            : "border-border"
+        } ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
       >
         <div className="absolute inset-0 -translate-x-full opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
           <div className="shimmer h-full w-full opacity-20" />
         </div>
         <div className="relative p-2">
           <div className="flex items-start justify-between gap-1">
-            <div className="font-display text-sm leading-tight truncate text-foreground flex-1 min-w-0">
-              {entity.name}
+            <div className="font-display text-sm leading-tight truncate text-foreground flex-1 min-w-0 flex items-center gap-1">
+              <span>{entity.name}</span>
+              {isAiRec && <span className="text-gold text-[10px] font-sans">★</span>}
             </div>
             <div className={`font-display text-xl leading-none shrink-0 ${ratingColor}`}>
               {entity.rating}
@@ -75,7 +90,11 @@ export function PlayerCard({ entity, isCoach, onClick, compact, mini, onMouseEnt
       onMouseLeave={onMouseLeave}
       whileHover={{ y: -4, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className={`group clip-corner relative w-full overflow-hidden bg-surface border border-border ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
+      className={`group clip-corner relative w-full overflow-hidden bg-surface border ${
+        isAiRec
+          ? "border-gold shadow-[0_0_15px_rgba(212,175,55,0.5)]"
+          : "border-border"
+      } ${onClick ? "cursor-pointer" : "cursor-default"} text-left`}
     >
       {/* shimmer overlay */}
       <div className="absolute inset-0 -translate-x-full opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
@@ -88,9 +107,14 @@ export function PlayerCard({ entity, isCoach, onClick, compact, mini, onMouseEnt
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline justify-between gap-2">
             <div
-              className={`font-display ${compact ? "text-lg" : "text-lg sm:text-2xl"} truncate text-foreground`}
+              className={`font-display ${compact ? "text-lg" : "text-lg sm:text-2xl"} truncate text-foreground flex items-center gap-2`}
             >
-              {entity.name}
+              <span>{entity.name}</span>
+              {isAiRec && (
+                <span className="clip-tag px-1.5 py-0.5 text-[8px] font-sans font-bold bg-gold text-background rounded">
+                  AI REC
+                </span>
+              )}
             </div>
             <div
               className={`font-display ${compact ? "text-2xl" : "text-2xl sm:text-4xl"} leading-none ${ratingColor}`}

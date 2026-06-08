@@ -13,6 +13,7 @@ export function ChemistryPanel({ chemistry, ovr }: Props) {
     ["Coach × Org", chemistry.coachOrg],
     ["Coach × Region", chemistry.coachRegion],
     ["Full Org", chemistry.fullOrg],
+    ["Role Diversity", chemistry.roleBalance],
   ];
   return (
     <div className="clip-corner border border-border bg-surface/70 p-4 backdrop-blur">

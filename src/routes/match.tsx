@@ -11,6 +11,8 @@ import { ORG_BY_ID } from "@/data/regions";
 import { ProbabilityBar } from "@/components/match/ProbabilityBar";
 import { PlayerPanel } from "@/components/match/PlayerPanel";
 import { AgentRow } from "@/components/match/AgentRow";
+import { computeCompositionStats } from "@/lib/engine/roleBalance";
+import { useLanguage } from "@/lib/i18n";
 
 const searchSchema = z.object({ saveId: z.string().optional() });
 
@@ -27,6 +29,7 @@ export const Route = createFileRoute("/match")({
 
 function MatchPage() {
   const navigate = useNavigate();
+  const { lang, t } = useLanguage();
   const { saveId } = Route.useSearch();
   const save = useDynasty((s) => s.saves.find((x) => x.id === saveId));
   const recordWin = useDynasty((s) => s.recordWin);
@@ -39,6 +42,11 @@ function MatchPage() {
     const coach = save.coachId ? (COACH_BY_ID[save.coachId] ?? null) : null;
     return { name: "DRAFT SQUAD", players, coach };
   }, [save]);
+
+  const compStats = useMemo(() => {
+    if (!playerTeam) return null;
+    return computeCompositionStats(playerTeam.players);
+  }, [playerTeam]);
 
   const initialBracket = useMemo(() => {
     if (!save || !playerTeam) return null;
@@ -340,18 +348,35 @@ function MatchPage() {
           </div>
 
           {matchState === "READY" ? (
-            <button
-              onClick={handlePlayMatch}
-              className="w-full clip-corner bg-primary px-6 py-4 font-display text-2xl tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer animate-pulse"
-            >
-              PLAY MATCH
-            </button>
+            <div className="space-y-4">
+              {compStats && compStats.warnings.length > 0 && (
+                <div className="clip-corner border border-amber-500/40 bg-amber-500/10 p-4 text-left backdrop-blur">
+                  <div className="text-xs font-bold uppercase tracking-wider text-amber-500 mb-2 flex items-center gap-1.5">
+                    <span>⚠️ COMPOSITION WARNING</span>
+                  </div>
+                  <ul className="space-y-1 text-[11px] text-muted-foreground">
+                    {compStats.warnings.map((warn, i) => (
+                      <li key={i} className="flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                        <span>{warn}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <button
+                onClick={handlePlayMatch}
+                className="w-full clip-corner bg-primary px-6 py-4 font-display text-2xl tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer animate-pulse"
+              >
+                {t("playMatch")}
+              </button>
+            </div>
           ) : matchState === "PLAYING" ? (
             <button
               disabled
               className="w-full clip-corner bg-surface border border-border px-6 py-4 font-display text-lg tracking-widest text-muted-foreground cursor-not-allowed"
             >
-              SIMULATING...
+              {lang === "ES" ? "SIMULANDO..." : lang === "PT" ? "SIMULANDO..." : "SIMULATING..."}
             </button>
           ) : matchState === "FINISHED" ? (
             <AnimatePresence>
@@ -381,14 +406,14 @@ function MatchPage() {
                       onClick={handleNextGame}
                       className="w-full clip-corner border border-gold/60 bg-gold/20 px-5 py-4 font-display text-xl tracking-widest text-gold transition hover:bg-gold/30 cursor-pointer"
                     >
-                      NEXT GAME
+                      {t("nextGame")}
                     </button>
                   ) : (
                     <button
                       onClick={() => setMatchState("ELIMINATED")}
                       className="w-full clip-corner border border-border bg-surface px-5 py-4 font-display text-xl tracking-widest transition hover:border-primary cursor-pointer"
                     >
-                      CONTINUE
+                      {lang === "ES" ? "CONTINUAR" : lang === "PT" ? "CONTINUAR" : "CONTINUE"}
                     </button>
                   )}
                 </div>

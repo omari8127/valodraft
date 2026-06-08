@@ -1,41 +1,6 @@
 import type { CoachEntry, PlayerEntry } from "@/types/game";
 import { computeChemistry } from "./chemistry";
-
-function calculateRoleBalanceScore(players: PlayerEntry[]): number {
-  if (players.length === 0) return 0;
-  
-  const roles = ["DUELIST", "INITIATOR", "CONTROLLER", "SENTINEL", "FLEX"];
-  
-  // Find maximum matching size using simple backtracking
-  function getMaxMatching(playerIndex: number, usedRoles: Set<string>): number {
-    if (playerIndex === players.length) {
-      return usedRoles.size;
-    }
-    const p = players[playerIndex];
-    const rolesToTry = [p.primaryRole, p.secondaryRole].filter(Boolean);
-    
-    let best = usedRoles.size;
-    for (const r of rolesToTry) {
-      if (roles.includes(r) && !usedRoles.has(r)) {
-        usedRoles.add(r);
-        const res = getMaxMatching(playerIndex + 1, usedRoles);
-        if (res > best) best = res;
-        usedRoles.delete(r);
-      }
-    }
-    
-    // Also try skipping matching for this player (or choosing a duplicate role)
-    const resNoMatch = getMaxMatching(playerIndex + 1, usedRoles);
-    if (resNoMatch > best) best = resNoMatch;
-    
-    return best;
-  }
-  
-  const matchCount = getMaxMatching(0, new Set<string>());
-  const maxPossible = Math.min(players.length, 5);
-  if (maxPossible === 0) return 0;
-  return (matchCount / maxPossible) * 100;
-}
+import { calculateRoleBalanceScore } from "./roleBalance";
 
 export function computeTeamOVR(players: PlayerEntry[], coach: CoachEntry | null): number {
   if (players.length === 0) return 0;

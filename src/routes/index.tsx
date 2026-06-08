@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,16 +16,14 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type MenuItem = { to: string; label: string; desc: string; primary?: boolean };
-const MENU: MenuItem[] = [
-  { to: "/play", label: "PLAY", primary: true, desc: "Start a new draft" },
-  { to: "/database", label: "DATABASE", desc: "Browse every player & team" },
-  { to: "/collection", label: "COLLECTION", desc: "Your drafted rosters & stats" },
-  { to: "/leaderboards", label: "LEADERBOARDS", desc: "Top dynasties by OVR" },
-  { to: "/settings", label: "SETTINGS", desc: "Audio · graphics · gameplay" },
-];
-
 function Index() {
+  const { t } = useLanguage();
+
+  const MENU = [
+    { to: "/collection", label: t("collection"), desc: "Your drafted rosters & stats" },
+    { to: "/leaderboards", label: t("leaderboards"), desc: "Top dynasties by OVR" },
+  ] as const;
+
   return (
     <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4 py-12 sm:px-6 lg:py-20">
       {/* Hero */}
@@ -39,7 +38,7 @@ function Index() {
             <span className="h-1 w-1 animate-pulse rounded-full bg-primary" />
             Live draft engine · v1.0
           </div>
-          <h1 className="font-display text-5xl leading-[0.95] sm:text-7xl lg:text-8xl">
+          <h1 className="font-display text-5xl leading-[0.95] sm:text-7xl lg:text-8xl uppercase">
             Build the
             <br />
             <span className="text-primary">undefeated</span>
@@ -50,26 +49,20 @@ function Index() {
             Roll teams from every Valorant Champions and Masters era. Lock in stars, chase
             chemistry, and simulate your way to the trophy.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8">
             <Link
               to="/play"
-              className="clip-corner group relative inline-flex items-center gap-3 bg-primary px-7 py-4 font-display text-lg tracking-widest text-primary-foreground transition hover:brightness-110"
+              className="clip-corner group relative inline-flex items-center gap-3 bg-primary px-8 py-4 font-display text-lg tracking-widest text-primary-foreground transition hover:brightness-110"
             >
-              <span className="relative">START DRAFT</span>
+              <span className="relative font-bold uppercase">{t("startDraft")}</span>
               <span className="block h-2 w-2 bg-primary-foreground/80" />
-            </Link>
-            <Link
-              to="/database"
-              className="clip-corner inline-flex items-center gap-3 border border-border bg-surface/60 px-6 py-4 font-display text-sm tracking-widest backdrop-blur transition hover:border-primary hover:text-primary"
-            >
-              Browse Database
             </Link>
           </div>
         </motion.div>
       </section>
 
       {/* Menu grid */}
-      <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-3xl">
         {MENU.map((m, i) => (
           <motion.div
             key={m.to}
@@ -78,22 +71,14 @@ function Index() {
             transition={{ delay: 0.1 + i * 0.06 }}
           >
             <Link
-              to={m.to as "/play"}
-              className={`clip-corner group relative flex h-full flex-col justify-between gap-6 border bg-surface/60 p-5 backdrop-blur transition ${
-                m.primary
-                  ? "border-primary/70 hover:bg-primary/10"
-                  : "border-border hover:border-primary/60 hover:bg-surface-2/60"
-              }`}
+              to={m.to}
+              className="clip-corner group relative flex h-full flex-col justify-between gap-6 border border-border bg-surface/60 p-6 backdrop-blur transition hover:border-primary/60 hover:bg-surface-2/60"
             >
-              <div
-                className={`text-[10px] font-bold uppercase tracking-[0.3em] ${
-                  m.primary ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
+              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">
                 // {String(i + 1).padStart(2, "0")}
               </div>
               <div>
-                <div className="font-display text-2xl">{m.label}</div>
+                <div className="font-display text-2xl uppercase tracking-wider">{m.label}</div>
                 <div className="mt-1 text-xs text-muted-foreground">{m.desc}</div>
               </div>
             </Link>

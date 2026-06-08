@@ -1,9 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { useDraft } from "@/lib/store/draft";
-import { DRAFT_ORDER } from "@/types/game";
-import type { CoachEntry, PlayerEntry, TeamEntry } from "@/types/game";
+import { useDraft, canPickPlayer, getAIRecPlayer } from "@/lib/store/draft";
+import type { CoachEntry, PlayerEntry, TeamEntry, CompositionMode } from "@/types/game";
 import { RosterPanel } from "@/components/RosterPanel";
 import { ChemistryPanel } from "@/components/ChemistryPanel";
 import { TeamRoll } from "@/components/TeamRoll";
@@ -14,6 +13,7 @@ import { computeTeamOVR } from "@/lib/engine/ovr";
 import { ORG_BY_ID } from "@/data/regions";
 import { TOURNAMENT_BY_ID } from "@/data/tournaments";
 import { useDynasty } from "@/lib/store/dynasty";
+import { computeCompositionStats } from "@/lib/engine/roleBalance";
 import { Flame } from "lucide-react";
 
 export const Route = createFileRoute("/draft")({
@@ -29,6 +29,65 @@ export const Route = createFileRoute("/draft")({
   component: DraftPage,
 });
 
+function RosterCompositionStats({
+  players,
+  compositionMode,
+}: {
+  players: PlayerEntry[];
+  compositionMode: CompositionMode;
+}) {
+  const stats = computeCompositionStats(players);
+  const isUnbalanced = stats.sentinels === 0 || stats.controllers === 0 || stats.initiators === 0;
+
+  return (
+    <div className="clip-corner border border-border bg-surface/70 p-4 backdrop-blur space-y-4">
+      <div>
+        <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">
+          Composition Ratios ({compositionMode})
+        </div>
+        
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
+          <div className="flex justify-between border-b border-border/30 pb-1">
+            <span className="text-muted-foreground">Duelists:</span>
+            <span className={`font-semibold ${stats.duelists >= 2 ? "text-primary" : "text-foreground"}`}>
+              {stats.duelists}{compositionMode === "CUSTOM" ? "/2" : ""}
+            </span>
+          </div>
+          <div className="flex justify-between border-b border-border/30 pb-1">
+            <span className="text-muted-foreground">Controllers:</span>
+            <span className={`font-semibold ${stats.controllers >= 2 ? "text-primary" : "text-foreground"}`}>
+              {stats.controllers}{compositionMode === "CUSTOM" ? "/2" : ""}
+            </span>
+          </div>
+          <div className="flex justify-between border-b border-border/30 pb-1">
+            <span className="text-muted-foreground">Initiators:</span>
+            <span className="font-semibold text-foreground">
+              {stats.initiators}
+            </span>
+          </div>
+          <div className="flex justify-between border-b border-border/30 pb-1">
+            <span className="text-muted-foreground">Sentinels:</span>
+            <span className="font-semibold text-foreground">
+              {stats.sentinels}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {isUnbalanced && players.length > 0 && (
+        <div className="border border-red-500/30 bg-red-500/10 p-3 rounded clip-corner">
+          <div className="text-[10px] font-bold uppercase text-red-500 tracking-wider flex items-center gap-1">
+            ⚠️ Composition Warning
+          </div>
+          <div className="text-[10px] text-muted-foreground/90 mt-1 leading-normal">
+            Unbalanced composition may reduce performance (-TSS penalties will apply in match simulation).
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function DraftPage() {
   const navigate = useNavigate();
   const state = useDraft();
@@ -37,7 +96,7 @@ function DraftPage() {
   const [hoveredRole, setHoveredRole] = useState<string | null>(null);
 
   const currentSlot = state.roster.slots[state.currentSlotIdx];
-  const isDone = state.currentSlotIdx >= DRAFT_ORDER.length;
+  const isDone = state.currentSlotIdx >= state.roster.slots.length;
 
   // Compute live OVR/chem
   const draftedPlayers: PlayerEntry[] = state.roster.slots
@@ -87,7 +146,6 @@ function DraftPage() {
   }
 
   function finishAndGoMatch() {
-    // Save dynasty
     const save = {
       id: `dyn-${Date.now()}`,
       name: `Roster ${new Date().toLocaleDateString()}`,
@@ -112,13 +170,13 @@ function DraftPage() {
         <div>
           <h1 className="font-display text-xl sm:text-3xl leading-none">WORLDS CHALLENGE</h1>
           <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary mt-1">
-            DRAFTEANDO LEYENDAS
+            DRAFTEANDO LEYENDAS ({state.compositionMode})
           </div>
         </div>
         <div className="clip-corner bg-surface border border-border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider">
           Alineación:{" "}
           <span className="font-display text-base text-gold">
-            {draftedPlayers.length + (drafted_coach ? 1 : 0)}/6
+            {draftedPlayers.length + (drafted_coach ? 1 : 0)}/{state.roster.slots.length}
           </span>
         </div>
       </div>
@@ -144,46 +202,8 @@ function DraftPage() {
           </div>
         </div>
 
-        {/* 2. BONUS DE SINERGIAS */}
-        <div className="clip-corner border border-border bg-surface/70 p-5 backdrop-blur">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-foreground">
-              <span className="text-gold">⭐</span> BONUS DE SINERGIAS
-            </div>
-            <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground bg-background/50 border border-border px-2.5 py-1 rounded">
-              ℹ️ VER REGLAS DE QUÍMICA
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { label: "MISMA REGIÓN", value: chemistry.region, sub: "+2 por par" },
-              { label: "MISMO ROSTER", value: chemistry.organization, sub: "+3 por par" },
-              { label: "MISMA NACIONALIDAD", value: chemistry.nationality, sub: "+1 por par" },
-              { label: "EQUIPO HISTÓRICO", value: chemistry.fullOrg, sub: "+10 completo" },
-              {
-                label: "COACH BONUS",
-                value: chemistry.coachOrg + chemistry.coachRegion,
-                sub: "+2 Org / +1 Reg",
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="clip-corner border border-border/60 bg-background/40 p-3 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground truncate">
-                    {item.label}
-                  </div>
-                  <div className="mt-2 font-display text-2xl text-gold">+{item.value}</div>
-                </div>
-                <div className="mt-1 text-[8px] font-medium uppercase tracking-widest text-muted-foreground/60">
-                  {item.sub}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* 2. Composition Ratios & Warns */}
+        <RosterCompositionStats players={draftedPlayers} compositionMode={state.compositionMode} />
 
         {/* 3. TABS (Spin de campeones | Mi Roster) */}
         <div className="grid grid-cols-2 border border-border bg-surface/40 p-1 clip-corner">
@@ -205,7 +225,7 @@ function DraftPage() {
                 : "text-foreground hover:bg-surface-2"
             }`}
           >
-            Mi Roster ({draftedPlayers.length + (drafted_coach ? 1 : 0)}/6) 🛡️
+            Mi Roster ({draftedPlayers.length + (drafted_coach ? 1 : 0)}/{state.roster.slots.length}) 🛡️
           </button>
         </div>
 
@@ -346,14 +366,16 @@ function DraftPage() {
 
           <aside className="space-y-4">
             <ChemistryPanel chemistry={chemistry} ovr={ovr} />
+            <RosterCompositionStats players={draftedPlayers} compositionMode={state.compositionMode} />
+            
             <div className="clip-corner border border-border bg-surface/60 p-4">
               <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                 Draft order
               </div>
               <ol className="mt-2 space-y-1">
-                {DRAFT_ORDER.map((r, i) => (
+                {state.roster.slots.map((s, i) => (
                   <li
-                    key={r}
+                    key={i}
                     className={`flex items-center justify-between text-xs ${
                       i === state.currentSlotIdx
                         ? "text-primary"
@@ -363,7 +385,7 @@ function DraftPage() {
                     }`}
                   >
                     <span>
-                      {String(i + 1).padStart(2, "0")} · {r}
+                      {String(i + 1).padStart(2, "0")} · {s.role}
                     </span>
                     {i === state.currentSlotIdx && <span>← NOW</span>}
                   </li>
@@ -385,7 +407,7 @@ function TeamExpansion({
   onHoverRole,
 }: {
   team: TeamEntry;
-  role: (typeof DRAFT_ORDER)[number];
+  role: string;
   onPickPlayer: (p: PlayerEntry) => void;
   onPickCoach: (c: CoachEntry) => void;
   onHoverRole?: (role: string | null) => void;
@@ -394,13 +416,24 @@ function TeamExpansion({
   const tour = TOURNAMENT_BY_ID[team.tournamentId];
   const state = useDraft();
 
+  const aiRec = getAIRecPlayer(team, state.roster, state.compositionMode, state.presetType);
+
+  const handleAIPick = () => {
+    if (!aiRec) return;
+    if ("role" in aiRec) {
+      onPickPlayer(aiRec as PlayerEntry);
+    } else {
+      onPickCoach(aiRec as CoachEntry);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       className="clip-corner border border-primary/60 bg-surface/70 p-4 sm:p-6 backdrop-blur"
     >
-      <div className="flex items-baseline justify-between mb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div>
           <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
             // {org?.name} {tour?.shortName} — Elige un miembro
@@ -409,15 +442,23 @@ function TeamExpansion({
             {org?.region} · {tour?.year} · <span className="text-gold">OVR {team.avgRating}</span>
           </div>
         </div>
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground hidden sm:block">
-          Slot: <span className="text-primary">{role}</span>
-        </div>
+        
+        {/* AI Auto-Pick CTA */}
+        {aiRec && (
+          <button
+            onClick={handleAIPick}
+            className="clip-corner flex items-center gap-1.5 border border-gold bg-gold/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-gold hover:bg-gold hover:text-background transition cursor-pointer"
+          >
+            🤖 AI Auto-Pick
+          </button>
+        )}
       </div>
 
       {/* All 6 members in a 3-col mini grid */}
       <div className="grid grid-cols-3 gap-2">
         {team.players.map((p) => {
-          const disabled = state.lockedRoles.includes(p.role);
+          const disabled = !canPickPlayer(p, state.roster, state.compositionMode, state.presetType);
+          const isAiRec = aiRec?.id === p.id;
           return (
             <div
               key={p.id}
@@ -426,6 +467,7 @@ function TeamExpansion({
               <PlayerCard
                 entity={p}
                 mini
+                isAiRec={isAiRec}
                 onClick={disabled ? undefined : () => onPickPlayer(p)}
                 onMouseEnter={() => onHoverRole?.(p.role)}
                 onMouseLeave={() => onHoverRole?.(null)}
@@ -434,7 +476,9 @@ function TeamExpansion({
           );
         })}
         {(() => {
-          const disabled = state.lockedRoles.includes("COACH");
+          const isCoachSlot = role === "COACH";
+          const disabled = !isCoachSlot;
+          const isAiRec = aiRec?.id === team.coach.id;
           return (
             <div
               key={team.coach.id}
@@ -444,6 +488,7 @@ function TeamExpansion({
                 entity={team.coach}
                 isCoach
                 mini
+                isAiRec={isAiRec}
                 onClick={disabled ? undefined : () => onPickCoach(team.coach)}
                 onMouseEnter={() => onHoverRole?.("COACH")}
                 onMouseLeave={() => onHoverRole?.(null)}

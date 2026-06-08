@@ -56,7 +56,7 @@ export function RosterPanel({ roster, currentIdx, hoveredRole }: Props) {
             ) : (
               <>
                 <div className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                  {slot.role}
+                  {slot.role === "FLEX" ? `SLOT ${i + 1} (FLEX)` : slot.role}
                 </div>
                 <div className="mt-3 font-display text-sm text-muted-foreground">
                   {isCurrent ? "ON THE CLOCK" : "Empty"}

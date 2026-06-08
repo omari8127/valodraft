@@ -1,4 +1,5 @@
 import type { ChemistryBreakdown, CoachEntry, PlayerEntry } from "@/types/game";
+import { calculateRoleBalanceScore } from "./roleBalance";
 
 export function computeChemistry(
   players: PlayerEntry[],
@@ -57,7 +58,11 @@ export function computeChemistry(
     }
   }
 
-  const total = organization + region + nationality + coachOrg + coachRegion + fullOrg;
+  // 4. Role Balance Diversity bonus (+10 if team covers all 5 roles)
+  const hasAllRoles = calculateRoleBalanceScore(players) === 100;
+  const roleBalance = hasAllRoles ? 10 : 0;
+
+  const total = organization + region + nationality + coachOrg + coachRegion + fullOrg + roleBalance;
 
   return {
     organization,
@@ -66,6 +71,7 @@ export function computeChemistry(
     coachOrg,
     coachRegion,
     fullOrg,
+    roleBalance,
     total,
   };
 }

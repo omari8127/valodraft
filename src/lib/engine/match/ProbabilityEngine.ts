@@ -1,6 +1,7 @@
 import type { MatchTeam } from "./MatchEngine";
 import { computeTeamOVR } from "../ovr";
 import type { GameMap } from "@/data/maps";
+import { computeCompositionStats } from "../roleBalance";
 
 export function calculateTSS(team: MatchTeam, map: GameMap): number {
   // Team Strength Score (TSS) starts with the Team OVR
@@ -13,7 +14,10 @@ export function calculateTSS(team: MatchTeam, map: GameMap): number {
     mapBonus = (map.bonusPct ?? 0) * 10; 
   }
 
-  return ovr + mapBonus;
+  // Calculate flat penalties for missing roles
+  const compStats = computeCompositionStats(team.players);
+
+  return ovr + mapBonus - compStats.penalty;
 }
 
 export function calculateWinProbability(tssA: number, tssB: number): number {
