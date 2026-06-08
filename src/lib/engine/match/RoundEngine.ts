@@ -15,9 +15,29 @@ export class RoundEngine {
     teamB: MatchTeam,
     map: GameMap,
     momentum: MomentumSystem,
+    round: number
   ): RoundResult {
-    const tssA = calculateTSS(teamA, map);
-    const tssB = calculateTSS(teamB, map);
+    // 1. Determine attack/defense roles based on round number
+    let isTeamADefense = false;
+    let isTeamBDefense = false;
+
+    if (round <= 12) {
+      // First half: Team A Attacks, Team B Defends
+      isTeamBDefense = true;
+    } else if (round <= 24) {
+      // Second half: Swap sides
+      isTeamADefense = true;
+    } else {
+      // Overtime: alternate sides (round 25, 27... Team A attacks; round 26, 28... Team A defends)
+      if (round % 2 === 1) {
+        isTeamBDefense = true;
+      } else {
+        isTeamADefense = true;
+      }
+    }
+
+    const tssA = calculateTSS(teamA, map, isTeamADefense);
+    const tssB = calculateTSS(teamB, map, isTeamBDefense);
 
     // Apply Momentum
     const bonus = momentum.getBonus();
@@ -36,7 +56,7 @@ export class RoundEngine {
     const winner = roll <= finalProbA ? "A" : "B";
 
     // Clutch detection:
-    // Clutches are extremely rare. High improbability of winning or 3% chance.
+    // Clutches are rare. High improbability of winning or 3% chance.
     let isClutch = false;
     const winnerProb = winner === "A" ? finalProbA : 1 - finalProbA;
     if (winnerProb < 0.35 || Math.random() < 0.03) {

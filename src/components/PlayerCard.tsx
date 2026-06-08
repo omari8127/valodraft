@@ -46,8 +46,8 @@ export function PlayerCard({
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        whileHover={{ y: -2, scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
+        whileHover={onClick ? { y: -2, scale: 1.03 } : {}}
+        whileTap={onClick ? { scale: 0.97 } : {}}
         className={`group clip-corner relative w-full overflow-hidden bg-surface border ${
           isAiRec
             ? "border-gold/80 shadow-[0_0_12px_rgba(212,175,55,0.45)]"
@@ -69,7 +69,7 @@ export function PlayerCard({
           </div>
           <div className="mt-1 flex flex-wrap gap-0.5">
             <span
-              className={`clip-tag px-1 py-px text-[8px] font-bold uppercase tracking-wide bg-background/80 ${ratingColor}`}
+              className="clip-tag px-1.5 py-px text-[8px] font-bold uppercase tracking-wide bg-background/80 text-white border border-white/10"
             >
               {isCoach ? "COACH" : (entity as PlayerEntry).role}
             </span>
@@ -88,8 +88,8 @@ export function PlayerCard({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      whileHover={{ y: -4, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={onClick ? { y: -4, scale: 1.02 } : {}}
+      whileTap={onClick ? { scale: 0.98 } : {}}
       className={`group clip-corner relative w-full overflow-hidden bg-surface border ${
         isAiRec
           ? "border-gold shadow-[0_0_15px_rgba(212,175,55,0.5)]"
@@ -130,7 +130,7 @@ export function PlayerCard({
               {tournament?.shortName ?? entity.tournamentId}
             </span>
             <span className="rounded bg-background/60 px-1 sm:px-1.5 py-0.5">{entity.region}</span>
-            <span className={`clip-tag px-1.5 sm:px-2 py-0.5 ${ratingColor} bg-background/80`}>
+            <span className="clip-tag px-2 py-0.5 bg-background/80 text-white border border-white/10">
               {isCoach ? "COACH" : (entity as PlayerEntry).role}
             </span>
           </div>

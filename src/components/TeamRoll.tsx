@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { SlotRole, TeamEntry } from "@/types/game";
 import { ORG_BY_ID } from "@/data/regions";
 import { TOURNAMENT_BY_ID } from "@/data/tournaments";
-import { availableTeamsForRole } from "@/lib/store/draft";
+import { useDraft } from "@/lib/store/draft";
 
 interface Props {
   /** All teams in the mode pool */
@@ -30,11 +30,17 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
   const START_INDEX = 10;
   const TARGET_INDEX = 35;
 
-  const available = useMemo(
-    () => availableTeamsForRole(pool, locked, role, lockedRoles),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+  const available = useMemo(() => {
+    return pool.filter((t) => {
+      if (locked.has(t.id)) return false;
+      if (role === "COACH") return true;
+      return t.players.some((p) => {
+        const draftMode = useDraft.getState().draftMode;
+        if (draftMode === "OPEN" || role === "FLEX") return true;
+        return p.primaryRole === role;
+      });
+    });
+  }, [pool, locked, role]);
 
   // Decoys are purely cosmetic — only selectedTeam matters for the draft.
   // We build the reel array once at mount (ref so it never changes).
@@ -67,7 +73,7 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
       selectedTeam.id,
     );
   }
-  console.log("[Roll] Visual target:", selectedTeam.orgId, selectedTeam.tournamentId);
+  console.log("[Roll] Visual target:", selectedTeam.displayName);
 
   useEffect(() => {
     const t1 = setTimeout(() => {
@@ -147,10 +153,7 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
                   Selected
                 </div>
                 <div className="font-display text-3xl">
-                  {ORG_BY_ID[selectedTeam.orgId]?.name} ·{" "}
-                  <span className="text-primary">
-                    {TOURNAMENT_BY_ID[selectedTeam.tournamentId]?.shortName}
-                  </span>
+                  {selectedTeam.displayName}
                 </div>
               </div>
               <div className="font-display text-5xl text-gold">{selectedTeam.avgRating}</div>

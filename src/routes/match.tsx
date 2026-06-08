@@ -3,6 +3,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import { z } from "zod";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDynasty } from "@/lib/store/dynasty";
+import type { PlayerEntry } from "@/types/game";
 import { PLAYER_BY_ID, COACH_BY_ID, TEAM_ENTRIES } from "@/data/generate";
 import { GAME_MODE_BY_ID } from "@/data/tournaments";
 import { MatchEngine, type MatchEvent, type MatchTeam, type MatchResult } from "@/lib/engine/match";
@@ -13,6 +14,8 @@ import { PlayerPanel } from "@/components/match/PlayerPanel";
 import { AgentRow } from "@/components/match/AgentRow";
 import { computeCompositionStats } from "@/lib/engine/roleBalance";
 import { useLanguage } from "@/lib/i18n";
+import { useProgression, getUnlockedYears } from "@/lib/store/progression";
+import { Award, Flame, X, RefreshCw, Trophy } from "lucide-react";
 
 const searchSchema = z.object({ saveId: z.string().optional() });
 
@@ -36,9 +39,25 @@ function MatchPage() {
   const recordLoss = useDynasty((s) => s.recordLoss);
   const addTrophy = useDynasty((s) => s.addTrophy);
 
+  // Progression Store Actions
+  const recordMatchResult = useProgression((s) => s.recordMatchResult);
+  const rankedActive = useProgression((s) => s.rankedActive);
+
+  // Rewards state
+  const [rewards, setRewards] = useState<{ mmrChange: number; xpChange: number; leveledUp: boolean } | null>(null);
+  const [showReplayModal, setShowReplayModal] = useState(false);
+
   const playerTeam: MatchTeam | null = useMemo(() => {
     if (!save) return null;
-    const players = save.rosterPlayerIds.map((id) => PLAYER_BY_ID[id]).filter(Boolean);
+    // Look up players and preserve their form modifiers from the draft
+    const players = save.rosterPlayerIds
+      .map((id) => {
+        const p = PLAYER_BY_ID[id];
+        if (!p) return null;
+        const form = save.playerForms?.[id] ?? 0;
+        return { ...p, form };
+      })
+      .filter(Boolean) as PlayerEntry[];
     const coach = save.coachId ? (COACH_BY_ID[save.coachId] ?? null) : null;
     return { name: "DRAFT SQUAD", players, coach };
   }, [save]);
@@ -84,10 +103,13 @@ function MatchPage() {
   const currentBracketRound = bracket[currentRoundIdx];
   const allDone = bracket[totalRounds - 1]?.[0]?.winner;
   const isChampion = allDone === playerTeam;
-  
+
   // Find player's match in this round
   const userMatch = currentBracketRound?.find(m => m.teamA === playerTeam || m.teamB === playerTeam);
   const isEliminated = !isChampion && !userMatch && currentRoundIdx > 0;
+
+  const opponentTeam = userMatch?.teamA === playerTeam ? userMatch?.teamB : userMatch?.teamA;
+  const isPlayerTeamA = userMatch?.teamA === playerTeam;
 
   // Initialize the match if it hasn't started
   if (userMatch && !userMatch.result && !currentMatchResult && userMatch.teamA && userMatch.teamB) {
@@ -122,6 +144,15 @@ function MatchPage() {
     };
   }, [matchState, currentMatchResult]);
 
+  // Trigger MMR & XP rewards on match completion
+  useEffect(() => {
+    if (matchState === "FINISHED" && currentMatchResult) {
+      const won = (currentMatchResult.winner === "A" && isPlayerTeamA) || (currentMatchResult.winner === "B" && !isPlayerTeamA);
+      const res = recordMatchResult(won);
+      setRewards(res);
+    }
+  }, [matchState, currentMatchResult, isPlayerTeamA, recordMatchResult]);
+
   const handlePlayMatch = () => {
     setMatchState("PLAYING");
   };
@@ -134,15 +165,16 @@ function MatchPage() {
     // Save result into the bracket
     userMatch.result = currentMatchResult;
     userMatch.winner = currentMatchResult.winner === "A" ? userMatch.teamA : userMatch.teamB;
-    
+
     // Simulate the rest of the matches in this round
     const nextBracket = simulateRound(bracket, currentRoundIdx);
     setBracket(nextBracket);
-    
+
     // Reset match state
     setCurrentMatchResult(null);
+    setRewards(null);
     setDisplayedRoundCount(0);
-    
+
     if (currentRoundIdx + 1 < nextBracket.length) {
       setCurrentRoundIdx(currentRoundIdx + 1);
       setMatchState("READY");
@@ -163,7 +195,9 @@ function MatchPage() {
   if (isChampion) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-20 text-center">
-        <h1 className="font-display text-6xl text-gold mb-4">🏆 CHAMPIONS 🏆</h1>
+        <h1 className="font-display text-6xl text-gold mb-4 flex justify-center items-center gap-2">
+          <Trophy className="w-14 h-14 text-gold" /> CHAMPIONS 🏆
+        </h1>
         <p className="text-muted-foreground mb-8">You have conquered the tournament!</p>
         <Link
           to="/play"
@@ -189,7 +223,19 @@ function MatchPage() {
           ELIMINATED — {placement}
         </h1>
         <p className="text-muted-foreground mb-8">Your run ends here. Better luck next time.</p>
-        
+
+        {rewards && (
+          <div className="clip-corner border border-red-500 bg-red-500/10 p-5 mb-6 text-center w-full max-w-sm mx-auto">
+            <div className="font-display text-lg text-red-400 uppercase tracking-wider">Rewards & Rating Update</div>
+            <div className="mt-2 flex justify-center gap-6 font-bold text-sm">
+              {rankedActive && (
+                <span className="text-red-400">MMR {rewards.mmrChange >= 0 ? `+${rewards.mmrChange}` : rewards.mmrChange}</span>
+              )}
+              <span className="text-slate-300">XP +{rewards.xpChange}</span>
+            </div>
+          </div>
+        )}
+
         <div className="clip-corner border border-border bg-surface/70 p-6 mb-8 text-left">
           <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-4 border-b border-border/40 pb-2">
             Tournament Run
@@ -222,7 +268,7 @@ function MatchPage() {
 
         <button
           onClick={handleLoss}
-          className="clip-corner mt-4 inline-block border border-border bg-surface px-8 py-4 font-display text-xl tracking-widest transition hover:border-primary"
+          className="clip-corner mt-4 inline-block border border-border bg-surface px-8 py-4 font-display text-xl tracking-widest transition hover:border-primary cursor-pointer"
         >
           NEW DRAFT
         </button>
@@ -230,26 +276,21 @@ function MatchPage() {
     );
   }
 
-  if (!userMatch || !userMatch.teamA || !userMatch.teamB) {
+  if (!userMatch || !userMatch.teamA || !userMatch.teamB || !opponentTeam) {
     return <div>Loading match...</div>;
   }
 
-  const opponentTeam = userMatch.teamA === playerTeam ? userMatch.teamB : userMatch.teamA;
-  const isPlayerTeamA = userMatch.teamA === playerTeam;
-
   const displayedEvents = currentMatchResult?.events.slice(0, displayedRoundCount) || [];
   const current = displayedEvents[displayedEvents.length - 1];
-  
-  // To limit the events shown in the UI feed:
+
+  // Limit events shown in live UI feed
   const isCurrentlyOvertime = displayedRoundCount > 24;
   const MAX_EVENTS = isCurrentlyOvertime ? 14 : 10;
   const recentEvents = displayedEvents.slice(-MAX_EVENTS);
-  
-  // To keep playerTeam on the left in UI, we map scores correctly
+
   const scoreUser = isPlayerTeamA ? (current?.scoreA ?? 0) : (current?.scoreB ?? 0);
   const scoreOpponent = isPlayerTeamA ? (current?.scoreB ?? 0) : (current?.scoreA ?? 0);
-  
-  // Prob is mapped to Player team
+
   const currentProbA = current ? (isPlayerTeamA ? current.probA : 1 - current.probA) : 0.5;
 
   const isMatchFinished = currentMatchResult && displayedRoundCount >= currentMatchResult.events.length;
@@ -265,7 +306,7 @@ function MatchPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column: Match Status & Player Panel */}
+        {/* Left Column: Scoreboard, Prob bar, & Overview */}
         <div className="lg:col-span-2 space-y-6">
           {/* Scoreboard */}
           <div className="clip-corner border border-border bg-surface/80 p-6 backdrop-blur flex items-center justify-between">
@@ -275,14 +316,14 @@ function MatchPage() {
                 {isMatchFinished ? "FINAL SCORE" : "MR13"}
               </div>
               <div className="flex items-baseline justify-center gap-6 font-display text-7xl">
-                <span className={scoreUser > scoreOpponent ? "text-green-500" : (scoreUser < scoreOpponent ? "text-red-500" : "")}>{scoreUser}</span>
+                <span className={scoreUser > scoreOpponent ? "text-green-500 animate-none" : (scoreUser < scoreOpponent ? "text-red-500 animate-none" : "")}>{scoreUser}</span>
                 <span className="text-muted-foreground/40 text-4xl">:</span>
-                <span className={scoreOpponent > scoreUser ? "text-green-500" : (scoreOpponent < scoreUser ? "text-red-500" : "")}>{scoreOpponent}</span>
+                <span className={scoreOpponent > scoreUser ? "text-green-500 animate-none" : (scoreOpponent < scoreUser ? "text-red-500 animate-none" : "")}>{scoreOpponent}</span>
               </div>
             </div>
             <TeamCard
               label={opponentTeam.name}
-              subtitle={`${ORG_BY_ID[opponentTeam.players[0]?.orgId ?? ""]?.region ?? ""}`}
+              subtitle="AWAY OPPONENT"
               side="right"
             />
           </div>
@@ -301,7 +342,7 @@ function MatchPage() {
           </div>
         </div>
 
-        {/* Right Column: Live Feed & End Match */}
+        {/* Right Column: Live Feed & End Match Controls */}
         <div className="space-y-6">
           <div className="clip-corner border border-border bg-surface/80 p-5 backdrop-blur h-[420px] flex flex-col">
             <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-3">
@@ -366,7 +407,7 @@ function MatchPage() {
               )}
               <button
                 onClick={handlePlayMatch}
-                className="w-full clip-corner bg-primary px-6 py-4 font-display text-2xl tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer animate-pulse"
+                className="w-full clip-corner bg-primary px-6 py-4 font-display text-2xl tracking-widest text-primary-foreground transition hover:brightness-110 cursor-pointer animate-pulse font-bold"
               >
                 {t("playMatch")}
               </button>
@@ -376,44 +417,76 @@ function MatchPage() {
               disabled
               className="w-full clip-corner bg-surface border border-border px-6 py-4 font-display text-lg tracking-widest text-muted-foreground cursor-not-allowed"
             >
-              {lang === "ES" ? "SIMULANDO..." : lang === "PT" ? "SIMULANDO..." : "SIMULATING..."}
+              {lang === "ES" ? "SIMULANDO..." : "SIMULATING..."}
             </button>
           ) : matchState === "FINISHED" ? (
             <AnimatePresence>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`clip-corner border p-6 backdrop-blur ${
+                className={`clip-corner border p-5 backdrop-blur space-y-4 ${
                   userWon
                     ? "border-green-500/60 bg-green-500/10"
                     : "border-red-500/60 bg-red-500/10"
                 }`}
               >
-                <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                  Match result
-                </div>
-                <div
-                  className={`mt-1 font-display text-4xl ${
-                    userWon ? "text-green-500" : "text-red-500"
-                  }`}
-                >
-                  {userWon ? "VICTORY" : "DEFEAT"}
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    Match result
+                  </div>
+                  <div
+                    className={`font-display text-4xl ${
+                      userWon ? "text-green-500" : "text-red-500"
+                    }`}
+                  >
+                    {userWon ? "VICTORY" : "DEFEAT"}
+                  </div>
                 </div>
 
-                <div className="mt-6 flex flex-wrap gap-3">
+                {/* Rewards UI */}
+                {rewards && (
+                  <div className="bg-background/60 p-3 rounded border border-border/40 clip-corner text-xs space-y-2">
+                    <div className="font-semibold text-slate-300">Match Rewards & XP Update</div>
+                    <div className="flex gap-4 font-bold">
+                      {rankedActive && (
+                        <span className={userWon ? "text-green-400" : "text-red-400"}>
+                          MMR {rewards.mmrChange >= 0 ? `+${rewards.mmrChange}` : rewards.mmrChange}
+                        </span>
+                      )}
+                      <span className="text-primary">XP +{rewards.xpChange}</span>
+                    </div>
+
+                    {/* Level Up Announcement */}
+                    {rewards.leveledUp && (
+                      <div className="bg-gold/15 text-gold border border-gold/40 p-2 rounded clip-corner font-bold text-[11px] animate-bounce mt-2">
+                        🎉 LEVEL UP! You reached Level {useProgression.getState().level}! Unlocked year {2020 + useProgression.getState().level} rosters!
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Logs & Next buttons */}
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => setShowReplayModal(true)}
+                    className="w-full clip-corner border border-primary/60 bg-primary/5 hover:bg-primary/15 text-primary py-3 text-xs font-bold uppercase tracking-wider transition cursor-pointer"
+                  >
+                    📝 View Round Replay Logs
+                  </button>
+
                   {userWon ? (
                     <button
                       onClick={handleNextGame}
-                      className="w-full clip-corner border border-gold/60 bg-gold/20 px-5 py-4 font-display text-xl tracking-widest text-gold transition hover:bg-gold/30 cursor-pointer"
+                      className="w-full clip-corner border border-gold/60 bg-gold/20 px-5 py-3.5 font-display text-xl tracking-widest text-gold transition hover:bg-gold/30 cursor-pointer font-bold"
                     >
                       {t("nextGame")}
                     </button>
                   ) : (
                     <button
                       onClick={() => setMatchState("ELIMINATED")}
-                      className="w-full clip-corner border border-border bg-surface px-5 py-4 font-display text-xl tracking-widest transition hover:border-primary cursor-pointer"
+                      className="w-full clip-corner border border-border bg-surface px-5 py-3.5 font-display text-xl tracking-widest transition hover:border-primary cursor-pointer font-bold"
                     >
-                      {lang === "ES" ? "CONTINUAR" : lang === "PT" ? "CONTINUAR" : "CONTINUE"}
+                      {lang === "ES" ? "CONTINUAR" : "CONTINUE"}
                     </button>
                   )}
                 </div>
@@ -422,6 +495,89 @@ function MatchPage() {
           ) : null}
         </div>
       </div>
+
+      {/* DETAILED PLAY-BY-PLAY ROUND REPLAY MODAL */}
+      <AnimatePresence>
+        {showReplayModal && currentMatchResult && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="clip-corner border border-border bg-surface w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden"
+            >
+              {/* Modal Header */}
+              <div className="p-4 border-b border-border/50 flex justify-between items-center bg-background/50">
+                <div>
+                  <h3 className="font-display text-lg text-primary flex items-center gap-1.5 uppercase tracking-wide">
+                    📝 Match Replay Logs
+                  </h3>
+                  <p className="text-[10px] text-muted-foreground mt-0.5">
+                    {playerTeam.name} vs {opponentTeam.name} · Map: {currentMatchResult.mapName}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowReplayModal(false)}
+                  className="p-1 text-muted-foreground hover:text-white border border-border/50 bg-background/30 rounded clip-corner transition cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Scrollable Content */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-background/25">
+                {currentMatchResult.events.map((e) => {
+                  const isWinEvent = (e.winner === "A" && isPlayerTeamA) || (e.winner === "B" && !isPlayerTeamA);
+                  return (
+                    <div
+                      key={e.round}
+                      className={`border-l-4 p-3 bg-background/40 flex flex-col gap-1 rounded text-sm transition ${
+                        isWinEvent
+                          ? "border-green-500 bg-green-500/5 hover:bg-green-500/10"
+                          : "border-red-500 bg-red-500/5 hover:bg-red-500/10"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center text-[10px] font-bold text-muted-foreground uppercase">
+                        <span className="flex items-center gap-2">
+                          <span className="text-primary font-display">Round {e.round}</span>
+                          {e.type !== "ROUND" && (
+                            <span
+                              className={`px-1.5 py-0.2 rounded text-[8px] tracking-wide font-mono ${
+                                isWinEvent
+                                  ? "bg-green-500/20 text-green-400"
+                                  : "bg-red-500/20 text-red-400"
+                              }`}
+                            >
+                              {e.type.replace("_", " ")}
+                            </span>
+                          )}
+                          {e.agent && <AgentRow agent={e.agent} />}
+                        </span>
+                        <span className="font-mono text-foreground/80">
+                          Score: {isPlayerTeamA ? e.scoreA : e.scoreB} - {isPlayerTeamA ? e.scoreB : e.scoreA}
+                        </span>
+                      </div>
+                      <p className="text-foreground/90 font-sans text-xs leading-relaxed mt-0.5">
+                        {e.text}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Modal Footer */}
+              <div className="p-4 border-t border-border/50 flex justify-end bg-background/50">
+                <button
+                  onClick={() => setShowReplayModal(false)}
+                  className="clip-corner border border-border bg-background hover:bg-surface px-6 py-2.5 text-xs font-bold uppercase transition cursor-pointer"
+                >
+                  Close Logs
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -440,7 +596,7 @@ function TeamCard({
       <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
         {side === "left" ? "// HOME" : "// AWAY"}
       </div>
-      <div className="mt-1 font-display text-3xl max-w-[180px] truncate" title={label}>{label}</div>
+      <div className="mt-1 font-display text-3xl max-w-[200px] truncate" title={label}>{label}</div>
       <div className="text-xs uppercase tracking-widest text-muted-foreground">{subtitle}</div>
     </div>
   );

@@ -13,11 +13,15 @@ export interface BracketMatch {
 }
 
 export function teamEntryToMatchTeam(entry: TeamEntry): MatchTeam {
-  const org = ORG_BY_ID[entry.orgId];
-  const t = TOURNAMENT_BY_ID[entry.tournamentId];
+  // Randomize form modifier (-2 to +2) for opponent players per tournament draft
+  const playersWithForm = entry.players.map((p) => ({
+    ...p,
+    form: p.form !== undefined ? p.form : Math.floor(Math.random() * 5) - 2,
+  }));
+
   return {
-    name: `${org?.shortName ?? entry.orgId.toUpperCase()} ${t?.shortName ?? ""}`.trim(),
-    players: entry.players,
+    name: entry.displayName, // Always use full displayName (e.g. "Sentinels 2025")
+    players: playersWithForm,
     coach: entry.coach,
   };
 }

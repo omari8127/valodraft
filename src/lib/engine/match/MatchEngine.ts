@@ -60,7 +60,7 @@ export class MatchEngine {
     while (!matchWinner) {
       round++;
 
-      const roundResult = roundEngine.simulateRound(teamA, teamB, map, momentum);
+      const roundResult = roundEngine.simulateRound(teamA, teamB, map, momentum, round);
 
       if (roundResult.winner === "A") scoreA++;
       else scoreB++;

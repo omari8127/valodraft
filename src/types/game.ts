@@ -40,6 +40,8 @@ export interface Tournament {
   location?: string;
 }
 
+export type DraftMode = "STRICT" | "OPEN";
+
 export interface PlayerEntry {
   id: string;
   name: string;
@@ -53,6 +55,7 @@ export interface PlayerEntry {
   nationality: string;
   mostPlayedAgents?: string[];
   agent?: string;
+  form?: number; // dynamic form modifier (-2 to +2)
 }
 
 export interface CoachEntry {
@@ -68,6 +71,9 @@ export interface TeamEntry {
   id: string; // org + tournament
   orgId: string;
   tournamentId: string;
+  name: string; // e.g. "Sentinels"
+  year: number; // e.g. 2025
+  displayName: string; // e.g. "Sentinels 2025"
   region: Region;
   players: PlayerEntry[]; // 5
   coach: CoachEntry;
@@ -104,6 +110,7 @@ export interface RosterSlot {
   playerId: string | null;
   coachId?: string | null;
   teamEntryId: string | null;
+  playerWithForm?: PlayerEntry;
 }
 
 export interface Roster {
@@ -133,4 +140,5 @@ export interface SavedDynasty {
   trophies: string[];
   wins: number;
   losses: number;
+  playerForms?: Record<string, number>;
 }

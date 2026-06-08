@@ -1,6 +1,6 @@
 import type { CoachEntry, PlayerEntry, TeamEntry } from "@/types/game";
 import { ORG_BY_ID } from "./regions";
-import { TOURNAMENT_ATTENDANCE } from "./tournaments";
+import { TOURNAMENT_ATTENDANCE, TOURNAMENT_BY_ID } from "./tournaments";
 import { REAL_ROSTERS } from "./realRosters";
 import { AGENTS_BY_ROLE } from "./agents";
 
@@ -60,10 +60,14 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
     };
 
     const avg = players.reduce((s, p) => s + p.rating, 0) / 5;
+    const tour = TOURNAMENT_BY_ID[tournamentId];
     const teamEntry: TeamEntry = {
       id: `${orgId}-${tournamentId}`,
       orgId,
       tournamentId,
+      name: org.name,
+      year: tour?.year ?? 2025,
+      displayName: `${org.name} ${tour?.year ?? ""}`.trim(),
       region: org.region,
       players,
       coach,

@@ -1,25 +1,40 @@
 import type { CoachEntry, PlayerEntry } from "@/types/game";
 import { computeChemistry } from "./chemistry";
-import { calculateRoleBalanceScore } from "./roleBalance";
 
 export function computeTeamOVR(players: PlayerEntry[], coach: CoachEntry | null): number {
   if (players.length === 0) return 0;
 
-  // 1. Average Player Rating (40%)
-  const avgPlayerRating = players.reduce((s, p) => s + p.rating, 0) / players.length;
+  // 1. Base OVR = average(player.rating + player.form)
+  const totalRatingWithForm = players.reduce((s, p) => s + p.rating + (p.form ?? 0), 0);
+  const baseOvr = totalRatingWithForm / players.length;
 
-  // 2. Chemistry Score (35%)
-  const chemPoints = computeChemistry(players, coach).total;
-  const chemScore = Math.min(100, chemPoints); // capped at 100
+  // 2. Chemistry Multiplier = 1 + (chemistryTotal * 0.0015)
+  const chemistryTotal = computeChemistry(players, coach).total;
+  const chemMultiplier = 1 + (chemistryTotal * 0.0015);
 
-  // 3. Coach Rating (15%)
-  const coachRating = coach ? coach.rating : 60;
+  // 3. Penalty Multiplier
+  const duelists = players.filter((p) => p.primaryRole === "DUELIST").length;
+  const controllers = players.filter((p) => p.primaryRole === "CONTROLLER").length;
+  const initiators = players.filter((p) => p.primaryRole === "INITIATOR").length;
+  const sentinels = players.filter((p) => p.primaryRole === "SENTINEL").length;
 
-  // 4. Role Balance Score (10%)
-  const roleBalanceScore = calculateRoleBalanceScore(players);
+  let penaltyMultiplier = 1.0;
+  if (controllers === 0) {
+    penaltyMultiplier *= 0.85; // Missing Controller -> -15%
+  }
+  if (sentinels === 0) {
+    penaltyMultiplier *= 0.90; // Missing Sentinel -> -10%
+  }
+  if (initiators === 0) {
+    penaltyMultiplier *= 0.90; // Missing Initiator -> -10%
+  }
+  if (duelists > 1) {
+    const extra = duelists - 1;
+    penaltyMultiplier *= (1.0 - (extra * 0.08)); // Duplicate Duelists -> -8% per extra
+  }
 
-  // Team Overall = 40% Player Ratings + 35% Chemistry + 15% Coach Rating + 10% Role Balance
-  const ovr = (avgPlayerRating * 0.40) + (chemScore * 0.35) + (coachRating * 0.15) + (roleBalanceScore * 0.10);
+  const finalOvr = baseOvr * chemMultiplier * penaltyMultiplier;
 
-  return Math.round(ovr * 10) / 10;
+  // Cap at 99 OVR
+  return Math.round(Math.min(99, finalOvr) * 10) / 10;
 }

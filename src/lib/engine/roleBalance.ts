@@ -27,7 +27,6 @@ export function calculateRoleBalanceScore(players: PlayerEntry[]): number {
       }
     }
     
-    // Also try skipping matching for this player (or choosing a duplicate role)
     const resNoMatch = getMaxMatching(playerIndex + 1, usedRoles);
     if (resNoMatch > best) best = resNoMatch;
     
@@ -45,12 +44,8 @@ export interface CompositionStats {
   controllers: number;
   initiators: number;
   sentinels: number;
-  defense: number;
-  siteHold: number;
-  mapControl: number;
-  utility: number;
   teamChemistry: number;
-  penalty: number;
+  penaltyPct: number; // Cumulative percentage penalty
   warnings: string[];
 }
 
@@ -60,37 +55,39 @@ export function computeCompositionStats(players: PlayerEntry[]): CompositionStat
   const initiators = players.filter(p => p.primaryRole === "INITIATOR").length;
   const sentinels = players.filter(p => p.primaryRole === "SENTINEL").length;
 
-  let defense = 100;
-  let siteHold = 100;
-  let mapControl = 100;
-  let utility = 100;
   let teamChemistry = 0;
-  let penalty = 0;
+  let penaltyMultiplier = 1.0;
   const warnings: string[] = [];
 
-  // 1. Sentinels Penalty
+  // 1. Sentinels Penalty (-10%)
   if (sentinels === 0) {
-    defense -= 20;
-    siteHold -= 25;
-    penalty += 15;
-    warnings.push("No Sentinel → weaker defense (-15 TSS)");
+    penaltyMultiplier *= 0.90;
+    warnings.push("No Sentinel → weaker defense (-10% OVR)");
   }
 
-  // 2. Controllers Penalty
+  // 2. Controllers Penalty (-15%)
   if (controllers === 0) {
-    mapControl -= 20;
-    penalty += 12;
-    warnings.push("No Controller → poor map control (-12 TSS)");
+    penaltyMultiplier *= 0.85;
+    warnings.push("No Controller → poor map control (-15% OVR)");
   }
 
-  // 3. Initiators Penalty
+  // 3. Initiators Penalty (-10%)
   if (initiators === 0) {
-    utility -= 15;
-    penalty += 10;
-    warnings.push("No Initiator → weak executes (-10 TSS)");
+    penaltyMultiplier *= 0.90;
+    warnings.push("No Initiator → weak executes (-10% OVR)");
   }
 
-  // 4. Role Balance Bonus
+  // 4. Duplicate Duelist Penalty (-8% per extra)
+  if (duelists > 1) {
+    const extra = duelists - 1;
+    penaltyMultiplier *= (1.0 - (extra * 0.08));
+    warnings.push(`Duplicate Duelists → duplicate role penalty (-${extra * 8}% OVR)`);
+  }
+
+  // Calculate cumulative deduction percentage
+  const penaltyPct = Math.round((1.0 - penaltyMultiplier) * 100);
+
+  // Role Balance Chemistry Bonus (+10)
   const hasAllRoles = calculateRoleBalanceScore(players) === 100;
   if (hasAllRoles) {
     teamChemistry += 10;
@@ -101,12 +98,8 @@ export function computeCompositionStats(players: PlayerEntry[]): CompositionStat
     controllers,
     initiators,
     sentinels,
-    defense,
-    siteHold,
-    mapControl,
-    utility,
     teamChemistry,
-    penalty,
+    penaltyPct,
     warnings,
   };
 }

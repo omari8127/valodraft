@@ -9,14 +9,14 @@ export function computeChemistry(
   let region = 0;
   let nationality = 0;
 
-  // 1. Pairwise player bonuses
+  // 1. Pairwise player bonuses (+4 Same Org, +2 Same Region, +1 Nationality)
   for (let i = 0; i < players.length; i++) {
     for (let j = i + 1; j < players.length; j++) {
       const pA = players[i];
       const pB = players[j];
 
       if (pA.orgId && pB.orgId && pA.orgId === pB.orgId) {
-        organization += 3;
+        organization += 4;
       }
       if (pA.region && pB.region && pA.region === pB.region) {
         region += 2;
@@ -27,21 +27,21 @@ export function computeChemistry(
     }
   }
 
-  // 2. Coach bonuses
+  // 2. Coach bonuses (+3 for matching coach org OR coach region)
   let coachOrg = 0;
   let coachRegion = 0;
   if (coach) {
     for (const p of players) {
       if (coach.orgId && p.orgId && coach.orgId === p.orgId) {
-        coachOrg += 2;
-      }
-      if (coach.region && p.region && coach.region === p.region) {
-        coachRegion += 1;
+        coachOrg += 3;
+      } else if (coach.region && p.region && coach.region === p.region) {
+        // Only add region bonus if team org doesn't match to avoid double dipping
+        coachRegion += 3;
       }
     }
   }
 
-  // 3. Full Historical Team bonus (+10)
+  // 3. Full Historical Team bonus (+5)
   // All 5 players and the coach are from the same organization, year and tournament
   let fullOrg = 0;
   if (coach && players.length === 5) {
@@ -54,7 +54,7 @@ export function computeChemistry(
     const coachMatches = coach.orgId === firstPlayerOrg && coach.tournamentId === firstPlayerTour;
     
     if (allPlayersMatch && coachMatches) {
-      fullOrg = 10;
+      fullOrg = 5;
     }
   }
 

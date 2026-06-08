@@ -37,9 +37,9 @@ export function RosterPanel({ roster, currentIdx, hoveredRole }: Props) {
           >
             {entity ? (
               <>
-                {/* Show actual player role, not the draft-order slot label */}
+                {/* Show actual player role, always white */}
                 <div
-                  className={`text-[10px] font-bold uppercase tracking-widest ${meta?.color ?? "text-primary"}`}
+                  className="text-[10px] font-bold uppercase tracking-widest text-white"
                 >
                   {player ? player.role : "COACH"}
                 </div>
@@ -55,7 +55,8 @@ export function RosterPanel({ roster, currentIdx, hoveredRole }: Props) {
               </>
             ) : (
               <>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-primary">
+                {/* Empty slot role labels, always white */}
+                <div className="text-[10px] font-bold uppercase tracking-widest text-white/90">
                   {slot.role === "FLEX" ? `SLOT ${i + 1} (FLEX)` : slot.role}
                 </div>
                 <div className="mt-3 font-display text-sm text-muted-foreground">
