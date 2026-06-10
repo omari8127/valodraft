@@ -106,12 +106,15 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
     });
   }, [pool, locked, lockedRoles, role]);
 
-  const feedRef = useRef<TeamEntry[]>([]);
-  if (feedRef.current.length === 0) {
-    feedRef.current = buildVisualFeed(available.length > 0 ? available : pool, selectedTeam);
-  }
+  const [visualFeed, setVisualFeed] = useState<TeamEntry[]>([]);
+  
+  useEffect(() => {
+    if (visualFeed.length === 0) {
+      setVisualFeed(buildVisualFeed(available.length > 0 ? available : pool, selectedTeam));
+    }
+  }, [available, pool, selectedTeam, visualFeed.length]);
 
-  const feed = feedRef.current;
+  const feed = visualFeed.length > 0 ? visualFeed : [selectedTeam];
   const previewTeam = feed[previewIndex % feed.length] ?? selectedTeam;
   const activeTeam = phase === "spinning" ? previewTeam : selectedTeam;
   const { org: activeOrg, tournament: activeTournament } = getTeamMeta(activeTeam);

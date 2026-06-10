@@ -4,6 +4,15 @@ import { TOURNAMENT_ATTENDANCE, TOURNAMENT_BY_ID } from "./tournaments";
 import { REAL_ROSTERS } from "./realRosters";
 import { AGENTS_BY_ROLE } from "./agents";
 
+function seededRandom(seed: string) {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    hash = (hash << 5) - hash + seed.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash % 1000) / 1000;
+}
+
 const TEAM_ENTRIES: TeamEntry[] = [];
 const PLAYER_ENTRIES: PlayerEntry[] = [];
 const COACH_ENTRIES: CoachEntry[] = [];
@@ -16,6 +25,14 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
       continue;
     }
 
+    const tour = TOURNAMENT_BY_ID[tournamentId];
+    const year = tour?.year ?? 2025;
+    const teamId = `${orgId}_${year}`;
+
+    if (TEAM_ENTRIES.some(t => t.id === teamId)) {
+      continue; // skip duplicate
+    }
+
     const realRoster = REAL_ROSTERS[tournamentId]?.[orgId];
     if (!realRoster) {
       throw new Error(`Real roster not found for tournament ${tournamentId} and org ${orgId}`);
@@ -25,13 +42,21 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
       // 1. Resolve role (primaryRole)
       const resolvedRole = rp.primaryRole;
 
-      // 2. Pick 2 random agents matching their role
+      // 2. Pick 2 deterministic agents matching their role
       let availableAgents =
         AGENTS_BY_ROLE[
           resolvedRole === "FLEX" ? "INITIATOR" : (resolvedRole as keyof typeof AGENTS_BY_ROLE)
         ] || AGENTS_BY_ROLE.DUELIST;
-      availableAgents = [...availableAgents].sort(() => Math.random() - 0.5);
-      const mostPlayedAgents = availableAgents.slice(0, 2);
+      
+      const seedValue = seededRandom(rp.name + tournamentId);
+      const agentCount = availableAgents.length;
+      const index1 = Math.floor(seedValue * agentCount);
+      const index2 = Math.floor(((seedValue * 13) % 1) * agentCount);
+      
+      const mostPlayedAgents = [
+        availableAgents[index1],
+        availableAgents[index2 !== index1 ? index2 : (index1 + 1) % agentCount]
+      ].filter(Boolean);
       const agent = mostPlayedAgents[0] || "jett";
 
       const safeName = rp.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -62,14 +87,13 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
     };
 
     const avg = players.reduce((s, p) => s + p.rating, 0) / 5;
-    const tour = TOURNAMENT_BY_ID[tournamentId];
     const teamEntry: TeamEntry = {
-      id: `${orgId}-${tournamentId}`,
+      id: teamId,
       orgId,
       tournamentId,
       name: org.name,
-      year: tour?.year ?? 2025,
-      displayName: `${org.name} ${tour?.year ?? ""}`.trim(),
+      year: year,
+      displayName: `${org.name} ${year}`.trim(),
       region: org.region,
       players,
       coach,

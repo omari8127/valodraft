@@ -150,18 +150,23 @@ export function DraftRoulette({
   const duration = 5600;
 
   // Visual feed logic for rolling phase
-  const feedRef = useRef<TeamEntry[]>([]);
-  if (feedRef.current.length === 0 && state.rollSelectedTeam) {
-    const available = state.pool.filter((team) => {
-      if (state.lockedTeamEntryIds.has(team.id)) return false;
-      if (role === "COACH") return true;
-      return team.players.some((player) => {
-        if (state.draftMode !== "STRICT" || role === "FLEX") return true;
-        return player.primaryRole === role;
+  const [visualFeed, setVisualFeed] = useState<TeamEntry[]>([]);
+  
+  useEffect(() => {
+    if (state.isRolling && state.rollSelectedTeam && visualFeed.length === 0) {
+      const available = state.pool.filter((team) => {
+        if (state.lockedTeamEntryIds.has(team.id)) return false;
+        if (role === "COACH") return true;
+        return team.players.some((player) => {
+          if (state.draftMode !== "STRICT" || role === "FLEX") return true;
+          return player.primaryRole === role;
+        });
       });
-    });
-    feedRef.current = buildVisualFeed(available.length > 0 ? available : state.pool, state.rollSelectedTeam);
-  }
+      setVisualFeed(buildVisualFeed(available.length > 0 ? available : state.pool, state.rollSelectedTeam));
+    } else if (!state.isRolling && visualFeed.length > 0) {
+      setVisualFeed([]);
+    }
+  }, [state.isRolling, state.rollSelectedTeam, state.pool, state.lockedTeamEntryIds, role, state.draftMode, visualFeed.length]);
 
   // Effect to handle rolling animation timing
   useEffect(() => {
@@ -213,7 +218,7 @@ export function DraftRoulette({
   // Determine which team to display in the persistent card
   let activeTeam: TeamEntry | null = null;
   if (isRolling && state.rollSelectedTeam) {
-    activeTeam = feedRef.current[previewIndex % feedRef.current.length] ?? state.rollSelectedTeam;
+    activeTeam = visualFeed.length > 0 ? visualFeed[previewIndex % visualFeed.length] : state.rollSelectedTeam;
   } else if (isResult && state.rollResultTeam) {
     activeTeam = state.rollResultTeam;
   }
