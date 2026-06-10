@@ -87,15 +87,15 @@ function MatchPage() {
     return computeCompositionStats(playerTeam.players);
   }, [playerTeam]);
 
-  const initialBracket = useMemo(() => {
-    if (!save || !playerTeam) return null;
+  const [bracket, setBracket] = useState<BracketMatch[][] | null>(null);
+  const [currentRoundIdx, setCurrentRoundIdx] = useState(0);
+
+  useEffect(() => {
+    if (!save || !playerTeam || bracket) return;
     const mode = GAME_MODE_BY_ID[save.modeId];
     const pool = TEAM_ENTRIES.filter((t) => mode.tournamentIds.includes(t.tournamentId));
-    return generateBracket(playerTeam, pool);
-  }, [save, playerTeam]);
-
-  const [bracket, setBracket] = useState<BracketMatch[][] | null>(initialBracket);
-  const [currentRoundIdx, setCurrentRoundIdx] = useState(0);
+    setBracket(generateBracket(playerTeam, pool));
+  }, [save, playerTeam, bracket]);
 
   type MatchState = "IDLE" | "READY" | "PLAYING" | "FINISHED" | "ELIMINATED" | "ADVANCING";
   const [matchState, setMatchState] = useState<MatchState>("READY");
@@ -109,10 +109,6 @@ function MatchPage() {
   const resultSoundKeyRef = useRef<string | null>(null);
   const championSoundPlayedRef = useRef(false);
 
-  const isHomeAttack = useMemo(() => Math.random() > 0.5, [currentRoundIdx]);
-  const homeSide = isHomeAttack ? "ATTACK" : "DEFENSE";
-  const awaySide = isHomeAttack ? "DEFENSE" : "ATTACK";
-
   const maps = [
     { name: "Ascent", image: "/maps/ascent.png" },
     { name: "Bind", image: "/maps/bind.png" },
@@ -120,9 +116,17 @@ function MatchPage() {
     { name: "Split", image: "/maps/split.png" },
     { name: "Lotus", image: "/maps/lotus.png" }
   ];
-  const map = useMemo(() => {
-    return maps[Math.floor(Math.random() * maps.length)];
+
+  const [isHomeAttack, setIsHomeAttack] = useState(true);
+  const [map, setMap] = useState(maps[0]);
+
+  useEffect(() => {
+    setIsHomeAttack(Math.random() > 0.5);
+    setMap(maps[Math.floor(Math.random() * maps.length)]);
   }, [currentRoundIdx]);
+
+  const homeSide = isHomeAttack ? "ATTACK" : "DEFENSE";
+  const awaySide = isHomeAttack ? "DEFENSE" : "ATTACK";
 
   if (!save || !playerTeam || !bracket) {
     return (

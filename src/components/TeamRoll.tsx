@@ -255,32 +255,26 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
             </div>
 
             <div className="relative mt-4 min-h-[2.8rem] overflow-hidden sm:min-h-[3.35rem]">
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div
-                  key={`${phase}-${phase === "spinning" ? previewIndex : selectedTeam.id}`}
-                  initial={{ opacity: 0, y: 18, letterSpacing: "0.02em" }}
-                  animate={{ opacity: 1, y: 0, letterSpacing: "0em" }}
-                  exit={{ opacity: 0, y: -18, letterSpacing: "0.06em" }}
-                  transition={{ duration: phase === "spinning" ? 0.08 : 0.3, ease: "easeOut" }}
-                  className="roulette-live-name font-display text-3xl text-foreground drop-shadow sm:text-5xl"
-                >
-                  {activeTeam.displayName}
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={phase === "spinning" ? "rolling-phase" : `result-${selectedTeam.id}`}
+                initial={phase === "result" ? { opacity: 0, y: 18 } : false}
+                animate={{ opacity: 1, y: 0, letterSpacing: "0em" }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="roulette-live-name font-display text-3xl text-foreground drop-shadow sm:text-5xl"
+              >
+                {activeTeam.displayName}
+              </motion.div>
             </div>
 
             <div className="mt-2 min-h-[0.875rem] overflow-hidden text-[10px] font-bold uppercase tracking-[0.35em] text-muted-foreground">
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div
-                  key={`${phase}-${phase === "spinning" ? previewIndex : selectedTeam.id}-tour`}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: phase === "spinning" ? 0.08 : 0.22 }}
-                >
-                  {activeTournament?.shortName ?? "VALORANT ERA"} · {activeTournament?.year ?? ""}
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={phase === "spinning" ? "rolling-phase-tour" : `result-${selectedTeam.id}-tour`}
+                initial={phase === "result" ? { opacity: 0, y: 6 } : false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.22 }}
+              >
+                {activeTournament?.shortName ?? "VALORANT ERA"} · {activeTournament?.year ?? ""}
+              </motion.div>
             </div>
 
             <div className="mx-auto mt-5 h-1.5 max-w-xs overflow-hidden rounded-full border border-border/70 bg-background/80">

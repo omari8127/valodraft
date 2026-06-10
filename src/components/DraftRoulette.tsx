@@ -352,18 +352,15 @@ export function DraftRoulette({
                   {t("rollBtn")} {role}
                 </div>
               ) : (
-                <AnimatePresence initial={false} mode="wait">
-                  <motion.div
-                    key={`${isRolling ? previewIndex : activeTeam?.id}`}
-                    initial={{ opacity: 0, y: isRolling ? 10 : 0 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: isRolling ? -10 : 0 }}
-                    transition={{ duration: isRolling ? 0.08 : 0.3 }}
-                    className="font-display text-[28px] mb-1.5 leading-none text-foreground text-center"
-                  >
-                    {activeTeam?.displayName}
-                  </motion.div>
-                </AnimatePresence>
+                <motion.div
+                  key={isRolling ? "rolling-phase" : `result-${activeTeam?.id}`}
+                  initial={isResult ? { opacity: 0, y: 10 } : false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="font-display text-[28px] mb-1.5 leading-none text-foreground text-center"
+                >
+                  {activeTeam?.displayName}
+                </motion.div>
               )}
             </div>
 

@@ -1,0 +1,212 @@
+{
+  "mibr": {
+    "id": "mibr_2025",
+    "orgId": "mibr",
+    "tournamentId": "champions-2025",
+    "name": "MIBR",
+    "year": 2025,
+    "displayName": "MIBR 2025",
+    "region": "AMERICAS",
+    "players": [
+      {
+        "id": "mibr-champions-2025-artzin-0",
+        "name": "artzin",
+        "orgId": "mibr",
+        "tournamentId": "champions-2025",
+        "role": "DUELIST",
+        "primaryRole": "DUELIST",
+        "secondaryRole": "FLEX",
+        "rating": 90,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "iso",
+          "phoenix"
+        ],
+        "agent": "iso"
+      },
+      {
+        "id": "mibr-champions-2025-cortezia-1",
+        "name": "cortezia",
+        "orgId": "mibr",
+        "tournamentId": "champions-2025",
+        "role": "INITIATOR",
+        "primaryRole": "INITIATOR",
+        "secondaryRole": "FLEX",
+        "rating": 92,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "breach",
+          "sova"
+        ],
+        "agent": "breach"
+      },
+      {
+        "id": "mibr-champions-2025-xenom-2",
+        "name": "xenom",
+        "orgId": "mibr",
+        "tournamentId": "champions-2025",
+        "role": "CONTROLLER",
+        "primaryRole": "CONTROLLER",
+        "secondaryRole": "FLEX",
+        "rating": 88,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "clove",
+          "omen"
+        ],
+        "agent": "clove"
+      },
+      {
+        "id": "mibr-champions-2025-verno-3",
+        "name": "Verno",
+        "orgId": "mibr",
+        "tournamentId": "champions-2025",
+        "role": "SENTINEL",
+        "primaryRole": "SENTINEL",
+        "secondaryRole": "FLEX",
+        "rating": 88,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "sage",
+          "killjoy"
+        ],
+        "agent": "sage"
+      },
+      {
+        "id": "mibr-champions-2025-aspas-4",
+        "name": "aspas",
+        "orgId": "mibr",
+        "tournamentId": "champions-2025",
+        "role": "DUELIST",
+        "primaryRole": "DUELIST",
+        "secondaryRole": "FLEX",
+        "rating": 97,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "iso",
+          "neon"
+        ],
+        "agent": "iso"
+      }
+    ],
+    "coach": {
+      "id": "mibr-champions-2025-coach",
+      "name": "Daniel \"frosT\" Kaplan",
+      "orgId": "mibr",
+      "tournamentId": "champions-2025",
+      "rating": 80,
+      "region": "AMERICAS"
+    },
+    "avgRating": 91
+  },
+  "vikings": {
+    "id": "vikings_2021",
+    "orgId": "vikings",
+    "tournamentId": "champions-2021",
+    "name": "Team Vikings",
+    "year": 2021,
+    "displayName": "Team Vikings 2021",
+    "region": "AMERICAS",
+    "players": [
+      {
+        "id": "vikings-champions-2021-frz-0",
+        "name": "frz",
+        "orgId": "vikings",
+        "tournamentId": "champions-2021",
+        "role": "DUELIST",
+        "primaryRole": "DUELIST",
+        "secondaryRole": "FLEX",
+        "rating": 85,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "jett",
+          "raze"
+        ],
+        "agent": "jett"
+      },
+      {
+        "id": "vikings-champions-2021-sacy-1",
+        "name": "Sacy",
+        "orgId": "vikings",
+        "tournamentId": "champions-2021",
+        "role": "INITIATOR",
+        "primaryRole": "INITIATOR",
+        "secondaryRole": "SENTINEL",
+        "rating": 88,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "breach",
+          "sova"
+        ],
+        "agent": "breach"
+      },
+      {
+        "id": "vikings-champions-2021-saadhak-2",
+        "name": "Saadhak",
+        "orgId": "vikings",
+        "tournamentId": "champions-2021",
+        "role": "FLEX",
+        "primaryRole": "FLEX",
+        "secondaryRole": "INITIATOR",
+        "rating": 87,
+        "region": "AMERICAS",
+        "nationality": "Argentina",
+        "mostPlayedAgents": [
+          "breach",
+          "sova"
+        ],
+        "agent": "breach"
+      },
+      {
+        "id": "vikings-champions-2021-sutecas-3",
+        "name": "sutecas",
+        "orgId": "vikings",
+        "tournamentId": "champions-2021",
+        "role": "SENTINEL",
+        "primaryRole": "SENTINEL",
+        "secondaryRole": "CONTROLLER",
+        "rating": 84,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "deadlock",
+          "killjoy"
+        ],
+        "agent": "deadlock"
+      },
+      {
+        "id": "vikings-champions-2021-gtnzin-4",
+        "name": "gtnziN",
+        "orgId": "vikings",
+        "tournamentId": "champions-2021",
+        "role": "FLEX",
+        "primaryRole": "FLEX",
+        "secondaryRole": "DUELIST",
+        "rating": 83,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "kayo",
+          "breach"
+        ],
+        "agent": "kayo"
+      }
+    ],
+    "coach": {
+      "id": "vikings-champions-2021-coach",
+      "name": "Matheus \"bzkA\" Tarasconi",
+      "orgId": "vikings",
+      "tournamentId": "champions-2021",
+      "rating": 81,
+      "region": "AMERICAS"
+    },
+    "avgRating": 85
+  }
+}
