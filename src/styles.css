@@ -358,3 +358,583 @@
   animation: card-shake 0.15s ease-in-out infinite;
 }
 
+
+/* Professional draft motion polish */
+@keyframes soft-border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ambient-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(10px, -12px, 0) scale(1.04); opacity: 0.8; }
+}
+
+@keyframes roster-confirm-pulse {
+  0%, 100% { box-shadow: 0 0 10px color-mix(in oklab, var(--color-primary) 30%, transparent); }
+  50% { box-shadow: 0 0 24px color-mix(in oklab, var(--color-primary) 65%, transparent); }
+}
+
+.player-card {
+  transform: translateZ(0);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.player-card:hover:not(.is-disabled) {
+  filter: saturate(1.08) brightness(1.04);
+}
+
+.role-slot.hovered {
+  animation: roster-confirm-pulse 1.3s ease-in-out infinite;
+}
+
+.clip-corner.border-primary,
+.clip-corner.border-primary\/60,
+.clip-corner.border-primary\/70,
+.clip-corner.border-primary\/80 {
+  position: relative;
+}
+
+.bg-radial-primary::before {
+  content: "";
+  position: absolute;
+  inset: 8% 12%;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--glow-color), transparent 62%);
+  animation: ambient-drift 10s ease-in-out infinite;
+}
+
+/* FLEX role confirmation UX */
+@keyframes role-choice-sweep {
+  0% { transform: translateX(-120%); opacity: 0; }
+  30% { opacity: 0.55; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes role-confirm-dash {
+  0% { background-position: 0 0; }
+  100% { background-position: 32px 0; }
+}
+
+.role-choice-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.role-choice-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.16) 45%,
+    rgba(0, 224, 255, 0.12) 50%,
+    transparent 100%
+  );
+  animation: role-choice-sweep 2.8s ease-in-out infinite;
+}
+
+.role-slot-confirm {
+  border-style: dashed !important;
+  border-color: var(--color-gold) !important;
+  background:
+    linear-gradient(90deg, rgba(212, 175, 55, 0.18) 50%, transparent 50%) top left / 16px 2px repeat-x,
+    linear-gradient(90deg, rgba(212, 175, 55, 0.18) 50%, transparent 50%) bottom left / 16px 2px repeat-x,
+    color-mix(in oklab, var(--color-gold) 8%, transparent) !important;
+  box-shadow: 0 0 22px rgba(212, 175, 55, 0.28), inset 0 0 18px rgba(212, 175, 55, 0.08) !important;
+  animation: roster-confirm-pulse 1.1s ease-in-out infinite, role-confirm-dash 1.4s linear infinite;
+}
+
+/* Cinematic roulette + sound-enabled motion */
+.roll-cinematic-card {
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.roll-cinematic-sweep {
+  position: absolute;
+  inset: -40% -20%;
+  background:
+    radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--color-primary) 20%, transparent), transparent 36%),
+    linear-gradient(110deg, transparent 28%, rgba(255, 255, 255, 0.07) 48%, transparent 62%);
+  animation: roulette-sweep 3.6s ease-in-out infinite;
+}
+
+@keyframes roulette-sweep {
+  0%, 100% { transform: translateX(-18%) rotate(0deg); opacity: 0.35; }
+  50% { transform: translateX(18%) rotate(4deg); opacity: 0.8; }
+}
+
+.roulette-result-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--color-primary) 42%, var(--color-border));
+  background: linear-gradient(180deg, rgba(10, 15, 26, 0.9), rgba(10, 15, 26, 0.58));
+  padding: 1.25rem 1.5rem;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  box-shadow: inset 0 0 32px color-mix(in oklab, var(--color-primary) 10%, transparent);
+}
+
+.roulette-result-panel::before,
+.roulette-result-panel::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background: var(--color-gold);
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.55);
+}
+
+.roulette-result-panel::before { top: -9px; }
+.roulette-result-panel::after { bottom: -9px; }
+
+.roulette-result-panel.is-spinning {
+  animation: roulette-card-breathe 1.25s ease-in-out infinite;
+}
+
+.roulette-result-panel.is-locked {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.16), inset 0 0 28px rgba(212, 175, 55, 0.08);
+}
+
+@keyframes roulette-card-breathe {
+  0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
+  50% { transform: translateY(-2px) scale(1.01); filter: brightness(1.08); }
+}
+
+.live-sim-status {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22), inset 0 0 28px color-mix(in oklab, var(--color-primary) 9%, transparent);
+}
+
+.live-sim-status::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent);
+  transform: translateX(-120%);
+  animation: live-status-sweep 2.4s ease-in-out infinite;
+}
+
+@keyframes live-status-sweep {
+  0% { transform: translateX(-120%); opacity: 0; }
+  35% { opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+.live-orb {
+  animation: live-orb-pulse 1s ease-in-out infinite;
+}
+
+@keyframes live-orb-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+  50% { transform: scale(1.08); box-shadow: 0 0 28px rgba(212, 175, 55, 0.28); }
+}
+
+.match-result-panel {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+}
+
+.match-result-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 40%);
+  opacity: 0.65;
+}
+
+.match-cinematic-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  animation: cinematic-fade 2.8s ease forwards;
+}
+
+.match-cinematic-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 7px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.14), rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.92));
+  opacity: 0.95;
+}
+
+.match-cinematic-overlay.is-victory::before {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 7px),
+    radial-gradient(circle at 50% 50%, rgba(34,197,94,0.42), rgba(0,0,0,0.78) 45%, rgba(0,0,0,0.93));
+}
+
+.match-cinematic-overlay.is-defeat::before {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 7px),
+    radial-gradient(circle at 50% 50%, rgba(239,68,68,0.42), rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.94));
+}
+
+.match-cinematic-content {
+  position: relative;
+  text-align: center;
+  text-shadow: 0 0 34px rgba(0, 0, 0, 0.6);
+}
+
+.match-cinematic-overlay.is-victory .match-cinematic-content {
+  color: #51ff9b;
+}
+
+.match-cinematic-overlay.is-defeat .match-cinematic-content {
+  color: #ff4655;
+}
+
+.match-cinematic-content::before,
+.match-cinematic-content::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: min(76vw, 720px);
+  height: 2px;
+  transform: translateX(-50%);
+  background: currentColor;
+  box-shadow: 0 0 22px currentColor;
+}
+
+.match-cinematic-content::before { top: -1.2rem; }
+.match-cinematic-content::after { bottom: -1.2rem; }
+
+@keyframes cinematic-fade {
+  0% { opacity: 0; transform: scale(1.05); }
+  10% { opacity: 1; transform: scale(1); }
+  74% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.02); }
+}
+
+.champion-screen,
+.eliminated-screen {
+  position: relative;
+}
+
+.champion-screen::before,
+.eliminated-screen::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.18), transparent 42%);
+}
+
+.eliminated-screen::before {
+  background: radial-gradient(circle at 50% 20%, rgba(239, 68, 68, 0.18), transparent 42%);
+}
+
+/* Suspense roulette adapted from the reference mechanism: single live card, decoys, final reveal only at the end */
+.roulette-stage {
+  min-height: 390px;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 70px rgba(212, 175, 55, 0.035);
+}
+
+.roulette-scan-grid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    radial-gradient(circle at 50% 35%, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 42%);
+  background-size: 34px 34px, 34px 34px, 100% 100%;
+  mask-image: linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%);
+}
+
+.roulette-lock-card {
+  position: relative;
+  overflow: visible;
+  border: 1px solid color-mix(in oklab, var(--color-primary) 38%, var(--color-border));
+  background:
+    linear-gradient(180deg, rgba(11, 17, 31, 0.96), rgba(11, 17, 31, 0.76)),
+    radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--color-primary) 18%, transparent), transparent 62%);
+  padding: 1.25rem 1.5rem;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  box-shadow:
+    inset 0 0 34px color-mix(in oklab, var(--color-primary) 10%, transparent),
+    0 18px 55px rgba(0, 0, 0, 0.24);
+}
+
+.roulette-lock-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.16), transparent);
+  transform: translateX(-130%);
+  animation: roulette-signal-sweep 1.2s ease-in-out infinite;
+}
+
+.roulette-lock-card.is-scanning {
+  animation: roulette-card-breathe 0.95s ease-in-out infinite;
+}
+
+.roulette-lock-card.is-revealed {
+  border-color: var(--color-gold);
+  box-shadow:
+    0 0 38px rgba(212, 175, 55, 0.22),
+    inset 0 0 42px rgba(212, 175, 55, 0.11);
+}
+
+.roulette-lock-card.is-revealed::before {
+  animation-duration: 0.48s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), rgba(212, 175, 55, 0.32), transparent);
+}
+
+@keyframes roulette-signal-sweep {
+  0% { transform: translateX(-130%); opacity: 0; }
+  24% { opacity: 0.95; }
+  100% { transform: translateX(130%); opacity: 0; }
+}
+
+.roulette-diamond {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #f3d88a, var(--color-gold));
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.65);
+}
+
+.roulette-diamond-top { top: -10px; }
+.roulette-diamond-bottom { bottom: -10px; }
+
+.roulette-live-name {
+  text-shadow: 0 0 22px rgba(255, 255, 255, 0.08), 0 0 34px rgba(212, 175, 55, 0.12);
+}
+
+.roulette-signal-line {
+  transform-origin: top center;
+  animation: roulette-line-pulse 1.05s ease-in-out infinite;
+}
+
+@keyframes roulette-line-pulse {
+  0%, 100% { opacity: 0.45; transform: scaleY(0.84); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+.roulette-side-card {
+  min-height: 92px;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
+  transition: border-color 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.roulette-side-card.is-winner {
+  border-color: var(--color-gold);
+  background: rgba(212, 175, 55, 0.11);
+  box-shadow: 0 0 28px rgba(212, 175, 55, 0.2), inset 0 0 22px rgba(212, 175, 55, 0.08);
+}
+
+@media (max-width: 640px) {
+  .roulette-stage { min-height: 460px; }
+  .roulette-lock-card { padding: 1rem; }
+}
+
+/* Region-accented roulette + team selection refinements */
+.roulette-lock-card--solo {
+  border-color: color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 58%, var(--color-border));
+  background:
+    linear-gradient(180deg, rgba(11, 17, 31, 0.96), rgba(11, 17, 31, 0.78)),
+    radial-gradient(circle at 50% 52%, var(--roulette-accent-soft, rgba(255,255,255,0.08)), transparent 62%);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 24%, transparent),
+    0 18px 55px rgba(0, 0, 0, 0.24),
+    inset 0 0 34px color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 12%, transparent);
+}
+
+.roulette-lock-card--solo::before {
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 34%, transparent), transparent);
+}
+
+.roulette-lock-card--solo.is-scanning {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 24%, transparent),
+    0 0 26px var(--roulette-accent-glow, rgba(255,255,255,0.18)),
+    0 18px 55px rgba(0, 0, 0, 0.24),
+    inset 0 0 34px color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 16%, transparent);
+}
+
+.roulette-lock-card--solo.is-revealed {
+  border-color: var(--roulette-accent, var(--color-gold));
+  box-shadow:
+    0 0 34px var(--roulette-accent-glow, rgba(255,255,255,0.18)),
+    inset 0 0 44px color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 14%, transparent);
+}
+
+.region-code-chip,
+.team-region-short {
+  color: var(--roulette-accent-text, var(--team-accent-text, #fff));
+  background: var(--roulette-accent-soft, var(--team-accent-soft, rgba(255,255,255,0.08)));
+  border: 1px solid color-mix(in oklab, var(--roulette-accent, var(--team-accent, var(--color-primary))) 68%, transparent);
+  box-shadow: 0 0 18px color-mix(in oklab, var(--roulette-accent, var(--team-accent, var(--color-primary))) 16%, transparent);
+}
+
+.region-name-chip,
+.team-region-label {
+  color: var(--roulette-accent, var(--team-accent, var(--color-primary)));
+  background: color-mix(in oklab, var(--roulette-accent-soft, var(--team-accent-soft, rgba(255,255,255,0.08))) 90%, transparent);
+  border: 1px solid color-mix(in oklab, var(--roulette-accent, var(--team-accent, var(--color-primary))) 34%, transparent);
+}
+
+.roulette-progress-bar {
+  background: linear-gradient(90deg, var(--roulette-accent, var(--color-primary)), color-mix(in oklab, var(--roulette-accent, var(--color-primary)) 55%, white));
+  box-shadow: 0 0 18px var(--roulette-accent-glow, rgba(255,255,255,0.18));
+}
+
+.roulette-result-inline {
+  box-shadow: inset 0 12px 24px rgba(255, 255, 255, 0.01);
+}
+
+.team-selection-stage {
+  border-color: color-mix(in oklab, var(--team-accent, var(--color-primary)) 48%, var(--color-border));
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.24),
+    0 0 0 1px color-mix(in oklab, var(--team-accent, var(--color-primary)) 18%, transparent),
+    inset 0 0 46px color-mix(in oklab, var(--team-accent, var(--color-primary)) 10%, transparent);
+}
+
+.team-selection-hero {
+  border-color: color-mix(in oklab, var(--team-accent, var(--color-primary)) 58%, transparent);
+  background:
+    linear-gradient(180deg, rgba(9, 16, 30, 0.94), rgba(9, 16, 30, 0.82)),
+    radial-gradient(circle at 50% 50%, var(--team-accent-soft, rgba(255,255,255,0.08)), transparent 65%);
+  box-shadow:
+    inset 0 0 28px color-mix(in oklab, var(--team-accent, var(--color-primary)) 10%, transparent),
+    0 0 24px color-mix(in oklab, var(--team-accent, var(--color-primary)) 10%, transparent);
+}
+
+.team-selection-hero .team-region-short {
+  color: var(--team-accent-text, #fff);
+  background: var(--team-accent-soft, rgba(255,255,255,0.08));
+  border-color: color-mix(in oklab, var(--team-accent, var(--color-primary)) 66%, transparent);
+}
+
+.team-selection-hero .team-region-label {
+  color: var(--team-accent, var(--color-primary));
+  background: color-mix(in oklab, var(--team-accent-soft, rgba(255,255,255,0.08)) 90%, transparent);
+  border-color: color-mix(in oklab, var(--team-accent, var(--color-primary)) 34%, transparent);
+}
+
+.agent-vs-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.agent-vs-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.agent-vs-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  min-width: 42px;
+  padding: 0.2rem 0.15rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.agent-vs-center {
+  font-family: var(--font-display, inherit);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-gold);
+}
+
+.agent-vs-role {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@media (max-width: 900px) {
+  .agent-vs-strip {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .agent-vs-group {
+    justify-content: center;
+  }
+}
+
+/* Bracket Simulation UI */
+.bracket-wrapper {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 20, 40, 0.9),
+    rgba(5, 10, 20, 0.95)
+  );
+  border: 1px solid rgba(255, 70, 85, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.bracket-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+}
+
+.bracket-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.bracket-container::-webkit-scrollbar-track {
+  background: rgba(10, 15, 25, 0.6);
+  border-radius: 10px;
+}
+
+.bracket-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    #ff4655,
+    #ff7a85
+  );
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(255, 70, 85, 0.6);
+}
+
+.bracket-container::-webkit-scrollbar-thumb:hover {
+  background: #ff4655;
+}
+
+.bracket-inner {
+  display: flex;
+  gap: 48px;
+  min-width: max-content;
+}

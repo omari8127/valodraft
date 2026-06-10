@@ -15,6 +15,8 @@ import { AgentRow } from "@/components/match/AgentRow";
 import { computeCompositionStats } from "@/lib/engine/roleBalance";
 import { useLanguage } from "@/lib/i18n";
 import { useProgression } from "@/lib/store/progression";
+import { playSfx, unlockSfx } from "@/lib/sfx";
+import { BracketSimulation } from "@/components/match/BracketSimulation";
 import { Award, Flame, X, Trophy } from "lucide-react";
 
 const searchSchema = z.object({ saveId: z.string().optional() });
@@ -30,7 +32,7 @@ export const Route = createFileRoute("/match")({
   component: MatchPage,
 });
 
-type SimSpeed = "SLOW" | "NORMAL" | "FAST" | "ULTRA";
+type SimSpeed = "NORMAL" | "FAST" | "ULTRA";
 
 function MatchPage() {
   const navigate = useNavigate();
@@ -59,7 +61,8 @@ function MatchPage() {
         const p = PLAYER_BY_ID[id];
         if (!p) return null;
         const form = save.playerForms?.[id] ?? 0;
-        return { ...p, form };
+        const assignedRole = save.roleAssignments?.[id] ?? p.primaryRole;
+        return { ...p, form, role: assignedRole, primaryRole: assignedRole };
       })
       .filter(Boolean) as PlayerEntry[];
     const coach = save.coachId ? (COACH_BY_ID[save.coachId] ?? null) : null;
@@ -101,6 +104,10 @@ function MatchPage() {
   const [currentMatchResult, setCurrentMatchResult] = useState<MatchResult | null>(null);
   const [displayedRoundCount, setDisplayedRoundCount] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const lastEventCountRef = useRef(0);
+  const rewardKeyRef = useRef<string | null>(null);
+  const resultSoundKeyRef = useRef<string | null>(null);
+  const championSoundPlayedRef = useRef(false);
 
   const isHomeAttack = useMemo(() => Math.random() > 0.5, [currentRoundIdx]);
   const homeSide = isHomeAttack ? "ATTACK" : "DEFENSE";
@@ -143,52 +150,83 @@ function MatchPage() {
   const isPlayerTeamA = userMatch?.teamA === playerTeam;
 
   // Initialize match using the saved draftMode context
-  if (userMatch && !userMatch.result && !currentMatchResult && userMatch.teamA && userMatch.teamB) {
-    const engine = new MatchEngine();
-    const result = engine.simulate(userMatch.teamA, userMatch.teamB, save.draftMode ?? "STRICT");
-    setCurrentMatchResult(result);
-    setDisplayedRoundCount(0);
-  }
+  useEffect(() => {
+    if (userMatch && !userMatch.result && !currentMatchResult && userMatch.teamA && userMatch.teamB && save) {
+      const engine = new MatchEngine();
+      const result = engine.simulate(userMatch.teamA, userMatch.teamB, save.draftMode ?? "STRICT");
+      setCurrentMatchResult(result);
+      setDisplayedRoundCount(0);
+    }
+  }, [userMatch, currentMatchResult, save]);
 
   // Auto-simulate rounds based on Speed Selection
   useEffect(() => {
     if (matchState !== "PLAYING" || !currentMatchResult) return;
-
+    
+    // ULTRA speed resolves the match instantly
     if (simSpeed === "ULTRA") {
-      // ULTRA Speed: skip interval timer and resolve instantly
       setDisplayedRoundCount(currentMatchResult.events.length);
       setMatchState("FINISHED");
       return;
     }
 
-    const delayMs = simSpeed === "SLOW" ? 1200 : simSpeed === "FAST" ? 250 : 600;
+    if (displayedRoundCount >= currentMatchResult.events.length) {
+      setMatchState("FINISHED");
+      return;
+    }
 
-    intervalRef.current = setInterval(() => {
-      setDisplayedRoundCount((prev) => {
-        const next = prev + 1;
-        if (next >= currentMatchResult.events.length) {
-          if (intervalRef.current) clearInterval(intervalRef.current);
-          setMatchState("FINISHED");
-        }
-        return next;
-      });
-    }, delayMs);
+    const interval = simSpeed === "NORMAL" ? 1000 : 400; // FAST = ~2x NORMAL
 
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [matchState, currentMatchResult, simSpeed]);
+    const timer = setTimeout(() => {
+      setDisplayedRoundCount((c) => c + 1);
+    }, interval);
+
+    return () => clearTimeout(timer);
+  }, [matchState, currentMatchResult, displayedRoundCount, simSpeed]);
+
+  useEffect(() => {
+    if (isChampion && !championSoundPlayedRef.current) {
+      championSoundPlayedRef.current = true;
+      playSfx("champion");
+    }
+  }, [isChampion]);
+
+  useEffect(() => {
+    if (matchState !== "PLAYING" || !currentMatchResult || displayedRoundCount <= 0) return;
+    if (displayedRoundCount === lastEventCountRef.current) return;
+
+    const event = currentMatchResult.events[displayedRoundCount - 1];
+    if (!event) return;
+
+    const isUserRound = (event.winner === "A" && isPlayerTeamA) || (event.winner === "B" && !isPlayerTeamA);
+    const isBigMoment = ["ACE", "CLUTCH", "MAP_POINT", "MATCH_POINT"].includes(event.type);
+    playSfx(isBigMoment ? "roundBig" : isUserRound ? "roundWin" : "roundLoss");
+    lastEventCountRef.current = displayedRoundCount;
+  }, [displayedRoundCount, matchState, currentMatchResult, isPlayerTeamA]);
 
   // Trigger MMR & XP rewards on match completion
   useEffect(() => {
     if (matchState === "FINISHED" && currentMatchResult) {
       const won = (currentMatchResult.winner === "A" && isPlayerTeamA) || (currentMatchResult.winner === "B" && !isPlayerTeamA);
-      const res = recordMatchResult(won);
-      setRewards(res);
+      const resultKey = `${currentRoundIdx}-${currentMatchResult.scoreA}-${currentMatchResult.scoreB}-${currentMatchResult.winner}`;
+
+      if (rewardKeyRef.current !== resultKey) {
+        const res = recordMatchResult(won);
+        setRewards(res);
+        rewardKeyRef.current = resultKey;
+      }
+
+      if (resultSoundKeyRef.current !== resultKey) {
+        playSfx(won ? "victory" : "defeat");
+        resultSoundKeyRef.current = resultKey;
+      }
     }
-  }, [matchState, currentMatchResult, isPlayerTeamA, recordMatchResult]);
+  }, [matchState, currentMatchResult, isPlayerTeamA, recordMatchResult, currentRoundIdx]);
 
   const handlePlayMatch = () => {
+    unlockSfx();
+    playSfx("matchStart");
+    lastEventCountRef.current = 0;
     setMatchState("PLAYING");
   };
 
@@ -209,6 +247,9 @@ function MatchPage() {
     setCurrentMatchResult(null);
     setRewards(null);
     setDisplayedRoundCount(0);
+    lastEventCountRef.current = 0;
+    rewardKeyRef.current = null;
+    resultSoundKeyRef.current = null;
 
     if (currentRoundIdx + 1 < nextBracket.length) {
       setCurrentRoundIdx(currentRoundIdx + 1);
@@ -223,13 +264,14 @@ function MatchPage() {
   };
 
   const handleLoss = () => {
+    playSfx("click");
     recordLoss(save.id);
     navigate({ to: "/play" });
   };
 
   if (isChampion) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-20 text-center">
+      <div className="champion-screen mx-auto max-w-3xl px-4 py-20 text-center">
         <h1 className="font-display text-6xl text-gold mb-4 flex justify-center items-center gap-2">
           <Trophy className="w-14 h-14 text-gold" /> CHAMPIONS 🏆
         </h1>
@@ -244,23 +286,30 @@ function MatchPage() {
     );
   }
 
-  if (isEliminated || matchState === "ELIMINATED") {
-    // Collect stats for post-loss screen
-    const matchesPlayed = bracket.flat().filter(m => (m.teamA === playerTeam || m.teamB === playerTeam) && m.result);
-    const totalWins = matchesPlayed.filter(m => m.winner === playerTeam).length;
+  if (matchState === "ELIMINATED" && bracket) {
+    const totalWins = bracket.flat().filter(m => m.winner === playerTeam).length;
+    const roundsReached = bracket.findIndex(r => r.some(m => m.teamA === playerTeam || m.teamB === playerTeam));
+    const isWinner = bracket[bracket.length - 1][0]?.winner === playerTeam;
+    const placement = isWinner ? "CHAMPIONS" : ROUND_LABEL(roundsReached + 1, bracket.length).toUpperCase();
 
-    const placementMap = ["TOP 16", "TOP 8", "TOP 4", "2ND PLACE"];
-    const placement = placementMap[currentRoundIdx] || "UNRANKED";
+    // The user lost, but we simulate the rest of the bracket completely for realistic results
+    let finalBracket = [...bracket];
+    for (let r = currentRoundIdx; r < finalBracket.length; r++) {
+       finalBracket = simulateRound(finalBracket, r, save?.draftMode ?? "STRICT");
+    }
 
     return (
-      <div className="mx-auto max-w-3xl px-4 py-20 text-center">
+      <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 text-center">
+        <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-red-500 mb-2">
+          // TOURNAMENT RUN ENDED
+        </div>
         <h1 className="font-display text-5xl sm:text-6xl text-destructive mb-4">
           ELIMINATED — {placement}
         </h1>
         <p className="text-muted-foreground mb-8">Your run ends here. Better luck next time.</p>
 
         {rewards && (
-          <div className="clip-corner border border-red-500 bg-red-500/10 p-5 mb-6 text-center w-full max-w-sm mx-auto">
+          <div className="clip-corner border border-red-500 bg-red-500/10 p-5 mb-8 text-center w-full max-w-sm mx-auto">
             <div className="font-display text-lg text-red-400 uppercase tracking-wider">{t("rewardsTitle")}</div>
             <div className="mt-2 flex justify-center gap-6 font-bold text-sm">
               {rankedActive && (
@@ -271,35 +320,11 @@ function MatchPage() {
           </div>
         )}
 
-        <div className="clip-corner border border-border bg-surface/70 p-6 mb-8 text-left">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-4 border-b border-border/40 pb-2">
-            Tournament Run
-          </div>
-          <div className="space-y-4">
-            <div className="run-summary">
-              <div>WINS: {totalWins}</div>
-              <div>PLACEMENT: {placement}</div>
-            </div>
-            <div>
-              <span className="text-muted-foreground block mb-2">Match History:</span>
-              <ul className="space-y-2">
-                {matchesPlayed.map((m, i) => {
-                  const opp = m.teamA === playerTeam ? m.teamB : m.teamA;
-                  const scoreUser = m.teamA === playerTeam ? m.result?.scoreA : m.result?.scoreB;
-                  const scoreOpp = m.teamA === playerTeam ? m.result?.scoreB : m.result?.scoreA;
-                  return (
-                    <li key={i} className="flex justify-between text-sm bg-background/50 px-3 py-2">
-                      <span>vs {opp?.name}</span>
-                      <span className={m.winner === playerTeam ? "text-green-500 font-bold" : "text-red-500 font-bold"}>
-                        {scoreUser} - {scoreOpp}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
-        </div>
+        <BracketSimulation 
+          bracket={finalBracket} 
+          playerTeam={playerTeam} 
+          eliminatedRoundIdx={roundsReached} 
+        />
 
         <button
           onClick={handleLoss}
@@ -330,9 +355,41 @@ function MatchPage() {
 
   const isMatchFinished = currentMatchResult && displayedRoundCount >= currentMatchResult.events.length;
   const userWon = isMatchFinished && ((currentMatchResult.winner === "A" && isPlayerTeamA) || (currentMatchResult.winner === "B" && !isPlayerTeamA));
+  const simulationProgress = currentMatchResult
+    ? Math.min(100, Math.round((displayedRoundCount / Math.max(1, currentMatchResult.events.length)) * 100))
+    : 0;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      <AnimatePresence>
+        {matchState === "FINISHED" && currentMatchResult && (
+          <motion.div
+            key={`cinema-${currentRoundIdx}-${currentMatchResult.winner}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={`match-cinematic-overlay ${userWon ? "is-victory" : "is-defeat"}`}
+          >
+            <motion.div
+              initial={{ scale: 0.72, y: 24, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+              className="match-cinematic-content"
+            >
+              <div className="text-[11px] font-black uppercase tracking-[0.45em] text-white/55">
+                {ROUND_LABEL(currentRoundIdx + 1, totalRounds)} · {map.name}
+              </div>
+              <div className="mt-2 font-display text-6xl sm:text-8xl">
+                {userWon ? t("victory") : t("defeat")}
+              </div>
+              <div className="mt-3 font-display text-3xl text-white/85">
+                {scoreUser} : {scoreOpponent}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="flex items-center justify-between mb-4 border-b border-border/40 pb-4">
         <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary flex items-center">
           <span className="animate-pulse mr-2">{t("liveLabel")}</span>
@@ -344,35 +401,50 @@ function MatchPage() {
         {/* Left Column: Scoreboard, Prob bar, & Overview */}
         <div className="lg:col-span-2 space-y-6">
           {/* Scoreboard */}
-          <div className="clip-corner border border-border bg-surface/80 p-6 backdrop-blur flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-            <TeamCard label={playerTeam.name} subtitle="Your team" side="left" sideLabel={homeSide} />
-            <div className="text-center px-8">
-              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground mb-2">
-                {isMatchFinished ? t("scoreboardFinalScore") : "MR13"}
+          {playerTeam.name.length + opponentTeam.name.length > 25 ? (
+            <div className="clip-corner border border-border bg-surface/80 p-6 backdrop-blur flex flex-col items-center justify-center gap-6">
+              <div className="text-center">
+                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground mb-2">
+                  {isMatchFinished ? t("scoreboardFinalScore") : "MR13"}
+                </div>
+                <div className="flex items-baseline justify-center gap-6 font-display text-7xl">
+                  <span className={scoreUser > scoreOpponent ? "text-green-500" : (scoreUser < scoreOpponent ? "text-red-500" : "")}>{scoreUser}</span>
+                  <span className="text-muted-foreground/40 text-4xl">:</span>
+                  <span className={scoreOpponent > scoreUser ? "text-green-500" : (scoreOpponent < scoreUser ? "text-red-500" : "")}>{scoreOpponent}</span>
+                </div>
               </div>
-              <div className="flex items-baseline justify-center gap-6 font-display text-7xl">
-                <span className={scoreUser > scoreOpponent ? "text-green-500" : (scoreUser < scoreOpponent ? "text-red-500" : "")}>{scoreUser}</span>
-                <span className="text-muted-foreground/40 text-4xl">:</span>
-                <span className={scoreOpponent > scoreUser ? "text-green-500" : (scoreOpponent < scoreUser ? "text-red-500" : "")}>{scoreOpponent}</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 mt-2">
-                <img
-                  src={map.image}
-                  alt={map.name}
-                  className="w-10 h-6 md:w-12 md:h-8 object-cover rounded-md opacity-80"
+              <div className="flex flex-col items-center gap-4 w-full">
+                <TeamCard label={playerTeam.name} subtitle="Your team" side="center" sideLabel={homeSide} />
+                <div className="h-px w-1/3 bg-border/50"></div>
+                <TeamCard
+                  label={opponentTeam.name}
+                  subtitle={`${(opponentTeam as any).rosterName || opponentTeam.name} • ${(opponentTeam as any).year || new Date().getFullYear()} • ${(opponentTeam as any).tournamentId || "VCT Champions"}`}
+                  side="center"
+                  sideLabel={awaySide}
                 />
-                <p className="text-xs text-white/60 uppercase tracking-wide">
-                  {map.name}
-                </p>
               </div>
             </div>
-            <TeamCard
-              label={opponentTeam.name}
-              subtitle={`${(opponentTeam as any).rosterName || opponentTeam.name} • ${(opponentTeam as any).year || new Date().getFullYear()} • ${(opponentTeam as any).tournamentId || "VCT Champions"}`}
-              side="right"
-              sideLabel={awaySide}
-            />
-          </div>
+          ) : (
+            <div className="clip-corner border border-border bg-surface/80 p-6 backdrop-blur flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <TeamCard label={playerTeam.name} subtitle="Your team" side="left" sideLabel={homeSide} />
+              <div className="text-center px-8">
+                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground mb-2">
+                  {isMatchFinished ? t("scoreboardFinalScore") : "MR13"}
+                </div>
+                <div className="flex items-baseline justify-center gap-6 font-display text-7xl">
+                  <span className={scoreUser > scoreOpponent ? "text-green-500" : (scoreUser < scoreOpponent ? "text-red-500" : "")}>{scoreUser}</span>
+                  <span className="text-muted-foreground/40 text-4xl">:</span>
+                  <span className={scoreOpponent > scoreUser ? "text-green-500" : (scoreOpponent < scoreUser ? "text-red-500" : "")}>{scoreOpponent}</span>
+                </div>
+              </div>
+              <TeamCard
+                label={opponentTeam.name}
+                subtitle={`${(opponentTeam as any).rosterName || opponentTeam.name} • ${(opponentTeam as any).year || new Date().getFullYear()} • ${(opponentTeam as any).tournamentId || "VCT Champions"}`}
+                side="right"
+                sideLabel={awaySide}
+              />
+            </div>
+          )}
 
           {/* Probability Bar */}
           <div className="clip-corner border border-border bg-surface/80 p-4 backdrop-blur">
@@ -390,25 +462,25 @@ function MatchPage() {
 
         {/* Right Column: Live Feed & Speed Controls & Action Buttons */}
         <div className="space-y-6">
-          {/* Speed Controller (SLOW, NORMAL, FAST, ULTRA) */}
+          {/* Speed Controller (NORMAL, FAST, ULTRA) */}
           <div className="clip-corner border border-border bg-surface/80 p-4 backdrop-blur space-y-2">
             <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
               ⚡ {t("simulationSpeed")}
             </div>
-            <div className="grid grid-cols-4 gap-1.5">
-              {(["SLOW", "NORMAL", "FAST", "ULTRA"] as SimSpeed[]).map((sp) => (
-                <button
-                  key={sp}
-                  onClick={() => setSimSpeed(sp)}
-                  className={`py-2 text-[9px] font-bold uppercase tracking-wide border transition clip-corner cursor-pointer ${
-                    simSpeed === sp
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border/60 bg-background/25 text-muted-foreground hover:border-primary/50"
-                  }`}
-                >
-                  {sp}
-                </button>
-              ))}
+            <div className="flex gap-2">
+              <div className="grid grid-cols-3 w-full bg-background/50 border border-border/40 p-1 clip-corner text-xs font-bold tracking-wider">
+                {(["NORMAL", "FAST", "ULTRA"] as SimSpeed[]).map((spd) => (
+                  <button
+                    key={spd}
+                    onClick={() => setSimSpeed(spd)}
+                    className={`py-1.5 text-center cursor-pointer transition-colors ${
+                      simSpeed === spd ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-surface"
+                    }`}
+                  >
+                    {spd}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -479,20 +551,44 @@ function MatchPage() {
               >
                 {t("playMatch")}
               </button>
+
+              <div className="w-full clip-corner h-16 relative overflow-hidden border border-border/40 group">
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: `url(${map.image})` }}
+                />
+                <div className="absolute inset-0 bg-black/60" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span className="font-display text-xl tracking-[0.3em] text-white/90 uppercase drop-shadow-md">
+                    {map.name}
+                  </span>
+                </div>
+              </div>
             </div>
           ) : matchState === "PLAYING" ? (
-            <button
-              disabled
-              className="w-full clip-corner bg-surface border border-border px-6 py-4 font-display text-lg tracking-widest text-muted-foreground cursor-not-allowed"
-            >
-              {t("simulating")}
-            </button>
+            <div className="live-sim-status clip-corner border border-primary/40 bg-surface/85 p-5 backdrop-blur">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Partida en vivo</div>
+                  <div className="mt-1 font-display text-xl tracking-widest text-foreground">
+                    {t("simulating")}... ({simulationProgress}%)
+                  </div>
+                </div>
+                <div className="h-11 w-11 rounded-full border border-gold/50 bg-gold/10 grid place-items-center text-gold live-orb">⚡</div>
+              </div>
+              <div className="mt-4 h-2 overflow-hidden rounded-full border border-border bg-background/70">
+                <div className="h-full bg-gold transition-all duration-300" style={{ width: `${simulationProgress}%` }} />
+              </div>
+              <div className="mt-3 text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
+                Selección, economía, momentum y clutch factor en proceso
+              </div>
+            </div>
           ) : matchState === "FINISHED" ? (
             <AnimatePresence>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`clip-corner border p-5 backdrop-blur space-y-4 ${
+                className={`match-result-panel clip-corner border p-5 backdrop-blur space-y-4 ${
                   userWon
                     ? "border-green-500/60 bg-green-500/10"
                     : "border-red-500/60 bg-red-500/10"
@@ -536,7 +632,10 @@ function MatchPage() {
                 {/* Logs & Next buttons */}
                 <div className="flex flex-col gap-2">
                   <button
-                    onClick={() => setShowReplayModal(true)}
+                    onClick={() => {
+                      playSfx("click");
+                      setShowReplayModal(true);
+                    }}
                     className="w-full clip-corner border border-primary/60 bg-primary/5 hover:bg-primary/15 text-primary py-3 text-xs font-bold uppercase tracking-wider transition cursor-pointer"
                   >
                     📝 {t("viewReplayLogs")}
@@ -544,14 +643,20 @@ function MatchPage() {
 
                   {userWon ? (
                     <button
-                      onClick={handleNextGame}
+                      onClick={() => {
+                        playSfx("select");
+                        handleNextGame();
+                      }}
                       className="w-full clip-corner border border-gold/60 bg-gold/20 px-5 py-3.5 font-display text-xl tracking-widest text-gold transition hover:bg-gold/30 cursor-pointer font-bold"
                     >
                       {t("nextGame")}
                     </button>
                   ) : (
                     <button
-                      onClick={() => setMatchState("ELIMINATED")}
+                      onClick={() => {
+                        playSfx("click");
+                        setMatchState("ELIMINATED");
+                      }}
                       className="w-full clip-corner border border-border bg-surface px-5 py-3.5 font-display text-xl tracking-widest transition hover:border-primary cursor-pointer font-bold"
                     >
                       {t("continueBtn")}
@@ -585,7 +690,10 @@ function MatchPage() {
                   </p>
                 </div>
                 <button
-                  onClick={() => setShowReplayModal(false)}
+                  onClick={() => {
+                    playSfx("click");
+                    setShowReplayModal(false);
+                  }}
                   className="p-1 text-muted-foreground hover:text-white border border-border/50 bg-background/30 rounded clip-corner transition cursor-pointer"
                 >
                   <X className="w-5 h-5" />
@@ -636,7 +744,10 @@ function MatchPage() {
               {/* Modal Footer */}
               <div className="p-4 border-t border-border/50 flex justify-end bg-background/50">
                 <button
-                  onClick={() => setShowReplayModal(false)}
+                  onClick={() => {
+                    playSfx("click");
+                    setShowReplayModal(false);
+                  }}
                   className="clip-corner border border-border bg-background hover:bg-surface px-6 py-2.5 text-xs font-bold uppercase transition cursor-pointer"
                 >
                   {t("closeLogs")}
@@ -658,12 +769,12 @@ function TeamCard({
 }: {
   label: string;
   subtitle: string;
-  side: "left" | "right";
+  side: "left" | "right" | "center";
   sideLabel: string;
 }) {
   return (
-    <div className={`flex flex-col ${side === "right" ? "items-end text-right" : "items-start"}`}>
-      <p className={`text-xs tracking-widest text-white/40 ${side === "right" ? "text-right" : ""}`}>
+    <div className={`flex flex-col ${side === "right" ? "items-end text-right" : side === "center" ? "items-center text-center" : "items-start text-left"}`}>
+      <p className={`text-xs tracking-widest text-white/40`}>
         // {sideLabel}
       </p>
       <div className="mt-1 font-display text-2xl md:text-3xl w-auto min-w-0 flex-1 whitespace-nowrap overflow-hidden text-ellipsis md:overflow-visible md:text-clip" title={label}>

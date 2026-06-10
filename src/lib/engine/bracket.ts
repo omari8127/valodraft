@@ -63,10 +63,19 @@ export function generateBracket(userTeam: MatchTeam, pool: TeamEntry[]): Bracket
 export function simulateRound(rounds: BracketMatch[][], roundIdx: number, mode: import("@/types/game").DraftMode = "STRICT"): BracketMatch[][] {
   const next = rounds.map((r) => r.map((m) => ({ ...m })));
   const round = next[roundIdx];
+  const totalRounds = rounds.length;
+  
+  // Calculate stage
+  const fromEnd = totalRounds - (roundIdx + 1);
+  let stage: "EARLY" | "QUARTERFINALS" | "SEMIFINALS" | "FINALS" = "EARLY";
+  if (fromEnd === 0) stage = "FINALS";
+  else if (fromEnd === 1) stage = "SEMIFINALS";
+  else if (fromEnd === 2) stage = "QUARTERFINALS";
+
   for (const m of round) {
     if (!m.teamA || !m.teamB) continue;
     if (m.result) continue;
-    const result = simulateMatch(m.teamA, m.teamB, mode);
+    const result = simulateMatch(m.teamA, m.teamB, mode, stage);
     m.result = result;
     m.winner = result.winner === "A" ? m.teamA : m.teamB;
   }

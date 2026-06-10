@@ -20,8 +20,8 @@ export function computeTeamOVR(
   let penaltyMultiplier = 1.0;
 
   if (mode === "CHAOS") {
-    // Chaos Mode Penalty: flat 0.3 penalty modifier applied
-    penaltyMultiplier = 0.3;
+    // Chaos mode means roles do not punish the roster.
+    penaltyMultiplier = 1.0;
   } else {
     // STRICT & FLEXIBLE Modes Standard Penalties:
     const duelists = players.filter((p) => p.primaryRole === "DUELIST").length;

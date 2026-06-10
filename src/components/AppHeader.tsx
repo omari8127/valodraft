@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useLanguage, type SupportedLanguage } from "@/lib/i18n";
-import { Settings as SettingsIcon } from "lucide-react";
+import { Settings as SettingsIcon, Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { isSfxEnabled, playSfx, setSfxEnabled, unlockSfx } from "@/lib/sfx";
 
 export function AppHeader() {
   const { lang, t, changeLanguage } = useLanguage();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [soundEnabled, setSoundEnabledState] = useState(true);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const NAV = [
@@ -13,6 +15,16 @@ export function AppHeader() {
     { to: "/collection", label: t("collection") },
     { to: "/leaderboards", label: t("leaderboards") },
   ] as const;
+
+  useEffect(() => {
+    setSoundEnabledState(isSfxEnabled());
+    const handleSoundChange = (e: Event) => {
+      const detail = (e as CustomEvent<{ enabled?: boolean }>).detail;
+      setSoundEnabledState(detail?.enabled ?? isSfxEnabled());
+    };
+    window.addEventListener("vcd:sfx", handleSoundChange);
+    return () => window.removeEventListener("vcd:sfx", handleSoundChange);
+  }, []);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -30,6 +42,7 @@ export function AppHeader() {
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="VALORANT CHAMPIONS DRAFT" className="h-8 w-auto object-contain" />
+          <span className="font-display text-xl leading-none hidden sm:inline-block">DRAFT CHALLENGE</span>
         </Link>
         
         <nav className="ml-auto hidden items-center gap-1 md:flex">
@@ -46,6 +59,30 @@ export function AppHeader() {
         </nav>
 
         <div className="flex items-center gap-3 ml-auto md:ml-0">
+          {/* Sound Toggle */}
+          <button
+            onClick={() => {
+              const next = !soundEnabled;
+              setSfxEnabled(next);
+              setSoundEnabledState(next);
+              if (next) {
+                unlockSfx();
+                playSfx("select");
+              }
+            }}
+            className={`group relative flex h-8 w-8 items-center justify-center rounded border transition ${
+              soundEnabled
+                ? "border-primary/50 bg-primary/10 text-primary hover:bg-primary/20"
+                : "border-border bg-surface/50 text-muted-foreground hover:bg-surface-2 hover:text-foreground"
+            }`}
+            title={soundEnabled ? "Sonido activado" : "Sonido apagado"}
+          >
+            {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+            <span className="pointer-events-none absolute -bottom-8 left-1/2 z-50 -translate-x-1/2 scale-0 whitespace-nowrap rounded border border-border bg-background px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-md transition-all group-hover:scale-100">
+              {soundEnabled ? "Sonido ON" : "Sonido OFF"}
+            </span>
+          </button>
+
           {/* Language Switcher */}
           <div className="relative" ref={dropdownRef}>
             <button

@@ -1,9 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import type { SlotRole, TeamEntry } from "@/types/game";
+import { RefreshCw, RadioTower, ScanLine, Sparkles, Zap } from "lucide-react";
+import type { Region, SlotRole, TeamEntry } from "@/types/game";
 import { ORG_BY_ID } from "@/data/regions";
 import { TOURNAMENT_BY_ID } from "@/data/tournaments";
 import { useDraft } from "@/lib/store/draft";
+import { playSfx, unlockSfx } from "@/lib/sfx";
 
 interface Props {
   /** All teams in the mode pool */
@@ -14,149 +16,307 @@ interface Props {
   lockedRoles: SlotRole[];
   /** Current draft slot role (used only to filter decoy cards) */
   role: SlotRole;
-  /** The team that was randomly selected BEFORE this component mounted */
+  /** The real winner, selected before the animation starts. It is hidden until the final reveal. */
   selectedTeam: TeamEntry;
   onComplete: () => void;
   duration?: number;
 }
 
-export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComplete, duration = 5000 }: Props) {
-  const [phase, setPhase] = useState<"spinning" | "flash" | "done">("spinning");
-  const [showResult, setShowResult] = useState(false);
+const ROLE_LABEL_ES: Record<SlotRole, string> = {
+  DUELIST: "DUELISTA",
+  INITIATOR: "INICIADOR",
+  CONTROLLER: "CONTROLADOR",
+  SENTINEL: "CENTINELA",
+  FLEX: "FLEX",
+  COACH: "COACH",
+};
 
-  // Build a fixed 50-item reel with the winner locked at index 35.
-  // All other slots are decoys (random from available pool, ok to be random for visuals).
-  const CARD_FULL = 188; // w-44 (176px) + gap-3 (12px)
-  const START_INDEX = 10;
-  const TARGET_INDEX = 35;
+const REGION_SHORT: Record<Region, string> = {
+  AMERICAS: "AM",
+  EMEA: "EM",
+  PACIFIC: "PC",
+  CHINA: "CN",
+};
+
+const REGION_ACCENTS: Record<Region, { solid: string; soft: string; glow: string; text: string }> = {
+  AMERICAS: {
+    solid: "#ff9652",
+    soft: "rgba(255, 150, 82, 0.14)",
+    glow: "rgba(255, 150, 82, 0.38)",
+    text: "#ffc49a",
+  },
+  EMEA: {
+    solid: "#64e6ff",
+    soft: "rgba(100, 230, 255, 0.14)",
+    glow: "rgba(100, 230, 255, 0.34)",
+    text: "#b8f7ff",
+  },
+  PACIFIC: {
+    solid: "#b7ff39",
+    soft: "rgba(183, 255, 57, 0.13)",
+    glow: "rgba(183, 255, 57, 0.34)",
+    text: "#e3ff9c",
+  },
+  CHINA: {
+    solid: "#ff5ba4",
+    soft: "rgba(255, 91, 164, 0.14)",
+    glow: "rgba(255, 91, 164, 0.36)",
+    text: "#ffb0d2",
+  },
+};
+
+function getTeamMeta(team: TeamEntry) {
+  return {
+    org: ORG_BY_ID[team.orgId],
+    tournament: TOURNAMENT_BY_ID[team.tournamentId],
+  };
+}
+
+function buildVisualFeed(pool: TeamEntry[], selectedTeam: TeamEntry, length = 96): TeamEntry[] {
+  const visualPool = pool.filter((team) => team.id !== selectedTeam.id);
+  const safePool = visualPool.length > 0 ? visualPool : pool.length > 0 ? pool : [selectedTeam];
+  return Array.from({ length }, () => safePool[Math.floor(Math.random() * safePool.length)] ?? selectedTeam);
+}
+
+function accentStyle(region?: Region): CSSProperties {
+  const accent = REGION_ACCENTS[region ?? "AMERICAS"];
+  return {
+    ["--roulette-accent" as string]: accent.solid,
+    ["--roulette-accent-soft" as string]: accent.soft,
+    ["--roulette-accent-glow" as string]: accent.glow,
+    ["--roulette-accent-text" as string]: accent.text,
+  };
+}
+
+export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComplete, duration = 5600 }: Props) {
+  const [phase, setPhase] = useState<"spinning" | "reveal" | "done">("spinning");
+  const [previewIndex, setPreviewIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const available = useMemo(() => {
-    return pool.filter((t) => {
-      if (locked.has(t.id)) return false;
+    void lockedRoles;
+    return pool.filter((team) => {
+      if (locked.has(team.id)) return false;
       if (role === "COACH") return true;
-      return t.players.some((p) => {
+      return team.players.some((player) => {
         const draftMode = useDraft.getState().draftMode;
         if (draftMode !== "STRICT" || role === "FLEX") return true;
-        return p.primaryRole === role;
+        return player.primaryRole === role;
       });
     });
-  }, [pool, locked, role]);
+  }, [pool, locked, lockedRoles, role]);
 
-  // Decoys are purely cosmetic — only selectedTeam matters for the draft.
-  // We build the reel array once at mount (ref so it never changes).
-  const reelRef = useRef<TeamEntry[]>([]);
-  if (reelRef.current.length === 0) {
-    const decoys = available.length > 0 ? available : [selectedTeam];
-    for (let i = 0; i < 50; i++) {
-      if (i === TARGET_INDEX) {
-        reelRef.current.push(selectedTeam);
-      } else {
-        reelRef.current.push(decoys[Math.floor(Math.random() * decoys.length)]);
-      }
-    }
+  const feedRef = useRef<TeamEntry[]>([]);
+  if (feedRef.current.length === 0) {
+    feedRef.current = buildVisualFeed(available.length > 0 ? available : pool, selectedTeam);
   }
-  const reel = reelRef.current;
 
-  // Centering math:
-  // The motion.div has `absolute left-1/2`, so x=0 means its left edge is at 50% of the parent.
-  // To center card at index N: x = -(N * CARD_FULL) - (176 / 2)
-  // (we shift left by N full cards, plus half a card width to center the card itself)
-  const initialX = -(START_INDEX * CARD_FULL) - 88;
-  const landX = -(TARGET_INDEX * CARD_FULL) - 88;
-
-  // Validation: confirm the reel has selectedTeam at TARGET_INDEX
-  if (reel[TARGET_INDEX]?.id !== selectedTeam.id) {
-    console.error(
-      "[Roulette desync] reel[TARGET_INDEX].id !== selectedTeam.id",
-      reel[TARGET_INDEX]?.id,
-      "!==",
-      selectedTeam.id,
-    );
-  }
-  console.log("[Roll] Visual target:", selectedTeam.displayName);
+  const feed = feedRef.current;
+  const previewTeam = feed[previewIndex % feed.length] ?? selectedTeam;
+  const activeTeam = phase === "spinning" ? previewTeam : selectedTeam;
+  const { org: activeOrg, tournament: activeTournament } = getTeamMeta(activeTeam);
+  const { org: selectedOrg, tournament: selectedTournament } = getTeamMeta(selectedTeam);
+  const region = activeOrg?.region ?? activeTeam.region;
+  const selectedRegion = selectedOrg?.region ?? selectedTeam.region;
 
   useEffect(() => {
-    const t1 = setTimeout(() => {
-      setShowResult(true);
-      setPhase("flash");
+    unlockSfx();
+    playSfx("rollStart");
+
+    let previewTimer: number | undefined;
+    let progressFrame: number | undefined;
+    const startedAt = window.performance.now();
+    let tickDelay = 48;
+
+    const updateProgress = () => {
+      const elapsed = window.performance.now() - startedAt;
+      setProgress(Math.min(99, Math.round((elapsed / duration) * 100)));
+      if (elapsed < duration) {
+        progressFrame = window.requestAnimationFrame(updateProgress);
+      }
+    };
+
+    const advancePreview = () => {
+      const elapsed = window.performance.now() - startedAt;
+      if (elapsed >= duration - 420) return;
+
+      setPreviewIndex((value) => value + 1);
+      playSfx("rollTick");
+
+      const ratio = Math.min(1, elapsed / duration);
+      tickDelay = 48 + Math.pow(ratio, 2.65) * 245;
+      previewTimer = window.setTimeout(advancePreview, tickDelay);
+    };
+
+    progressFrame = window.requestAnimationFrame(updateProgress);
+    previewTimer = window.setTimeout(advancePreview, tickDelay);
+
+    const revealTimer = window.setTimeout(() => {
+      if (previewTimer !== undefined) window.clearTimeout(previewTimer);
+      if (progressFrame !== undefined) window.cancelAnimationFrame(progressFrame);
+      setProgress(100);
+      setPhase("reveal");
+      playSfx("teamReveal");
     }, duration);
-    const t2 = setTimeout(() => {
+
+    const completeTimer = window.setTimeout(() => {
       setPhase("done");
       onComplete();
-    }, duration + 500);
+    }, duration + 1050);
+
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
+      if (previewTimer !== undefined) window.clearTimeout(previewTimer);
+      if (progressFrame !== undefined) window.cancelAnimationFrame(progressFrame);
+      window.clearTimeout(revealTimer);
+      window.clearTimeout(completeTimer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="relative w-full overflow-hidden">
-      {phase === "flash" && (
-        <div className="pointer-events-none absolute inset-0 z-20 animate-flash bg-primary/30" />
-      )}
-      <div className="clip-corner relative overflow-hidden border border-border bg-surface/80 p-6 backdrop-blur">
-        <div className="mb-4 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          <span className="text-primary">// Rolling team for {role}</span>
-          <span className="animate-pulse">LIVE</span>
+      <AnimatePresence>
+        {phase === "reveal" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.72, 0] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="pointer-events-none absolute inset-0 z-20 bg-gold/25"
+          />
+        )}
+      </AnimatePresence>
+
+      <div className="roll-cinematic-card roulette-stage clip-corner relative overflow-hidden border border-border bg-surface/80 p-6 backdrop-blur">
+        <div className="pointer-events-none absolute inset-0 opacity-80">
+          <div className="roll-cinematic-sweep" />
+          <div className="roulette-scan-grid" />
         </div>
 
-        <div className="relative h-32 w-full overflow-hidden rounded-lg border border-border/40 bg-background/50">
-          {/* center indicator — truth line */}
-          <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-px -translate-x-1/2 bg-primary shadow-[0_0_18px_var(--color-primary)]" />
-          <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-background via-transparent to-background" />
+        <div className="relative z-10 mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-gold/30 bg-background/70 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-gold shadow-[0_0_18px_rgba(212,175,55,0.12)]">
+            <RefreshCw className={`h-3.5 w-3.5 ${phase === "spinning" ? "animate-spin" : ""}`} />
+            {phase === "spinning" ? "Girando ruleta..." : "¡Equipo obtenido!"}
+          </div>
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground">
+            <RadioTower className="h-3.5 w-3.5" style={{ color: REGION_ACCENTS[region ?? "AMERICAS"].solid }} />
+            <span className={phase === "spinning" ? "animate-pulse" : "text-gold"}>
+              {phase === "spinning" ? "Transmisión en vivo" : "Señal bloqueada"}
+            </span>
+          </div>
+        </div>
+
+        <div className="relative z-10 text-center">
+          <p className="text-sm text-muted-foreground">
+            {phase === "spinning" ? "Analizando pool global y preparando selección para" : "Selección confirmada para"}{" "}
+            <span className="font-black text-primary">{ROLE_LABEL_ES[role]}</span>
+          </p>
 
           <motion.div
-            initial={{ x: initialX }}
-            animate={{ x: landX }}
-            transition={{
-              duration: duration / 1000,
-              ease: [0.15, 0.7, 0.25, 1],
-            }}
-            className="absolute left-1/2 flex h-full items-center gap-3 will-change-transform"
-            style={{ filter: phase === "spinning" ? "blur(0.5px)" : "none" }}
+            initial={{ opacity: 0, y: 10, scale: 0.985 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            style={accentStyle(region)}
+            className={`roulette-lock-card roulette-lock-card--solo mx-auto mt-5 max-w-2xl ${phase === "spinning" ? "is-scanning" : "is-revealed"}`}
           >
-            {reel.map((t, i) => {
-              const org = ORG_BY_ID[t.orgId];
-              const tour = TOURNAMENT_BY_ID[t.tournamentId];
-              const isWinner = i === TARGET_INDEX;
-              return (
-                <div
-                  key={`${t.id}-${i}`}
-                  className={`clip-corner flex h-24 w-44 shrink-0 flex-col justify-center border px-3 ${
-                    isWinner ? "border-primary bg-primary/10" : "border-border/60 bg-background/80"
-                  }`}
+            <div className="roulette-diamond roulette-diamond-top" />
+            <div className="roulette-diamond roulette-diamond-bottom" />
+
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <AnimatePresence initial={false} mode="popLayout">
+                <motion.span
+                  key={`${activeTeam.id}-${phase}-region-short`}
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 5 }}
+                  transition={{ duration: phase === "spinning" ? 0.08 : 0.18 }}
+                  className="clip-tag region-code-chip px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.25em]"
                 >
-                  <div className="font-display text-xl leading-none">{org?.shortName}</div>
-                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                    {tour?.shortName} · {tour?.year}
-                  </div>
-                  <div className="mt-2 inline-block w-fit clip-tag bg-primary/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
-                    {org?.region}
-                  </div>
-                </div>
-              );
-            })}
+                  {REGION_SHORT[region ?? "AMERICAS"]}
+                </motion.span>
+              </AnimatePresence>
+              <AnimatePresence initial={false} mode="popLayout">
+                <motion.span
+                  key={`${activeTeam.id}-${phase}-region-name`}
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 5 }}
+                  transition={{ duration: phase === "spinning" ? 0.08 : 0.18 }}
+                  className="clip-tag region-name-chip px-2.5 py-1 text-[10px] font-black uppercase tracking-widest"
+                >
+                  {region ?? "AMERICAS"}
+                </motion.span>
+              </AnimatePresence>
+              <span className="clip-tag border border-gold/50 bg-gold/15 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-gold">
+                {phase === "spinning" ? "Buscando señal" : "Resultado final"}
+              </span>
+            </div>
+
+            <div className="relative mt-4 min-h-[2.8rem] overflow-hidden sm:min-h-[3.35rem]">
+              <AnimatePresence initial={false} mode="wait">
+                <motion.div
+                  key={`${phase}-${phase === "spinning" ? previewIndex : selectedTeam.id}`}
+                  initial={{ opacity: 0, y: 18, letterSpacing: "0.02em" }}
+                  animate={{ opacity: 1, y: 0, letterSpacing: "0em" }}
+                  exit={{ opacity: 0, y: -18, letterSpacing: "0.06em" }}
+                  transition={{ duration: phase === "spinning" ? 0.08 : 0.3, ease: "easeOut" }}
+                  className="roulette-live-name font-display text-3xl text-foreground drop-shadow sm:text-5xl"
+                >
+                  {activeTeam.displayName}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="mt-2 min-h-[0.875rem] overflow-hidden text-[10px] font-bold uppercase tracking-[0.35em] text-muted-foreground">
+              <AnimatePresence initial={false} mode="wait">
+                <motion.div
+                  key={`${phase}-${phase === "spinning" ? previewIndex : selectedTeam.id}-tour`}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: phase === "spinning" ? 0.08 : 0.22 }}
+                >
+                  {activeTournament?.shortName ?? "VALORANT ERA"} · {activeTournament?.year ?? ""}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="mx-auto mt-5 h-1.5 max-w-xs overflow-hidden rounded-full border border-border/70 bg-background/80">
+              <motion.div
+                className="h-full roulette-progress-bar"
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.12, ease: "linear" }}
+              />
+            </div>
+
+            <div className="mt-3 flex items-center justify-center gap-2 text-[11px] font-semibold text-muted-foreground">
+              {phase === "spinning" ? <ScanLine className="h-3.5 w-3.5 animate-pulse" style={{ color: REGION_ACCENTS[region ?? "AMERICAS"].solid }} /> : <Sparkles className="h-3.5 w-3.5 text-gold" />}
+              <span>{phase === "spinning" ? `Analizando estadísticas... ${progress}%` : "Listo. Abriendo roster disponible..."}</span>
+            </div>
           </motion.div>
         </div>
 
         <AnimatePresence>
-          {showResult && phase !== "spinning" && (
+          {phase !== "spinning" && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-5 flex items-center justify-between border-t border-primary/40 pt-4"
+              exit={{ opacity: 0, y: 8 }}
+              style={accentStyle(selectedRegion)}
+              className="roulette-result-inline relative z-10 mt-5 flex flex-col items-center justify-center gap-3 border-t border-gold/35 pt-4 text-center sm:flex-row sm:justify-between sm:text-left"
             >
               <div>
-                <div className="text-xs font-bold uppercase tracking-widest text-primary">
-                  Selected
+                <div className="flex items-center justify-center gap-1.5 text-xs font-black uppercase tracking-widest text-gold sm:justify-start">
+                  <Zap className="h-3.5 w-3.5" /> Selección revelada
                 </div>
-                <div className="font-display text-3xl">
-                  {selectedTeam.displayName}
+                <div className="font-display text-3xl">{selectedTeam.displayName}</div>
+                <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
+                  {selectedRegion} · {selectedTournament?.shortName ?? "VALORANT ERA"} {selectedTournament?.year ?? ""}
                 </div>
               </div>
-              <div className="font-display text-5xl text-gold">{selectedTeam.avgRating}</div>
+              <div className="text-center sm:text-right">
+                <div className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">OVR</div>
+                <div className="font-display text-5xl" style={{ color: REGION_ACCENTS[selectedRegion ?? "AMERICAS"].solid }}>{selectedTeam.avgRating}</div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

@@ -36,7 +36,7 @@ export interface MatchResult {
 }
 
 export class MatchEngine {
-  public simulate(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT"): MatchResult {
+  public simulate(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT", stage: "EARLY" | "QUARTERFINALS" | "SEMIFINALS" | "FINALS" = "EARLY"): MatchResult {
     const map = MAPS[Math.floor(Math.random() * MAPS.length)];
 
     const momentum = new MomentumSystem();
@@ -49,44 +49,71 @@ export class MatchEngine {
     const events: MatchEvent[] = [];
     let round = 0;
 
-    let matchWinner = overtime.checkMatchWinner(scoreA, scoreB);
-
-    // Tracking for MVP
+    // Track mvp points
     const mvpPoints: Record<string, number> = {};
-    const addMvpPoints = (player: PlayerEntry, points: number) => {
-      mvpPoints[player.id] = (mvpPoints[player.id] || 0) + points;
-    };
 
-    while (!matchWinner) {
+    while (true) {
       round++;
+      const isOvertime = scoreA >= 12 && scoreB >= 12;
 
-      const roundResult = roundEngine.simulateRound(teamA, teamB, map, momentum, round, mode);
+      let matchWinner: "A" | "B" | null = null;
+      if (!isOvertime) {
+        if (scoreA === 13) matchWinner = "A";
+        else if (scoreB === 13) matchWinner = "B";
+      } else {
+        matchWinner = overtime.checkMatchWinner(scoreA, scoreB);
+      }
 
-      if (roundResult.winner === "A") scoreA++;
+      if (matchWinner) {
+        break;
+      }
+
+      const isTeamADefense = (round <= 12) || (isOvertime && round % 2 !== 0);
+
+      // --- NEW ROUND ENGINE RESOLUTION ---
+      const roundResult = roundEngine.simulateRound({
+        teamA,
+        teamB,
+        map,
+        isTeamADefense,
+        mode,
+        momentum,
+        scoreA,
+        scoreB,
+        stage
+      });
+
+      const winner = roundResult.winner;
+      if (winner === "A") scoreA++;
       else scoreB++;
 
-      momentum.recordRoundWinner(roundResult.winner);
+      momentum.recordRoundWinner(winner);
 
-      matchWinner = overtime.checkMatchWinner(scoreA, scoreB);
+      const winningTeam = winner === "A" ? teamA : teamB;
+      const loserTeam = winner === "A" ? teamB : teamA;
       const isMatchPoint = matchWinner !== null;
 
-      const winnerTeam = roundResult.winner === "A" ? teamA : teamB;
-      const loserTeam = roundResult.winner === "A" ? teamB : teamA;
-
       const eventData = eventGenerator.generateRoundEvent(
-        winnerTeam,
+        winningTeam,
         loserTeam,
         round,
         roundResult.isClutch,
         isMatchPoint,
+        roundResult.roundType as any
       );
 
-      // Simple MVP tracking based on generated events (if their name is in the text)
-      winnerTeam.players.forEach((p) => {
-        if (eventData.text.includes(p.name)) {
-          addMvpPoints(p, eventData.type === "ACE" ? 5 : eventData.type === "CLUTCH" ? 3 : 1);
-        }
-      });
+      // Accumulate MVP points based on the "importance" of the round type
+      if (eventData.player) {
+        let pts = 1; // Base point for getting mentioned
+        if (roundResult.roundType === "CLUTCH") pts += 3;
+        else if (roundResult.roundType === "TRADE_HEAVY") pts += 2;
+        else if (roundResult.roundType === "CHAOS_UPSET") pts += 4;
+        
+        // Add clutch magnitude
+        if (roundResult.clutchMagnitude) pts += roundResult.clutchMagnitude;
+        
+        mvpPoints[eventData.player] = (mvpPoints[eventData.player] || 0) + pts;
+      }
 
       events.push({
         round,
@@ -94,15 +121,15 @@ export class MatchEngine {
         scoreB,
         text: eventData.text,
         type: eventData.type,
-        winner: roundResult.winner,
-        probA: roundResult.probA,
+        winner,
+        probA: roundResult.baseProbA,
         agent: eventData.agent,
         player: eventData.player,
       });
     }
 
     // Determine MVP from the winning team
-    const finalWinnerTeam = matchWinner === "A" ? teamA : teamB;
+    const finalWinnerTeam = scoreA > scoreB ? teamA : teamB;
     let mvp: PlayerEntry | null = null;
     let highestPts = -1;
     finalWinnerTeam.players.forEach((p) => {
@@ -117,7 +144,7 @@ export class MatchEngine {
     return {
       scoreA,
       scoreB,
-      winner: matchWinner,
+      winner: scoreA > scoreB ? "A" : "B",
       mapName: map.name,
       events,
       teamA,
@@ -127,7 +154,7 @@ export class MatchEngine {
   }
 }
 
-export function simulateMatch(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT"): MatchResult {
+export function simulateMatch(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT", stage: "EARLY" | "QUARTERFINALS" | "SEMIFINALS" | "FINALS" = "EARLY"): MatchResult {
   const engine = new MatchEngine();
-  return engine.simulate(teamA, teamB, mode);
+  return engine.simulate(teamA, teamB, mode, stage);
 }

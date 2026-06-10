@@ -141,5 +141,6 @@ export interface SavedDynasty {
   wins: number;
   losses: number;
   playerForms?: Record<string, number>;
+  roleAssignments?: Record<string, PlayerRole>;
   draftMode?: DraftMode;
 }

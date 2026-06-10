@@ -36,113 +36,63 @@ export function calculateTSS(
   isDefense: boolean,
   mode: DraftMode = "STRICT"
 ): number {
-  const activeMeta = useProgression.getState().activeMeta;
+  // 1. Team OVR (0-100)
+  let ovrTotal = 0;
+  if (team.players.length > 0) {
+    ovrTotal = team.players.reduce((sum, p) => sum + p.rating + (p.form ?? 0), 0) / team.players.length;
+  }
+  const teamOVR = Math.min(100, Math.max(0, ovrTotal));
 
-  // 1. Map players to role slots
-  const slots = assignPlayersToSlots(team.players);
+  // 2. Chemistry (0-100)
+  // Compute chemistry usually returns a score around 20-80. We clamp to 100.
+  const chemistryRaw = computeChemistry(team.players, team.coach).total;
+  const chemistry = Math.min(100, Math.max(0, chemistryRaw * 1.25)); // Slightly inflate to match 100 scale
 
-  // 2. Base weights
-  let duelistWeight = 0.25;
-  let initiatorWeight = 0.20;
-  let controllerWeight = 0.20;
-  let sentinelWeight = 0.20;
-  let flexWeight = 0.15;
-
-  // 3. Meta adjustments to weights (only applicable if NOT Chaos mode)
+  // 3. Role Balance (0-100)
+  let roleBalance = 100;
   if (mode !== "CHAOS") {
-    if (activeMeta === "Duelist Meta") {
-      duelistWeight += 0.05;
-      flexWeight -= 0.05;
-    } else if (activeMeta === "Utility Meta") {
-      initiatorWeight += 0.025;
-      controllerWeight += 0.025;
-      flexWeight -= 0.05;
-    }
-  }
-
-  // 4. Calculate weighted player rating including form
-  let weightedRatingSum = 0;
-
-  if (slots["DUELIST"]) {
-    let rating = slots["DUELIST"].rating + (slots["DUELIST"].form ?? 0);
-    if (mode !== "CHAOS" && activeMeta === "Duelist Meta") {
-      rating *= 1.05;
-    }
-    weightedRatingSum += rating * duelistWeight;
-  }
-
-  if (slots["INITIATOR"]) {
-    let rating = slots["INITIATOR"].rating + (slots["INITIATOR"].form ?? 0);
-    if (mode !== "CHAOS" && activeMeta === "Utility Meta") {
-      rating += 3;
-    }
-    weightedRatingSum += rating * initiatorWeight;
-  }
-
-  if (slots["CONTROLLER"]) {
-    let rating = slots["CONTROLLER"].rating + (slots["CONTROLLER"].form ?? 0);
-    if (mode !== "CHAOS" && activeMeta === "Utility Meta") {
-      rating += 3;
-    }
-    weightedRatingSum += rating * controllerWeight;
-  }
-
-  if (slots["SENTINEL"]) {
-    let rating = slots["SENTINEL"].rating + (slots["SENTINEL"].form ?? 0);
-    if (mode !== "CHAOS" && activeMeta === "Sentinel Meta" && isDefense) {
-      rating += 5; // Defensive Sentinel Meta boost
-    }
-    weightedRatingSum += rating * sentinelWeight;
-  }
-
-  if (slots["FLEX"]) {
-    const rating = slots["FLEX"].rating + (slots["FLEX"].form ?? 0);
-    weightedRatingSum += rating * flexWeight;
-  }
-
-  // If no players are assigned (fallback), use average rating
-  if (weightedRatingSum === 0 && team.players.length > 0) {
-    weightedRatingSum = team.players.reduce((sum, p) => sum + p.rating + (p.form ?? 0), 0) / team.players.length;
-  }
-
-  // 5. Apply Chemistry Multiplier
-  const chemistryTotal = computeChemistry(team.players, team.coach).total;
-  const chemMultiplier = 1 + (chemistryTotal * 0.0015);
-
-  // 6. Apply Role Imbalance Penalty Multiplier
-  let penaltyMultiplier = 1.0;
-
-  if (mode === "CHAOS") {
-    // Chaos Mode flat penalty multiplier
-    penaltyMultiplier = 0.3;
-  } else {
     const controllers = team.players.filter((p) => p.primaryRole === "CONTROLLER").length;
     const sentinels = team.players.filter((p) => p.primaryRole === "SENTINEL").length;
     const initiators = team.players.filter((p) => p.primaryRole === "INITIATOR").length;
     const duelists = team.players.filter((p) => p.primaryRole === "DUELIST").length;
 
-    if (controllers === 0) penaltyMultiplier *= 0.85;
-    if (sentinels === 0) penaltyMultiplier *= 0.90;
-    if (initiators === 0) penaltyMultiplier *= 0.90;
-
+    if (controllers === 0) roleBalance -= 30;
+    if (sentinels === 0) roleBalance -= 20;
+    if (initiators === 0) roleBalance -= 20;
     if (duelists > 1) {
-      const extra = duelists - 1;
-      penaltyMultiplier *= (1.0 - (extra * 0.08));
+      roleBalance -= (duelists - 1) * 15;
     }
   }
+  roleBalance = Math.min(100, Math.max(0, roleBalance));
 
-  // 7. Apply Map Bonus
-  let mapBonus = 0;
+  // 4. Map Pool / Affinity (0-100)
+  let mapPool = 50; // Base neutral
   if (map.bonusRole && team.players.some((p) => p.primaryRole === map.bonusRole)) {
-    mapBonus = (map.bonusPct ?? 0) * 10;
+    mapPool += 30; // Strong affinity
   }
+  const activeMeta = useProgression.getState().activeMeta;
+  if (mode !== "CHAOS") {
+    if (activeMeta === "Duelist Meta" && team.players.some(p => p.primaryRole === "DUELIST")) mapPool += 10;
+    if (activeMeta === "Sentinel Meta" && isDefense && team.players.some(p => p.primaryRole === "SENTINEL")) mapPool += 15;
+    if (activeMeta === "Utility Meta" && team.players.some(p => p.primaryRole === "INITIATOR" || p.primaryRole === "CONTROLLER")) mapPool += 10;
+  }
+  mapPool = Math.min(100, Math.max(0, mapPool));
 
-  // TSS
-  return (weightedRatingSum + mapBonus) * chemMultiplier * penaltyMultiplier;
+  // 5. Final TSS Calculation
+  // TSS = (TeamOVR * 0.5) + (Chemistry * 0.15) + (RoleBalance * 0.2) + (MapPool * 0.15)
+  const tss = (teamOVR * 0.5) + (chemistry * 0.15) + (roleBalance * 0.2) + (mapPool * 0.15);
+
+  return Math.min(100, Math.max(0, tss));
 }
 
 export function calculateWinProbability(tssA: number, tssB: number): number {
   const diff = tssA - tssB;
-  const p = 1 / (1 + Math.exp(-0.15 * diff));
-  return Math.min(0.95, Math.max(0.05, p));
+  
+  // baseProb = 0.5 + (diff / 100) * 0.6
+  let baseProb = 0.5 + (diff / 100) * 0.6;
+  
+  // Clamp: 0.2 <= baseProb <= 0.8
+  baseProb = Math.min(0.8, Math.max(0.2, baseProb));
+  
+  return baseProb;
 }

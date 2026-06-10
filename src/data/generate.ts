@@ -21,7 +21,7 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
       throw new Error(`Real roster not found for tournament ${tournamentId} and org ${orgId}`);
     }
 
-    const players: PlayerEntry[] = realRoster.players.map((rp) => {
+    const players: PlayerEntry[] = realRoster.players.map((rp, index) => {
       // 1. Resolve role (primaryRole)
       const resolvedRole = rp.primaryRole;
 
@@ -34,8 +34,10 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
       const mostPlayedAgents = availableAgents.slice(0, 2);
       const agent = mostPlayedAgents[0] || "jett";
 
+      const safeName = rp.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
       return {
-        id: `${orgId}-${tournamentId}-${resolvedRole.toLowerCase()}`,
+        id: `${orgId}-${tournamentId}-${safeName || "player"}-${index}`,
         name: rp.name,
         orgId,
         tournamentId,

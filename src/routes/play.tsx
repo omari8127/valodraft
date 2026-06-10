@@ -267,9 +267,17 @@ function PlayPage() {
                             ? "group-hover:text-[#D4AF37] group-hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)]"
                             : mode.id === "masters"
                             ? "group-hover:text-[#8A2BE2] group-hover:drop-shadow-[0_0_8px_rgba(138,43,226,0.6)]"
-                            : ""
+                            : "group-hover:text-[#FF4D8D] group-hover:drop-shadow-[0_0_10px_rgba(255,77,141,0.65)]"
                         }
-                        ${isSelected ? (mode.id === "champions" ? "text-[#D4AF37]" : mode.id === "masters" ? "text-[#8A2BE2]" : "") : "text-white"}
+                        ${isSelected
+                          ? mode.id === "champions"
+                            ? "text-[#D4AF37]"
+                            : mode.id === "masters"
+                              ? "text-[#8A2BE2]"
+                              : "text-[#00E0FF] drop-shadow-[0_0_8px_rgba(0,224,255,0.55)]"
+                          : mode.id === "mixed"
+                            ? "text-[#00E0FF] drop-shadow-[0_0_6px_rgba(0,224,255,0.35)]"
+                            : "text-white"}
                       `}
                     >
                       {mode.id === "champions"

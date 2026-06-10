@@ -31,8 +31,8 @@ interface DraftState {
   startRoll: () => void;
   rerollCurrentTeam: () => void;
   finishRoll: () => void;
-  pickPlayer: (player: PlayerEntry, team: TeamEntry) => void;
-  pickCoach: (coach: CoachEntry, team: TeamEntry) => void;
+  pickPlayer: (player: PlayerEntry, team: TeamEntry, slotIndex?: number) => void;
+  pickCoach: (coach: CoachEntry, team: TeamEntry, slotIndex?: number) => void;
   reset: () => void;
 }
 
@@ -53,6 +53,16 @@ export function getSlotsForMode(): RosterSlot[] {
  * Strict validation function for drafting players.
  * Enforces missing Initiator locks on STRICT mode FLEX slots.
  */
+function isFlexiblePlayer(player: PlayerEntry): boolean {
+  return player.primaryRole === "FLEX";
+}
+
+function roleMatchesPlayer(player: PlayerEntry, slot: SlotRole): boolean {
+  if (slot === "COACH") return false;
+  if (player.primaryRole === slot || player.secondaryRole === slot) return true;
+  return isFlexiblePlayer(player);
+}
+
 export function canPickPlayer(
   player: PlayerEntry,
   team: Roster,
@@ -63,7 +73,7 @@ export function canPickPlayer(
   const normalizedName = player.name.toLowerCase().trim();
   const isDuplicatePlayer = team.slots.some((s) => {
     if (!s.playerId) return false;
-    const draftedPlayer = PLAYER_BY_ID[s.playerId];
+    const draftedPlayer = s.playerWithForm ?? PLAYER_BY_ID[s.playerId];
     return draftedPlayer && draftedPlayer.name.toLowerCase().trim() === normalizedName;
   });
 
@@ -71,40 +81,62 @@ export function canPickPlayer(
     return false;
   }
 
+  if (slot === "COACH") return false;
+
   if (mode !== "STRICT") {
-    if (slot === "COACH") return false;
     return true; // No restrictions in FLEXIBLE and CHAOS modes
   }
 
-  // In STRICT mode:
-  if (slot === "COACH") {
-    return false;
+  // In STRICT mode, FLEX players can be confirmed into whichever missing role slot the user clicks.
+  if (roleMatchesPlayer(player, slot)) {
+    return true;
   }
 
   if (slot === "FLEX") {
     // Retrieve currently drafted players
     const draftedPlayers = team.slots
       .filter((s) => s.playerId)
-      .map((s) => PLAYER_BY_ID[s.playerId!])
+      .map((s) => s.playerWithForm ?? PLAYER_BY_ID[s.playerId!])
       .filter(Boolean);
 
     const hasInitiator = draftedPlayers.some((p) => p.primaryRole === "INITIATOR");
 
     // 1. Missing Initiator Safeguard: If team lacks Initiator, FLEX slot can ONLY select Initiators.
     if (!hasInitiator) {
-      return player.primaryRole === "INITIATOR";
+      return player.primaryRole === "INITIATOR" || player.secondaryRole === "INITIATOR";
     }
 
     // 2. Dual Duelist Check: FLEX slot allows Duelist only if exactly one Duelist already exists.
     const duelistCount = draftedPlayers.filter((p) => p.primaryRole === "DUELIST").length;
     return (
       player.primaryRole === "INITIATOR" ||
-      (player.primaryRole === "DUELIST" && duelistCount === 1)
+      player.secondaryRole === "INITIATOR" ||
+      ((player.primaryRole === "DUELIST" || player.secondaryRole === "DUELIST") && duelistCount === 1)
     );
   }
 
-  // Non-FLEX slots require their matching roles
-  return player.primaryRole === slot;
+  return false;
+}
+
+export function canPlacePlayerInSlot(
+  player: PlayerEntry,
+  roster: Roster,
+  slotIndex: number,
+  mode: DraftMode
+): boolean {
+  const slot = roster.slots[slotIndex];
+  if (!slot || slot.playerId || slot.coachId || slot.role === "COACH") return false;
+  return canPickPlayer(player, roster, slot.role, mode);
+}
+
+export function canPlaceCoachInSlot(
+  coach: CoachEntry,
+  roster: Roster,
+  slotIndex: number
+): boolean {
+  const slot = roster.slots[slotIndex];
+  if (!coach || !slot || slot.playerId || slot.coachId || slot.role !== "COACH") return false;
+  return !roster.slots.some((s) => s.coachId === coach.id);
 }
 
 export function calculateAIPickWeight(
@@ -372,13 +404,29 @@ export const useDraft = create<DraftState>((set, get) => ({
     set({ isRolling: false, rollResultTeam: rollSelectedTeam });
   },
 
-  pickPlayer: (player, team) => {
-    const { roster, lockedTeamEntryIds, currentSlotIdx } = get();
+  pickPlayer: (player, team, slotIndex) => {
+    const { roster, lockedTeamEntryIds, currentSlotIdx, draftMode } = get();
     if (currentSlotIdx >= roster.slots.length) return;
 
+    const targetSlotIdx = typeof slotIndex === "number" ? slotIndex : currentSlotIdx;
+    if (!canPlacePlayerInSlot(player, roster, targetSlotIdx, draftMode)) return;
+
+    const targetSlot = roster.slots[targetSlotIdx];
+    const canAdaptToSlot =
+      targetSlot?.role !== "COACH" &&
+      targetSlot?.role !== "FLEX" &&
+      player.primaryRole === "FLEX";
+    const playerForSlot: PlayerEntry = canAdaptToSlot
+      ? {
+          ...player,
+          role: targetSlot.role,
+          primaryRole: targetSlot.role,
+        }
+      : player;
+
     const newSlots = roster.slots.map((s, i) =>
-      i === currentSlotIdx
-        ? { ...s, playerId: player.id, teamEntryId: team.id, playerWithForm: player }
+      i === targetSlotIdx
+        ? { ...s, playerId: player.id, coachId: null, teamEntryId: team.id, playerWithForm: playerForSlot }
         : s
     );
 
@@ -396,12 +444,15 @@ export const useDraft = create<DraftState>((set, get) => ({
     });
   },
 
-  pickCoach: (coach, team) => {
+  pickCoach: (coach, team, slotIndex) => {
     const { roster, lockedTeamEntryIds, currentSlotIdx } = get();
     if (currentSlotIdx >= roster.slots.length) return;
 
+    const targetSlotIdx = typeof slotIndex === "number" ? slotIndex : currentSlotIdx;
+    if (!canPlaceCoachInSlot(coach, roster, targetSlotIdx)) return;
+
     const newSlots = roster.slots.map((s, i) =>
-      i === currentSlotIdx
+      i === targetSlotIdx
         ? { ...s, playerId: null, coachId: coach.id, teamEntryId: team.id }
         : s
     );
