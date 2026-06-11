@@ -7,15 +7,23 @@ function capitalize(str: string) {
 
 export class EventGenerator {
   private pickPlayer(team: MatchTeam, preferRole?: "DUELIST" | "SENTINEL" | "INITIATOR" | "CONTROLLER") {
-    let pool = team.players;
+    if (!team || !team.players || team.players.length === 0) {
+      return { player: { name: "System", rating: 50 }, agent: "Agente" };
+    }
+
+    let pool = team.players.filter(p => p !== null && p !== undefined);
+    if (pool.length === 0) {
+      return { player: { name: "System", rating: 50 }, agent: "Agente" };
+    }
+
     if (preferRole) {
-      const rolePool = team.players.filter((p) => p.role === preferRole);
+      const rolePool = pool.filter((p) => p.role === preferRole);
       if (rolePool.length > 0 && Math.random() < 0.7) pool = rolePool;
     }
-    pool.sort((a, b) => b.rating - a.rating);
+    pool.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     const skew = (preferRole as string) === "MULTI_KILL_ROLE" ? 2.5 : 1.8;
     const index = Math.floor(Math.pow(Math.random(), skew) * pool.length);
-    const player = pool[index] || team.players[0] || { name: "System", rating: 50 };
+    const player = pool[index] || pool[0] || { name: "System", rating: 50 };
     const agent = player?.mostPlayedAgents?.[0] ? capitalize(player.mostPlayedAgents[0]) : "Agente";
     return { player, agent };
   }

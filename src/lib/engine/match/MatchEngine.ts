@@ -37,8 +37,8 @@ export interface MatchResult {
 
 export class MatchEngine {
   public simulate(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT", stage: "EARLY" | "QUARTERFINALS" | "SEMIFINALS" | "FINALS" = "EARLY"): MatchResult {
-    if (!teamA || !teamB) {
-      throw new Error("Invalid teams in simulation");
+    if (!teamA || !teamB || !teamA.players || !teamB.players) {
+      throw new Error("Invalid teams or missing players in simulation");
     }
 
     console.log("SIMULATION START", { teamA: teamA.name, teamB: teamB.name, stage });
@@ -109,7 +109,7 @@ export class MatchEngine {
       );
 
       // Accumulate MVP points based on the "importance" of the round type
-      if (eventData.player) {
+      if (eventData && eventData.player) {
         let pts = 1; // Base point for getting mentioned
         if (roundResult.roundType === "CLUTCH") pts += 3;
         else if (roundResult.roundType === "TRADE_HEAVY") pts += 2;
@@ -118,7 +118,8 @@ export class MatchEngine {
         // Add clutch magnitude
         if (roundResult.clutchMagnitude) pts += roundResult.clutchMagnitude;
         
-        mvpPoints[eventData.player] = (mvpPoints[eventData.player] || 0) + pts;
+        const playerKey = eventData.player;
+        mvpPoints[playerKey] = (mvpPoints[playerKey] || 0) + pts;
       }
 
       events.push({
@@ -138,14 +139,18 @@ export class MatchEngine {
     const finalWinnerTeam = scoreA > scoreB ? teamA : teamB;
     let mvp: PlayerEntry | null = null;
     let highestPts = -1;
-    finalWinnerTeam.players.forEach((p) => {
-      // Add base rating to points so better players generally have a higher floor
-      const total = (mvpPoints[p.id] || 0) * 10 + p.rating;
-      if (total > highestPts) {
-        highestPts = total;
-        mvp = p;
-      }
-    });
+    
+    if (finalWinnerTeam && finalWinnerTeam.players) {
+      finalWinnerTeam.players.forEach((p) => {
+        if (!p || !p.name) return;
+        // eventData.player is the player name, so we use p.name here instead of p.id
+        const total = (mvpPoints[p.name] || 0) * 10 + (p.rating || 0);
+        if (total > highestPts) {
+          highestPts = total;
+          mvp = p;
+        }
+      });
+    }
 
     return {
       scoreA,
@@ -162,5 +167,10 @@ export class MatchEngine {
 
 export function simulateMatch(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT", stage: "EARLY" | "QUARTERFINALS" | "SEMIFINALS" | "FINALS" = "EARLY"): MatchResult {
   const engine = new MatchEngine();
-  return engine.simulate(teamA, teamB, mode, stage);
+  try {
+    return engine.simulate(teamA, teamB, mode, stage);
+  } catch (e) {
+    console.error("SIMULATION ERROR:", e);
+    throw e;
+  }
 }

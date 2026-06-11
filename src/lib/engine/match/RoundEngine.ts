@@ -48,13 +48,19 @@ export class RoundEngine {
 
     // --- IMMUTABLE PLAYER VARIANCE ---
     const applyVariance = (team: MatchTeam): MatchTeam => {
-      if (!team.players || team.players.length === 0) return team;
+      if (!team || !team.players || team.players.length === 0) return team;
       
-      const idx = Math.floor(Math.random() * team.players.length);
+      const validPlayers = team.players.filter(p => p !== null && p !== undefined);
+      if (validPlayers.length === 0) return team;
+
+      const idx = Math.floor(Math.random() * validPlayers.length);
+      const targetPlayer = validPlayers[idx];
+
       return {
         ...team,
-        players: team.players.map((p, i) => {
-          if (i === idx) {
+        players: team.players.map((p) => {
+          if (!p) return p;
+          if (p === targetPlayer) {
             return { ...p, form: (p.form ?? 0) + (Math.random() * 10 - 5) };
           }
           return p;
