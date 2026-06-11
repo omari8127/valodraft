@@ -1,212 +1,212 @@
 {
-  "mibr": {
-    "id": "mibr_2025",
-    "orgId": "mibr",
+  "t1": {
+    "id": "giantx_2025",
+    "orgId": "giantx",
     "tournamentId": "champions-2025",
-    "name": "MIBR",
+    "name": "GIANTX",
     "year": 2025,
-    "displayName": "MIBR 2025",
-    "region": "AMERICAS",
+    "displayName": "GIANTX 2025",
+    "region": "EMEA",
     "players": [
       {
-        "id": "mibr-champions-2025-artzin-0",
-        "name": "artzin",
-        "orgId": "mibr",
-        "tournamentId": "champions-2025",
-        "role": "DUELIST",
-        "primaryRole": "DUELIST",
-        "secondaryRole": "FLEX",
-        "rating": 90,
-        "region": "AMERICAS",
-        "nationality": "Brazil",
-        "mostPlayedAgents": [
-          "iso",
-          "phoenix"
-        ],
-        "agent": "iso"
-      },
-      {
-        "id": "mibr-champions-2025-cortezia-1",
-        "name": "cortezia",
-        "orgId": "mibr",
+        "id": "giantx-champions-2025-cloud-0",
+        "name": "Cloud",
+        "orgId": "giantx",
         "tournamentId": "champions-2025",
         "role": "INITIATOR",
         "primaryRole": "INITIATOR",
         "secondaryRole": "FLEX",
-        "rating": 92,
-        "region": "AMERICAS",
-        "nationality": "Brazil",
+        "rating": 93,
+        "region": "EMEA",
+        "nationality": "Russia",
         "mostPlayedAgents": [
-          "breach",
-          "sova"
+          "fade",
+          "skye"
         ],
-        "agent": "breach"
+        "agent": "fade"
       },
       {
-        "id": "mibr-champions-2025-xenom-2",
-        "name": "xenom",
-        "orgId": "mibr",
+        "id": "giantx-champions-2025-westside-1",
+        "name": "westside",
+        "orgId": "giantx",
+        "tournamentId": "champions-2025",
+        "role": "CONTROLLER",
+        "primaryRole": "CONTROLLER",
+        "secondaryRole": "FLEX",
+        "rating": 89,
+        "region": "EMEA",
+        "nationality": "China",
+        "mostPlayedAgents": [
+          "astra",
+          "clove"
+        ],
+        "agent": "astra"
+      },
+      {
+        "id": "giantx-champions-2025-runner-2",
+        "name": "runneR",
+        "orgId": "giantx",
         "tournamentId": "champions-2025",
         "role": "CONTROLLER",
         "primaryRole": "CONTROLLER",
         "secondaryRole": "FLEX",
         "rating": 88,
-        "region": "AMERICAS",
-        "nationality": "Brazil",
+        "region": "EMEA",
+        "nationality": "USA",
         "mostPlayedAgents": [
-          "clove",
-          "omen"
+          "viper",
+          "harbor"
         ],
-        "agent": "clove"
+        "agent": "viper"
       },
       {
-        "id": "mibr-champions-2025-verno-3",
-        "name": "Verno",
-        "orgId": "mibr",
+        "id": "giantx-champions-2025-nukkye-3",
+        "name": "nukkye",
+        "orgId": "giantx",
         "tournamentId": "champions-2025",
         "role": "SENTINEL",
         "primaryRole": "SENTINEL",
-        "secondaryRole": "FLEX",
+        "secondaryRole": "CONTROLLER",
         "rating": 88,
-        "region": "AMERICAS",
-        "nationality": "Brazil",
+        "region": "EMEA",
+        "nationality": "Lithuania",
         "mostPlayedAgents": [
-          "sage",
-          "killjoy"
+          "killjoy",
+          "cypher"
         ],
-        "agent": "sage"
+        "agent": "killjoy"
       },
       {
-        "id": "mibr-champions-2025-aspas-4",
-        "name": "aspas",
-        "orgId": "mibr",
+        "id": "giantx-champions-2025-purp0-4",
+        "name": "Purp0",
+        "orgId": "giantx",
         "tournamentId": "champions-2025",
         "role": "DUELIST",
         "primaryRole": "DUELIST",
         "secondaryRole": "FLEX",
-        "rating": 97,
-        "region": "AMERICAS",
-        "nationality": "Brazil",
+        "rating": 91,
+        "region": "EMEA",
+        "nationality": "Russia",
         "mostPlayedAgents": [
-          "iso",
+          "jett",
           "neon"
         ],
-        "agent": "iso"
+        "agent": "jett"
       }
     ],
     "coach": {
-      "id": "mibr-champions-2025-coach",
-      "name": "Daniel \"frosT\" Kaplan",
-      "orgId": "mibr",
+      "id": "giantx-champions-2025-coach",
+      "name": "Daniil \"Pipson\" Mesheryakov",
+      "orgId": "giantx",
       "tournamentId": "champions-2025",
-      "rating": 80,
-      "region": "AMERICAS"
+      "rating": 81,
+      "region": "EMEA"
     },
-    "avgRating": 91
+    "avgRating": 90
   },
-  "vikings": {
-    "id": "vikings_2021",
-    "orgId": "vikings",
+  "t2": {
+    "id": "furia_2021",
+    "orgId": "furia",
     "tournamentId": "champions-2021",
-    "name": "Team Vikings",
+    "name": "FURIA",
     "year": 2021,
-    "displayName": "Team Vikings 2021",
+    "displayName": "FURIA 2021",
     "region": "AMERICAS",
     "players": [
       {
-        "id": "vikings-champions-2021-frz-0",
-        "name": "frz",
-        "orgId": "vikings",
+        "id": "furia-champions-2021-qck-0",
+        "name": "qck",
+        "orgId": "furia",
         "tournamentId": "champions-2021",
         "role": "DUELIST",
         "primaryRole": "DUELIST",
         "secondaryRole": "FLEX",
-        "rating": 85,
+        "rating": 84,
         "region": "AMERICAS",
         "nationality": "Brazil",
         "mostPlayedAgents": [
-          "jett",
-          "raze"
+          "raze",
+          "reyna"
         ],
-        "agent": "jett"
+        "agent": "raze"
       },
       {
-        "id": "vikings-champions-2021-sacy-1",
-        "name": "Sacy",
-        "orgId": "vikings",
+        "id": "furia-champions-2021-khalil-1",
+        "name": "Khalil",
+        "orgId": "furia",
         "tournamentId": "champions-2021",
         "role": "INITIATOR",
         "primaryRole": "INITIATOR",
-        "secondaryRole": "SENTINEL",
-        "rating": 88,
-        "region": "AMERICAS",
-        "nationality": "Brazil",
-        "mostPlayedAgents": [
-          "breach",
-          "sova"
-        ],
-        "agent": "breach"
-      },
-      {
-        "id": "vikings-champions-2021-saadhak-2",
-        "name": "Saadhak",
-        "orgId": "vikings",
-        "tournamentId": "champions-2021",
-        "role": "FLEX",
-        "primaryRole": "FLEX",
-        "secondaryRole": "INITIATOR",
-        "rating": 87,
-        "region": "AMERICAS",
-        "nationality": "Argentina",
-        "mostPlayedAgents": [
-          "breach",
-          "sova"
-        ],
-        "agent": "breach"
-      },
-      {
-        "id": "vikings-champions-2021-sutecas-3",
-        "name": "sutecas",
-        "orgId": "vikings",
-        "tournamentId": "champions-2021",
-        "role": "SENTINEL",
-        "primaryRole": "SENTINEL",
         "secondaryRole": "CONTROLLER",
         "rating": 84,
         "region": "AMERICAS",
         "nationality": "Brazil",
         "mostPlayedAgents": [
-          "deadlock",
-          "killjoy"
+          "sova",
+          "gekko"
         ],
-        "agent": "deadlock"
+        "agent": "sova"
       },
       {
-        "id": "vikings-champions-2021-gtnzin-4",
-        "name": "gtnziN",
-        "orgId": "vikings",
+        "id": "furia-champions-2021-xand-2",
+        "name": "xand",
+        "orgId": "furia",
         "tournamentId": "champions-2021",
-        "role": "FLEX",
-        "primaryRole": "FLEX",
+        "role": "CONTROLLER",
+        "primaryRole": "CONTROLLER",
         "secondaryRole": "DUELIST",
-        "rating": 83,
+        "rating": 85,
         "region": "AMERICAS",
         "nationality": "Brazil",
         "mostPlayedAgents": [
-          "kayo",
+          "brimstone",
+          "astra"
+        ],
+        "agent": "brimstone"
+      },
+      {
+        "id": "furia-champions-2021-nzr-3",
+        "name": "nzr",
+        "orgId": "furia",
+        "tournamentId": "champions-2021",
+        "role": "SENTINEL",
+        "primaryRole": "SENTINEL",
+        "secondaryRole": "INITIATOR",
+        "rating": 81,
+        "region": "AMERICAS",
+        "nationality": "Argentina",
+        "mostPlayedAgents": [
+          "killjoy",
+          "cypher"
+        ],
+        "agent": "killjoy"
+      },
+      {
+        "id": "furia-champions-2021-mazin-4",
+        "name": "mazin",
+        "orgId": "furia",
+        "tournamentId": "champions-2021",
+        "role": "FLEX",
+        "primaryRole": "FLEX",
+        "secondaryRole": "INITIATOR",
+        "rating": 82,
+        "region": "AMERICAS",
+        "nationality": "Brazil",
+        "mostPlayedAgents": [
+          "fade",
           "breach"
         ],
-        "agent": "kayo"
+        "agent": "fade"
       }
     ],
     "coach": {
-      "id": "vikings-champions-2021-coach",
-      "name": "Matheus \"bzkA\" Tarasconi",
-      "orgId": "vikings",
+      "id": "furia-champions-2021-coach",
+      "name": "Carlos \"Carlão\" Temprano",
+      "orgId": "furia",
       "tournamentId": "champions-2021",
-      "rating": 81,
+      "rating": 77,
       "region": "AMERICAS"
     },
-    "avgRating": 85
+    "avgRating": 83
   }
 }

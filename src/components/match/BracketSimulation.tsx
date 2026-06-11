@@ -55,8 +55,8 @@ export function BracketSimulation({ bracket, playerTeam, eliminatedRoundIdx }: B
                 {roundMatches.map((m) => {
                   if (!m.teamA || !m.teamB || !m.result) return null;
                   
-                  const isPlayerA = m.teamA === playerTeam;
-                  const isPlayerB = m.teamB === playerTeam;
+                  const isPlayerA = m.teamA.name === playerTeam.name;
+                  const isPlayerB = m.teamB.name === playerTeam.name;
                   const isUserMatch = isPlayerA || isPlayerB;
                   const isEliminationMatch = isUserMatch && originalRoundIdx === eliminatedRoundIdx;
                   

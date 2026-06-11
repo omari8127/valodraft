@@ -40,10 +40,11 @@ export class RoundEngine {
 
     // --- PLAYER VARIANCE ---
     const applyVariance = (team: MatchTeam) => {
+      if (team.players.length === 0) return () => {};
       const idx = Math.floor(Math.random() * team.players.length);
-      const originalForm = team.players[idx].form ?? 0;
-      team.players[idx].form = originalForm + (Math.random() * 10 - 5);
-      return () => { team.players[idx].form = originalForm; };
+      const originalForm = team.players[idx]?.form ?? 0;
+      if (team.players[idx]) team.players[idx].form = originalForm + (Math.random() * 10 - 5);
+      return () => { if (team.players[idx]) team.players[idx].form = originalForm; };
     };
 
     const cleanupA = applyVariance(teamA);

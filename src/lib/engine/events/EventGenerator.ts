@@ -15,7 +15,7 @@ export class EventGenerator {
     pool.sort((a, b) => b.rating - a.rating);
     const skew = (preferRole as string) === "MULTI_KILL_ROLE" ? 2.5 : 1.8;
     const index = Math.floor(Math.pow(Math.random(), skew) * pool.length);
-    const player = pool[index] || team.players[0];
+    const player = pool[index] || team.players[0] || { name: "System", rating: 50 };
     const agent = player?.mostPlayedAgents?.[0] ? capitalize(player.mostPlayedAgents[0]) : "Agente";
     return { player, agent };
   }

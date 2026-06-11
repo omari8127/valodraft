@@ -145,13 +145,13 @@ function MatchPage() {
   const totalRounds = bracket.length;
   const currentBracketRound = bracket[currentRoundIdx];
   const allDone = bracket[totalRounds - 1]?.[0]?.winner;
-  const isChampion = allDone === playerTeam;
+  const isChampion = allDone?.name === playerTeam.name;
 
-  const userMatch = currentBracketRound?.find(m => m.teamA === playerTeam || m.teamB === playerTeam);
+  const userMatch = currentBracketRound?.find(m => m.teamA?.name === playerTeam.name || m.teamB?.name === playerTeam.name);
   const isEliminated = !isChampion && !userMatch && currentRoundIdx > 0;
 
-  const opponentTeam = userMatch?.teamA === playerTeam ? userMatch?.teamB : userMatch?.teamA;
-  const isPlayerTeamA = userMatch?.teamA === playerTeam;
+  const opponentTeam = userMatch?.teamA?.name === playerTeam.name ? userMatch?.teamB : userMatch?.teamA;
+  const isPlayerTeamA = userMatch?.teamA?.name === playerTeam.name;
 
   // Initialize match using the saved draftMode context
   useEffect(() => {
@@ -260,7 +260,7 @@ function MatchPage() {
       setMatchState("READY");
     } else {
       // Tournament Done
-      if (userMatch.winner === playerTeam) {
+      if (userMatch.winner?.name === playerTeam.name) {
         recordWin(save.id);
         addTrophy(save.id, "Tournament Champion");
       }
@@ -291,9 +291,9 @@ function MatchPage() {
   }
 
   if (matchState === "ELIMINATED" && bracket) {
-    const totalWins = bracket.flat().filter(m => m.winner === playerTeam).length;
-    const roundsReached = bracket.findIndex(r => r.some(m => m.teamA === playerTeam || m.teamB === playerTeam));
-    const isWinner = bracket[bracket.length - 1][0]?.winner === playerTeam;
+    const totalWins = bracket.flat().filter(m => m.winner?.name === playerTeam.name).length;
+    const roundsReached = bracket.findIndex(r => r.some(m => m.teamA?.name === playerTeam.name || m.teamB?.name === playerTeam.name));
+    const isWinner = bracket[bracket.length - 1][0]?.winner?.name === playerTeam.name;
     const placement = isWinner ? "CHAMPIONS" : ROUND_LABEL(roundsReached + 1, bracket.length).toUpperCase();
 
     // The user lost, but we simulate the rest of the bracket completely for realistic results
