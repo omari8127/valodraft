@@ -30,10 +30,15 @@ export const Route = createFileRoute("/match")({
     ],
   }),
   component: MatchPage,
-  errorComponent: () => (
+  errorComponent: ({ error }) => (
     <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
       <h1 className="text-4xl font-display text-red-500 mb-4">Simulation Crashed</h1>
-      <p className="text-muted-foreground mb-8">An error occurred during the simulation. Please try again.</p>
+      <p className="text-muted-foreground mb-4">An error occurred during the simulation. Please try again.</p>
+      <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded text-left overflow-auto max-w-3xl text-xs mb-8 mx-auto w-full">
+        <strong>Error:</strong> {error?.message || "Unknown error"}
+        <br />
+        <pre className="mt-2 whitespace-pre-wrap font-mono">{error?.stack}</pre>
+      </div>
       <Link to="/play" className="clip-corner bg-primary px-6 py-3 text-primary-foreground font-display tracking-widest">RETURN HOME</Link>
     </div>
   ),
@@ -168,10 +173,16 @@ function MatchPage() {
   // Initialize match using the saved draftMode context
   useEffect(() => {
     if (userMatch && !userMatch.result && !currentMatchResult && userMatch.teamA && userMatch.teamB && save) {
-      const engine = new MatchEngine();
-      const result = engine.simulate(userMatch.teamA, userMatch.teamB, save.draftMode ?? "STRICT");
-      setCurrentMatchResult(result);
-      setDisplayedRoundCount(0);
+      try {
+        const engine = new MatchEngine();
+        const result = engine.simulate(userMatch.teamA, userMatch.teamB, save.draftMode ?? "STRICT");
+        setCurrentMatchResult(result);
+        setDisplayedRoundCount(0);
+      } catch (err: any) {
+        console.error("MatchEngine UI Crash caught in useEffect:", err);
+        // Force the app to show the error boundary
+        throw err;
+      }
     }
   }, [userMatch, currentMatchResult, save]);
 
