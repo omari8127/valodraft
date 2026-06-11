@@ -140,36 +140,19 @@ function MatchPage() {
   const homeSide = isHomeAttack ? "ATTACK" : "DEFENSE";
   const awaySide = isHomeAttack ? "DEFENSE" : "ATTACK";
 
-  if (!save || !playerTeam || !bracket) {
-    return (
-      <div className="mx-auto max-w-3xl px-4 py-20 text-center">
-        <div className="text-sm text-muted-foreground">No active match.</div>
-        <Link
-          to="/play"
-          className="clip-corner mt-4 inline-block bg-primary px-5 py-2.5 font-display text-sm tracking-widest text-primary-foreground"
-        >
-          {t("newDraft")}
-        </Link>
-      </div>
-    );
-  }
+  // --- CALCULATE DEPENDENCIES BEFORE HOOKS AND EARLY RETURNS ---
+  const totalRounds = bracket?.length || 0;
+  const currentBracketRound = bracket?.[currentRoundIdx];
+  const allDone = bracket?.[totalRounds - 1]?.[0]?.winner;
+  const isChampion = !!(playerTeam && allDone?.name === playerTeam.name);
 
-  // Safe Rendering Guard
-  if (!playerTeam.players || playerTeam.players.length === 0) {
-    return null;
-  }
-
-  const totalRounds = bracket.length;
-  const currentBracketRound = bracket[currentRoundIdx];
-  const allDone = bracket[totalRounds - 1]?.[0]?.winner;
-  const isChampion = allDone?.name === playerTeam.name;
-
-  const userMatch = currentBracketRound?.find(m => m.teamA?.name === playerTeam.name || m.teamB?.name === playerTeam.name);
+  const userMatch = currentBracketRound?.find(m => m.teamA?.name === playerTeam?.name || m.teamB?.name === playerTeam?.name);
   const isEliminated = !isChampion && !userMatch && currentRoundIdx > 0;
 
-  const opponentTeam = userMatch?.teamA?.name === playerTeam.name ? userMatch?.teamB : userMatch?.teamA;
-  const isPlayerTeamA = userMatch?.teamA?.name === playerTeam.name;
+  const opponentTeam = userMatch?.teamA?.name === playerTeam?.name ? userMatch?.teamB : userMatch?.teamA;
+  const isPlayerTeamA = userMatch?.teamA?.name === playerTeam?.name;
 
+  // --- HOOKS ---
   // Initialize match using the saved draftMode context
   useEffect(() => {
     if (userMatch && !userMatch.result && !currentMatchResult && userMatch.teamA && userMatch.teamB && save) {
@@ -249,6 +232,26 @@ function MatchPage() {
       }
     }
   }, [matchState, currentMatchResult, isPlayerTeamA, recordMatchResult, currentRoundIdx]);
+
+  // --- EARLY RETURNS ---
+  if (!save || !playerTeam || !bracket) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-20 text-center">
+        <div className="text-sm text-muted-foreground">No active match.</div>
+        <Link
+          to="/play"
+          className="clip-corner mt-4 inline-block bg-primary px-5 py-2.5 font-display text-sm tracking-widest text-primary-foreground"
+        >
+          {t("newDraft")}
+        </Link>
+      </div>
+    );
+  }
+
+  // Safe Rendering Guard
+  if (!playerTeam.players || playerTeam.players.length === 0) {
+    return null;
+  }
 
   const handlePlayMatch = () => {
     unlockSfx();
