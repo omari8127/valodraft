@@ -37,6 +37,12 @@ export interface MatchResult {
 
 export class MatchEngine {
   public simulate(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT", stage: "EARLY" | "QUARTERFINALS" | "SEMIFINALS" | "FINALS" = "EARLY"): MatchResult {
+    if (!teamA || !teamB) {
+      throw new Error("Invalid teams in simulation");
+    }
+
+    console.log("SIMULATION START", { teamA: teamA.name, teamB: teamB.name, stage });
+
     const map = MAPS[Math.floor(Math.random() * MAPS.length)];
 
     const momentum = new MomentumSystem();

@@ -36,25 +36,37 @@ export class RoundEngine {
     scoreB,
     stage = "EARLY"
   }: SimulateRoundParams): RoundResult {
+    if (!teamA || !teamB) {
+      throw new Error("Invalid teams in simulation");
+    }
+
+    if (!stage) {
+      stage = "EARLY";
+    }
+
     const isTeamBDefense = !isTeamADefense;
 
-    // --- PLAYER VARIANCE ---
-    const applyVariance = (team: MatchTeam) => {
-      if (team.players.length === 0) return () => {};
+    // --- IMMUTABLE PLAYER VARIANCE ---
+    const applyVariance = (team: MatchTeam): MatchTeam => {
+      if (!team.players || team.players.length === 0) return team;
+      
       const idx = Math.floor(Math.random() * team.players.length);
-      const originalForm = team.players[idx]?.form ?? 0;
-      if (team.players[idx]) team.players[idx].form = originalForm + (Math.random() * 10 - 5);
-      return () => { if (team.players[idx]) team.players[idx].form = originalForm; };
+      return {
+        ...team,
+        players: team.players.map((p, i) => {
+          if (i === idx) {
+            return { ...p, form: (p.form ?? 0) + (Math.random() * 10 - 5) };
+          }
+          return p;
+        })
+      };
     };
 
-    const cleanupA = applyVariance(teamA);
-    const cleanupB = applyVariance(teamB);
+    const simTeamA = applyVariance(teamA);
+    const simTeamB = applyVariance(teamB);
 
-    const tssA = calculateTSS(teamA, map, isTeamADefense, mode);
-    const tssB = calculateTSS(teamB, map, isTeamBDefense, mode);
-
-    cleanupA();
-    cleanupB();
+    const tssA = calculateTSS(simTeamA, map, isTeamADefense, mode);
+    const tssB = calculateTSS(simTeamB, map, isTeamBDefense, mode);
 
     let baseProbA = calculateWinProbability(tssA, tssB);
 
@@ -95,10 +107,14 @@ export class RoundEngine {
     if (scoreA - scoreB >= 5) baseProbA -= 0.06;
 
     // --- STAGE-BASED VARIANCE ---
-    let variance = 0.12;
-    if (stage === "QUARTERFINALS") variance = 0.09;
-    else if (stage === "SEMIFINALS") variance = 0.07;
-    else if (stage === "FINALS") variance = 0.04;
+    const varianceMap: Record<string, number> = {
+      EARLY: 0.12,
+      QUARTERFINALS: 0.09,
+      SEMIFINALS: 0.07,
+      FINALS: 0.04
+    };
+
+    const variance = varianceMap[stage] ?? 0.12;
 
     let finalProbA = baseProbA + (Math.random() * variance * 2 - variance);
 

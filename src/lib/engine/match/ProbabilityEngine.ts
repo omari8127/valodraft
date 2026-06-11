@@ -93,6 +93,11 @@ export function calculateWinProbability(tssA: number, tssB: number): number {
   
   // Clamp: 0.2 <= baseProb <= 0.8
   baseProb = Math.min(0.8, Math.max(0.2, baseProb));
+
+  if (isNaN(baseProb)) {
+    console.error("NaN detected in probability", { tssA, tssB });
+    baseProb = 0.5;
+  }
   
   return baseProb;
 }

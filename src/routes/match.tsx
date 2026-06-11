@@ -30,6 +30,13 @@ export const Route = createFileRoute("/match")({
     ],
   }),
   component: MatchPage,
+  errorComponent: () => (
+    <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
+      <h1 className="text-4xl font-display text-red-500 mb-4">Simulation Crashed</h1>
+      <p className="text-muted-foreground mb-8">An error occurred during the simulation. Please try again.</p>
+      <Link to="/play" className="clip-corner bg-primary px-6 py-3 text-primary-foreground font-display tracking-widest">RETURN HOME</Link>
+    </div>
+  ),
 });
 
 type SimSpeed = "NORMAL" | "FAST" | "ULTRA";
@@ -140,6 +147,11 @@ function MatchPage() {
         </Link>
       </div>
     );
+  }
+
+  // Safe Rendering Guard
+  if (!playerTeam.players || playerTeam.players.length === 0) {
+    return null;
   }
 
   const totalRounds = bracket.length;
