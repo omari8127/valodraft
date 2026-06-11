@@ -38,7 +38,17 @@ export interface MatchResult {
 export class MatchEngine {
   public simulate(teamA: MatchTeam, teamB: MatchTeam, mode: DraftMode = "STRICT", stage: "EARLY" | "QUARTERFINALS" | "SEMIFINALS" | "FINALS" = "EARLY"): MatchResult {
     if (!teamA || !teamB || !teamA.players || !teamB.players) {
-      throw new Error("Invalid teams or missing players in simulation");
+      console.error("Invalid teams or missing players in simulation", { teamA, teamB });
+      return {
+        scoreA: 13,
+        scoreB: 0,
+        winner: "A",
+        mapName: "Ascent",
+        events: [{ round: 1, scoreA: 13, scoreB: 0, text: "Forfeit due to missing or corrupted data.", type: "ROUND", winner: "A", probA: 1 }],
+        teamA: teamA || { name: "Team A", players: [], coach: null },
+        teamB: teamB || { name: "Team B", players: [], coach: null },
+        mvp: null
+      };
     }
 
     console.log("SIMULATION START", { teamA: teamA.name, teamB: teamB.name, stage });

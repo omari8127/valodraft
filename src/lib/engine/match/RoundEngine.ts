@@ -37,7 +37,8 @@ export class RoundEngine {
     stage = "EARLY"
   }: SimulateRoundParams): RoundResult {
     if (!teamA || !teamB) {
-      throw new Error("Invalid teams in simulation");
+      console.error("Invalid teams in simulateRound", { teamA, teamB });
+      return { winner: "A", isClutch: false, baseProbA: 1, roundType: "CLEAN", clutchMagnitude: 0 };
     }
 
     if (!stage) {
