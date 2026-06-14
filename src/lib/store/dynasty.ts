@@ -9,6 +9,7 @@ interface DynastyState {
   addTrophy: (id: string, trophy: string) => void;
   recordWin: (id: string) => void;
   recordLoss: (id: string) => void;
+  updateProgression: (id: string, mapRatings: Record<string, number>, teamStrength?: number, synergy?: number) => void;
 }
 
 export const useDynasty = create<DynastyState>()(
@@ -30,6 +31,22 @@ export const useDynasty = create<DynastyState>()(
       recordLoss: (id) =>
         set((st) => ({
           saves: st.saves.map((x) => (x.id === id ? { ...x, losses: x.losses + 1 } : x)),
+        })),
+      updateProgression: (id, mapRatings, teamStrength, synergy) =>
+        set((st) => ({
+          saves: st.saves.map((x) => {
+            if (x.id === id) {
+              return {
+                ...x,
+                teamProgression: {
+                  mapRatings,
+                  teamStrength: teamStrength ?? x.teamProgression?.teamStrength ?? x.teamOVR,
+                  synergy: synergy ?? x.teamProgression?.synergy ?? x.chemistry,
+                }
+              };
+            }
+            return x;
+          }),
         })),
     }),
     { name: "vcd-dynasty-v1" },

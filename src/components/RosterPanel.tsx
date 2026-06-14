@@ -5,6 +5,7 @@ import { ORG_BY_ID } from "@/data/regions";
 import { TOURNAMENT_BY_ID } from "@/data/tournaments";
 import { rarityFor, RARITY_META } from "@/lib/engine/rarity";
 import { canPlaceCoachInSlot, canPlacePlayerInSlot } from "@/lib/store/draft";
+import { evaluateTeamRoles } from "@/lib/engine/match/ProbabilityEngine";
 
 
 const ROLE_LABEL_ES: Record<SlotRole, string> = {
@@ -47,16 +48,70 @@ export function RosterPanel({
     switch (role) {
       case "DUELIST": return "border-red-500/40";
       case "INITIATOR": return "border-yellow-500/40";
-      case "CONTROLLER": return "border-blue-500/40";
-      case "SENTINEL": return "border-green-500/40";
-      case "FLEX": return "border-purple-500/40";
+      case "CONTROLLER": return "border-purple-500/40";
+      case "SENTINEL": return "border-blue-500/40";
+      case "FLEX": return "border-cyan-500/40";
       case "COACH": return "border-gray-500/40";
       default: return "border-border/60";
     }
   };
 
+  const getSlotHoverStyles = (role: SlotRole) => {
+    switch (role) {
+      case "DUELIST": return "border-red-500 shadow-[0_0_14px_rgba(239,68,68,0.5)] scale-[1.01] -translate-y-[2px]";
+      case "INITIATOR": return "border-yellow-500 shadow-[0_0_14px_rgba(234,179,8,0.5)] scale-[1.01] -translate-y-[2px]";
+      case "CONTROLLER": return "border-purple-500 shadow-[0_0_14px_rgba(168,85,247,0.5)] scale-[1.01] -translate-y-[2px]";
+      case "SENTINEL": return "border-blue-500 shadow-[0_0_14px_rgba(59,130,246,0.5)] scale-[1.01] -translate-y-[2px]";
+      case "FLEX": return "border-cyan-500 shadow-[0_0_14px_rgba(6,182,212,0.5)] scale-[1.01] -translate-y-[2px]";
+      case "COACH": return "border-gray-500 shadow-[0_0_14px_rgba(107,114,128,0.5)] scale-[1.01] -translate-y-[2px]";
+      default: return "border-primary shadow-[0_0_12px_var(--color-primary)] scale-[1.01] -translate-y-[2px]";
+    }
+  };
+
+  const getSlotHoverClasses = (role: SlotRole) => {
+    switch (role) {
+      case "DUELIST": return "hover:border-red-500 hover:shadow-[0_0_14px_rgba(239,68,68,0.5)] hover:scale-[1.01] hover:-translate-y-[2px]";
+      case "INITIATOR": return "hover:border-yellow-500 hover:shadow-[0_0_14px_rgba(234,179,8,0.5)] hover:scale-[1.01] hover:-translate-y-[2px]";
+      case "CONTROLLER": return "hover:border-purple-500 hover:shadow-[0_0_14px_rgba(168,85,247,0.5)] hover:scale-[1.01] hover:-translate-y-[2px]";
+      case "SENTINEL": return "hover:border-blue-500 hover:shadow-[0_0_14px_rgba(59,130,246,0.5)] hover:scale-[1.01] hover:-translate-y-[2px]";
+      case "FLEX": return "hover:border-cyan-500 hover:shadow-[0_0_14px_rgba(6,182,212,0.5)] hover:scale-[1.01] hover:-translate-y-[2px]";
+      case "COACH": return "hover:border-gray-500 hover:shadow-[0_0_14px_rgba(107,114,128,0.5)] hover:scale-[1.01] hover:-translate-y-[2px]";
+      default: return "hover:border-primary hover:shadow-[0_0_12px_var(--color-primary)] hover:scale-[1.01] hover:-translate-y-[2px]";
+    }
+  };
+
+  const draftedPlayers = roster.slots.filter(s => s.playerId && s.role !== "COACH").map(s => s.playerWithForm ?? PLAYER_BY_ID[s.playerId!]).filter(Boolean) as PlayerEntry[];
+  const teamRoles = evaluateTeamRoles({ players: draftedPlayers } as any);
+
+  let qualityText = "Balanced team";
+  let qualityColor = "text-gray-400";
+  let qualityBg = "bg-white/5 border-white/10";
+  
+  if (teamRoles.hasIGL && teamRoles.hasController && teamRoles.hasEntry && teamRoles.hasSentinel) {
+    qualityText = "✔ Strong composition";
+    qualityColor = "text-green-400";
+    qualityBg = "bg-green-500/10 border-green-500/20";
+  } else if (!teamRoles.hasIGL && !teamRoles.hasController) {
+    qualityText = "⚠ Missing IGL & Controller";
+    qualityColor = "text-red-400";
+    qualityBg = "bg-red-500/10 border-red-500/20";
+  } else if (!teamRoles.hasIGL) {
+    qualityText = "⚠ Missing IGL";
+    qualityColor = "text-red-400";
+    qualityBg = "bg-red-500/10 border-red-500/20";
+  } else if (!teamRoles.hasController) {
+    qualityText = "⚠ Missing Controller";
+    qualityColor = "text-red-400";
+    qualityBg = "bg-red-500/10 border-red-500/20";
+  }
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Team Quality Panel */}
+      <div className={`clip-corner p-3 border ${qualityBg} flex items-center justify-center`}>
+        <span className={`text-[11px] font-bold uppercase tracking-widest ${qualityColor}`}>{qualityText}</span>
+      </div>
+
       {roster.slots.map((slot, i) => {
         const player = slot.playerWithForm ?? (slot.playerId ? PLAYER_BY_ID[slot.playerId] : null);
         const coach = slot.coachId ? COACH_BY_ID[slot.coachId] : null;
@@ -85,17 +140,16 @@ export function RosterPanel({
             transition={{ delay: i * 0.045, duration: 0.25 }}
             whileHover={canPlace ? { x: -3, scale: 1.015 } : undefined}
             whileTap={canPlace ? { scale: 0.985 } : undefined}
-            disabled={!canPlace}
             onClick={() => canPlace && onSelectSlot?.(i)}
-            className={`clip-corner relative flex min-h-[96px] flex-col overflow-hidden border bg-[#0A0E13]/80 p-4 text-left transition-all duration-300 role-slot ${isHovered ? "hovered" : ""} ${isFlexRoleChoice ? "role-slot-confirm" : ""} ${
-              canPlace
-                ? "cursor-pointer border-primary/80 bg-primary/10 shadow-[0_0_18px_var(--color-primary)]"
-                : isCurrent && !hasPendingPick
-                  ? "border-primary shadow-[0_0_18px_var(--color-primary)] animate-pulse-red"
-                  : filled
-                    ? `${getSlotBorderColor(slot.role, true)} ${meta?.ring ?? ""}`
-                    : isBlockedPlacement
-                      ? "cursor-not-allowed border-dashed border-border/30 opacity-30"
+            className={`clip-corner relative flex min-h-[96px] flex-col overflow-hidden border bg-[#0A0E13]/80 p-4 text-left transition-all duration-300 role-slot ${isHovered ? "hovered" : ""} ${isFlexRoleChoice ? "role-slot-confirm" : ""} ${canPlace ? "cursor-pointer" : "cursor-default"} ${getSlotHoverClasses(slot.role)} ${
+              isHovered
+                ? getSlotHoverStyles(slot.role)
+                : canPlace
+                  ? "border-primary/80 bg-primary/10 shadow-[0_0_18px_var(--color-primary)]"
+                  : isCurrent && !hasPendingPick
+                    ? "border-primary shadow-[0_0_18px_var(--color-primary)] animate-pulse-red"
+                    : filled
+                      ? `${getSlotBorderColor(slot.role, true)} ${meta?.ring ?? ""}`
                       : "border-dashed border-border/40 opacity-60"
             }`}
           >
@@ -139,11 +193,9 @@ export function RosterPanel({
                 <div className="relative mt-3 font-display text-sm text-muted-foreground">
                   {canPlace
                     ? (isFlexRoleChoice ? `Jugar como ${ROLE_LABEL_ES[slot.role]}` : "PLACE HERE")
-                    : hasPendingPick
-                      ? "NOT COMPATIBLE"
-                      : isCurrent
-                        ? "ON THE CLOCK"
-                        : "Empty"}
+                    : isCurrent
+                      ? "CURRENT PICK"
+                      : ""}
                 </div>
                 {canPlace && (
                   <div className="relative mt-auto text-[10px] font-semibold uppercase tracking-widest text-primary">

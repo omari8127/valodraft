@@ -13,10 +13,12 @@ import { TEAM_ENTRIES, PLAYER_BY_ID, COACH_BY_ID } from "@/data/generate";
 import { GAME_MODE_BY_ID } from "@/data/tournaments";
 import { useProgression, getUnlockedYears, type GameDifficulty } from "./progression";
 import { computeTeamOVR } from "../engine/ovr";
+import { evaluateTeamRoles } from "../engine/match/ProbabilityEngine";
 
 interface DraftState {
   modeId: GameModeId | null;
   draftMode: DraftMode;
+  teamName: string;
   pool: TeamEntry[]; // current mode's entries filtered by level/unlocked years
   lockedTeamEntryIds: Set<string>;
   roster: Roster;
@@ -27,7 +29,7 @@ interface DraftState {
   rerollsLeft: number; // 3 max in STRICT mode
   baseRollRating: number | null; // Tracks the OVR of the first roll in a slot for balance checks
 
-  startDraft: (modeId: GameModeId, draftMode: DraftMode) => void;
+  startDraft: (modeId: GameModeId, draftMode: DraftMode, teamName?: string) => void;
   startRoll: () => void;
   rerollCurrentTeam: () => void;
   finishRoll: () => void;
@@ -47,20 +49,6 @@ export function getSlotsForMode(): RosterSlot[] {
     playerId: null,
     teamEntryId: null,
   }));
-}
-
-/**
- * Strict validation function for drafting players.
- * Enforces missing Initiator locks on STRICT mode FLEX slots.
- */
-function isFlexiblePlayer(player: PlayerEntry): boolean {
-  return player.primaryRole === "FLEX";
-}
-
-function roleMatchesPlayer(player: PlayerEntry, slot: SlotRole): boolean {
-  if (slot === "COACH") return false;
-  if (player.primaryRole === slot || player.secondaryRole === slot) return true;
-  return isFlexiblePlayer(player);
 }
 
 export function canPickPlayer(
@@ -83,39 +71,8 @@ export function canPickPlayer(
 
   if (slot === "COACH") return false;
 
-  if (mode !== "STRICT") {
-    return true; // No restrictions in FLEXIBLE and CHAOS modes
-  }
-
-  // In STRICT mode, FLEX players can be confirmed into whichever missing role slot the user clicks.
-  if (roleMatchesPlayer(player, slot)) {
-    return true;
-  }
-
-  if (slot === "FLEX") {
-    // Retrieve currently drafted players
-    const draftedPlayers = team.slots
-      .filter((s) => s.playerId)
-      .map((s) => s.playerWithForm ?? PLAYER_BY_ID[s.playerId!])
-      .filter(Boolean);
-
-    const hasInitiator = draftedPlayers.some((p) => p.primaryRole === "INITIATOR");
-
-    // 1. Missing Initiator Safeguard: If team lacks Initiator, FLEX slot can ONLY select Initiators.
-    if (!hasInitiator) {
-      return player.primaryRole === "INITIATOR" || player.secondaryRole === "INITIATOR";
-    }
-
-    // 2. Dual Duelist Check: FLEX slot allows Duelist only if exactly one Duelist already exists.
-    const duelistCount = draftedPlayers.filter((p) => p.primaryRole === "DUELIST").length;
-    return (
-      player.primaryRole === "INITIATOR" ||
-      player.secondaryRole === "INITIATOR" ||
-      ((player.primaryRole === "DUELIST" || player.secondaryRole === "DUELIST") && duelistCount === 1)
-    );
-  }
-
-  return false;
+  // No restrictions in STANDARD mode
+  return true;
 }
 
 export function canPlacePlayerInSlot(
@@ -172,23 +129,42 @@ export function calculateAIPickWeight(
     return prospectiveOVR;
   }
 
-  // MEDIUM
-  const baseOvr = p.rating + (p.form ?? 0);
-  let roleFit = 0;
+  // MEDIUM & STANDARD DRAFT BALANCE
   const draftedPlayers = roster.slots
     .filter((s) => s.playerId)
     .map((s) => s.playerWithForm ?? PLAYER_BY_ID[s.playerId!])
     .filter(Boolean);
 
-  const hasSentinel = draftedPlayers.some((dp) => dp.primaryRole === "SENTINEL");
-  const hasController = draftedPlayers.some((dp) => dp.primaryRole === "CONTROLLER");
-  const hasInitiator = draftedPlayers.some((dp) => dp.primaryRole === "INITIATOR");
+  const currentTeamRoles = evaluateTeamRoles({ players: draftedPlayers } as any);
 
-  if (!hasSentinel && p.primaryRole === "SENTINEL") roleFit += 15;
-  if (!hasController && p.primaryRole === "CONTROLLER") roleFit += 15;
-  if (!hasInitiator && p.primaryRole === "INITIATOR") roleFit += 10;
+  let criticalRoleFit = 0;
+  let roleFit = 0;
 
-  return baseOvr + roleFit;
+  if (!currentTeamRoles.hasIGL) {
+    if ((p.iglRating || 0) >= 75) criticalRoleFit += 10;
+    else if ((p.iglRating || 0) >= 65) criticalRoleFit += 6;
+  }
+  if (!currentTeamRoles.hasController) {
+    if (p.primaryRole === "CONTROLLER") criticalRoleFit += 10;
+    else if (p.secondaryRole === "CONTROLLER") criticalRoleFit += 6;
+    else if (p.primaryRole === "INITIATOR") criticalRoleFit += 3;
+  }
+
+  if (!currentTeamRoles.hasEntry) {
+    if (p.primaryRole === "DUELIST") roleFit += 10;
+    else if (p.secondaryRole === "DUELIST") roleFit += 6;
+    else if (p.primaryRole === "FLEX") roleFit += 3;
+  }
+  if (!currentTeamRoles.hasSentinel) {
+    if (p.primaryRole === "SENTINEL") roleFit += 10;
+    else if (p.secondaryRole === "SENTINEL") roleFit += 6;
+    else if (p.primaryRole === "CONTROLLER") roleFit += 3;
+  }
+
+  const ovr = p.rating + (p.form ?? 0);
+  const randomFactor = Math.random() * 10;
+
+  return (criticalRoleFit * 1.4) + (roleFit * 1.2) + (ovr * 1.0) + (randomFactor * 0.9);
 }
 
 export function getAIRecPlayer(
@@ -233,6 +209,7 @@ export function poolForMode(modeId: GameModeId, unlockedYears: number[]): TeamEn
 export const useDraft = create<DraftState>((set, get) => ({
   modeId: null,
   draftMode: "STRICT",
+  teamName: "Dream TEAM",
   pool: [],
   lockedTeamEntryIds: new Set(),
   roster: emptyRoster([]),
@@ -243,7 +220,7 @@ export const useDraft = create<DraftState>((set, get) => ({
   rerollsLeft: 3,
   baseRollRating: null,
 
-  startDraft: (modeId, draftMode) => {
+  startDraft: (modeId, draftMode, teamName) => {
     const isRanked = useProgression.getState().rankedActive;
     // Classic mode -> all years unlocked; Ranked mode -> unlocked based on level
     const years = isRanked ? getUnlockedYears(useProgression.getState().level) : [2021, 2022, 2023, 2024, 2025];
@@ -251,6 +228,7 @@ export const useDraft = create<DraftState>((set, get) => ({
     set({
       modeId,
       draftMode,
+      teamName: teamName?.trim() || "Dream TEAM",
       pool: poolForMode(modeId, years),
       lockedTeamEntryIds: new Set(),
       roster: emptyRoster(slots),
@@ -419,8 +397,8 @@ export const useDraft = create<DraftState>((set, get) => ({
     const playerForSlot: PlayerEntry = canAdaptToSlot
       ? {
           ...player,
-          role: targetSlot.role,
-          primaryRole: targetSlot.role,
+          role: targetSlot.role as any,
+          primaryRole: targetSlot.role as any,
         }
       : player;
 
@@ -475,6 +453,7 @@ export const useDraft = create<DraftState>((set, get) => ({
     set({
       modeId: null,
       draftMode: "STRICT",
+      teamName: "Dream TEAM",
       pool: [],
       lockedTeamEntryIds: new Set(),
       roster: emptyRoster([]),

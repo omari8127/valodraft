@@ -27,35 +27,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/acend/cned.png"
         },
         {
           "name": "zeek",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/acend/zeek.png"
         },
         {
           "name": "BONECOLD",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/acend/bonecold.png"
         },
         {
           "name": "Kiles",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Spain"
+          "nationality": "Spain",
+          "image": "/jugadores/acend/kiles.png"
         },
         {
           "name": "starxo",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/acend/starxo.png"
         }
       ],
       "coach": {
@@ -70,35 +75,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/yay.png"
         },
         {
           "name": "crashies",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "Marved",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/marved.png"
         },
         {
           "name": "FNS",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/fns.png"
         },
         {
           "name": "Victor",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/victor.png"
         }
       ],
       "coach": {
@@ -113,35 +123,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/patiphan.png"
         },
         {
           "name": "foxz",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/foxz.png"
         },
         {
           "name": "Crws",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Thailand"
+          "nationality": "Thailand",
+          "image": "/jugadores/x10/crws.png"
         },
         {
           "name": "sScary",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/sscary.png"
         },
         {
           "name": "sushiboys",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/sushiboys.png"
         }
       ],
       "coach": {
@@ -156,35 +171,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/heat.png"
         },
         {
           "name": "murizzz",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/murizzz.png"
         },
         {
           "name": "v1xen",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/v1xen.png"
         },
         {
           "name": "jhow",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/jhow.png"
         },
         {
           "name": "mwzera",
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/mwzera.png"
         }
       ],
       "coach": {
@@ -199,35 +219,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/sentinels/tenz.png"
         },
         {
           "name": "SicK",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/sick.png"
         },
         {
           "name": "zombs",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zombs.png"
         },
         {
           "name": "ShahZaM",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/shahzam.png"
         },
         {
           "name": "dapr",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/dapr.png"
         }
       ],
       "coach": {
@@ -242,35 +267,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/keznit.png"
         },
         {
           "name": "NagZ",
           "rating": 87,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/nagz.png"
         },
         {
           "name": "Mazino",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "Klaus",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/kru/klaus.png"
         },
         {
           "name": "delz1k",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/delz1k.png"
         }
       ],
       "coach": {
@@ -285,35 +315,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/scream.png"
         },
         {
           "name": "Jamppi",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "DUELIST",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/team liquid/jamppi.png"
         },
         {
           "name": "L1NK",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/l1nk.png"
         },
         {
           "name": "Nivera",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/nivera.png"
         },
         {
           "name": "soulcas",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/soulcas.png"
         }
       ],
       "coach": {
@@ -328,35 +363,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 84,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/qck.png"
         },
         {
           "name": "Khalil",
           "rating": 84,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/khalil.png"
         },
         {
           "name": "xand",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "DUELIST",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/xand.png"
         },
         {
           "name": "nzr",
           "rating": 81,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/furia/nzr.png"
         },
         {
           "name": "mazin",
           "rating": 82,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/mazin.png"
         }
       ],
       "coach": {
@@ -371,35 +411,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/sheydos.png"
         },
         {
           "name": "Chronicle",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         },
         {
           "name": "Redgar",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/redgar.png"
         },
         {
           "name": "nAts",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/nats.png"
         },
         {
           "name": "d3ffo",
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/d3ffo.png"
         }
       ],
       "coach": {
@@ -414,35 +459,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/vikings/frz.png"
         },
         {
           "name": "Sacy",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/sacy.png"
         },
         {
           "name": "Saadhak",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/loud/saadhak.png"
         },
         {
           "name": "sutecas",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/vikings/sutecas.png"
         },
         {
           "name": "gtnziN",
           "rating": 83,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/vikings/gtnzin.png"
         }
       ],
       "coach": {
@@ -457,35 +507,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 87,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Philippines"
+          "nationality": "Philippines",
+          "image": "/jugadores/secret/dubstep.png"
         },
         {
           "name": "JessieVash",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Philippines"
+          "nationality": "Philippines",
+          "image": "/jugadores/secret/jessievash.png"
         },
         {
           "name": "Dispenser",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Philippines"
+          "nationality": "Philippines",
+          "image": "/jugadores/secret/dispenser.png"
         },
         {
           "name": "witz",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Philippines"
+          "nationality": "Philippines",
+          "image": "/jugadores/secret/witz.png"
         },
         {
           "name": "BORKUM",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Philippines"
+          "nationality": "Philippines",
+          "image": "/jugadores/secret/borkum.png"
         }
       ],
       "coach": {
@@ -500,35 +555,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         },
         {
           "name": "neth",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/crazy/neth.png"
         },
         {
           "name": "Bazzi",
           "rating": 82,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/crazy/bazzi.png"
         },
         {
           "name": "ade",
           "rating": 80,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/crazy/ade.png"
         },
         {
           "name": "Fisker",
           "rating": 79,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/crazy/fisker.png"
         }
       ],
       "coach": {
@@ -543,35 +603,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Rb",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/rb.png"
         },
         {
           "name": "k1Ng",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/vs/k1ng.png"
         },
         {
           "name": "stax",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         },
         {
           "name": "MaKo",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         }
       ],
       "coach": {
@@ -586,35 +651,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Magnum",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Czech Republic"
+          "nationality": "Czech Republic",
+          "image": "/jugadores/fnatic/magnum.png"
         },
         {
           "name": "Boaster",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Mistic",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/mistic.png"
         },
         {
           "name": "Doma",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Croatia"
+          "nationality": "Croatia",
+          "image": "/jugadores/fnatic/doma.png"
         }
       ],
       "coach": {
@@ -629,35 +699,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/fullsense/johnolsen.png"
         },
         {
           "name": "PTC",
           "rating": 84,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/fullsense/ptc.png"
         },
         {
           "name": "LAMMYSNAX",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/fullsense/lammysnax.png"
         },
         {
           "name": "SuperBusS",
           "rating": 82,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/fullsense/superbuss.png"
         },
         {
           "name": "SantaGolf",
           "rating": 81,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/fullsense/santagolf.png"
         }
       ],
       "coach": {
@@ -672,35 +747,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/leaf.png"
         },
         {
           "name": "Xeppaa",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/xeppaa.png"
         },
         {
           "name": "vanity",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/vanity.png"
         },
         {
           "name": "mitch",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/mitch.png"
         },
         {
           "name": "xeta",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/xeta.png"
         }
       ],
       "coach": {
@@ -717,35 +797,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/leviatan/aspas.png"
         },
         {
           "name": "Less",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/less.png"
         },
         {
           "name": "pancada",
           "rating": 92,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/pancada.png"
         },
         {
           "name": "Sacy",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/sacy.png"
         },
         {
           "name": "Saadhak",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/loud/saadhak.png"
         }
       ],
       "coach": {
@@ -760,35 +845,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/yay.png"
         },
         {
           "name": "crashies",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "Marved",
           "rating": 94,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/marved.png"
         },
         {
           "name": "FNS",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/fns.png"
         },
         {
           "name": "Victor",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/victor.png"
         }
       ],
       "coach": {
@@ -803,35 +893,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Rb",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/rb.png"
         },
         {
           "name": "Zest",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/zest.png"
         },
         {
           "name": "MaKo",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "stax",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         }
       ],
       "coach": {
@@ -846,35 +941,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Latvia"
+          "nationality": "Latvia",
+          "image": "/jugadores/fpx/ardiis.png"
         },
         {
           "name": "Shao",
           "rating": 93,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/shao.png"
         },
         {
           "name": "ANGE1",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Ukraine"
+          "nationality": "Ukraine",
+          "image": "/jugadores/fpx/ange1.png"
         },
         {
           "name": "Zyppan",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fpx/zyppan.png"
         },
         {
           "name": "SUYGETSU",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/suygetsu.png"
         }
       ],
       "coach": {
@@ -889,35 +989,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Enzo",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "France"
+          "nationality": "France",
+          "image": "/jugadores/fnatic/enzo.png"
         },
         {
           "name": "Boaster",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Mistic",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/mistic.png"
         },
         {
           "name": "Alfajer",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         }
       ],
       "coach": {
@@ -932,35 +1037,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/xset/cryocells.png"
         },
         {
           "name": "zekken",
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zekken.png"
         },
         {
           "name": "dephh",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/xset/dephh.png"
         },
         {
           "name": "BCJ",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/xset/bcj.png"
         },
         {
           "name": "AYRIN",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/xset/ayrin.png"
         }
       ],
       "coach": {
@@ -975,35 +1085,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/kiNgg.png"
         },
         {
           "name": "Shyy",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/shyy.png"
         },
         {
           "name": "Mazino",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "adverso",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/adverso.png"
         },
         {
           "name": "Tacolilla",
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/tacolilla.png"
         }
       ],
       "coach": {
@@ -1018,35 +1133,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/scream.png"
         },
         {
           "name": "Jamppi",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "DUELIST",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/team liquid/jamppi.png"
         },
         {
           "name": "L1NK",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/l1nk.png"
         },
         {
           "name": "Nivera",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/nivera.png"
         },
         {
           "name": "soulcas",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/soulcas.png"
         }
       ],
       "coach": {
@@ -1061,35 +1181,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "Benkai",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/benkai.png"
         },
         {
           "name": "d4v41",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 94,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -1104,35 +1229,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/dep.png"
         },
         {
           "name": "crow",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/crow.png"
         },
         {
           "name": "SugarZ3ro",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/zeta/sugarz3ro.png"
         },
         {
           "name": "TENNN",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/tennn.png"
         },
         {
           "name": "Laz",
           "rating": 92,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/laz.png"
         }
       ],
       "coach": {
@@ -1147,35 +1277,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/asuna.png"
         },
         {
           "name": "bang",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/bang.png"
         },
         {
           "name": "Derrek",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/derrek.png"
         },
         {
           "name": "Will",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/will.png"
         },
         {
           "name": "stellar",
           "rating": 85,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/stellar.png"
         }
       ],
       "coach": {
@@ -1190,35 +1325,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {
@@ -1235,35 +1375,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 98,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/demon1.png"
         },
         {
           "name": "Ethan",
           "rating": 94,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/ethan.png"
         },
         {
           "name": "C0M",
           "rating": 92,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/c0m.png"
         },
         {
           "name": "Boostio",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/boostio.png"
         },
         {
           "name": "Jawgemo",
           "rating": 95,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/jawgemo.png"
         }
       ],
       "coach": {
@@ -1278,35 +1423,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "something",
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/prx/something.png"
         },
         {
           "name": "d4v41",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 96,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -1321,35 +1471,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Leo",
           "rating": 95,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fnatic/leo.png"
         },
         {
           "name": "Boaster",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Alfajer",
           "rating": 96,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         },
         {
           "name": "Chronicle",
           "rating": 94,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         }
       ],
       "coach": {
@@ -1364,35 +1519,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/leviatan/aspas.png"
         },
         {
           "name": "cauanzin",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/cauanzin.png"
         },
         {
           "name": "tuyz",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/tuyz.png"
         },
         {
           "name": "Less",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/less.png"
         },
         {
           "name": "Saadhak",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/loud/saadhak.png"
         }
       ],
       "coach": {
@@ -1407,35 +1567,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Rb",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/rb.png"
         },
         {
           "name": "Zest",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/zest.png"
         },
         {
           "name": "MaKo",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "stax",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         }
       ],
       "coach": {
@@ -1450,35 +1615,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Latvia"
+          "nationality": "Latvia",
+          "image": "/jugadores/fpx/ardiis.png"
         },
         {
           "name": "crashies",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "s0m",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/s0m.png"
         },
         {
           "name": "FNS",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/fns.png"
         },
         {
           "name": "Victor",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/victor.png"
         }
       ],
       "coach": {
@@ -1493,35 +1663,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/acend/cned.png"
         },
         {
           "name": "Shao",
           "rating": 94,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/shao.png"
         },
         {
           "name": "ANGE1",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Ukraine"
+          "nationality": "Ukraine",
+          "image": "/jugadores/fpx/ange1.png"
         },
         {
           "name": "Zyppan",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fpx/zyppan.png"
         },
         {
           "name": "SUYGETSU",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/suygetsu.png"
         }
       ],
       "coach": {
@@ -1536,35 +1711,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/guild/sayf.png"
         },
         {
           "name": "Jamppi",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "DUELIST",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/team liquid/jamppi.png"
         },
         {
           "name": "Redgar",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/redgar.png"
         },
         {
           "name": "nAts",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/nats.png"
         },
         {
           "name": "soulcas",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/soulcas.png"
         }
       ],
       "coach": {
@@ -1579,35 +1759,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {
@@ -1622,35 +1807,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/keznit.png"
         },
         {
           "name": "Melser",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/melser.png"
         },
         {
           "name": "Mazino",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "Klaus",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/kru/klaus.png"
         },
         {
           "name": "NagZ",
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/nagz.png"
         }
       ],
       "coach": {
@@ -1667,35 +1857,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 98,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 96,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 94,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {
@@ -1710,35 +1905,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/wo0t.png"
         },
         {
           "name": "benjyfishy",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/heretics/benjyfishy.png"
         },
         {
           "name": "Boo",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/boo.png"
         },
         {
           "name": "RieNs",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/riens.png"
         },
         {
           "name": "MiniBoo",
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/miniboo.png"
         }
       ],
       "coach": {
@@ -1753,35 +1953,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/leviatan/aspas.png"
         },
         {
           "name": "tex",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/leviatan/tex.png"
         },
         {
           "name": "Mazino",
           "rating": 92,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "C0M",
           "rating": 91,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/c0m.png"
         },
         {
           "name": "kiNgg",
           "rating": 95,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/kiNgg.png"
         }
       ],
       "coach": {
@@ -1796,35 +2001,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zekken.png"
         },
         {
           "name": "Zellsis",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zellsis.png"
         },
         {
           "name": "Sacy",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/sacy.png"
         },
         {
           "name": "TenZ",
           "rating": 94,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/sentinels/tenz.png"
         },
         {
           "name": "johnqt",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Morocco"
+          "nationality": "Morocco",
+          "image": "/jugadores/sentinels/johnqt.png"
         }
       ],
       "coach": {
@@ -1839,35 +2049,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/t3xture.png"
         },
         {
           "name": "Munchkin",
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         },
         {
           "name": "Karon",
           "rating": 93,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/karon.png"
         },
         {
           "name": "Lakia",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/lakia.png"
         },
         {
           "name": "Meteor",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/meteor.png"
         }
       ],
       "coach": {
@@ -1882,35 +2097,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Chronicle",
           "rating": 94,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         },
         {
           "name": "Boaster",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Leo",
           "rating": 93,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fnatic/leo.png"
         },
         {
           "name": "Alfajer",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         }
       ],
       "coach": {
@@ -1925,35 +2145,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Flashback",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/flashback.png"
         },
         {
           "name": "BeYN",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/beyn.png"
         },
         {
           "name": "MaKo",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "stax",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         }
       ],
       "coach": {
@@ -1968,35 +2193,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "something",
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/prx/something.png"
         },
         {
           "name": "d4v41",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 96,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -2011,35 +2241,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/leaf.png"
         },
         {
           "name": "trent",
           "rating": 93,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/trent.png"
         },
         {
           "name": "valyn",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/valyn.png"
         },
         {
           "name": "icy",
           "rating": 87,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/icy.png"
         },
         {
           "name": "JonahP",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/jonahp.png"
         }
       ],
       "coach": {
@@ -2054,35 +2289,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/keznit.png"
         },
         {
           "name": "Melser",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/melser.png"
         },
         {
           "name": "Shyy",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/shyy.png"
         },
         {
           "name": "mta",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/kru/mta.png"
         },
         {
           "name": "heat",
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/heat.png"
         }
       ],
       "coach": {
@@ -2097,35 +2337,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/guild/sayf.png"
         },
         {
           "name": "trexx",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/vitality/trexx.png"
         },
         {
           "name": "Kicks",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/vitality/kicks.png"
         },
         {
           "name": "ceNder",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/vitality/cender.png"
         },
         {
           "name": "runneR",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/giantx/runneR.png"
         }
       ],
       "coach": {
@@ -2140,35 +2385,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Thailand"
+          "nationality": "Thailand",
+          "image": "/jugadores/talon/primmie.png"
         },
         {
           "name": "Crws",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Thailand"
+          "nationality": "Thailand",
+          "image": "/jugadores/x10/crws.png"
         },
         {
           "name": "Governor",
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/talon/governor.png"
         },
         {
           "name": "ban",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/t1/ban.png"
         },
         {
           "name": "JitBoyS",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Thailand"
+          "nationality": "Thailand",
+          "image": "/jugadores/talon/jitboys.png"
         }
       ],
       "coach": {
@@ -2183,35 +2433,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/acend/cned.png"
         },
         {
           "name": "yetujey",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/yetujey.png"
         },
         {
           "name": "MrFaliN",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/MrFaliN.png"
         },
         {
           "name": "xeus",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/xeus.png"
         },
         {
           "name": "AtaKaptan",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/atakaptan.png"
         }
       ],
       "coach": {
@@ -2226,35 +2481,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/whzy.png"
         },
         {
           "name": "Knight",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/knight.png"
         },
         {
           "name": "nephh",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/nephh.png"
         },
         {
           "name": "Levius",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/levius.png"
         },
         {
           "name": "rushia",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/rushia.png"
         }
       ],
       "coach": {
@@ -2269,35 +2529,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/trace/kai.png"
         },
         {
           "name": "FengF",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/trace/fengf.png"
         },
         {
           "name": "HeiB",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/trace/heib.png"
         },
         {
           "name": "Biank",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/trace/biank.png"
         },
         {
           "name": "LuoK1ng",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/trace/luok1ng.png"
         }
       ],
       "coach": {
@@ -2314,35 +2579,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 98,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/brawk.png"
         },
         {
           "name": "mada",
           "rating": 96,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/mada.png"
         },
         {
           "name": "s0m",
           "rating": 94,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/s0m.png"
         },
         {
           "name": "skuba",
           "rating": 92,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/skuba.png"
         },
         {
           "name": "Ethan",
           "rating": 95,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/ethan.png"
         }
       ],
       "coach": {
@@ -2357,35 +2627,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         },
         {
           "name": "Chronicle",
           "rating": 96,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         },
         {
           "name": "Boaster",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "crashies",
           "rating": 94,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "kaajak",
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Czech Republic"
+          "nationality": "Czech Republic",
+          "image": "/jugadores/fnatic/kaajak.png"
         }
       ],
       "coach": {
@@ -2400,35 +2675,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/hyunmin.png"
         },
         {
           "name": "free1ng",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/free1ng.png"
         },
         {
           "name": "BeYN",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/beyn.png"
         },
         {
           "name": "MaKo",
           "rating": 96,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "Flashback",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/flashback.png"
         }
       ],
       "coach": {
@@ -2443,35 +2723,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "something",
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/prx/something.png"
         },
         {
           "name": "d4v41",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "mindfreak",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         },
         {
           "name": "Jinggg",
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         }
       ],
       "coach": {
@@ -2486,35 +2771,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/wo0t.png"
         },
         {
           "name": "benjyfishy",
           "rating": 92,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/heretics/benjyfishy.png"
         },
         {
           "name": "Boo",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/boo.png"
         },
         {
           "name": "RieNs",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/riens.png"
         },
         {
           "name": "MiniBoo",
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/miniboo.png"
         }
       ],
       "coach": {
@@ -2529,35 +2819,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/mibr/artzin.png"
         },
         {
           "name": "cortezia",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/mibr/cortezia.png"
         },
         {
           "name": "xenom",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/mibr/xenom.png"
         },
         {
           "name": "Verno",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/mibr/verno.png"
         },
         {
           "name": "aspas",
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/leviatan/aspas.png"
         }
       ],
       "coach": {
@@ -2572,35 +2867,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/giantx/cloud.png"
         },
         {
           "name": "westside",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/giantx/westside.png"
         },
         {
           "name": "runneR",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/giantx/runneR.png"
         },
         {
           "name": "nukkye",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/g2/nukkye.png"
         },
         {
           "name": "Purp0",
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/giantx/purp0.png"
         }
       ],
       "coach": {
@@ -2615,35 +2915,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/leaf.png"
         },
         {
           "name": "trent",
           "rating": 94,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/trent.png"
         },
         {
           "name": "valyn",
           "rating": 92,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/valyn.png"
         },
         {
           "name": "icy",
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/icy.png"
         },
         {
           "name": "JonahP",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/jonahp.png"
         }
       ],
       "coach": {
@@ -2658,35 +2963,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/tl/keiko.png"
         },
         {
           "name": "Serial",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Germany"
+          "nationality": "Germany",
+          "image": "/jugadores/tl/serial.png"
         },
         {
           "name": "paTiTek",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/tl/patitek.png"
         },
         {
           "name": "nAts",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/nats.png"
         },
         {
           "name": "kamo",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/tl/kamo.png"
         }
       ],
       "coach": {
@@ -2701,35 +3011,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Sylvan",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/t1/sylvan.png"
         },
         {
           "name": "carpe",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/t1/carpe.png"
         },
         {
           "name": "stax",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         },
         {
           "name": "Meteor",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/meteor.png"
         }
       ],
       "coach": {
@@ -2744,35 +3059,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/jemkin.png"
         },
         {
           "name": "Monyet",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/monyet.png"
         },
         {
           "name": "xffero",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/xffero.png"
         },
         {
           "name": "Kushy",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/kushy.png"
         },
         {
           "name": "Estrella",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/estrella.png"
         }
       ],
       "coach": {
@@ -2787,35 +3107,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/whzy.png"
         },
         {
           "name": "Knight",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/knight.png"
         },
         {
           "name": "nephh",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/nephh.png"
         },
         {
           "name": "Levius",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/levius.png"
         },
         {
           "name": "rushia",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/blg/rushia.png"
         }
       ],
       "coach": {
@@ -2830,35 +3155,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 94,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 92,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {
@@ -2873,35 +3203,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/rarga.png"
         },
         {
           "name": "happywei",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/happywei.png"
         },
         {
           "name": "Viva",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/viva.png"
         },
         {
           "name": "Midi",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/midi.png"
         },
         {
           "name": "coconut",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/coconut.png"
         }
       ],
       "coach": {
@@ -2916,35 +3251,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/drg/nicc.png"
         },
         {
           "name": "SpiritZ1",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/drg/spiritz1.png"
         },
         {
           "name": "LanLan",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/drg/lanlan.png"
         },
         {
           "name": "Wenzzz",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/drg/wenzzz.png"
         },
         {
           "name": "CZD",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/drg/czd.png"
         }
       ],
       "coach": {
@@ -2959,35 +3299,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zekken.png"
         },
         {
           "name": "N4RRATE",
           "rating": 94,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/n4rrate.png"
         },
         {
           "name": "bang",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/bang.png"
         },
         {
           "name": "johnqt",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Morocco"
+          "nationality": "Morocco",
+          "image": "/jugadores/sentinels/johnqt.png"
         },
         {
           "name": "Zellsis",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zellsis.png"
         }
       ],
       "coach": {
@@ -3004,35 +3349,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/sentinels/tenz.png"
         },
         {
           "name": "SicK",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/sick.png"
         },
         {
           "name": "zombs",
           "rating": 82,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zombs.png"
         },
         {
           "name": "ShahZaM",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/shahzam.png"
         },
         {
           "name": "dapr",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/dapr.png"
         }
       ],
       "coach": {
@@ -3047,35 +3397,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Magnum",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Czech Republic"
+          "nationality": "Czech Republic",
+          "image": "/jugadores/fnatic/magnum.png"
         },
         {
           "name": "Boaster",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Mistic",
           "rating": 83,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/mistic.png"
         },
         {
           "name": "Doma",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Croatia"
+          "nationality": "Croatia",
+          "image": "/jugadores/fnatic/doma.png"
         }
       ],
       "coach": {
@@ -3090,35 +3445,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/scream.png"
         },
         {
           "name": "Jamppi",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "DUELIST",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/team liquid/jamppi.png"
         },
         {
           "name": "L1NK",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/l1nk.png"
         },
         {
           "name": "Nivera",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/nivera.png"
         },
         {
           "name": "soulcas",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/soulcas.png"
         }
       ],
       "coach": {
@@ -3133,35 +3493,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/version1/pennpenn.png"
         },
         {
           "name": "Zellsis",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zellsis.png"
         },
         {
           "name": "effys",
           "rating": 82,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/version1/effys.png"
         },
         {
           "name": "wippie",
           "rating": 83,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/version1/wippie.png"
         },
         {
           "name": "Vanity",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/vanity.png"
         }
       ],
       "coach": {
@@ -3176,35 +3541,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/nuturn/suggest.png"
         },
         {
           "name": "solo",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/nuturn/solo.png"
         },
         {
           "name": "Autumn",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/nuturn/autumn.png"
         },
         {
           "name": "Lakia",
           "rating": 84,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/lakia.png"
         },
         {
           "name": "BuZz",
           "rating": 86,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         }
       ],
       "coach": {
@@ -3219,35 +3589,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/keznit.png"
         },
         {
           "name": "NagZ",
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/nagz.png"
         },
         {
           "name": "Mazino",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "Klaus",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/kru/klaus.png"
         },
         {
           "name": "delz1k",
           "rating": 84,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/delz1k.png"
         }
       ],
       "coach": {
@@ -3262,35 +3637,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 81,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/qck.png"
         },
         {
           "name": "Khalil",
           "rating": 80,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/khalil.png"
         },
         {
           "name": "xand",
           "rating": 80,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "DUELIST",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/xand.png"
         },
         {
           "name": "nzr",
           "rating": 82,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/furia/nzr.png"
         },
         {
           "name": "mazin",
           "rating": 79,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/furia/mazin.png"
         }
       ],
       "coach": {
@@ -3305,35 +3685,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 84,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/vikings/frz.png"
         },
         {
           "name": "Sacy",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/sacy.png"
         },
         {
           "name": "Saadhak",
           "rating": 85,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/loud/saadhak.png"
         },
         {
           "name": "sutecas",
           "rating": 82,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/vikings/sutecas.png"
         },
         {
           "name": "gtnziN",
           "rating": 81,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/vikings/gtnzin.png"
         }
       ],
       "coach": {
@@ -3348,35 +3733,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/patiphan.png"
         },
         {
           "name": "foxz",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/foxz.png"
         },
         {
           "name": "Crws",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Thailand"
+          "nationality": "Thailand",
+          "image": "/jugadores/x10/crws.png"
         },
         {
           "name": "sScary",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/sscary.png"
         },
         {
           "name": "sushiboys",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/sushiboys.png"
         }
       ],
       "coach": {
@@ -3391,35 +3781,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 82,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         },
         {
           "name": "neth",
           "rating": 81,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/crazy/neth.png"
         },
         {
           "name": "Bazzi",
           "rating": 80,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/crazy/bazzi.png"
         },
         {
           "name": "ade",
           "rating": 78,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/crazy/ade.png"
         },
         {
           "name": "Fisker",
           "rating": 77,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/crazy/fisker.png"
         }
       ],
       "coach": {
@@ -3436,35 +3831,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/sheydos.png"
         },
         {
           "name": "Chronicle",
           "rating": 92,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         },
         {
           "name": "Redgar",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/redgar.png"
         },
         {
           "name": "nAts",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/nats.png"
         },
         {
           "name": "d3ffo",
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/d3ffo.png"
         }
       ],
       "coach": {
@@ -3479,35 +3879,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/yay.png"
         },
         {
           "name": "crashies",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "Marved",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/marved.png"
         },
         {
           "name": "FNS",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/fns.png"
         },
         {
           "name": "Victor",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/victor.png"
         }
       ],
       "coach": {
@@ -3522,35 +3927,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/g2/nukkye.png"
         },
         {
           "name": "hoody",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/hoody.png"
         },
         {
           "name": "pAura",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/paura.png"
         },
         {
           "name": "Meddo",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/meddo.png"
         },
         {
           "name": "ardiis",
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Latvia"
+          "nationality": "Latvia",
+          "image": "/jugadores/fpx/ardiis.png"
         }
       ],
       "coach": {
@@ -3565,35 +3975,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Rb",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/rb.png"
         },
         {
           "name": "k1Ng",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/vs/k1ng.png"
         },
         {
           "name": "stax",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         },
         {
           "name": "MaKo",
           "rating": 88,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         }
       ],
       "coach": {
@@ -3608,35 +4023,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/acend/cned.png"
         },
         {
           "name": "zeek",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/acend/zeek.png"
         },
         {
           "name": "BONECOLD",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/acend/bonecold.png"
         },
         {
           "name": "Kiles",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Spain"
+          "nationality": "Spain",
+          "image": "/jugadores/acend/kiles.png"
         },
         {
           "name": "starxo",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/acend/starxo.png"
         }
       ],
       "coach": {
@@ -3651,35 +4071,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/sentinels/tenz.png"
         },
         {
           "name": "SicK",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/sick.png"
         },
         {
           "name": "zombs",
           "rating": 81,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zombs.png"
         },
         {
           "name": "ShahZaM",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/shahzam.png"
         },
         {
           "name": "dapr",
           "rating": 83,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/dapr.png"
         }
       ],
       "coach": {
@@ -3694,35 +4119,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/keznit.png"
         },
         {
           "name": "NagZ",
           "rating": 84,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/nagz.png"
         },
         {
           "name": "Mazino",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "Klaus",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/kru/klaus.png"
         },
         {
           "name": "delz1k",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/delz1k.png"
         }
       ],
       "coach": {
@@ -3737,35 +4167,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/smb/turko.png"
         },
         {
           "name": "Izzy",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/smb/izzy.png"
         },
         {
           "name": "Brave",
           "rating": 82,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/smb/brave.png"
         },
         {
           "name": "Szejn",
           "rating": 81,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/smb/szejn.png"
         },
         {
           "name": "MOJJ",
           "rating": 80,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/smb/mojj.png"
         }
       ],
       "coach": {
@@ -3780,35 +4215,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 87,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/asuna.png"
         },
         {
           "name": "Ethan",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/ethan.png"
         },
         {
           "name": "bang",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/bang.png"
         },
         {
           "name": "Hiko",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/hiko.png"
         },
         {
           "name": "steel",
           "rating": 85,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/steel.png"
         }
       ],
       "coach": {
@@ -3823,35 +4263,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 83,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/f4q/bunny.png"
         },
         {
           "name": "FiveK",
           "rating": 80,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/f4q/fivek.png"
         },
         {
           "name": "Zunba",
           "rating": 84,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/f4q/zunba.png"
         },
         {
           "name": "Esperanza",
           "rating": 81,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/f4q/esperanza.png"
         },
         {
           "name": "Efina",
           "rating": 80,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/f4q/efina.png"
         }
       ],
       "coach": {
@@ -3866,35 +4311,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 80,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/liberty/liazzi.png"
         },
         {
           "name": "krain",
           "rating": 81,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/liberty/krain.png"
         },
         {
           "name": "pleets",
           "rating": 82,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/liberty/pleets.png"
         },
         {
           "name": "shion",
           "rating": 80,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/liberty/shion.png"
         },
         {
           "name": "mysen",
           "rating": 79,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/liberty/mysen.png"
         }
       ],
       "coach": {
@@ -3909,35 +4359,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/heat.png"
         },
         {
           "name": "murizzz",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/murizzz.png"
         },
         {
           "name": "v1xen",
           "rating": 82,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/v1xen.png"
         },
         {
           "name": "jhow",
           "rating": 81,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/jhow.png"
         },
         {
           "name": "mwzera",
           "rating": 86,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/keydstars/mwzera.png"
         }
       ],
       "coach": {
@@ -3954,35 +4409,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/yay.png"
         },
         {
           "name": "crashies",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "Marved",
           "rating": 93,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/marved.png"
         },
         {
           "name": "FNS",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/fns.png"
         },
         {
           "name": "Victor",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/victor.png"
         }
       ],
       "coach": {
@@ -3997,35 +4457,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/leviatan/aspas.png"
         },
         {
           "name": "Less",
           "rating": 92,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/less.png"
         },
         {
           "name": "pancada",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/pancada.png"
         },
         {
           "name": "Sacy",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/sacy.png"
         },
         {
           "name": "Saadhak",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/loud/saadhak.png"
         }
       ],
       "coach": {
@@ -4040,35 +4505,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Rb",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/rb.png"
         },
         {
           "name": "Zest",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/zest.png"
         },
         {
           "name": "MaKo",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "stax",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         }
       ],
       "coach": {
@@ -4083,35 +4553,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/laz.png"
         },
         {
           "name": "crow",
           "rating": 84,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/crow.png"
         },
         {
           "name": "SugarZ3ro",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/zeta/sugarz3ro.png"
         },
         {
           "name": "TENNN",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/tennn.png"
         },
         {
           "name": "Dep",
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/dep.png"
         }
       ],
       "coach": {
@@ -4126,35 +4601,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Enzo",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "France"
+          "nationality": "France",
+          "image": "/jugadores/fnatic/enzo.png"
         },
         {
           "name": "Boaster",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Mistic",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/mistic.png"
         },
         {
           "name": "Alfajer",
           "rating": 91,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         }
       ],
       "coach": {
@@ -4169,35 +4649,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/scream.png"
         },
         {
           "name": "Jamppi",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "DUELIST",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/team liquid/jamppi.png"
         },
         {
           "name": "L1NK",
           "rating": 84,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/l1nk.png"
         },
         {
           "name": "Nivera",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Belgium"
+          "nationality": "Belgium",
+          "image": "/jugadores/team liquid/nivera.png"
         },
         {
           "name": "soulcas",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/soulcas.png"
         }
       ],
       "coach": {
@@ -4212,35 +4697,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/keznit.png"
         },
         {
           "name": "NagZ",
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/nagz.png"
         },
         {
           "name": "Mazino",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "Klaus",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/kru/klaus.png"
         },
         {
           "name": "delz1k",
           "rating": 84,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/delz1k.png"
         }
       ],
       "coach": {
@@ -4255,35 +4745,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/patiphan.png"
         },
         {
           "name": "sushiboys",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/sushiboys.png"
         },
         {
           "name": "Crws",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Thailand"
+          "nationality": "Thailand",
+          "image": "/jugadores/x10/crws.png"
         },
         {
           "name": "sScary",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/sscary.png"
         },
         {
           "name": "foxz",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/x10/foxz.png"
         }
       ],
       "coach": {
@@ -4298,35 +4793,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "Benkai",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/benkai.png"
         },
         {
           "name": "d4v41",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 91,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -4341,35 +4841,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 84,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nip/joose.png"
         },
         {
           "name": "Patitek",
           "rating": 83,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/tl/patitek.png"
         },
         {
           "name": "LNATION",
           "rating": 82,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nip/lnation.png"
         },
         {
           "name": "FASHR",
           "rating": 81,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nip/fashr.png"
         },
         {
           "name": "zeek",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Poland"
+          "nationality": "Poland",
+          "image": "/jugadores/acend/zeek.png"
         }
       ],
       "coach": {
@@ -4384,35 +4889,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/leaf.png"
         },
         {
           "name": "trent",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/trent.png"
         },
         {
           "name": "valyn",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/valyn.png"
         },
         {
           "name": "icy",
           "rating": 83,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/icy.png"
         },
         {
           "name": "JonahP",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/jonahp.png"
         }
       ],
       "coach": {
@@ -4427,35 +4937,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 87,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/guild/sayf.png"
         },
         {
           "name": "Dreamas",
           "rating": 84,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/guild/dreamas.png"
         },
         {
           "name": "Ro4r",
           "rating": 82,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/guild/ro4r.png"
         },
         {
           "name": "Kiles",
           "rating": 83,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Spain"
+          "nationality": "Spain",
+          "image": "/jugadores/acend/kiles.png"
         },
         {
           "name": "Leo",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fnatic/leo.png"
         }
       ],
       "coach": {
@@ -4472,35 +4987,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Latvia"
+          "nationality": "Latvia",
+          "image": "/jugadores/fpx/ardiis.png"
         },
         {
           "name": "Shao",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/shao.png"
         },
         {
           "name": "ANGE1",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Ukraine"
+          "nationality": "Ukraine",
+          "image": "/jugadores/fpx/ange1.png"
         },
         {
           "name": "Zyppan",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fpx/zyppan.png"
         },
         {
           "name": "SUYGETSU",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/suygetsu.png"
         }
       ],
       "coach": {
@@ -4515,35 +5035,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "Benkai",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/benkai.png"
         },
         {
           "name": "d4v41",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -4558,35 +5083,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/yay.png"
         },
         {
           "name": "crashies",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "Marved",
           "rating": 92,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/marved.png"
         },
         {
           "name": "FNS",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/fns.png"
         },
         {
           "name": "Victor",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/victor.png"
         }
       ],
       "coach": {
@@ -4601,35 +5131,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Enzo",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "France"
+          "nationality": "France",
+          "image": "/jugadores/fnatic/enzo.png"
         },
         {
           "name": "Boaster",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Mistic",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/mistic.png"
         },
         {
           "name": "Alfajer",
           "rating": 91,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         }
       ],
       "coach": {
@@ -4644,35 +5179,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Rb",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/rb.png"
         },
         {
           "name": "Zest",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/zest.png"
         },
         {
           "name": "MaKo",
           "rating": 92,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "stax",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         }
       ],
       "coach": {
@@ -4687,35 +5227,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/guild/sayf.png"
         },
         {
           "name": "Dreamas",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/guild/dreamas.png"
         },
         {
           "name": "Ro4r",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/guild/ro4r.png"
         },
         {
           "name": "Kiles",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Spain"
+          "nationality": "Spain",
+          "image": "/jugadores/acend/kiles.png"
         },
         {
           "name": "Leo",
           "rating": 86,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fnatic/leo.png"
         }
       ],
       "coach": {
@@ -4730,35 +5275,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/xset/cryocells.png"
         },
         {
           "name": "zekken",
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zekken.png"
         },
         {
           "name": "dephh",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/xset/dephh.png"
         },
         {
           "name": "BCJ",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/xset/bcj.png"
         },
         {
           "name": "AYRIN",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/xset/ayrin.png"
         }
       ],
       "coach": {
@@ -4773,35 +5323,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/keznit.png"
         },
         {
           "name": "NagZ",
           "rating": 84,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/nagz.png"
         },
         {
           "name": "Mazino",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "Klaus",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/kru/klaus.png"
         },
         {
           "name": "delz1k",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/delz1k.png"
         }
       ],
       "coach": {
@@ -4816,35 +5371,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/tacolilla.png"
         },
         {
           "name": "Shyy",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/shyy.png"
         },
         {
           "name": "Melser",
           "rating": 84,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/melser.png"
         },
         {
           "name": "adverso",
           "rating": 83,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/adverso.png"
         },
         {
           "name": "KiNgg",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/leviatan/kiNgg.png"
         }
       ],
       "coach": {
@@ -4859,35 +5419,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/dep.png"
         },
         {
           "name": "crow",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/crow.png"
         },
         {
           "name": "SugarZ3ro",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/zeta/sugarz3ro.png"
         },
         {
           "name": "TENNN",
           "rating": 83,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/tennn.png"
         },
         {
           "name": "Laz",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/laz.png"
         }
       ],
       "coach": {
@@ -4904,35 +5469,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Leo",
           "rating": 93,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fnatic/leo.png"
         },
         {
           "name": "Boaster",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Alfajer",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         },
         {
           "name": "Chronicle",
           "rating": 92,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         }
       ],
       "coach": {
@@ -4947,35 +5517,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/demon1.png"
         },
         {
           "name": "Jawgemo",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/jawgemo.png"
         },
         {
           "name": "C0M",
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/c0m.png"
         },
         {
           "name": "Boostio",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/boostio.png"
         },
         {
           "name": "Ethan",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/ethan.png"
         }
       ],
       "coach": {
@@ -4990,35 +5565,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "something",
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/prx/something.png"
         },
         {
           "name": "d4v41",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 94,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -5033,35 +5613,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Latvia"
+          "nationality": "Latvia",
+          "image": "/jugadores/fpx/ardiis.png"
         },
         {
           "name": "crashies",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "s0m",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/s0m.png"
         },
         {
           "name": "FNS",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/envy/fns.png"
         },
         {
           "name": "Victor",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/victor.png"
         }
       ],
       "coach": {
@@ -5076,35 +5661,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/guild/sayf.png"
         },
         {
           "name": "Jamppi",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "DUELIST",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/team liquid/jamppi.png"
         },
         {
           "name": "Redgar",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/redgar.png"
         },
         {
           "name": "nAts",
           "rating": 91,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/gambit/nats.png"
         },
         {
           "name": "soulcas",
           "rating": 86,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/team liquid/soulcas.png"
         }
       ],
       "coach": {
@@ -5119,35 +5709,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Rb",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/rb.png"
         },
         {
           "name": "Zest",
           "rating": 85,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/zest.png"
         },
         {
           "name": "MaKo",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "stax",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         }
       ],
       "coach": {
@@ -5162,35 +5757,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {
@@ -5205,35 +5805,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 86,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/t1/sayaplayer.png"
         },
         {
           "name": "Carpe",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/t1/carpe.png"
         },
         {
           "name": "ban",
           "rating": 81,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/t1/ban.png"
         },
         {
           "name": "Munchkin",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         },
         {
           "name": "xeta",
           "rating": 84,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/c9/xeta.png"
         }
       ],
       "coach": {
@@ -5248,35 +5853,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/qw1.png"
         },
         {
           "name": "qRaxs",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/qraxs.png"
         },
         {
           "name": "MrFaliN",
           "rating": 84,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/MrFaliN.png"
         },
         {
           "name": "MOJJ",
           "rating": 82,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/smb/mojj.png"
         },
         {
           "name": "AtaKaptan",
           "rating": 83,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/atakaptan.png"
         }
       ],
       "coach": {
@@ -5291,35 +5901,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/acend/cned.png"
         },
         {
           "name": "Shao",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/shao.png"
         },
         {
           "name": "ANGE1",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Ukraine"
+          "nationality": "Ukraine",
+          "image": "/jugadores/fpx/ange1.png"
         },
         {
           "name": "Zyppan",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fpx/zyppan.png"
         },
         {
           "name": "SUYGETSU",
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/suygetsu.png"
         }
       ],
       "coach": {
@@ -5334,35 +5949,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 82,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/ase/sya1ns.png"
         },
         {
           "name": "Keiko",
           "rating": 81,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/tl/keiko.png"
         },
         {
           "name": "Astell",
           "rating": 79,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/ase/astell.png"
         },
         {
           "name": "Crow",
           "rating": 78,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Japan"
+          "nationality": "Japan",
+          "image": "/jugadores/zeta/crow.png"
         },
         {
           "name": "Minty",
           "rating": 80,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/ase/minty.png"
         }
       ],
       "coach": {
@@ -5379,35 +5999,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zekken.png"
         },
         {
           "name": "Zellsis",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zellsis.png"
         },
         {
           "name": "Sacy",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/sacy.png"
         },
         {
           "name": "TenZ",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Canada"
+          "nationality": "Canada",
+          "image": "/jugadores/sentinels/tenz.png"
         },
         {
           "name": "johnqt",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Morocco"
+          "nationality": "Morocco",
+          "image": "/jugadores/sentinels/johnqt.png"
         }
       ],
       "coach": {
@@ -5422,35 +6047,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/t3xture.png"
         },
         {
           "name": "Munchkin",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         },
         {
           "name": "Karon",
           "rating": 92,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/karon.png"
         },
         {
           "name": "Lakia",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/lakia.png"
         },
         {
           "name": "Meteor",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/meteor.png"
         }
       ],
       "coach": {
@@ -5465,35 +6095,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "something",
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/prx/something.png"
         },
         {
           "name": "d4v41",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 95,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -5508,35 +6143,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 84,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Czech Republic"
+          "nationality": "Czech Republic",
+          "image": "/jugadores/karmine/marteen.png"
         },
         {
           "name": "Shin",
           "rating": 83,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "France"
+          "nationality": "France",
+          "image": "/jugadores/karmine/shin.png"
         },
         {
           "name": "tomaszy",
           "rating": 84,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "DUELIST",
-          "nationality": "Portugal"
+          "nationality": "Portugal",
+          "image": "/jugadores/karmine/tomaszy.png"
         },
         {
           "name": "magnum",
           "rating": 83,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/fnatic/magnum.png"
         },
         {
           "name": "vladeN",
           "rating": 82,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "France"
+          "nationality": "France",
+          "image": "/jugadores/karmine/vladen.png"
         }
       ],
       "coach": {
@@ -5551,35 +6191,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/leviatan/aspas.png"
         },
         {
           "name": "Less",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/less.png"
         },
         {
           "name": "tuyz",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/tuyz.png"
         },
         {
           "name": "Saadhak",
           "rating": 92,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Argentina"
+          "nationality": "Argentina",
+          "image": "/jugadores/loud/saadhak.png"
         },
         {
           "name": "cauanzin",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/loud/cauanzin.png"
         }
       ],
       "coach": {
@@ -5594,35 +6239,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 89,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {
@@ -5637,35 +6287,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/wo0t.png"
         },
         {
           "name": "benjyfishy",
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/heretics/benjyfishy.png"
         },
         {
           "name": "Boo",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/boo.png"
         },
         {
           "name": "RieNs",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/riens.png"
         },
         {
           "name": "MiniBoo",
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/miniboo.png"
         }
       ],
       "coach": {
@@ -5680,35 +6335,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Latvia"
+          "nationality": "Latvia",
+          "image": "/jugadores/fpx/ardiis.png"
         },
         {
           "name": "Shao",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/shao.png"
         },
         {
           "name": "ANGE1",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Ukraine"
+          "nationality": "Ukraine",
+          "image": "/jugadores/fpx/ange1.png"
         },
         {
           "name": "Zyppan",
           "rating": 85,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fpx/zyppan.png"
         },
         {
           "name": "SUYGETSU",
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fpx/suygetsu.png"
         }
       ],
       "coach": {
@@ -5725,35 +6385,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 97,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/t3xture.png"
         },
         {
           "name": "Munchkin",
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         },
         {
           "name": "Karon",
           "rating": 93,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/karon.png"
         },
         {
           "name": "Lakia",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/lakia.png"
         },
         {
           "name": "Meteor",
           "rating": 95,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/meteor.png"
         }
       ],
       "coach": {
@@ -5768,35 +6433,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/wo0t.png"
         },
         {
           "name": "benjyfishy",
           "rating": 91,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/heretics/benjyfishy.png"
         },
         {
           "name": "Boo",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/boo.png"
         },
         {
           "name": "RieNs",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/riens.png"
         },
         {
           "name": "MiniBoo",
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/miniboo.png"
         }
       ],
       "coach": {
@@ -5811,35 +6481,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/leaf.png"
         },
         {
           "name": "trent",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/trent.png"
         },
         {
           "name": "valyn",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/valyn.png"
         },
         {
           "name": "icy",
           "rating": 86,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/icy.png"
         },
         {
           "name": "JonahP",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/jonahp.png"
         }
       ],
       "coach": {
@@ -5854,35 +6529,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/cryo.png"
         },
         {
           "name": "bang",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/bang.png"
         },
         {
           "name": "Derrek",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/derrek.png"
         },
         {
           "name": "stellar",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/stellar.png"
         },
         {
           "name": "Asuna",
           "rating": 90,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/asuna.png"
         }
       ],
       "coach": {
@@ -5897,35 +6577,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/acend/cned.png"
         },
         {
           "name": "yetujey",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/yetujey.png"
         },
         {
           "name": "MrFaliN",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/MrFaliN.png"
         },
         {
           "name": "xeus",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/xeus.png"
         },
         {
           "name": "AtaKaptan",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fut/atakaptan.png"
         }
       ],
       "coach": {
@@ -5940,35 +6625,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         },
         {
           "name": "something",
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/prx/something.png"
         },
         {
           "name": "d4v41",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "f0rsakeN",
           "rating": 95,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "mindfreak",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         }
       ],
       "coach": {
@@ -5983,35 +6673,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {
@@ -6026,35 +6721,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/buzz.png"
         },
         {
           "name": "Flashback",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/flashback.png"
         },
         {
           "name": "BeYN",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/beyn.png"
         },
         {
           "name": "MaKo",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/mako.png"
         },
         {
           "name": "stax",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/drx/stax.png"
         }
       ],
       "coach": {
@@ -6069,35 +6769,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Brazil"
+          "nationality": "Brazil",
+          "image": "/jugadores/leviatan/aspas.png"
         },
         {
           "name": "tex",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/leviatan/tex.png"
         },
         {
           "name": "Mazino",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/kru/mazino.png"
         },
         {
           "name": "C0M",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/eg/c0m.png"
         },
         {
           "name": "kiNgg",
           "rating": 93,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Chile"
+          "nationality": "Chile",
+          "image": "/jugadores/leviatan/kiNgg.png"
         }
       ],
       "coach": {
@@ -6112,35 +6817,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Finland"
+          "nationality": "Finland",
+          "image": "/jugadores/fnatic/derke.png"
         },
         {
           "name": "Chronicle",
           "rating": 92,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         },
         {
           "name": "Boaster",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "Leo",
           "rating": 91,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Sweden"
+          "nationality": "Sweden",
+          "image": "/jugadores/fnatic/leo.png"
         },
         {
           "name": "Alfajer",
           "rating": 93,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         }
       ],
       "coach": {
@@ -6155,35 +6865,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 85,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/t1/sayaplayer.png"
         },
         {
           "name": "Carpe",
           "rating": 83,
           "primaryRole": "INITIATOR",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/t1/carpe.png"
         },
         {
           "name": "k1Ng",
           "rating": 82,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/vs/k1ng.png"
         },
         {
           "name": "Munchkin",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         },
         {
           "name": "xeta",
           "rating": 83,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/c9/xeta.png"
         }
       ],
       "coach": {
@@ -6200,35 +6915,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/fnatic/alfajer.png"
         },
         {
           "name": "Chronicle",
           "rating": 95,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/fnatic/chronicle.png"
         },
         {
           "name": "Boaster",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/fnatic/boaster.png"
         },
         {
           "name": "crashies",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/envy/crashies.png"
         },
         {
           "name": "kaajak",
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Czech Republic"
+          "nationality": "Czech Republic",
+          "image": "/jugadores/fnatic/kaajak.png"
         }
       ],
       "coach": {
@@ -6243,35 +6963,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/c9/leaf.png"
         },
         {
           "name": "trent",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/trent.png"
         },
         {
           "name": "valyn",
           "rating": 90,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "SENTINEL",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/valyn.png"
         },
         {
           "name": "icy",
           "rating": 87,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/icy.png"
         },
         {
           "name": "JonahP",
           "rating": 88,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/g2/jonahp.png"
         }
       ],
       "coach": {
@@ -6286,35 +7011,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/t3xture.png"
         },
         {
           "name": "Meteor",
           "rating": 94,
           "primaryRole": "SENTINEL",
           "secondaryRole": "DUELIST",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/meteor.png"
         },
         {
           "name": "Karon",
           "rating": 92,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/karon.png"
         },
         {
           "name": "Lakia",
           "rating": 88,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/lakia.png"
         },
         {
           "name": "Munchkin",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "INITIATOR",
-          "nationality": "South Korea"
+          "nationality": "South Korea",
+          "image": "/jugadores/geng/munchkin.png"
         }
       ],
       "coach": {
@@ -6329,35 +7059,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "FLEX",
           "secondaryRole": "SENTINEL",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/f0rsaken.png"
         },
         {
           "name": "something",
           "rating": 93,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/prx/something.png"
         },
         {
           "name": "d4v41",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Malaysia"
+          "nationality": "Malaysia",
+          "image": "/jugadores/prx/d4v41.png"
         },
         {
           "name": "mindfreak",
           "rating": 89,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "Indonesia"
+          "nationality": "Indonesia",
+          "image": "/jugadores/prx/mindfreak.png"
         },
         {
           "name": "Jinggg",
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Singapore"
+          "nationality": "Singapore",
+          "image": "/jugadores/prx/jinggg.png"
         }
       ],
       "coach": {
@@ -6372,35 +7107,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/giantx/cloud.png"
         },
         {
           "name": "westside",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/giantx/westside.png"
         },
         {
           "name": "runneR",
           "rating": 85,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/giantx/runneR.png"
         },
         {
           "name": "nukkye",
           "rating": 85,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/g2/nukkye.png"
         },
         {
           "name": "Purp0",
           "rating": 88,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Russia"
+          "nationality": "Russia",
+          "image": "/jugadores/giantx/purp0.png"
         }
       ],
       "coach": {
@@ -6415,35 +7155,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zekken.png"
         },
         {
           "name": "N4RRATE",
           "rating": 92,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/n4rrate.png"
         },
         {
           "name": "bang",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/100t/bang.png"
         },
         {
           "name": "johnqt",
           "rating": 89,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Morocco"
+          "nationality": "Morocco",
+          "image": "/jugadores/sentinels/johnqt.png"
         },
         {
           "name": "Zellsis",
           "rating": 87,
           "primaryRole": "FLEX",
           "secondaryRole": "CONTROLLER",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/sentinels/zellsis.png"
         }
       ],
       "coach": {
@@ -6458,35 +7203,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 92,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/jemkin.png"
         },
         {
           "name": "Monyet",
           "rating": 90,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/monyet.png"
         },
         {
           "name": "xffero",
           "rating": 87,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/xffero.png"
         },
         {
           "name": "Kushy",
           "rating": 86,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/kushy.png"
         },
         {
           "name": "Estrella",
           "rating": 85,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/rrq/estrella.png"
         }
       ],
       "coach": {
@@ -6501,35 +7251,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 89,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/rarga.png"
         },
         {
           "name": "happywei",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/happywei.png"
         },
         {
           "name": "Viva",
           "rating": 86,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/viva.png"
         },
         {
           "name": "Midi",
           "rating": 84,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/midi.png"
         },
         {
           "name": "coconut",
           "rating": 85,
           "primaryRole": "FLEX",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/xlg/coconut.png"
         }
       ],
       "coach": {
@@ -6544,35 +7299,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 94,
           "primaryRole": "FLEX",
           "secondaryRole": "DUELIST",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/wo0t.png"
         },
         {
           "name": "benjyfishy",
           "rating": 90,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "UK"
+          "nationality": "UK",
+          "image": "/jugadores/heretics/benjyfishy.png"
         },
         {
           "name": "Boo",
           "rating": 88,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "INITIATOR",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/boo.png"
         },
         {
           "name": "RieNs",
           "rating": 87,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "Turkey"
+          "nationality": "Turkey",
+          "image": "/jugadores/heretics/riens.png"
         },
         {
           "name": "MiniBoo",
           "rating": 91,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "Lithuania"
+          "nationality": "Lithuania",
+          "image": "/jugadores/heretics/miniboo.png"
         }
       ],
       "coach": {
@@ -6587,35 +7347,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 96,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/brawk.png"
         },
         {
           "name": "mada",
           "rating": 94,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/mada.png"
         },
         {
           "name": "s0m",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "DUELIST",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/s0m.png"
         },
         {
           "name": "skuba",
           "rating": 89,
           "primaryRole": "SENTINEL",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/skuba.png"
         },
         {
           "name": "Ethan",
           "rating": 93,
           "primaryRole": "INITIATOR",
           "secondaryRole": "FLEX",
-          "nationality": "USA"
+          "nationality": "USA",
+          "image": "/jugadores/nrg/ethan.png"
         }
       ],
       "coach": {
@@ -6630,35 +7395,40 @@ export const REAL_ROSTERS: Record<string, Record<string, RealRoster>> = {
           "rating": 95,
           "primaryRole": "DUELIST",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/ZmjjKK.png"
         },
         {
           "name": "CHICHOO",
           "rating": 93,
           "primaryRole": "INITIATOR",
           "secondaryRole": "SENTINEL",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/chichoo.png"
         },
         {
           "name": "Smoggy",
           "rating": 91,
           "primaryRole": "CONTROLLER",
           "secondaryRole": "FLEX",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/smoggy.png"
         },
         {
           "name": "Haodong",
           "rating": 87,
           "primaryRole": "SENTINEL",
           "secondaryRole": "CONTROLLER",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/haodong.png"
         },
         {
           "name": "nobody",
           "rating": 90,
           "primaryRole": "FLEX",
           "secondaryRole": "INITIATOR",
-          "nationality": "China"
+          "nationality": "China",
+          "image": "/jugadores/edg/nobody.png"
         }
       ],
       "coach": {

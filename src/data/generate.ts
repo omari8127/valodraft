@@ -61,9 +61,28 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
 
       const safeName = rp.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
+      const aim = Math.min(99, Math.max(1, rp.rating + Math.floor(seededRandom(rp.name + "aim") * 11) - 5));
+      const clutch = Math.min(99, Math.max(1, rp.rating + Math.floor(seededRandom(rp.name + "clutch") * 11) - 5));
+      const consistency = Math.min(99, Math.max(1, rp.rating + Math.floor(seededRandom(rp.name + "consistency") * 11) - 5));
+      const leadership = Math.min(99, Math.max(1, rp.rating + Math.floor(seededRandom(rp.name + "leadership") * 11) - 5));
+      const entryImpact = Math.min(99, Math.max(1, rp.rating + Math.floor(seededRandom(rp.name + "entry") * 11) - 5));
+      const utilityImpact = Math.min(99, Math.max(1, rp.rating + Math.floor(seededRandom(rp.name + "utility") * 11) - 5));
+      const awpSkill = Math.min(99, Math.max(1, rp.rating + Math.floor(seededRandom(rp.name + "awp") * 11) - 5));
+
+      const stats = { aim, clutch, consistency, leadership, entryImpact, utilityImpact, awpSkill };
+
+      let iglRoll = seededRandom(rp.name + tournamentId + "igl") * 100;
+      if (rp.primaryRole === "CONTROLLER" || rp.primaryRole === "INITIATOR") {
+        iglRoll += 25;
+      } else if (rp.primaryRole === "DUELIST") {
+        iglRoll -= 20;
+      }
+      const iglRating = Math.min(100, Math.max(0, Math.floor(iglRoll)));
+
       return {
         id: `${orgId}-${tournamentId}-${safeName || "player"}-${index}`,
         name: rp.name,
+        realName: rp.name, // Placeholder for real name
         orgId,
         tournamentId,
         role: resolvedRole, // backward compatibility
@@ -74,6 +93,9 @@ for (const [tournamentId, orgIds] of Object.entries(TOURNAMENT_ATTENDANCE)) {
         nationality: rp.nationality,
         mostPlayedAgents,
         agent,
+        stats,
+        iglRating,
+        image: rp.image,
       };
     });
 

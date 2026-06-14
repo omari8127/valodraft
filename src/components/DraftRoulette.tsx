@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useCallback, useRef, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n";
 import { playSfx, unlockSfx } from "@/lib/sfx";
@@ -8,6 +8,7 @@ import { TOURNAMENT_BY_ID } from "@/data/tournaments";
 import { PLAYER_BY_ID } from "@/data/generate";
 import { useProgression } from "@/lib/store/progression";
 import { computeTeamOVR } from "@/lib/engine/ovr";
+import { evaluateTeamRoles } from "@/lib/engine/match/ProbabilityEngine";
 import { RefreshCw, RadioTower, ScanLine, Sparkles } from "lucide-react";
 import { PlayerCard } from "./PlayerCard";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
@@ -223,6 +224,15 @@ export function DraftRoulette({
     activeTeam = state.rollResultTeam;
   }
 
+  const iglPlayerId = useMemo(() => {
+    if (!activeTeam || !activeTeam.players) return null;
+    const maxIgl = Math.max(...activeTeam.players.map(x => x.iglRating || 0));
+    const bestIglPlayer = activeTeam.players
+      .filter(x => (x.iglRating || 0) === maxIgl)
+      .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name))[0];
+    return bestIglPlayer?.id ?? null;
+  }, [activeTeam]);
+
   const { org, tournament } = activeTeam ? getTeamMeta(activeTeam) : { org: null, tournament: null };
   const region = org?.region ?? activeTeam?.region ?? "AMERICAS";
 
@@ -260,6 +270,28 @@ export function DraftRoulette({
     }
   };
 
+  const handlePickPlayer = useCallback((p: PlayerEntry | CoachEntry) => {
+    const isCoachType = (e: any): e is CoachEntry => "orgId" in e && !("primaryRole" in e);
+    if (isCoachType(p)) {
+      onPickCoach(p);
+    } else {
+      onPickPlayer(p);
+    }
+  }, [onPickPlayer, onPickCoach]);
+
+  const handleMouseEnter = useCallback((p: PlayerEntry | CoachEntry) => {
+    const isCoachType = (e: any): e is CoachEntry => "orgId" in e && !("primaryRole" in e);
+    if (isCoachType(p)) {
+      onHoverRole?.("COACH");
+    } else {
+      onHoverRole?.((p as PlayerEntry).primaryRole);
+    }
+  }, [onHoverRole]);
+
+  const handleMouseLeave = useCallback(() => {
+    onHoverRole?.(null);
+  }, [onHoverRole]);
+
   const getLockReason = (p: PlayerEntry) => {
     const normalizedName = p.name.toLowerCase().trim();
     const alreadySelected = state.roster.slots.some((s) => {
@@ -296,6 +328,26 @@ export function DraftRoulette({
 
     return { lines, prospectiveOVR, diffStr };
   };
+
+  const teamRoles = useMemo(() => {
+    return evaluateTeamRoles({ players: draftedPlayers } as any);
+  }, [draftedPlayers]);
+
+  const teamNeedsContent = useMemo(() => {
+    return (
+      <div className="w-full flex flex-col items-center justify-center gap-2 my-2 p-3 bg-[#050914] border border-white/5 clip-corner">
+        <div className="flex items-center justify-between w-full mb-1">
+          <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Your team still needs:</span>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {!teamRoles.hasIGL && <span className="clip-tag px-2 py-1 text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/50">⚠ IGL (Captain) MISSING</span>}
+          {!teamRoles.hasController && <span className="clip-tag px-2 py-1 text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/50">⚠ Controller MISSING</span>}
+          {!teamRoles.hasEntry && <span className="clip-tag px-2 py-1 text-[10px] font-bold bg-white/5 text-gray-300 border border-white/10">Entry Fragger MISSING</span>}
+          {!teamRoles.hasSentinel && <span className="clip-tag px-2 py-1 text-[10px] font-bold bg-white/5 text-gray-300 border border-white/10">Sentinel/Lurker MISSING</span>}
+        </div>
+      </div>
+    );
+  }, [teamRoles]);
 
   return (
     <div className={`draft-roulette-container flex flex-col items-center justify-center w-full mt-2 py-2 gap-2 transition-all ${rerollShake ? "animate-card-shake" : ""}`}>
@@ -425,10 +477,14 @@ export function DraftRoulette({
               <h3 className="font-display text-xl text-white tracking-wide">JUGADORES DISPONIBLES</h3>
             </div>
             
+            {teamNeedsContent}
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 players-grid">
-              {[...activeTeam.players, activeTeam.coach].map((entity) => {
+              {[...activeTeam.players, activeTeam.coach].map((entity, index) => {
                 const isCoachType = (e: any): e is CoachEntry => "orgId" in e && !("primaryRole" in e);
                 const isCoach = isCoachType(entity);
+                const slotRoles: SlotRole[] = ["DUELIST", "INITIATOR", "CONTROLLER", "SENTINEL", "FLEX", "COACH"];
+                const slotRole = slotRoles[index];
 
                 if (isCoach) {
                   const coachEntity = entity as CoachEntry;
@@ -444,10 +500,11 @@ export function DraftRoulette({
                             draft
                             isAiRec={isAiRec}
                             isSelected={selectedPickId === coachEntity.id}
-                            isDisabled={isDisabled}
-                            onClick={() => onPickCoach(coachEntity)}
+                            isDisabled={false}
+                            slotRole="COACH"
+                            onClick={handlePickPlayer}
                             onMouseEnter={() => onHoverRole?.("COACH")}
-                            onMouseLeave={() => onHoverRole?.(null)}
+                            onMouseLeave={handleMouseLeave}
                           />
                         </div>
                       </TooltipTrigger>
@@ -472,21 +529,48 @@ export function DraftRoulette({
                 const isDisabled = role === "COACH" || !canPickPlayer(p, state.roster, role as SlotRole, state.draftMode);
                 const lockReason = role === "COACH" ? "Drafting Coach slot" : getLockReason(p);
 
+                let fitLevel: "STRONG" | "MEDIUM" | "NEUTRAL" = "NEUTRAL";
+                let fitLabel: string | undefined = undefined;
+
+                if (!teamRoles.hasIGL && (p.iglRating || 0) >= 65) {
+                   fitLevel = (p.iglRating || 0) >= 75 ? "STRONG" : "MEDIUM";
+                   fitLabel = "+ FITS IGL";
+                }
+                else if (!teamRoles.hasController && (p.primaryRole === "CONTROLLER" || p.secondaryRole === "CONTROLLER" || p.primaryRole === "INITIATOR")) {
+                   fitLevel = p.primaryRole === "CONTROLLER" ? "STRONG" : "MEDIUM";
+                   fitLabel = "+ FITS CONTROLLER";
+                }
+                else if (!teamRoles.hasEntry && (p.primaryRole === "DUELIST" || p.secondaryRole === "DUELIST" || p.primaryRole === "FLEX")) {
+                   fitLevel = "MEDIUM";
+                   fitLabel = "+ FITS ENTRY";
+                }
+                else if (!teamRoles.hasSentinel && (p.primaryRole === "SENTINEL" || p.secondaryRole === "SENTINEL" || p.primaryRole === "CONTROLLER")) {
+                   fitLevel = "MEDIUM";
+                   fitLabel = "+ FITS SENTINEL";
+                }
+
+                let hoverInfo = "";
+                if ((p.iglRating || 0) >= 75) hoverInfo = "Strong IGL potential";
+                else if (p.stats && p.stats.clutch >= 85) hoverInfo = "High clutch player";
+                else if (p.primaryRole === "FLEX" || p.secondaryRole) hoverInfo = "Flexible roles";
+
                 return (
                   <Tooltip key={p.id}>
                     <TooltipTrigger asChild>
-                      <div className="transition-all duration-200 opacity-100">
+                      <div className="transition-all duration-200 opacity-100 h-full">
                         <PlayerCard
                           entity={p}
                           draft
                           isAiRec={isAiRec}
                           isSelected={selectedPickId === p.id}
-                          isDisabled={isDisabled}
-                          onClick={() => {
-                            if (!isDisabled) onPickPlayer(p);
-                          }}
-                          onMouseEnter={() => onHoverRole?.(p.primaryRole)}
-                          onMouseLeave={() => onHoverRole?.(null)}
+                          isDisabled={false}
+                          fitLevel={fitLevel}
+                          fitLabel={fitLabel}
+                          isIgl={p.id === iglPlayerId}
+                          slotRole={slotRole}
+                          onClick={handlePickPlayer}
+                          onMouseEnter={() => onHoverRole?.(slotRole)}
+                          onMouseLeave={handleMouseLeave}
                         />
                       </div>
                     </TooltipTrigger>
@@ -506,6 +590,11 @@ export function DraftRoulette({
                             {(p.form ?? 0) >= 0 ? `+${p.form ?? 0}` : p.form}
                           </span>
                         </div>
+                        {hoverInfo && (
+                          <div className="text-[10px] text-slate-300 italic">
+                            {hoverInfo}
+                          </div>
+                        )}
                         {!isDisabled && synergy && (
                           <div className="space-y-1 text-[10px]">
                             <div className="font-semibold text-gold">Synergies active:</div>

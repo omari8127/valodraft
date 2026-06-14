@@ -27,6 +27,7 @@ export interface Organization {
   name: string;
   shortName: string;
   region: Region;
+  logo?: string;
 }
 
 export type TournamentSeries = "champions" | "masters";
@@ -42,9 +43,20 @@ export interface Tournament {
 
 export type DraftMode = "STRICT" | "FLEXIBLE" | "CHAOS";
 
+export interface PlayerStats {
+  aim: number;
+  clutch: number;
+  consistency: number;
+  leadership: number;
+  entryImpact: number;
+  utilityImpact: number;
+  awpSkill: number;
+}
+
 export interface PlayerEntry {
   id: string;
   name: string;
+  realName?: string;
   orgId: string;
   tournamentId: string;
   role: PlayerRole; // keep for backward compatibility
@@ -56,6 +68,9 @@ export interface PlayerEntry {
   mostPlayedAgents?: string[];
   agent?: string;
   form?: number; // dynamic form modifier (-2 to +2)
+  stats?: PlayerStats;
+  iglRating?: number;
+  image?: string;
 }
 
 export interface CoachEntry {
@@ -128,6 +143,12 @@ export interface ChemistryBreakdown {
   total: number;
 }
 
+export interface TeamProgression {
+  mapRatings: Record<string, number>;
+  teamStrength: number;
+  synergy: number;
+}
+
 export interface SavedDynasty {
   id: string;
   name: string;
@@ -143,4 +164,5 @@ export interface SavedDynasty {
   playerForms?: Record<string, number>;
   roleAssignments?: Record<string, PlayerRole>;
   draftMode?: DraftMode;
+  teamProgression?: TeamProgression;
 }

@@ -17,7 +17,7 @@ export function BracketSimulation({ bracket, playerTeam, eliminatedRoundIdx }: B
   const startIdx = bracket.length - visibleRoundsCount;
   const visibleBracket = bracket.slice(startIdx);
   
-  const championMatch = bracket[bracket.length - 1][0];
+  const championMatch = bracket.length > 0 ? bracket[bracket.length - 1][0] : null;
   const champion = championMatch?.winner;
   
   // Automatically scroll to a better viewing position
@@ -43,7 +43,7 @@ export function BracketSimulation({ bracket, playerTeam, eliminatedRoundIdx }: B
         <div className="bracket-inner">
         {visibleBracket.map((roundMatches, idx) => {
           const originalRoundIdx = startIdx + idx;
-          const stageLabel = ROUND_LABEL(originalRoundIdx + 1, bracket.length);
+          const stageLabel = ROUND_LABEL(originalRoundIdx, bracket);
           
           return (
             <div key={originalRoundIdx} className="flex flex-col min-w-[260px] snap-center">

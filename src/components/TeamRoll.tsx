@@ -257,7 +257,7 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
             <div className="relative mt-4 min-h-[2.8rem] overflow-hidden sm:min-h-[3.35rem]">
               <motion.div
                 key={phase === "spinning" ? "rolling-phase" : `result-${selectedTeam.id}`}
-                initial={phase === "result" ? { opacity: 0, y: 18 } : false}
+                initial={phase === "reveal" ? { opacity: 0, y: 18 } : false}
                 animate={{ opacity: 1, y: 0, letterSpacing: "0em" }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="roulette-live-name font-display text-3xl text-foreground drop-shadow sm:text-5xl"
@@ -269,7 +269,7 @@ export function TeamRoll({ pool, locked, lockedRoles, role, selectedTeam, onComp
             <div className="mt-2 min-h-[0.875rem] overflow-hidden text-[10px] font-bold uppercase tracking-[0.35em] text-muted-foreground">
               <motion.div
                 key={phase === "spinning" ? "rolling-phase-tour" : `result-${selectedTeam.id}-tour`}
-                initial={phase === "result" ? { opacity: 0, y: 6 } : false}
+                initial={phase === "reveal" ? { opacity: 0, y: 6 } : false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.22 }}
               >

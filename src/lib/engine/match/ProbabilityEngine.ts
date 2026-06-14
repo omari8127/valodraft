@@ -48,25 +48,13 @@ export function calculateTSS(
   const chemistryRaw = computeChemistry(team.players, team.coach).total;
   const chemistry = Math.min(100, Math.max(0, chemistryRaw * 1.25)); // Slightly inflate to match 100 scale
 
-  // 3. Role Balance (0-100)
+  // 3. Role Balance
+  // Replaced by specific win probability penalties evaluated per team
   let roleBalance = 100;
-  if (mode !== "CHAOS") {
-    const controllers = team.players.filter((p) => p.primaryRole === "CONTROLLER").length;
-    const sentinels = team.players.filter((p) => p.primaryRole === "SENTINEL").length;
-    const initiators = team.players.filter((p) => p.primaryRole === "INITIATOR").length;
-    const duelists = team.players.filter((p) => p.primaryRole === "DUELIST").length;
-
-    if (controllers === 0) roleBalance -= 30;
-    if (sentinels === 0) roleBalance -= 20;
-    if (initiators === 0) roleBalance -= 20;
-    if (duelists > 1) {
-      roleBalance -= (duelists - 1) * 15;
-    }
-  }
-  roleBalance = Math.min(100, Math.max(0, roleBalance));
 
   // 4. Map Pool / Affinity (0-100)
   let mapPool = 50; // Base neutral
+  // @ts-ignore
   if (map.bonusRole && team.players.some((p) => p.primaryRole === map.bonusRole)) {
     mapPool += 30; // Strong affinity
   }
@@ -100,4 +88,53 @@ export function calculateWinProbability(tssA: number, tssB: number): number {
   }
   
   return baseProb;
+}
+
+export function evaluateTeamRoles(team: MatchTeam) {
+  let highestIGL = 0;
+  let secondHighestIGL = 0;
+  
+  let controllerScore = 0;
+  let entryScore = 0;
+  let sentinelScore = 0;
+  let duelistCount = 0;
+
+  for (const p of team.players) {
+    if (!p) continue;
+    
+    const igl = p.iglRating || 0;
+    if (igl > highestIGL) {
+      secondHighestIGL = highestIGL;
+      highestIGL = igl;
+    } else if (igl > secondHighestIGL) {
+      secondHighestIGL = igl;
+    }
+
+    const isPrimary = (role: string) => p.primaryRole === role ? 1.0 : 0;
+    const isSecondary = (role: string) => p.secondaryRole === role ? 0.6 : 0;
+
+    controllerScore += isPrimary("CONTROLLER") + isSecondary("CONTROLLER") + (p.primaryRole === "INITIATOR" ? 0.3 : 0);
+    entryScore += isPrimary("DUELIST") + isSecondary("DUELIST") + (p.primaryRole === "FLEX" ? 0.3 : 0);
+    sentinelScore += isPrimary("SENTINEL") + isSecondary("SENTINEL") + (p.primaryRole === "CONTROLLER" ? 0.3 : 0);
+    if (p.primaryRole === "DUELIST") duelistCount++;
+  }
+
+  const iglImpact = highestIGL + (secondHighestIGL * 0.25);
+  const hasIGL = iglImpact >= 75;
+  const hasController = controllerScore >= 0.75;
+  const hasEntry = entryScore >= 0.75;
+  const hasSentinel = sentinelScore >= 0.75;
+
+  let winProbPenalty = 0;
+  let consistencyPenalty = 0;
+
+  if (!hasIGL) { winProbPenalty -= 0.15; consistencyPenalty -= 0.15; }
+  if (!hasController) winProbPenalty -= 0.13;
+  if (!hasEntry && !hasSentinel) winProbPenalty -= 0.08;
+  else if (!hasEntry || !hasSentinel) winProbPenalty -= 0.05;
+
+  if (duelistCount === 3) winProbPenalty -= 0.03;
+  if (duelistCount >= 4) winProbPenalty -= 0.06;
+
+  return { hasIGL, hasController, hasEntry, hasSentinel, iglImpact, winProbPenalty, consistencyPenalty, controllerScore, entryScore, sentinelScore };
 }

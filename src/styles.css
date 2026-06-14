@@ -126,8 +126,7 @@
 @utility clip-tag {
   clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 8px 100%);
 }
-
-@utility text-stroke-primary {
+@utility text-stroke-primary {
   -webkit-text-stroke: 1px var(--color-primary);
   color: transparent;
 }
@@ -235,9 +234,7 @@
 }
 
 .role-slot.hovered {
-  border: 1px solid var(--color-primary);
-  box-shadow: 0 0 12px var(--color-primary);
-  transform: translateY(-2px);
+  /* Dynamic styles applied in JSX */
 }
 
 /* Feed Scrollbar Styling */
@@ -303,16 +300,7 @@
   --particle-color: rgba(0, 224, 255, 0.35);
 }
 
-/* Theme-based card hover effects */
-[data-theme="masters"] .player-card:hover:not(.is-disabled) {
-  border-color: #00E0FF !important;
-  box-shadow: 0 0 12px rgba(0, 224, 255, 0.4);
-}
-
-[data-theme="champions"] .player-card:hover:not(.is-disabled) {
-  border-color: #D4AF37 !important;
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
-}
+/* Card hover effects are handled dynamically in JS to match role colors */
 
 /* Dynamic Buttons */
 .bg-primary {

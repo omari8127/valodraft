@@ -1,11 +1,11 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { GAME_MODES } from "@/data/tournaments";
 import { useDraft } from "@/lib/store/draft";
-import { useProgression, getRankTier, getRankBadge, getUnlockedYears, type GameDifficulty } from "@/lib/store/progression";
+import { useProgression, getRankTier, getRankBadge, type GameDifficulty } from "@/lib/store/progression";
 import { useState, useEffect } from "react";
 import type { DraftMode, GameModeId } from "@/types/game";
 import { useLanguage } from "@/lib/i18n";
-import { Flame, ShieldAlert, Award, Star, RefreshCw } from "lucide-react";
+import { ShieldAlert, Star } from "lucide-react";
 
 export const Route = createFileRoute("/play")({
   head: () => ({
@@ -34,60 +34,25 @@ function PlayPage() {
     xp,
     level,
     difficulty,
-    rankedActive,
-    activeMeta,
     setDifficulty,
-    setRankedActive,
-    cycleMeta,
     resetProgression,
   } = useProgression();
 
   // Settings local state
   const [selectedPool, setSelectedPool] = useState<GameModeId>("champions");
   const [draftMode, setDraftMode] = useState<DraftMode>("STRICT");
-  const [hoveredPool, setHoveredPool] = useState<GameModeId | null>(null);
+  const [isBlindMode, setIsBlindMode] = useState(false);
+  const [teamName, setTeamName] = useState("");
 
   const handleStart = () => {
-    startDraft(selectedPool, draftMode);
+    startDraft(selectedPool, draftMode, teamName);
     navigate({ to: "/draft" });
   };
 
   const rankTier = getRankTier(mmr);
   const rankBadge = getRankBadge(rankTier);
   
-  // Year unlocks based on Ranked vs Classic:
-  // Classic mode -> all years unlocked; Ranked mode -> level based
-  const unlockedYears = rankedActive ? getUnlockedYears(level) : [2021, 2022, 2023, 2024, 2025];
-
-  // Meta patch description helper using i18n
-  const getMetaDesc = (meta: string) => {
-    switch (meta) {
-      case "Duelist Meta":
-        return lang === "ES"
-          ? "Los Duelistas ganan +5% de impacto en la simulación de partidas."
-          : lang === "PT"
-            ? "Os Duelistas ganham +5% de impacto na simulação de partidas."
-            : "Duelists gain +5% impact in match simulation.";
-      case "Sentinel Meta":
-        return lang === "ES"
-          ? "Los Sentinels aumentan la probabilidad de ganar rondas en defensa."
-          : lang === "PT"
-            ? "Os Sentinels aumentam a probabilidade de vencer rodadas na defesa."
-            : "Sentinels increase defensive round win chance.";
-      case "Utility Meta":
-        return lang === "ES"
-          ? "Los Iniciadores y Controladores reciben un boost de rendimiento."
-          : lang === "PT"
-            ? "Os Iniciadores e Controladores recebem um boost de rendimento."
-            : "Initiators + Controllers gain a performance boost.";
-      default:
-        return lang === "ES"
-          ? "Meta balanceado. Sin bonificaciones de rol adicionales."
-          : lang === "PT"
-            ? "Meta equilibrado. Sem bônus de função adicionais."
-            : "Balanced meta. No additional role boosts.";
-    }
-  };
+  const unlockedYears = [2021, 2022, 2023, 2024, 2025];
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
@@ -133,7 +98,7 @@ function PlayPage() {
       </div>
 
       <div className="space-y-8">
-        {/* Step 1: Mode Selection (LEFT: CLASSIC, RIGHT: RANKED) */}
+        {/* Step 1: Mode Selection (LEFT: CLASSIC, RIGHT: BLIND) */}
         <section className="space-y-4">
           <h2 className="text-xs text-white/60 tracking-widest uppercase">
             // MODE SELECTION
@@ -142,9 +107,9 @@ function PlayPage() {
           <div className="grid gap-4 md:grid-cols-2">
             {/* LEFT CARD: CLASSIC */}
             <button
-              onClick={() => setRankedActive(false)}
+              onClick={() => setIsBlindMode(false)}
               className={`clip-corner p-6 text-left transition-all duration-200 cursor-pointer relative overflow-hidden group focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
-                !rankedActive
+                !isBlindMode
                   ? "border border-white/70 shadow-[0_0_12px_rgba(255,255,255,0.25)] bg-white/[0.03] text-white"
                   : "border border-white/20 hover:border-white/40 hover:bg-white/[0.02]"
               }`}
@@ -152,15 +117,15 @@ function PlayPage() {
               <div className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 mb-1">
                 // MODE 01
               </div>
-              <div className="font-display text-2xl tracking-wide text-white/80">{t("classicMode")}</div>
-              <p className="text-xs mt-2 text-white/70 leading-relaxed">{t("classicDesc")}</p>
+              <div className="font-display text-2xl tracking-wide text-white/80">Classic Mode</div>
+              <p className="text-xs mt-2 text-white/70 leading-relaxed">Every player's stats are visible during the draft. Build your team.</p>
             </button>
 
-            {/* RIGHT CARD: RANKED */}
+            {/* RIGHT CARD: BLIND */}
             <button
-              onClick={() => setRankedActive(true)}
+              onClick={() => setIsBlindMode(true)}
               className={`clip-corner p-6 text-left transition-all duration-200 cursor-pointer relative overflow-hidden group focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
-                rankedActive
+                isBlindMode
                   ? "border border-white/70 shadow-[0_0_12px_rgba(255,255,255,0.25)] bg-white/[0.03] text-white"
                   : "border border-white/20 hover:border-white/40 hover:bg-white/[0.02]"
               }`}
@@ -168,77 +133,16 @@ function PlayPage() {
               <div className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 mb-1">
                 // MODE 02
               </div>
-              <div className="font-display text-2xl tracking-wide text-white/80">{t("rankedMode")}</div>
-              <p className="text-xs mt-2 text-white/70 leading-relaxed">{t("rankedDesc")}</p>
+              <div className="font-display text-2xl tracking-wide text-white/80">Blind Mode</div>
+              <p className="text-xs mt-2 text-white/70 leading-relaxed">Stats hidden. Only your knowledge of VALORANT history guides your picks.</p>
             </button>
           </div>
         </section>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Step 2: Difficulty Selection */}
-          <section className="space-y-4 clip-corner border border-border bg-surface/40 p-5 backdrop-blur">
-            <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5">
-              <Award className="w-4 h-4" /> 1. {t("aiDifficulty")}
-            </h2>
-            <div className="h-px bg-white/10 my-3" />
-
-            <div className="grid grid-cols-3 gap-2">
-              {(["EASY", "MEDIUM", "HARD"] as GameDifficulty[]).map((diff) => (
-                <button
-                  key={diff}
-                  onClick={() => setDifficulty(diff)}
-                  className={`py-2.5 text-xs font-bold uppercase tracking-wide transition-all duration-200 clip-corner cursor-pointer focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
-                    difficulty === diff
-                      ? "border border-white/60 bg-white/10 text-white shadow-[0_0_10px_rgba(255,255,255,0.2)]"
-                      : "border border-white/10 text-white/50 hover:text-white/80 hover:border-white/30 hover:bg-white/[0.02]"
-                  }`}
-                >
-                  {diff}
-                </button>
-              ))}
-            </div>
-            <div className="text-[10px] text-white/60 leading-normal mt-1 min-h-[40px]">
-              {difficulty === "EASY" && t("difficultyEasy")}
-              {difficulty === "MEDIUM" && t("difficultyMedium")}
-              {difficulty === "HARD" && t("difficultyHard")}
-            </div>
-          </section>
-
-          {/* Step 3: Patch Meta System */}
-          <section className="space-y-4 clip-corner border border-border bg-surface/40 p-5 backdrop-blur flex flex-col justify-between">
-            <div>
-              <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5 mb-3">
-                <Flame className="w-4 h-4 text-white/60" /> {t("activePatchMeta")}
-              </h2>
-              <div className="h-px bg-white/10 my-3" />
-              
-              <div className="bg-background/80 border border-white/20 p-4 rounded clip-corner relative overflow-hidden transition-all duration-200 hover:border-white/40 hover:bg-white/[0.02]">
-                <div className="absolute top-0 right-0 bg-white/10 text-white/60 text-[8px] font-bold uppercase px-2 py-0.5 rounded-bl clip-corner">
-                  LIVE PATCH
-                </div>
-                <div className="font-display text-xl text-white/80 tracking-wide uppercase">{activeMeta}</div>
-                <p className="mt-1 text-xs text-white/70 leading-relaxed">
-                  {getMetaDesc(activeMeta)}
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-border/30 flex items-center justify-between">
-              <span className="text-[10px] text-white/60">Change the meta for the next draft:</span>
-              <button
-                onClick={cycleMeta}
-                className="clip-corner flex items-center gap-1.5 border border-white/20 hover:border-white/40 hover:bg-white/[0.02] text-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)]"
-              >
-                <RefreshCw className="w-3.5 h-3.5" /> {t("cycleMetaBtn")}
-              </button>
-            </div>
-          </section>
-        </div>
-
-        {/* Step 4: Select Player Pool (with Hover Glow system) */}
+        {/* Step 1: Select Player Pool (with Hover Glow system) */}
         <section className="space-y-4">
           <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5">
-            <Star className="w-4 h-4 text-white/60" /> 2. {t("selectPlayerPool")}
+            <Star className="w-4 h-4 text-white/60" /> 1. {t("selectPlayerPool")}
           </h2>
           <div className="h-px bg-white/10 my-3" />
           <div className="grid gap-3 md:grid-cols-3">
@@ -297,46 +201,59 @@ function PlayPage() {
               );
             })}
           </div>
-          {rankedActive && (
-            <div className="text-[10px] text-white/60 leading-normal">
-              ℹ {t("levelUnlockInfo")}
-            </div>
-          )}
         </section>
 
-        {/* Step 5: Choose Team Composition Style */}
+        {/* Step 2: Choose Team Composition Style */}
         <section className="space-y-4">
           <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5">
-            <ShieldAlert className="w-4 h-4 text-white/60" /> 3. {t("chooseDraftMode")}
+            <ShieldAlert className="w-4 h-4 text-white/60" /> 2. {t("chooseDraftMode")}
           </h2>
           <div className="h-px bg-white/10 my-3" />
           <div className="grid gap-4 md:grid-cols-3">
             {[
               {
                 id: "STRICT" as DraftMode,
-                title: t("strictModeTitle"),
-                desc: t("strictModeDesc"),
+                diffId: "EASY" as GameDifficulty,
+                title: "STANDARD MODE",
+                desc: "Balanced rules. Structured and fair drafting.",
+                colorBase: "border-[#22c55e]/30",
+                colorHover: "hover:border-[#22c55e]/60",
+                colorSelected: "border-[#22c55e]",
+                shadowSelected: "shadow-[0_0_12px_rgba(34,197,94,0.25)]",
               },
               {
                 id: "FLEXIBLE" as DraftMode,
-                title: t("flexibleModeTitle"),
-                desc: t("flexibleModeDesc"),
+                diffId: "MEDIUM" as GameDifficulty,
+                title: "COMPETITIVE MODE",
+                desc: "Adaptive drafting. More freedom, higher challenge.",
+                colorBase: "border-[#f97316]/30",
+                colorHover: "hover:border-[#f97316]/60",
+                colorSelected: "border-[#f97316]",
+                shadowSelected: "shadow-[0_0_12px_rgba(249,115,22,0.25)]",
               },
               {
                 id: "CHAOS" as DraftMode,
-                title: t("chaosModeTitle"),
-                desc: t("chaosModeDesc"),
+                diffId: "HARD" as GameDifficulty,
+                title: "CHAOS MODE",
+                desc: "No rules. Maximum unpredictability.",
+                colorBase: "border-[#ef4444]/30",
+                colorHover: "hover:border-[#ef4444]/60",
+                colorSelected: "border-[#ef4444]",
+                shadowSelected: "shadow-[0_0_12px_rgba(239,68,68,0.25)]",
               },
             ].map((m) => {
-              const isSelected = draftMode === m.id;
+              const isSelected = draftMode === m.id && difficulty === m.diffId;
               return (
                 <button
                   key={m.id}
-                  onClick={() => setDraftMode(m.id)}
+                  onClick={() => {
+                    setDraftMode(m.id);
+                    setDifficulty(m.diffId);
+                  }}
                   className={`clip-corner p-5 text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[140px] focus:outline-none focus:border-white/70 focus:shadow-[0_0_0_2px_rgba(255,255,255,0.2)] ${
                     isSelected
-                      ? "border-white/70 shadow-[0_0_12px_rgba(255,255,255,0.25)] bg-white/[0.03] text-white"
-                      : "border-white/20 hover:border-white/40 hover:bg-white/[0.02]"
+                      ? `${m.colorSelected} ${m.shadowSelected} bg-white/[0.03] text-white`
+                      : `${m.colorBase} ${m.colorHover} hover:bg-white/[0.02]`
                   }`}
                 >
                   <div className="font-display text-lg text-white/80 tracking-wide">{m.title}</div>
@@ -345,6 +262,21 @@ function PlayPage() {
               );
             })}
           </div>
+        </section>
+
+        {/* Team Name Input */}
+        <section className="space-y-4">
+          <h2 className="text-xs text-white/60 tracking-widest uppercase flex items-center gap-1.5">
+            // TEAM NAME
+          </h2>
+          <div className="h-px bg-white/10 my-3" />
+          <input
+            type="text"
+            value={teamName}
+            onChange={(e) => setTeamName(e.target.value)}
+            placeholder="Enter your team name..."
+            className="w-full bg-surface/40 border border-white/20 p-4 text-white placeholder-white/30 clip-corner focus:outline-none focus:border-white/70 focus:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-all duration-300"
+          />
         </section>
 
         {/* Start Button */}

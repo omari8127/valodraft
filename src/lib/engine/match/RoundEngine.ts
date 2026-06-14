@@ -1,5 +1,5 @@
 import type { MatchTeam } from "./MatchEngine";
-import { calculateTSS, calculateWinProbability } from "./ProbabilityEngine";
+import { calculateTSS, calculateWinProbability, evaluateTeamRoles } from "./ProbabilityEngine";
 import type { MomentumSystem } from "./MomentumSystem";
 import type { GameMap } from "@/data/maps";
 import type { DraftMode } from "@/types/game";
@@ -50,7 +50,7 @@ export class RoundEngine {
     // --- IMMUTABLE PLAYER VARIANCE ---
     const applyVariance = (team: MatchTeam): MatchTeam => {
       if (!team || !team.players || team.players.length === 0) return team;
-      
+
       const validPlayers = team.players.filter(p => p !== null && p !== undefined);
       if (validPlayers.length === 0) return team;
 
@@ -77,7 +77,11 @@ export class RoundEngine {
 
     let baseProbA = calculateWinProbability(tssA, tssB);
 
-    // --- SEED PROTECTION ---
+    // --- STANDARD MODE PENALTIES ---
+    const rolesA = evaluateTeamRoles(simTeamA);
+    const rolesB = evaluateTeamRoles(simTeamB);
+    
+    baseProbA += rolesA.winProbPenalty - rolesB.winProbPenalty;
     // In early rounds only, grant a hidden boost to the massive favorite to prevent broken brackets
     if (stage === "EARLY") {
       const diff = tssA - tssB;
@@ -91,7 +95,7 @@ export class RoundEngine {
     let economyPenaltyB = 0;
     const isEcoA = scoreB - scoreA >= 4 && Math.random() < 0.6;
     const isEcoB = scoreA - scoreB >= 4 && Math.random() < 0.6;
-    
+
     if (isEcoA) economyPenaltyA = -0.12; // Eco disadvantage
     if (isEcoB) economyPenaltyB = -0.12;
 
@@ -121,7 +125,10 @@ export class RoundEngine {
       FINALS: 0.04
     };
 
-    const variance = varianceMap[stage] ?? 0.12;
+    let variance = varianceMap[stage] ?? 0.12;
+
+    // Apply consistency penalty
+    variance += Math.abs(rolesA.consistencyPenalty) + Math.abs(rolesB.consistencyPenalty);
 
     let finalProbA = baseProbA + (Math.random() * variance * 2 - variance);
 
@@ -145,8 +152,8 @@ export class RoundEngine {
       finalProbA += (Math.random() > 0.5 ? 0.3 : -0.3);
     }
 
-    // Strict clamping
-    finalProbA = Math.min(0.85, Math.max(0.15, finalProbA));
+    // Strict clamping including standard mode hard clamp
+    finalProbA = Math.min(0.75, Math.max(0.25, finalProbA));
 
     // Finals Lock Tightening
     if (stage === "FINALS") {
@@ -191,7 +198,7 @@ export class RoundEngine {
     return {
       winner,
       isClutch,
-      baseProbA: Math.min(0.8, Math.max(0.2, baseProbA)), // UI Bar uses the pre-variance base
+      baseProbA: Math.min(0.75, Math.max(0.25, baseProbA)), // UI Bar uses the pre-variance base
       roundType,
       clutchMagnitude
     };

@@ -66,35 +66,25 @@ function RosterCompositionStats({
           </div>
           <div className="flex justify-between border-b border-border/30 pb-1">
             <span className="text-muted-foreground">Controllers:</span>
-            <span className={`font-semibold ${stats.controllers >= 2 ? "text-primary" : "text-foreground"}`}>
-              {stats.controllers}{draftMode === "STRICT" ? "/1" : ""}
+            <span className={`font-semibold ${stats.controllers >= 2 ? "text-primary" : stats.controllers === 0 ? "text-red-400" : "text-foreground"}`}>
+              {stats.controllers}{draftMode === "STRICT" ? "/1" : ""} {stats.controllers === 0 && "⚠ MISSING"}
             </span>
           </div>
           <div className="flex justify-between border-b border-border/30 pb-1">
             <span className="text-muted-foreground">Initiators:</span>
-            <span className="font-semibold text-foreground">
-              {stats.initiators}{draftMode === "STRICT" ? "/1" : ""}
+            <span className={`font-semibold ${stats.initiators === 0 ? "text-red-400" : "text-foreground"}`}>
+              {stats.initiators}{draftMode === "STRICT" ? "/1" : ""} {stats.initiators === 0 && "⚠ MISSING"}
             </span>
           </div>
           <div className="flex justify-between border-b border-border/30 pb-1">
             <span className="text-muted-foreground">Sentinels:</span>
-            <span className="font-semibold text-foreground">
-              {stats.sentinels}{draftMode === "STRICT" ? "/1" : ""}
+            <span className={`font-semibold ${stats.sentinels === 0 ? "text-red-400" : "text-foreground"}`}>
+              {stats.sentinels}{draftMode === "STRICT" ? "/1" : ""} {stats.sentinels === 0 && "⚠ MISSING"}
             </span>
           </div>
         </div>
       </div>
 
-      {isUnbalanced && players.length > 0 && draftMode !== "CHAOS" && (
-        <div className="border border-red-500/30 bg-red-500/10 p-3 rounded clip-corner">
-          <div className="text-[10px] font-bold uppercase text-red-500 tracking-wider flex items-center gap-1">
-            {t("compWarningTitle")}
-          </div>
-          <div className="text-[10px] text-muted-foreground/90 mt-1 leading-normal">
-            {t("compWarningDesc")}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -282,7 +272,7 @@ function DraftPage() {
 
     const save = {
       id: `dyn-${Date.now()}`,
-      name: `Roster ${new Date().toLocaleDateString()}`,
+      name: state.teamName,
       createdAt: Date.now(),
       modeId: state.modeId!,
       rosterPlayerIds: draftedPlayers.map((p) => p.id),
